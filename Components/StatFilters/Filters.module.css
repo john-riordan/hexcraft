@@ -1,0 +1,18 @@
+.filters {
+  padding: 0 0.75rem;
+  border-right: 1px solid var(--accent1);
+}
+
+.group {
+  padding: 0.75rem 0;
+  margin: 0.75rem 0;
+}
+.group:not(:last-of-type) {
+  border-bottom: 1px solid black;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  height: 1.75rem;
+}

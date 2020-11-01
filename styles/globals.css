@@ -1,14 +1,33 @@
+:root {
+  --surface1: #091a24;
+  --surface2: #040d12;
+  --text1: #cdbe91;
+  --accent1: #224648;
+  --accent2: #735929;
+}
+
+html {
+  background: var(--surface1);
+  color: var(--text1);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
 }
 
 * {
