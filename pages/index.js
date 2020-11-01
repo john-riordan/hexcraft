@@ -81,7 +81,7 @@ export async function getStaticProps() {
       (item) =>
         item.priceTotal < 2000 &&
         item.priceTotal > 500 &&
-        item.from.length &&
+        (item.from.length || item.name === 'Sheen') &&
         !item.isEnchantment &&
         !item.categories.includes('Boots')
     )
@@ -99,6 +99,7 @@ export async function getStaticProps() {
       (item) =>
         item.priceTotal &&
         !item.from.length &&
+        item.name !== 'Sheen' &&
         !item.categories.includes('Boots') &&
         !item.requiredBuffCurrencyCost
     )
