@@ -13,7 +13,7 @@ import styles from '../styles/Home.module.css';
 export default function Home({ allItemsData }) {
   const [state, setState] = useState({
     itemsData: allItemsData,
-    tab: 'all',
+    tab: 'All Items',
     stat: null,
     order: 'desc',
   });

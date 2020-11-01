@@ -1,3 +1,11 @@
 .tabs {
   display: flex;
 }
+
+.tab {
+  cursor: pointer;
+}
+
+.tab.active {
+  color: red;
+}
