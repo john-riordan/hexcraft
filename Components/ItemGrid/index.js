@@ -18,24 +18,28 @@ const ItemGrid = ({ className }) => {
         <div key={groupName}>
           <p className={styles.groupTitle}>{groupName}</p>
           <div className={styles.grid}>
-            {items.map((item) => (
-              <Tippy
-                key={item.name}
-                placement="right"
-                duration={0}
-                content={<ItemTooltip item={item} />}
-              >
-                <div
-                  className={styles.gridItem}
-                  onClick={() =>
-                    setState((prev) => ({ ...prev, selectedItem: item }))
-                  }
+            {items.map((item) => {
+              if (state.stat && !item.categories.includes(state.stat))
+                return null;
+              return (
+                <Tippy
+                  key={item.name}
+                  placement="right"
+                  duration={0}
+                  content={<ItemTooltip item={item} />}
                 >
-                  <ItemImage imgName={item.iconPath} size={56} />
-                  <p className={styles.price}>{item.priceTotal}</p>
-                </div>
-              </Tippy>
-            ))}
+                  <div
+                    className={styles.gridItem}
+                    onClick={() =>
+                      setState((prev) => ({ ...prev, selectedItem: item }))
+                    }
+                  >
+                    <ItemImage imgName={item.iconPath} size={56} />
+                    <p className={styles.price}>{item.priceTotal}</p>
+                  </div>
+                </Tippy>
+              );
+            })}
           </div>
         </div>
       ))}
