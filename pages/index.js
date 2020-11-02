@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
 
+import { buildItemsData } from '../helpers/buildItemsData';
+
 import { StateContext } from '../StateContext';
 
 import ItemDetails from '../Components/ItemDetails/';
@@ -10,12 +12,13 @@ import Tabs from '../Components/Tabs/';
 
 import styles from '../styles/Home.module.css';
 
-export default function Home({ allItemsData }) {
+export default function Home({ itemsData }) {
   const [state, setState] = useState({
-    itemsData: allItemsData,
-    tab: 'All Items',
+    itemsData: itemsData,
+    tab: 'all',
     stat: null,
     order: 'desc',
+    selectedItem: null,
   });
 
   console.log(state);
@@ -28,10 +31,14 @@ export default function Home({ allItemsData }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Tabs />
         <main className={styles.main}>
-          <StatFilters className={styles.filters} />
-          <ItemGrid className={styles.grid} />
+          <div className={styles.left}>
+            <Tabs />
+            <div className={styles.leftPanels}>
+              <StatFilters className={styles.filters} />
+              <ItemGrid className={styles.grid} />
+            </div>
+          </div>
           <ItemDetails className={styles.details} />
         </main>
       </div>
@@ -47,83 +54,11 @@ export async function getStaticProps() {
   );
   const items = await res.json();
 
-  const usableItems = items.filter(
-    (item) => item.inStore && item.mapStringIdInclusions.includes('SR')
-  );
-
-  const mythics = usableItems
-    .filter((item) => item.description.includes('Mythic Passive:'))
-    .map((item) => ({
-      ...item,
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .reduce((acc, cur) => {
-      acc[cur.id] = cur;
-      return acc;
-    }, {});
-
-  const legendaries = usableItems
-    .filter(
-      (item) =>
-        item.priceTotal > 2000 && !item.description.includes('Mythic Passive:')
-    )
-    .map((item) => ({
-      ...item,
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .reduce((acc, cur) => {
-      acc[cur.id] = cur;
-      return acc;
-    }, {});
-
-  const epics = usableItems
-    .filter(
-      (item) =>
-        item.priceTotal < 2000 &&
-        item.priceTotal > 500 &&
-        (item.from.length || item.name === 'Sheen') &&
-        !item.isEnchantment &&
-        !item.categories.includes('Boots')
-    )
-    .map((item) => ({
-      ...item,
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .reduce((acc, cur) => {
-      acc[cur.id] = cur;
-      return acc;
-    }, {});
-
-  const basics = usableItems
-    .filter(
-      (item) =>
-        item.priceTotal &&
-        !item.from.length &&
-        item.name !== 'Sheen' &&
-        !item.categories.includes('Boots') &&
-        !item.requiredBuffCurrencyCost
-    )
-    .map((item) => ({
-      ...item,
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .reduce((acc, cur) => {
-      acc[cur.id] = cur;
-      return acc;
-    }, {});
-
-  const allItemsData = {
-    mythics,
-    legendaries,
-    epics,
-    basics,
-  };
-
-  // By returning { props: allItemsData }, the Blog component
-  // will receive `allItemsData` as a prop at build time
+  // By returning { props: itemsData }, the Blog component
+  // will receive `itemsData` as a prop at build time
   return {
     props: {
-      allItemsData,
+      itemsData: buildItemsData(items),
     },
   };
 }

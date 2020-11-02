@@ -1,25 +1,40 @@
-import styles from './Grid.module.css';
-
 import { useContext } from 'react';
+import Tippy from '@tippy.js/react';
 
-import ItemImage from '../ItemImage';
+import ItemImage from '../ItemImage/';
+import ItemTooltip from '../ItemTooltip/';
+
 import { StateContext } from '../../StateContext';
 
+import styles from './Grid.module.css';
+
 const ItemGrid = ({ className }) => {
-  const { state } = useContext(StateContext);
-  const itemGroups = Object.entries(state.itemsData);
+  const { state, setState } = useContext(StateContext);
+  const itemGroups = Object.entries(state.itemsData[state.tab]);
 
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items]) => (
         <div key={groupName}>
-          <p>{groupName}</p>
+          <p className={styles.groupTitle}>{groupName}</p>
           <div className={styles.grid}>
-            {Object.values(items).map((item, i) => (
-              <div key={item.name} className={styles.gridItem}>
-                <ItemImage imgName={item.iconPath} />
-                <p>{item.price}</p>
-              </div>
+            {items.map((item) => (
+              <Tippy
+                key={item.name}
+                placement="right"
+                duration={0}
+                content={<ItemTooltip item={item} />}
+              >
+                <div
+                  className={styles.gridItem}
+                  onClick={() =>
+                    setState((prev) => ({ ...prev, selectedItem: item }))
+                  }
+                >
+                  <ItemImage imgName={item.iconPath} size={56} />
+                  <p className={styles.price}>{item.priceTotal}</p>
+                </div>
+              </Tippy>
             ))}
           </div>
         </div>

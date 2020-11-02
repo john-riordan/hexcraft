@@ -1,9 +1,12 @@
 :root {
-  --surface1: #091a24;
-  --surface2: #040d12;
-  --text1: #cdbe91;
-  --accent1: #224648;
-  --accent2: #735929;
+  --surface1: hsl(212deg 100% 4%);
+
+  --text1: hsl(0deg 0% 100%);
+  --text2: hsl(39deg 55% 59%);
+  --text3: hsl(213deg 5% 38%);
+  --text4: hsl(0deg 0% 60%);
+
+  --accent1: hsl(0deg 0% 100% / 20%);
 }
 
 html {
@@ -11,14 +14,47 @@ html {
   color: var(--text1);
 }
 
+@font-face {
+  font-family: 'Beaufort-bold';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff');
+  font-weight: 700;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Beaufort-Regular';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.woff');
+  font-weight: 400;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spiegel-bold';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/Spiegel-Bold.woff');
+  font-weight: 700;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spiegel-Regular';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/Spiegel-Regular.woff');
+  font-weight: 400;
+  font-display: auto;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-size: 1em;
   line-height: 1.5;
+  font-family: 'Spiegel-Regular';
 }
 
 a {

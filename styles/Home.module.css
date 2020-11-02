@@ -1,5 +1,5 @@
 .container {
-  max-width: 1600px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -8,12 +8,21 @@
   justify-content: space-between;
 }
 
+.left {
+  flex: 3;
+}
+
+.leftPanels {
+  display: flex;
+  flex: 3;
+}
+
 .filters {
   flex: 1;
 }
 
 .grid {
-  flex: 2.5;
+  flex: 3;
 }
 
 .details {

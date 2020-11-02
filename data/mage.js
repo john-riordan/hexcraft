@@ -1,4 +1,4 @@
-const mage = {
+export const mage = {
   mythic: {
     3152: 'Hextech Rocketbelt',
     4633: 'Riftmaker',

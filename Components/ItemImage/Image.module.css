@@ -1,0 +1,5 @@
+.imgFrame {
+  display: inline-block;
+  padding: 0.125rem;
+  border: 1px solid var(--accent1);
+}

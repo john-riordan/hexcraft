@@ -14,5 +14,8 @@
 .statItem {
   display: flex;
   align-items: center;
-  height: 1.75rem;
+  height: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-size: 0.875rem;
 }

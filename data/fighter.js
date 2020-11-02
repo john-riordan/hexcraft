@@ -1,4 +1,4 @@
-const fighter = {
+export const fighter = {
   mythic: {
     6692: 'Eclipse',
     6630: 'Goredrinker',

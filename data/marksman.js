@@ -1,4 +1,4 @@
-const marksman = {
+export const marksman = {
   mythic: {
     3078: 'Trinity Force',
     6671: 'Galeforce',
