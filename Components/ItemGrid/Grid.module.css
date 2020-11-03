@@ -7,11 +7,11 @@
   font-family: 'Beaufort-bold';
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--text5);
-  padding-bottom: 0.5rem;
-  margin: 0 1rem;
-  border-bottom: 1px solid var(--accent1);
+  /* padding-bottom: 0.25rem; */
+  margin: 0 0.75rem;
+  /* border-bottom: 1px solid var(--accent1); */
 }
 
 .grid {
@@ -32,7 +32,9 @@
   position: relative;
 }
 .gridItem:hover {
+  filter: brightness(1.5);
   background: linear-gradient(to top, var(--accent3), var(--accent2));
+  transition: 0.2s ease;
 }
 .gridItem:hover .imgFrame {
   border: 1px solid var(--text1);
@@ -48,9 +50,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, var(--blue), transparent);
+  background: transparent;
+  transition: 0.2s ease;
+}
+.gridItem.selected::before {
+  background: linear-gradient(to bottom, var(--blue), transparent 80%);
   box-shadow: 0 0 0 1px var(--blue), inset 0 0 0 4px var(--surface1);
-  opacity: 0.2;
+  opacity: 0.4;
 }
 .gridItem.selected .imgFrame {
   border: 1px solid var(--blue);

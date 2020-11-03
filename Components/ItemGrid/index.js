@@ -40,7 +40,7 @@ const ItemGrid = ({ className }) => {
                     <ItemImage
                       imgName={item.iconPath}
                       className={styles.imgFrame}
-                      size={56}
+                      size={48}
                     />
                     <p className={styles.price}>{item.priceTotal}</p>
                   </div>

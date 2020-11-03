@@ -6,6 +6,7 @@
 }
 
 .tab {
+  position: relative;
   border: none;
   background: transparent;
   outline: none;
@@ -14,6 +15,21 @@
   color: var(--text5);
   padding: 0 1rem;
   cursor: pointer;
+  transition: var(--transition);
+}
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.tab:hover {
+  color: var(--text6);
 }
 
 .tab svg {
@@ -28,25 +44,23 @@
 }
 
 .tab.active {
-  position: relative;
   color: var(--text6);
 }
 .tab.active::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: linear-gradient(to top, var(--gold), transparent);
   opacity: 0.15;
 }
-.tab.active span::after {
+.tab span::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 3px;
+  opacity: 0;
+  transition: var(--transition);
+}
+.tab.active span::after {
+  opacity: 1;
   background: var(--gold-gradient);
 }
