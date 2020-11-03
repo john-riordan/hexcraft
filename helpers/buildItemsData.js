@@ -12,53 +12,69 @@ export function buildItemsData(items) {
   );
 
   const mythics = usableItems
-    .filter((item) => item.description.includes('Mythic Passive:'))
-    .map((item) => ({
-      ...item,
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }));
-  const legendaries = usableItems
     .filter(
       (item) =>
-        item.priceTotal > 2000 && !item.description.includes('Mythic Passive:')
+        item.description.includes('Mythic Passive:') ||
+        item.name === 'Divine Sunderer'
     )
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }));
+    }))
+    .sort((a, z) => a.priceTotal - z.priceTotal);
+  const legendaries = usableItems
+    .filter(
+      (item) =>
+        item.priceTotal > 1500 &&
+        !item.description.includes('Mythic Passive:') &&
+        item.name !== 'Divine Sunderer'
+    )
+    .map((item) => ({
+      ...item,
+      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
+    }))
+    .sort((a, z) => a.priceTotal - z.priceTotal);
   const epics = usableItems
     .filter(
       (item) =>
-        item.priceTotal < 2000 &&
+        item.priceTotal <= 1500 &&
         item.priceTotal > 500 &&
-        (item.from.length || item.name === 'Sheen') &&
+        (item.from.length ||
+          item.name === 'Sheen' ||
+          item.name === 'Stirring Wardstone') &&
         !item.isEnchantment &&
         !item.categories.includes('Boots')
     )
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }));
+    }))
+    .sort((a, z) => a.priceTotal - z.priceTotal);
   const basics = usableItems
     .filter(
       (item) =>
+        !starter[item.id] &&
         item.priceTotal &&
         !item.from.length &&
+        !item.categories.includes('Consumable') &&
         item.name !== 'Sheen' &&
         item.name !== 'Broken Stopwatch' &&
+        item.name !== 'Stirring Wardstone' &&
         !item.categories.includes('Boots') &&
         !item.requiredBuffCurrencyCost
     )
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }));
+    }))
+    .sort((a, z) => a.priceTotal - z.priceTotal);
   const starters = usableItems
     .filter((item) => starter[item.id])
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }));
+    }))
+    .sort((a, z) => a.priceTotal - z.priceTotal);
 
   return {
     all: {
