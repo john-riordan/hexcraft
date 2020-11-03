@@ -1,5 +1,5 @@
 .container {
-  max-width: 1800px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 
@@ -8,23 +8,20 @@
   justify-content: space-between;
 }
 
-.left {
+.center {
   flex: 3;
+  padding: 1.25rem 0;
+  border-right: 1px solid var(--accent1);
+  border-left: 1px solid var(--accent1);
 }
 
-.leftPanels {
-  display: flex;
-  flex: 3;
-}
-
-.filters {
+.filters,
+.details {
   flex: 1;
+  align-self: flex-start;
+  position: sticky;
+  top: var(--controls-height);
 }
 
 .grid {
-  flex: 3;
-}
-
-.details {
-  flex: 1;
 }

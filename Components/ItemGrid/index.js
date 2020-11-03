@@ -24,17 +24,24 @@ const ItemGrid = ({ className }) => {
               return (
                 <Tippy
                   key={item.name}
-                  placement="right"
+                  placement="right-start"
+                  offset="0, 10"
                   duration={0}
                   content={<ItemTooltip item={item} />}
                 >
                   <div
-                    className={styles.gridItem}
+                    className={`${styles.gridItem} ${
+                      state.selectedItem?.id === item.id && styles.selected
+                    }`}
                     onClick={() =>
                       setState((prev) => ({ ...prev, selectedItem: item }))
                     }
                   >
-                    <ItemImage imgName={item.iconPath} size={56} />
+                    <ItemImage
+                      imgName={item.iconPath}
+                      className={styles.imgFrame}
+                      size={56}
+                    />
                     <p className={styles.price}>{item.priceTotal}</p>
                   </div>
                 </Tippy>

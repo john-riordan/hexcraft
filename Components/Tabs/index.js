@@ -3,14 +3,16 @@ import { useContext } from 'react';
 import { StateContext } from '../../StateContext';
 import styles from './Tabs.module.css';
 
+import Icon from '../Icon/';
+
 const TABS = [
-  { key: 'all', name: 'All Items' },
-  { key: 'fighter', name: 'Fighter' },
-  { key: 'marksman', name: 'Marksman' },
-  { key: 'assassin', name: 'Assassin' },
-  { key: 'mage', name: 'Mage' },
-  { key: 'tank', name: 'Tank' },
-  { key: 'support', name: 'Support' },
+  { key: 'all', name: 'All Items', icon: 'grid' },
+  { key: 'fighter', name: 'Fighter', icon: 'axe' },
+  { key: 'marksman', name: 'Marksman', icon: 'bow' },
+  { key: 'assassin', name: 'Assassin', icon: 'knife' },
+  { key: 'mage', name: 'Mage', icon: 'book' },
+  { key: 'tank', name: 'Tank', icon: 'shield' },
+  { key: 'support', name: 'Support', icon: 'support' },
 ];
 
 const Tabs = () => {
@@ -24,7 +26,10 @@ const Tabs = () => {
           onClick={() => setState((prev) => ({ ...prev, tab: tab.key }))}
           className={`${styles.tab} ${state.tab === tab.key && styles.active}`}
         >
-          {tab.name}
+          <span>
+            <Icon icon={tab.icon} />
+            {tab.name}
+          </span>
         </button>
       ))}
     </div>

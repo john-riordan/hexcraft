@@ -2,11 +2,14 @@
   background: var(--surface1);
   padding: 1rem;
   padding: 1rem;
-  display: flex;
-  align-items: flex-start;
+  width: 40ch;
   border: 1px solid var(--accent1);
 }
 
+.header {
+  display: flex;
+  align-items: flex-start;
+}
 .info {
   padding-left: 1rem;
 }
@@ -23,7 +26,7 @@
   color: var(--text2);
 }
 .description {
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   color: var(--text4);

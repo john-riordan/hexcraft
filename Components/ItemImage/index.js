@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 import styles from './Image.module.css';
 
-const ItemImage = ({ imgName, size = 64 }) => (
-  <div className={styles.imgFrame}>
+const ItemImage = ({ imgName, size = 64, className }) => (
+  <div className={`${styles.imgFrame} ${className}`}>
     <Image
       src={`/${imgName}`}
       width={size}

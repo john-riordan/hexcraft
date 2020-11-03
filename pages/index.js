@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import { buildItemsData } from '../helpers/buildItemsData';
@@ -31,16 +31,14 @@ export default function Home({ itemsData }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
-          <div className={styles.left}>
+        <div className={styles.main}>
+          <StatFilters className={styles.filters} />
+          <div className={styles.center}>
             <Tabs />
-            <div className={styles.leftPanels}>
-              <StatFilters className={styles.filters} />
-              <ItemGrid className={styles.grid} />
-            </div>
+            <ItemGrid className={styles.grid} />
           </div>
           <ItemDetails className={styles.details} />
-        </main>
+        </div>
       </div>
     </StateContext.Provider>
   );

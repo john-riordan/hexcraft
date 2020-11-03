@@ -5,8 +5,23 @@
   --text2: hsl(39deg 55% 59%);
   --text3: hsl(213deg 5% 38%);
   --text4: hsl(0deg 0% 60%);
+  --text5: #cebe94;
+  --text6: #fffddd;
 
   --accent1: hsl(0deg 0% 100% / 20%);
+  --accent2: hsl(213deg 5% 38% / 35%);
+  --accent3: hsl(213deg 5% 38% / 5%);
+
+  --blue: #31d7de;
+  --gold: #ffc554;
+  --gold-gradient: linear-gradient(
+    90deg,
+    #f3bb50 0%,
+    #ffea6a 50%,
+    #ffc554 100%
+  );
+
+  --controls-height: 4rem;
 }
 
 html {

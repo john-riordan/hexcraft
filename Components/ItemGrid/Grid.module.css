@@ -1,7 +1,6 @@
 .gridFrame {
-  padding: 1.25rem 1rem;
-  /* height: 100vh;
-  overflow-y: scroll; */
+  min-height: 100vh;
+  padding: 1rem;
 }
 
 .groupTitle {
@@ -9,26 +8,52 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 1.25rem;
-  color: var(--text2);
+  color: var(--text5);
   padding-bottom: 0.5rem;
+  margin: 0 1rem;
   border-bottom: 1px solid var(--accent1);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  margin-bottom: 2rem;
 }
 
 .gridItem {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.75rem;
-  margin-bottom: 0.5rem;
   cursor: pointer;
 }
+.gridItem > * {
+  position: relative;
+}
 .gridItem:hover {
-  box-shadow: inset 0 0 0 1px var(--accent1);
+  background: linear-gradient(to top, var(--accent3), var(--accent2));
+}
+.gridItem:hover .imgFrame {
+  border: 1px solid var(--text1);
+}
+
+.gridItem.selected {
+  background: transparent;
+}
+.gridItem.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--blue), transparent);
+  box-shadow: 0 0 0 1px var(--blue), inset 0 0 0 4px var(--surface1);
+  opacity: 0.2;
+}
+.gridItem.selected .imgFrame {
+  border: 1px solid var(--blue);
 }
 
 .price {
