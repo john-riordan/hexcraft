@@ -27,6 +27,8 @@
 .resultsFrame {
   --results-height: 33rem;
 
+  position: absolute;
+  width: 100%;
   display: flex;
   border: 1px solid var(--text3);
   background: var(--surface1);
@@ -36,7 +38,6 @@
 .resultsList {
   flex: 1;
   height: var(--results-height);
-  padding: 0.25rem;
   overflow: hidden;
   overflow-y: scroll;
 }

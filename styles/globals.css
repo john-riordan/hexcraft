@@ -21,6 +21,14 @@
     #ffc554 100%
   );
 
+  --ap: #7b6dff;
+  --ad: #af4f23;
+  --as: #f9e18c;
+  --health: #21975b;
+  --mana: #49c8ff;
+  --ms: #f0e5d2;
+  --shield: white;
+
   --controls-height: 4rem;
 
   --transition: 0.2s ease;
@@ -90,4 +98,53 @@ img {
 
 * {
   box-sizing: border-box;
+}
+
+maintext {
+  color: var(--text4);
+}
+stats {
+  display: block;
+  margin-bottom: 0.075rem;
+}
+attention,
+active,
+passive {
+  font-weight: 700;
+  color: var(--text1);
+}
+magicDamage,
+scaleMR {
+  color: var(--ap);
+}
+scaleArmor,
+physicalDamage {
+  color: var(--ad);
+}
+speed {
+  color: var(--ms);
+}
+shield,
+truedamage {
+  color: var(--shield);
+}
+attackSpeed {
+  color: var(--as);
+}
+scaleMana {
+  color: var(--mana);
+}
+healing {
+  color: var(--health);
+}
+rarityMythic {
+  color: var(--text2);
+  font-weight: 700;
+}
+li {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+rules {
+  color: var(--text3);
 }

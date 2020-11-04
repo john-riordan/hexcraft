@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
+import Tippy from '@tippy.js/react';
 
 import ItemImage from '../ItemImage/';
+import ItemTooltip from '../ItemTooltip/';
 import styles from './Search.module.css';
 import { StateContext } from '../../StateContext';
 
@@ -10,13 +12,15 @@ const Search = () => {
   const { selectedItem } = state;
 
   const results = state.search?.length
-    ? state.itemsData?.items.filter(
-        (item) =>
-          item.name.toLowerCase().includes(state.search) ||
-          item.search.includes(state.search) ||
-          item.description.toLowerCase().includes(state.search)
-      )
-    : state.itemsData?.items;
+    ? state.itemsData?.items
+        .filter(
+          (item) =>
+            item.name.toLowerCase().includes(state.search) ||
+            item.search.includes(state.search) ||
+            item.description.toLowerCase().includes(state.search)
+        )
+        .sort((a, z) => z.priceTotal - a.priceTotal)
+    : state.itemsData?.items.sort((a, z) => z.priceTotal - a.priceTotal);
 
   console.log(results, '!!');
 
