@@ -1,0 +1,90 @@
+.container {
+  position: sticky;
+  padding: 1rem 0 0;
+  margin: 0 1.75rem 1rem;
+  top: 0;
+  background: var(--surface1);
+  z-index: 1;
+}
+
+.inputFrame {
+  display: flex;
+  padding-left: 2rem;
+  background: var(--surface1);
+  border: 1px solid var(--text3);
+}
+.input {
+  display: block;
+  background: transparent;
+  color: var(--text1);
+  height: 2.5rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.resultsFrame {
+  --results-height: 33rem;
+
+  display: flex;
+  border: 1px solid var(--text3);
+  background: var(--surface1);
+  height: var(--results-height);
+  border-top: none;
+}
+.resultsList {
+  flex: 1;
+  height: var(--results-height);
+  padding: 0.25rem;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.result {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+.result > * {
+  position: relative;
+}
+.result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: linear-gradient(to right, var(--blue), transparent 80%);
+  border: 1px solid var(--blue);
+  border-right: none;
+}
+.result:hover::before {
+  opacity: 0.3;
+}
+.resultInfo {
+  padding-left: 0.5rem;
+}
+.resultName {
+  font-family: 'Beaufort-bold';
+  width: 18ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.125rem;
+  margin: 0;
+  color: var(--text2);
+}
+.resultPrice {
+  font-family: 'Beaufort-bold';
+  font-size: 1rem;
+  margin: 0;
+  color: var(--text4);
+}
+
+.selected {
+  flex: 1.75;
+}

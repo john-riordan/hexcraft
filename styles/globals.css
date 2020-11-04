@@ -74,6 +74,11 @@ body {
   font-family: 'Spiegel-Regular';
 }
 
+input,
+button {
+  font-family: 'Spiegel-Regular';
+}
+
 a {
   color: inherit;
   text-decoration: none;

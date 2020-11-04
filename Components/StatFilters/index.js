@@ -33,8 +33,8 @@ const StatFilters = ({ className }) => {
 
   return (
     <div className={`${styles.filters} ${className}`}>
-      {statGroups.map((group) => (
-        <div key={group} className={styles.group}>
+      {statGroups.map((group, i) => (
+        <div key={i} className={styles.group}>
           {group.map((stat) => (
             <div
               key={stat.name}

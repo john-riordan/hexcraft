@@ -9,6 +9,7 @@ import ItemDetails from '../Components/ItemDetails/';
 import ItemGrid from '../Components/ItemGrid/';
 import StatFilters from '../Components/StatFilters/';
 import Tabs from '../Components/Tabs/';
+import Search from '../Components/Search/';
 
 import styles from '../styles/Home.module.css';
 
@@ -19,6 +20,7 @@ export default function Home({ itemsData }) {
     stat: null,
     order: 'desc',
     selectedItem: null,
+    search: '',
   });
 
   console.log(state);
@@ -34,6 +36,7 @@ export default function Home({ itemsData }) {
         <div className={styles.main}>
           <StatFilters className={styles.filters} />
           <div className={styles.center}>
+            <Search />
             <Tabs />
             <ItemGrid className={styles.grid} />
           </div>
