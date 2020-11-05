@@ -18,8 +18,7 @@ export function buildItemsData(items) {
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .sort((a, z) => a.priceTotal - z.priceTotal);
+    }));
 
   const mythics = usableItems.filter(
     (item) =>
@@ -61,10 +60,15 @@ export function buildItemsData(items) {
   const starters = usableItems.filter((item) => starter[item.id]);
 
   return {
-    items: usableItems.map((item) => ({
-      ...item,
-      search: item.categories.map((c) => c.toLowerCase()).join(),
-    })),
+    items: usableItems
+      .map((item) => ({
+        ...item,
+        search: item.categories.map((c) => c.toLowerCase()).join(),
+      }))
+      .reduce(function (acc, cur, i) {
+        acc[cur.id] = cur;
+        return acc;
+      }, {}),
     all: {
       mythics,
       legendaries,

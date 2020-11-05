@@ -33,6 +33,10 @@ const ItemGrid = ({ className }) => {
                     className={`${styles.gridItem} ${
                       state.selectedItem?.id === item.id && styles.selected
                     }`}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      setState((prev) => ({ ...prev, selectedItem: item }));
+                    }}
                     onClick={() =>
                       setState((prev) => ({ ...prev, selectedItem: item }))
                     }

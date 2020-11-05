@@ -12,7 +12,7 @@ const Search = () => {
   const { selectedItem } = state;
 
   const results = state.search?.length
-    ? state.itemsData?.items
+    ? Object.values(state.itemsData?.items)
         .filter(
           (item) =>
             item.name.toLowerCase().includes(state.search) ||
@@ -20,9 +20,9 @@ const Search = () => {
             item.description.toLowerCase().includes(state.search)
         )
         .sort((a, z) => z.priceTotal - a.priceTotal)
-    : state.itemsData?.items.sort((a, z) => z.priceTotal - a.priceTotal);
-
-  console.log(results, '!!');
+    : Object.values(state.itemsData?.items).sort(
+        (a, z) => z.priceTotal - a.priceTotal
+      );
 
   return (
     <div className={styles.container}>
