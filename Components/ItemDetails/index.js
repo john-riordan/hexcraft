@@ -22,7 +22,11 @@ const ItemDetails = ({ className }) => {
               size={64}
             />
           </div>
-          <div className={styles.row}>
+          <div
+            className={`${styles.row} ${
+              selectedItem.from.length > 1 ? styles.multi : styles.single
+            }`}
+          >
             {selectedItem.from.map((item) => (
               <div key={itemsData.items[item].id} className={styles.itemCol}>
                 <ItemImage
@@ -31,14 +35,22 @@ const ItemDetails = ({ className }) => {
                   className={styles.imgFrame}
                   size={64}
                 />
-                <div className={styles.row}>
+                <div
+                  className={`${styles.row} ${
+                    itemsData.items[item].from.length > 1
+                      ? styles.multi
+                      : styles.single
+                  }`}
+                >
                   {itemsData.items[item].from.map((item) => (
-                    <ItemImage
-                      key={item.id}
-                      imgName={itemsData.items[item].iconPath}
-                      className={styles.imgFrame}
-                      size={64}
-                    />
+                    <div>
+                      <ItemImage
+                        key={item.id}
+                        imgName={itemsData.items[item].iconPath}
+                        className={styles.imgFrame}
+                        size={64}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
