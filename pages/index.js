@@ -31,8 +31,12 @@ export default function Home({ itemsData }) {
     <StateContext.Provider value={{ state, setState }}>
       <div className={styles.container}>
         <Head>
-          <title>LoL Shop</title>
+          <title>LoL Shop - League of Legends Season 11 Item Changes</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="Description"
+            content="League of Legends Season 2021 / Season 11 Item Changes"
+          ></meta>
         </Head>
 
         <div className={styles.main}>

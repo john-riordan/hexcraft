@@ -4,6 +4,7 @@ import styles from './Image.module.css';
 
 const ItemImage = ({
   imgName,
+  alt = 'Season 2021 Item',
   size = 64,
   className,
   isMythic = false,
@@ -17,7 +18,8 @@ const ItemImage = ({
       src={`/${imgName}`}
       width={size}
       height={size}
-      quality={100}
+      quality={80}
+      alt={alt}
       loading="lazy"
     />
   </div>

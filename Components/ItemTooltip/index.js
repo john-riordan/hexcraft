@@ -14,6 +14,7 @@ const ItemTooltip = ({ item }) => {
         <ItemImage
           imgName={item.iconPath}
           isMythic={state.itemsData.mythicDictionary[item.id]}
+          alt={item.name}
           size={48}
         />
         <div className={styles.info}>
