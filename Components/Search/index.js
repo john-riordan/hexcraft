@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import Icon from '../Icon/';
 import Tabs from '../Tabs/';
@@ -7,7 +7,6 @@ import styles from './Search.module.css';
 import { StateContext } from '../../StateContext';
 
 const Search = () => {
-  const [open, setOpen] = useState(false);
   const { state, setState } = useContext(StateContext);
   const { selectedItem } = state;
 
@@ -28,20 +27,21 @@ const Search = () => {
     <div className={styles.container}>
       <div className={styles.inputFrame}>
         <Icon icon="search" />
-
         <input
           className={styles.input}
           type="text"
           placeholder="Search"
-          onClick={() => setOpen(!open)}
-          // onFocus={() => setOpen(true)}
-          // onBlur={() => setOpen(false)}
+          value={state.search}
+          onFocus={() => setState((prev) => ({ ...prev, searchOpen: true }))}
+          onBlur={() =>
+            setState((prev) => ({ ...prev, searchOpen: false, search: '' }))
+          }
           onChange={(e) => {
             setState((prev) => ({ ...prev, search: e.target.value }));
           }}
         />
       </div>
-      {open && (
+      {state.searchOpen && (
         <>
           <div className={styles.resultsFrame}>
             <div className={styles.resultsList}>
@@ -59,6 +59,7 @@ const Search = () => {
                     imgName={item.iconPath}
                     className={styles.imgFrame}
                     size={42}
+                    isMythic={state.itemsData.mythicDictionary[item.id]}
                   />
                   <div className={styles.resultInfo}>
                     <p className={styles.resultName}>{item.name}</p>
@@ -76,6 +77,9 @@ const Search = () => {
                       imgName={selectedItem.iconPath}
                       className={styles.imgFrame}
                       size={42}
+                      isMythic={
+                        state.itemsData.mythicDictionary[selectedItem.id]
+                      }
                       inline
                     />
                     <div className={styles.detailsTitle}>
@@ -96,10 +100,21 @@ const Search = () => {
               )}
             </div>
           </div>
-          <div className={styles.overlay} onClick={() => setOpen(false)} />
+          <div
+            className={styles.overlay}
+            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
+          />
         </>
       )}
-      <Tabs />
+      <div className={styles.controls}>
+        <Tabs />
+        <button
+          className={`${styles.orderBtn} ${state.desc && styles.active}`}
+          onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
+        >
+          <Icon icon="order" />
+        </button>
+      </div>
     </div>
   );
 };

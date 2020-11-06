@@ -20,6 +20,8 @@
     #ffea6a 50%,
     #ffc554 100%
   );
+  --orange1: #feb131;
+  --orange2: #915917;
 
   --ap: #7b6dff;
   --ad: #af4f23;
@@ -94,6 +96,12 @@ a {
 
 img {
   max-width: 100%;
+}
+
+svg {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
 }
 
 * {

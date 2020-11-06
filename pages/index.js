@@ -8,7 +8,6 @@ import { StateContext } from '../StateContext';
 import ItemDetails from '../Components/ItemDetails/';
 import ItemGrid from '../Components/ItemGrid/';
 import StatFilters from '../Components/StatFilters/';
-import Tabs from '../Components/Tabs/';
 import Search from '../Components/Search/';
 
 import styles from '../styles/Home.module.css';
@@ -18,12 +17,11 @@ export default function Home({ itemsData }) {
     itemsData: itemsData,
     tab: 'all',
     stat: null,
-    order: 'desc',
+    desc: true,
     selectedItem: null,
     search: '',
+    searchOpen: false,
   });
-
-  console.log(state);
 
   return (
     <StateContext.Provider value={{ state, setState }}>

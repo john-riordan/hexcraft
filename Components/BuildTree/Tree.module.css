@@ -10,6 +10,21 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
+  padding: 0 0.25rem;
+}
+
+.multi {
+  position: relative;
+  padding-top: 1rem;
+}
+.multi::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1rem;
+  top: 0;
+  left: 50%;
+  background: var(--accent2);
 }
 
 .multi > *,
@@ -25,9 +40,6 @@
   width: 1px;
   height: 1rem;
   background: var(--accent2);
-}
-
-.itemCol::before {
 }
 
 .multi > .itemCol::after {
@@ -58,12 +70,23 @@
   width: 50%;
 }
 
-/* .multi::before {
-  content: '';
-  width: 60%;
-  height: 1px;
-  background: red;
-} */
-
-.single {
+.header {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--accent2);
+  border-bottom: 1px solid var(--accent2);
+}
+.name {
+  font-family: 'Beaufort-bold';
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--text2);
+}
+.price {
+  font-family: 'Beaufort-bold';
+  font-size: 1rem;
+  margin: 0;
+  color: var(--text4);
+}
+.description {
+  font-size: 1rem;
 }

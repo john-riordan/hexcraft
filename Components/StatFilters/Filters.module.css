@@ -1,26 +1,66 @@
 .filters {
-  padding: 0 0.75rem;
+  /* padding: 0 0.75rem; */
 }
 
 .group {
-  padding: 1rem 0;
-  margin-right: 2rem;
+  padding: 0.5rem 0;
+  /* margin-right: 2rem; */
 }
 .group:not(:last-of-type) {
   border-bottom: 1px solid var(--accent1);
 }
 
 .statItem {
+  position: relative;
   display: flex;
   align-items: center;
-  height: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
+  padding: 0.5rem 0;
+  letter-spacing: 0.025rem;
   font-size: 0.875rem;
-  color: var(--text2);
+  color: var(--text5);
   cursor: pointer;
   user-select: none;
+  transition: var(--transition);
+}
+.statItem > * {
+  position: relative;
+}
+.statItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, transparent 25%, var(--blue));
+  transition: var(--transition);
+}
+.statItem:hover {
+  color: var(--text1);
 }
 .statItem.active {
   color: var(--text1);
+  border-right: 4px solid var(--blue);
+}
+.statItem.active::before {
+  opacity: 0.35;
+}
+.statItem.active::after {
+  opacity: 1;
+}
+.statIcon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  transform: translateY(2px);
+}
+
+.close {
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.6;
 }

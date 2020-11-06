@@ -1,7 +1,6 @@
 .tabs {
   display: flex;
   align-items: center;
-  padding-top: 0.5rem;
 }
 
 .tab {
@@ -11,8 +10,9 @@
   outline: none;
   color: var(--text1);
   font-size: 0.875rem;
+  letter-spacing: 0.025rem;
   color: var(--text5);
-  padding: 0 1rem;
+  padding: 0 0.75rem;
   cursor: pointer;
   opacity: 0.8;
   transition: var(--transition);

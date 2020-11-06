@@ -19,15 +19,16 @@
 .details {
   align-self: flex-start;
   position: sticky;
-  top: var(--controls-height);
 }
 
 .filters {
   flex: 0.6;
+  top: var(--controls-height);
 }
 
 .details {
   flex: 1;
+  top: 0;
 }
 
 .grid {
