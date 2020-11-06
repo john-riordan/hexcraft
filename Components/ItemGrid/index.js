@@ -64,6 +64,7 @@ const ItemGrid = ({ className }) => {
                         imgName={item.iconPath}
                         className={styles.imgFrame}
                         isMythic={state.itemsData.mythicDictionary[item.id]}
+                        alt={item.name}
                         size={46}
                       />
                       <p className={styles.price}>{item.priceTotal}</p>

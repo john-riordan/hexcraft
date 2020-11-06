@@ -78,9 +78,3 @@
     border-right: none;
   }
 }
-
-@media (max-width: 1600px) {
-  .container {
-    padding: 0 0.5rem;
-  }
-}

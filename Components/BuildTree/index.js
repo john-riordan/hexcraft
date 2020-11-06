@@ -34,6 +34,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     className={styles.imgFrame}
                     size={imageSize}
                     isMythic={state.itemsData.mythicDictionary[itemData.id]}
+                    alt={itemData.name}
                   />
                 </div>
               </Tippy>
@@ -66,6 +67,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                         imgName={itemsData.items[item]?.iconPath}
                         className={styles.imgFrame}
                         size={imageSize - 16}
+                        alt={itemsData.items[item]?.name}
                       />
                     </div>
                   </Tippy>
@@ -98,6 +100,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                             imgName={itemsData.items[item]?.iconPath}
                             className={styles.imgFrame}
                             size={imageSize - 30}
+                            alt={itemsData.items[item]?.name}
                           />
                         </div>
                       </Tippy>

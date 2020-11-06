@@ -23,6 +23,7 @@ const Tabs = () => {
       {TABS.map((tab) => (
         <button
           key={tab.key}
+          name={tab.name}
           onClick={() => setState((prev) => ({ ...prev, tab: tab.key }))}
           className={`${styles.tab} ${state.tab === tab.key && styles.active}`}
         >

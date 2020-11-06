@@ -60,6 +60,7 @@ const Search = () => {
                     imgName={item.iconPath}
                     className={styles.imgFrame}
                     size={42}
+                    alt={item.name}
                     isMythic={state.itemsData.mythicDictionary[item.id]}
                   />
                   <div className={styles.resultInfo}>
@@ -78,6 +79,7 @@ const Search = () => {
                       imgName={selectedItem.iconPath}
                       className={styles.imgFrame}
                       size={42}
+                      alt={selectedItem.name}
                       isMythic={
                         state.itemsData.mythicDictionary[selectedItem.id]
                       }
@@ -116,6 +118,7 @@ const Search = () => {
           content={'Reverse Order'}
         >
           <button
+            name="Change Sort Direction"
             className={`${styles.orderBtn} ${state.desc && styles.active}`}
             onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
           >
