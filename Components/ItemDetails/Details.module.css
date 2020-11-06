@@ -33,3 +33,14 @@
   fill: var(--text1);
   opacity: 1;
 }
+
+.show {
+  display: block !important;
+}
+
+@media (max-width: 600px) {
+  .title,
+  .buildsFrom {
+    display: none;
+  }
+}

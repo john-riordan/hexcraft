@@ -18,7 +18,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
     <div className={styles.details}>
       {itemData && (
         <>
-          <div style={{ minHeight: '15rem' }}>
+          <div className={styles.treeFrame}>
             <div className={styles.row}>
               <Tippy
                 key={itemData.name}

@@ -23,7 +23,11 @@ const ItemDetails = ({ className }) => {
   const empty = [...Array(MAX_FROM - builtFrom.length).keys()];
 
   return (
-    <div className={`${styles.details} ${className}`}>
+    <div
+      className={`${styles.details} ${className} ${
+        selectedItem && styles.show
+      }`}
+    >
       {selectedItem && (
         <Icon
           icon="close"
@@ -47,7 +51,7 @@ const ItemDetails = ({ className }) => {
               <ItemImage
                 key={item.iconPath}
                 imgName={item.iconPath}
-                size={40}
+                size={36}
                 isMythic={state.itemsData.mythicDictionary[item.id]}
               />
             </div>
@@ -55,7 +59,7 @@ const ItemDetails = ({ className }) => {
         ))}
         {empty.map((i) => (
           <div key={i}>
-            <ItemImage size={40} imgName="empty.png" />
+            <ItemImage size={36} imgName="empty.png" />
           </div>
         ))}
       </div>

@@ -77,11 +77,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-size: 1em;
   line-height: 1.5;
-  font-family: 'Spiegel-Regular';
+  font-family: 'Spiegel-Regular', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+}
+
+@media (max-width: 1400px) {
+  /* html,
+  body {
+    overflow-x: hidden;
+  } */
 }
 
 input,
@@ -155,4 +162,10 @@ li {
 }
 rules {
   color: var(--text3);
+}
+
+@media (max-width: 1200px) {
+  .tippy-popper {
+    display: none !important;
+  }
 }

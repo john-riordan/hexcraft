@@ -26,10 +26,10 @@ const Tabs = () => {
           onClick={() => setState((prev) => ({ ...prev, tab: tab.key }))}
           className={`${styles.tab} ${state.tab === tab.key && styles.active}`}
         >
-          <span>
+          <div>
             <Icon icon={tab.icon} />
-            {tab.name}
-          </span>
+            <span>{tab.name}</span>
+          </div>
         </button>
       ))}
     </div>

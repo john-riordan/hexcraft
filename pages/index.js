@@ -23,11 +23,15 @@ export default function Home({ itemsData }) {
     searchOpen: false,
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [state.desc, state.tab]);
+
   return (
     <StateContext.Provider value={{ state, setState }}>
       <div className={styles.container}>
         <Head>
-          <title>Hexcraft</title>
+          <title>LoL Shop</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
@@ -38,6 +42,14 @@ export default function Home({ itemsData }) {
             {/* <Tabs /> */}
             <ItemGrid className={styles.grid} />
           </div>
+          {state.selectedItem && (
+            <div
+              className={styles.detailsOverlay}
+              onClick={() =>
+                setState((prev) => ({ ...prev, selectedItem: null }))
+              }
+            />
+          )}
           <ItemDetails className={styles.details} />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Tippy from '@tippy.js/react';
 
 import Icon from '../Icon/';
 import Tabs from '../Tabs/';
@@ -108,12 +109,19 @@ const Search = () => {
       )}
       <div className={styles.controls}>
         <Tabs />
-        <button
-          className={`${styles.orderBtn} ${state.desc && styles.active}`}
-          onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
+        <Tippy
+          placement="right-start"
+          offset="0, 10"
+          duration={0}
+          content={'Reverse Order'}
         >
-          <Icon icon="order" />
-        </button>
+          <button
+            className={`${styles.orderBtn} ${state.desc && styles.active}`}
+            onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
+          >
+            <Icon icon="order" />
+          </button>
+        </Tippy>
       </div>
     </div>
   );
