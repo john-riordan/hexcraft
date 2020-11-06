@@ -1,4 +1,4 @@
-const support = {
+export const support = {
   mythic: {
     2065: "Shurelya's Battlesong",
     3190: 'Locket of the Iron Solari',

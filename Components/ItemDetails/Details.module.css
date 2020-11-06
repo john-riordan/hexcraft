@@ -1,0 +1,46 @@
+.details {
+  padding: 1rem 2rem;
+}
+
+.title {
+  font-family: 'Beaufort-bold';
+  font-size: 1.25rem;
+  color: var(--text4);
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.buildsFrom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--text4);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: var(--transition);
+}
+.close:hover {
+  fill: var(--text1);
+  opacity: 1;
+}
+
+.show {
+  display: block !important;
+}
+
+@media (max-width: 600px) {
+  .title,
+  .buildsFrom {
+    display: none;
+  }
+}

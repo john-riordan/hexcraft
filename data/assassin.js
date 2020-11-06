@@ -1,4 +1,4 @@
-const assassin = {
+export const assassin = {
   mythic: {
     6691: 'Duskblade of Draktharr',
     6692: 'Eclipse',

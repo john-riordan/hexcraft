@@ -1,0 +1,203 @@
+.container {
+  position: sticky;
+  margin: 0 1.5rem 0;
+  padding-top: 1rem;
+  top: 0;
+  background: var(--surface1);
+  border-bottom: 1px solid var(--accent1);
+  z-index: 3;
+}
+
+.inputFrame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  background: var(--surface1);
+  border: 1px solid var(--text3);
+  z-index: 3;
+}
+.inputFrame svg {
+  fill: var(--text4);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+.input {
+  display: block;
+  background: transparent;
+  color: var(--text1);
+  height: 2.5rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.resultsFrame {
+  --results-height: 33rem;
+
+  position: absolute;
+  width: 100%;
+  display: flex;
+  border: 1px solid var(--text3);
+  background: var(--surface1);
+  height: var(--results-height);
+  border-top: none;
+  z-index: 3;
+}
+.resultsList {
+  flex: 1;
+  height: var(--results-height);
+  padding: 1.5rem 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  mask-image: linear-gradient(
+    to top,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+.resultsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+.resultsList::-webkit-scrollbar-thumb {
+  background: var(--text2);
+  border: 2px solid var(--surface1);
+  border-radius: 10px;
+}
+.resultsList::-webkit-scrollbar {
+  width: 10px;
+}
+.result {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+.result > * {
+  position: relative;
+}
+.result::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: linear-gradient(to right, var(--blue), transparent 80%);
+  border: 1px solid var(--blue);
+  border-right: none;
+}
+.result:hover::before {
+  opacity: 0.3;
+}
+
+.result.resultSelected::before {
+  opacity: 0.2;
+}
+
+.resultInfo {
+  padding-left: 0.5rem;
+}
+.resultName {
+  font-family: 'Beaufort-bold';
+  width: 18ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.125rem;
+  margin: 0;
+  color: var(--text2);
+}
+.resultPrice {
+  font-family: 'Beaufort-bold';
+  font-size: 1rem;
+  margin: 0;
+  color: var(--text4);
+}
+
+.selected {
+  flex: 1.75;
+}
+.selectedDetails {
+  padding: 2rem;
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: center;
+}
+.detailsTitle {
+  padding-left: 1rem;
+}
+.detailsName {
+  font-family: 'Beaufort-bold';
+  font-size: 1.25rem;
+  color: var(--text2);
+  margin: 0;
+}
+.detailsPrice {
+  font-family: 'Beaufort-bold';
+  font-size: 1rem;
+  color: var(--text4);
+  margin: 0;
+}
+.detailsDescription {
+  font-size: 0.875rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface1);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.orderBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  outline: none;
+  border: 2px solid var(--text5);
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  color: var(--text5);
+  cursor: pointer;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+.orderBtn.active {
+  color: var(--text1);
+  border-color: var(--text2);
+  opacity: 1;
+}
+.orderBtn:hover {
+  filter: brightness(1.4);
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 0 0.5rem;
+  }
+}

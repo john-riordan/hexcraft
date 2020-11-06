@@ -1,0 +1,88 @@
+.gridFrame {
+  min-height: 100vh;
+  padding: 2rem 1rem 22rem;
+}
+
+.groupTitle {
+  font-family: 'Beaufort-bold';
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  color: var(--text6);
+  margin: 0 0.75rem;
+}
+.groupSubtitle {
+  margin: 0 0.75rem;
+  color: var(--text4);
+  font-size: 0.875rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.gridItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+.gridItem > * {
+  position: relative;
+}
+.gridItem:hover {
+  filter: brightness(1.5);
+  background: linear-gradient(to top, var(--accent3), var(--accent2));
+  transition: var(--transition);
+}
+.gridItem:hover .imgFrame {
+  border: 1px solid var(--text1);
+}
+
+.gridItem.selected {
+  filter: brightness(1.5);
+  background: transparent;
+}
+.gridItem.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  transition: var(--transition);
+}
+.gridItem.selected::before {
+  background: linear-gradient(to bottom, var(--blue), transparent 80%);
+  box-shadow: inset 0 0 0 1px var(--blue), inset 0 0 0 4px var(--surface1);
+  opacity: 0.4;
+}
+.gridItem.selected .imgFrame {
+  border: 1px solid var(--blue);
+}
+
+.price {
+  font-family: 'Beaufort-bold';
+  font-size: 1.125rem;
+  margin: 0;
+  color: var(--text2);
+}
+
+@media (max-width: 1600px) {
+  .gridItem {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .gridFrame {
+    padding: 1.5rem 0.5rem 15rem;
+  }
+}

@@ -1,0 +1,89 @@
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  position: relative;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text1);
+  font-size: 0.875rem;
+  letter-spacing: 0.025rem;
+  color: var(--text5);
+  padding: 0 0.75rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.tab:hover {
+  color: var(--text6);
+  opacity: 1;
+}
+
+.tab svg {
+  font-size: 1.25rem;
+  margin-right: 0.25rem;
+  transform: translateY(2px);
+}
+.tab > * {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.tab.active {
+  color: var(--text6);
+  opacity: 1;
+}
+.tab.active::before {
+  background: linear-gradient(to top, var(--gold), transparent);
+  opacity: 0.15;
+}
+.tab span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  opacity: 0;
+  transition: var(--transition);
+}
+.tab.active span::after {
+  opacity: 1;
+  background: var(--gold-gradient);
+}
+
+@media (max-width: 1600px) {
+  .tab span {
+    display: none;
+  }
+  .tab svg {
+    font-size: 1.5rem;
+    margin: 0;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .tab {
+    padding: 0 0.25rem;
+  }
+  .tab svg {
+    font-size: 1.25rem;
+  }
+}

@@ -1,9 +1,99 @@
+:root {
+  --surface1: hsl(212deg 100% 4%);
+
+  --text1: hsl(0deg 0% 100%);
+  --text2: hsl(39deg 55% 59%);
+  --text3: hsl(213deg 5% 38%);
+  --text4: hsl(0deg 0% 60%);
+  --text5: #cebe94;
+  --text6: #fffddd;
+
+  --accent1: hsl(0deg 0% 100% / 20%);
+  --accent2: hsl(213deg 5% 38% / 35%);
+  --accent3: hsl(213deg 5% 38% / 5%);
+
+  --blue: #31d7de;
+  --gold: #ffc554;
+  --gold-gradient: linear-gradient(
+    90deg,
+    #f3bb50 0%,
+    #ffea6a 50%,
+    #ffc554 100%
+  );
+  --orange1: #feb131;
+  --orange2: #915917;
+
+  --ap: #7b6dff;
+  --ad: #af4f23;
+  --as: #f9e18c;
+  --health: #21975b;
+  --mana: #49c8ff;
+  --ms: #f0e5d2;
+  --shield: white;
+
+  --controls-height: 4rem;
+
+  --transition: 0.2s ease;
+}
+
+html {
+  background: var(--surface1);
+  color: var(--text1);
+}
+
+@font-face {
+  font-family: 'Beaufort-bold';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff');
+  font-weight: 700;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Beaufort-Regular';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.woff');
+  font-weight: 400;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spiegel-bold';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/Spiegel-Bold.woff');
+  font-weight: 700;
+  font-display: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spiegel-Regular';
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/Spiegel-Regular.woff');
+  font-weight: 400;
+  font-display: auto;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: 'Spiegel-Regular', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+}
+
+@media (max-width: 1400px) {
+  /* html,
+  body {
+    overflow-x: hidden;
+  } */
+}
+
+input,
+button {
+  font-family: 'Spiegel-Regular';
 }
 
 a {
@@ -11,6 +101,71 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
+svg {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+}
+
 * {
   box-sizing: border-box;
+}
+
+maintext {
+  color: var(--text4);
+}
+stats {
+  display: block;
+  margin-bottom: 0.075rem;
+}
+attention,
+active,
+passive {
+  font-weight: 700;
+  color: var(--text1);
+}
+magicDamage,
+scaleMR {
+  color: var(--ap);
+}
+scaleArmor,
+physicalDamage {
+  color: var(--ad);
+}
+speed {
+  color: var(--ms);
+}
+shield,
+truedamage {
+  color: var(--shield);
+}
+attackSpeed {
+  color: var(--as);
+}
+scaleMana {
+  color: var(--mana);
+}
+healing {
+  color: var(--health);
+}
+rarityMythic {
+  color: var(--text2);
+  font-weight: 700;
+}
+li {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+rules {
+  color: var(--text3);
+}
+
+@media (max-width: 1200px) {
+  .tippy-popper {
+    display: none !important;
+  }
 }

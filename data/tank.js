@@ -1,4 +1,4 @@
-const tank = {
+export const tank = {
   mythic: {
     2065: "Shurelya's Battlesong",
     3190: 'Locket of the Iron Solari',
@@ -19,6 +19,7 @@ const tank = {
     3083: "Warmog's Armor",
     3053: "Sterak's Gage",
     3193: 'Gargoyle Stoneplate',
+    3748: 'Titanic Hydra',
   },
   epic: {
     3801: 'Crystalline Bracer',
@@ -33,6 +34,8 @@ const tank = {
     6660: "Bami's Cinder",
     3211: "Spectre's Cowl",
     3105: 'Aegis of the Legion',
+    3077: 'Tiamat',
+    3044: 'Phage',
   },
   basic: {
     1006: 'Rejuvenation Bead',
