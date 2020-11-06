@@ -1,17 +1,26 @@
 .container {
   position: sticky;
-  padding: 1rem 0 0;
-  margin: 0 1.75rem 1rem;
+  margin: 1rem 1.75rem 0;
   top: 0;
   background: var(--surface1);
+  border-bottom: 1px solid var(--accent1);
   z-index: 1;
 }
 
 .inputFrame {
+  position: relative;
   display: flex;
-  padding-left: 2rem;
+  align-items: center;
+  padding-left: 1rem;
   background: var(--surface1);
   border: 1px solid var(--text3);
+  z-index: 1;
+}
+.inputFrame svg {
+  fill: var(--text4);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 .input {
   display: block;
@@ -34,12 +43,24 @@
   background: var(--surface1);
   height: var(--results-height);
   border-top: none;
+  z-index: 1;
 }
 .resultsList {
   flex: 1;
   height: var(--results-height);
   overflow: hidden;
   overflow-y: scroll;
+}
+.resultsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+.resultsList::-webkit-scrollbar-thumb {
+  background: var(--text2);
+  border: 2px solid var(--surface1);
+  border-radius: 10px;
+}
+.resultsList::-webkit-scrollbar {
+  width: 10px;
 }
 .result {
   position: relative;
@@ -66,6 +87,11 @@
 .result:hover::before {
   opacity: 0.3;
 }
+
+.result.resultSelected::before {
+  opacity: 0.2;
+}
+
 .resultInfo {
   padding-left: 0.5rem;
 }
@@ -88,4 +114,40 @@
 
 .selected {
   flex: 1.75;
+}
+.selectedDetails {
+  padding: 2rem;
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: center;
+}
+.detailsTitle {
+  padding-left: 1rem;
+}
+.detailsName {
+  font-family: 'Beaufort-bold';
+  font-size: 1.25rem;
+  color: var(--text2);
+  margin: 0;
+}
+.detailsPrice {
+  font-family: 'Beaufort-bold';
+  font-size: 1rem;
+  color: var(--text4);
+  margin: 0;
+}
+.detailsDescription {
+  font-size: 0.875rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface1);
+  opacity: 0.7;
 }

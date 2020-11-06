@@ -1,20 +1,3 @@
 .details {
   padding: 2rem;
 }
-
-.row {
-  display: flex;
-  justify-content: center;
-}
-.itemCol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
-.multi {
-}
-
-.single {
-}

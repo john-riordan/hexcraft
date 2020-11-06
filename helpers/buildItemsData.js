@@ -10,11 +10,11 @@ export function buildItemsData(items) {
   const usableItems = items
     .filter(
       (item) =>
-        item.inStore &&
+        (item.inStore || item.name === 'Watchful Wardstone') &&
         item.priceTotal &&
-        item.mapStringIdInclusions.includes('SR') &&
-        !item.requiredBuffCurrencyCost
+        item.mapStringIdInclusions.includes('SR')
     )
+    .sort((a, z) => a.priceTotal - z.priceTotal)
     .map((item) => ({
       ...item,
       iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
@@ -37,9 +37,7 @@ export function buildItemsData(items) {
     (item) =>
       item.priceTotal <= 1500 &&
       item.priceTotal > 500 &&
-      (item.from.length ||
-        item.name === 'Sheen' ||
-        item.name === 'Stirring Wardstone') &&
+      (item.from.length || item.name === 'Sheen') &&
       !item.isEnchantment &&
       !item.categories.includes('Boots')
   );
@@ -52,7 +50,6 @@ export function buildItemsData(items) {
       !item.categories.includes('Consumable') &&
       item.name !== 'Sheen' &&
       item.name !== 'Broken Stopwatch' &&
-      item.name !== 'Stirring Wardstone' &&
       !item.categories.includes('Boots') &&
       !item.requiredBuffCurrencyCost
   );

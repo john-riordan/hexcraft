@@ -1,5 +1,11 @@
 .imgFrame {
-  display: inline-block;
+  display: block;
   padding: 0.125rem;
   border: 1px solid var(--accent1);
+}
+.imgFrame.inline {
+  display: inline-block;
+}
+.imgFrame img {
+  filter: contrast(1.1);
 }

@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import Tippy from '@tippy.js/react';
 
+import Icon from '../Icon/';
+import Tabs from '../Tabs/';
 import ItemImage from '../ItemImage/';
-import ItemTooltip from '../ItemTooltip/';
 import styles from './Search.module.css';
 import { StateContext } from '../../StateContext';
 
@@ -27,6 +27,8 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
+        <Icon icon="search" />
+
         <input
           className={styles.input}
           type="text"
@@ -40,41 +42,64 @@ const Search = () => {
         />
       </div>
       {open && (
-        <div className={styles.resultsFrame}>
-          <div className={styles.resultsList}>
-            {results.map((item) => (
-              <div
-                key={item.id}
-                className={styles.result}
-                onClick={() =>
-                  setState((prev) => ({ ...prev, selectedItem: item }))
-                }
-              >
-                <ItemImage
-                  imgName={item.iconPath}
-                  className={styles.imgFrame}
-                  size={42}
-                />
-                <div className={styles.resultInfo}>
-                  <p className={styles.resultName}>{item.name}</p>
-                  <p className={styles.resultPrice}>{item.priceTotal}</p>
+        <>
+          <div className={styles.resultsFrame}>
+            <div className={styles.resultsList}>
+              {results.map((item) => (
+                <div
+                  key={item.id}
+                  className={`${styles.result} ${
+                    selectedItem?.id === item.id && styles.resultSelected
+                  }`}
+                  onClick={() =>
+                    setState((prev) => ({ ...prev, selectedItem: item }))
+                  }
+                >
+                  <ItemImage
+                    imgName={item.iconPath}
+                    className={styles.imgFrame}
+                    size={42}
+                  />
+                  <div className={styles.resultInfo}>
+                    <p className={styles.resultName}>{item.name}</p>
+                    <p className={styles.resultPrice}>{item.priceTotal}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className={styles.selected}>
+              {selectedItem && (
+                <div className={styles.selectedDetails}>
+                  <div className={styles.detailsHeader}>
+                    <ItemImage
+                      key={selectedItem.id}
+                      imgName={selectedItem.iconPath}
+                      className={styles.imgFrame}
+                      size={42}
+                      inline
+                    />
+                    <div className={styles.detailsTitle}>
+                      <p className={styles.detailsName}>{selectedItem.name}</p>
+                      <p className={styles.detailsPrice}>
+                        {selectedItem.priceTotal}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p
+                    className={styles.detailsDescription}
+                    dangerouslySetInnerHTML={{
+                      __html: selectedItem.description,
+                    }}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-          <div className={styles.selected}>
-            {selectedItem && (
-              <div>
-                <p>{selectedItem.name}</p>
-                <p>{selectedItem.priceTotal}</p>
-                <p
-                  dangerouslySetInnerHTML={{ __html: selectedItem.description }}
-                />
-              </div>
-            )}
-          </div>
-        </div>
+          <div className={styles.overlay} onClick={() => setOpen(false)} />
+        </>
       )}
+      <Tabs />
     </div>
   );
 };

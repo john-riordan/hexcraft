@@ -1,0 +1,69 @@
+.details {
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+.itemCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.multi > *,
+.single > * {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.multi > *::before,
+.single > *::before {
+  content: '';
+  width: 1px;
+  height: 1rem;
+  background: var(--accent2);
+}
+
+.itemCol::before {
+}
+
+.multi > .itemCol::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: var(--accent2);
+}
+.multi > .itemCol:first-child::after {
+  left: 50%;
+  width: 50%;
+}
+.multi > .itemCol:nth-child(2)::after {
+  left: 0;
+  width: 100%;
+}
+.multi > .itemCol:nth-child(3)::after {
+  left: 0;
+  width: 100%;
+}
+.multi > .itemCol:nth-child(4)::after {
+  left: 0;
+  width: 100%;
+}
+.multi > .itemCol:last-child::after {
+  left: 0;
+  width: 50%;
+}
+
+/* .multi::before {
+  content: '';
+  width: 60%;
+  height: 1px;
+  background: red;
+} */
+
+.single {
+}
