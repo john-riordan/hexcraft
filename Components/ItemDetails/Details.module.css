@@ -38,6 +38,16 @@
   display: block !important;
 }
 
+@media (max-width: 1400px) {
+  .imgFrame {
+    max-width: 40px;
+  }
+}
+@media (max-width: 1000px) {
+  .imgFrame {
+    max-width: 32px;
+  }
+}
 @media (max-width: 600px) {
   .title,
   .buildsFrom {

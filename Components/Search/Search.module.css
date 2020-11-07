@@ -17,11 +17,24 @@
   border: 1px solid var(--text3);
   z-index: 3;
 }
-.inputFrame svg {
-  fill: var(--text4);
-  width: 1.5rem;
-  height: 1.5rem;
+.search {
+  color: var(--text4);
+  font-size: 1.5rem;
   margin-right: 0.5rem;
+}
+.close {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translatey(-50%);
+  color: var(--text4);
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+.close:hover {
+  opacity: 1;
 }
 .input {
   display: block;

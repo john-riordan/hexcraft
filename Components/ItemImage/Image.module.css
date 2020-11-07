@@ -8,6 +8,7 @@
   display: inline-block;
 }
 .imgFrame img {
+  background: var(--surface1);
   filter: contrast(1.1);
 }
 
