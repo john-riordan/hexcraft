@@ -59,7 +59,6 @@ export default function Home({ itemsData }) {
           <StatFilters className={styles.filters} />
           <div className={styles.center}>
             <Search />
-            {/* <Tabs /> */}
             <ItemGrid className={styles.grid} />
           </div>
           {state.selectedItem && (
