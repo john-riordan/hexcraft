@@ -62,9 +62,6 @@ const ItemGrid = ({ items, className }) => {
                       onClick={() =>
                         setState((prev) => ({ ...prev, selectedItem: item }))
                       }
-                      onTap={() =>
-                        setState((prev) => ({ ...prev, selectedItem: item }))
-                      }
                     >
                       <ItemImage
                         imgName={item.iconPath}

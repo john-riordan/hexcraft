@@ -5,7 +5,7 @@ import { marksman } from '../data/marksman';
 import { support } from '../data/support';
 import { tank } from '../data/tank';
 
-export default (itemsData, tab) => {
+const buildItemsData = (itemsData, tab) => {
   switch (tab) {
     case 'assassin':
       return {
@@ -73,3 +73,5 @@ export default (itemsData, tab) => {
       };
   }
 };
+
+export default buildItemsData;
