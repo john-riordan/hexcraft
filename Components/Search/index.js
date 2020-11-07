@@ -27,20 +27,24 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
-        <Icon icon="search" />
+        <Icon icon="search" className={styles.search} />
         <input
           className={styles.input}
           type="text"
           placeholder="Search"
           value={state.search}
-          onFocus={() => setState((prev) => ({ ...prev, searchOpen: true }))}
-          onBlur={() =>
-            setState((prev) => ({ ...prev, searchOpen: false, search: '' }))
-          }
+          onClick={() => setState((prev) => ({ ...prev, searchOpen: true }))}
           onChange={(e) => {
             setState((prev) => ({ ...prev, search: e.target.value }));
           }}
         />
+        {state.searchOpen && (
+          <Icon
+            icon="close"
+            className={styles.close}
+            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
+          />
+        )}
       </div>
       {state.searchOpen && (
         <>

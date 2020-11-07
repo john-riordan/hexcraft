@@ -51,6 +51,7 @@ const ItemDetails = ({ className }) => {
               <ItemImage
                 key={item.iconPath}
                 imgName={item.iconPath}
+                className={styles.imgFrame}
                 size={36}
                 alt={item.name}
                 isMythic={state.itemsData.mythicDictionary[item.id]}
@@ -60,7 +61,12 @@ const ItemDetails = ({ className }) => {
         ))}
         {empty.map((i) => (
           <div key={i}>
-            <ItemImage size={36} imgName="empty.png" alt="Empty Item" />
+            <ItemImage
+              size={36}
+              className={styles.imgFrame}
+              imgName="empty.png"
+              alt="Empty Item"
+            />
           </div>
         ))}
       </div>
