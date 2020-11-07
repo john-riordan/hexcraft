@@ -1,10 +1,4 @@
 import { starter } from '../data/starter';
-import { assassin } from '../data/assassin';
-import { fighter } from '../data/fighter';
-import { mage } from '../data/mage';
-import { marksman } from '../data/marksman';
-import { support } from '../data/support';
-import { tank } from '../data/tank';
 
 export function buildItemsData(items) {
   const usableItems = items

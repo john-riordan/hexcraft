@@ -8,7 +8,7 @@ import { StateContext } from '../../StateContext';
 
 import styles from './Grid.module.css';
 
-import buildDisplayItems from '../../helpers/buildDisplayItems';
+import { buildDisplayItems } from '../../helpers/buildDisplayItems';
 
 const SUBTITLE = {
   mythics:

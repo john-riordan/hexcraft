@@ -5,7 +5,7 @@ import { marksman } from '../data/marksman';
 import { support } from '../data/support';
 import { tank } from '../data/tank';
 
-const buildItemsData = (itemsData, tab) => {
+export function buildDisplayItems(itemsData, tab) {
   switch (tab) {
     case 'assassin':
       return {
@@ -72,6 +72,4 @@ const buildItemsData = (itemsData, tab) => {
         starters: itemsData.starters,
       };
   }
-};
-
-export default buildItemsData;
+}
