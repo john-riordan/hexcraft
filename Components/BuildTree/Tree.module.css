@@ -93,6 +93,33 @@
 }
 .description {
   font-size: 1rem;
+  padding-top: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  .treeFrame {
+    min-height: 13rem;
+  }
+  .name {
+    font-size: 1.25rem;
+  }
+  .description {
+    font-size: 0.825rem;
+    max-height: 16rem;
+    overflow-y: scroll;
+    margin-bottom: 0;
+    mask-image: linear-gradient(
+      to top,
+      transparent,
+      black 10%,
+      black 95%,
+      transparent 100%
+    );
+  }
+  .imgFrame {
+    max-width: 52px;
+  }
 }
 
 @media (max-width: 800px) {
