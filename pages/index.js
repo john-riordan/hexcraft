@@ -31,12 +31,28 @@ export default function Home({ itemsData }) {
     <StateContext.Provider value={{ state, setState }}>
       <div className={styles.container}>
         <Head>
+          <script
+            script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-N7F0JT23B2');
+              `,
+            }}
+          />
           <title>LoL Shop - League of Legends Season 11 Item Changes</title>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="Description"
             content="League of Legends Season 2021 / Season 11 Item Changes"
-          ></meta>
+          />
         </Head>
 
         <div className={styles.main}>
