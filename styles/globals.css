@@ -30,6 +30,7 @@
   --mana: #49c8ff;
   --ms: #f0e5d2;
   --shield: white;
+  --immolate: #e63710;
 
   --controls-height: 4rem;
 
@@ -102,9 +103,13 @@ stats {
 }
 attention,
 active,
-passive {
+passive,
+immolate {
   font-weight: 700;
   color: var(--text1);
+}
+immolate {
+  color: var(--immolate);
 }
 magicDamage,
 scaleMR {
