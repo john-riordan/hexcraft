@@ -1,5 +1,4 @@
 .filters {
-  /* padding: 0 0.75rem; */
 }
 
 .group {
@@ -82,5 +81,14 @@
 @media (max-width: 1000px) {
   .statItem.active {
     box-shadow: inset -2px 0 0 0 var(--blue);
+  }
+}
+
+@media (max-width: 600px) {
+  .statItem {
+    padding: 0.375rem 0.5rem;
+  }
+  .statIcon {
+    font-size: 1.25rem;
   }
 }

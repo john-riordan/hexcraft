@@ -25,7 +25,7 @@ export default function Home({ itemsData }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [state.desc, state.tab]);
+  }, [state.desc, state.tab, state.stat]);
 
   return (
     <StateContext.Provider value={{ state, setState }}>

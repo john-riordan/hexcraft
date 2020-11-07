@@ -43,9 +43,8 @@ html {
 
 @font-face {
   font-family: 'Beaufort-bold';
-  src: local('Palatino'), local('Garamond'),
-    url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff')
-      format('woff');
+  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff')
+    format('woff');
   font-display: swap;
   font-weight: 700;
   font-display: auto;
