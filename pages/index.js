@@ -73,7 +73,7 @@ export default function Home({ itemsData }) {
           <StatFilters className={styles.filters} />
           <div className={styles.center}>
             <Search />
-            <ItemGrid className={styles.grid} />
+            <ItemGrid className={styles.grid} items={itemsData.all} />
           </div>
           {state.selectedItem && (
             <div

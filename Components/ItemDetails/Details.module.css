@@ -17,6 +17,9 @@
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
+.itemFrom {
+  cursor: pointer;
+}
 
 .close {
   position: absolute;

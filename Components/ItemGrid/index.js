@@ -8,6 +8,8 @@ import { StateContext } from '../../StateContext';
 
 import styles from './Grid.module.css';
 
+import buildDisplayItems from '../../helpers/buildDisplayItems';
+
 const SUBTITLE = {
   mythics:
     'Special completed item (limit of 1). Grants bonus stats per additional completed Legendary.',
@@ -17,11 +19,15 @@ const SUBTITLE = {
   starters: 'Simple starting items.',
 };
 
-const ItemGrid = ({ className }) => {
+const ItemGrid = ({ items, className }) => {
   const { state, setState } = useContext(StateContext);
-  const itemGroups = state.desc
-    ? Object.entries(state.itemsData[state.tab])
-    : Object.entries(state.itemsData[state.tab]).reverse();
+
+  const itemsData =
+    state.tab === 'all'
+      ? Object.entries(items)
+      : Object.entries(buildDisplayItems(items, state.tab));
+
+  const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
   return (
     <div className={`${styles.gridFrame} ${className}`}>
@@ -63,7 +69,7 @@ const ItemGrid = ({ className }) => {
                       <ItemImage
                         imgName={item.iconPath}
                         className={styles.imgFrame}
-                        isMythic={state.itemsData.mythicDictionary[item.id]}
+                        isMythic={state.itemsData.mythicDictionary?.[item.id]}
                         alt={item.name}
                         size={46}
                       />
