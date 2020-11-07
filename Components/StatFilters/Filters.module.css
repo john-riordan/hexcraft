@@ -69,6 +69,7 @@
   }
   .statIcon {
     margin: 0;
+    transform: translateY(0);
   }
   .statItem span {
     display: none;
