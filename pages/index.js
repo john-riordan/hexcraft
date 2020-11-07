@@ -53,6 +53,20 @@ export default function Home({ itemsData }) {
             name="Description"
             content="League of Legends Season 2021 / Season 11 Item Changes"
           />
+          <meta
+            property="og:title"
+            content="LoL Shop - League of Legends Season 11 Item Changes"
+          />
+          <meta
+            property="og:description"
+            content="Season 2021 Pre-Season Item changes"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://lolshop.gg" />
+          <meta property="og:image" content="https://lolshop.gg/lolshop.jpg" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="627" />
         </Head>
 
         <div className={styles.main}>
