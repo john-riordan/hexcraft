@@ -48,12 +48,6 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 <div
                   key={`${itemsData.items[item]?.id}_${i}`}
                   className={styles.itemCol}
-                  onClick={() =>
-                    setState((prev) => ({
-                      ...prev,
-                      selectedItem: itemsData.items[item],
-                    }))
-                  }
                 >
                   <Tippy
                     placement="bottom"
@@ -61,7 +55,14 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     duration={0}
                     content={<ItemTooltip item={itemsData.items[item]} />}
                   >
-                    <div>
+                    <div
+                      onClick={() =>
+                        setState((prev) => ({
+                          ...prev,
+                          selectedItem: itemsData.items[item],
+                        }))
+                      }
+                    >
                       <ItemImage
                         key={`${item.id}_${i}`}
                         imgName={itemsData.items[item]?.iconPath}

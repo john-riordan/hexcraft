@@ -47,7 +47,12 @@ const ItemDetails = ({ className }) => {
             duration={0}
             content={<ItemTooltip item={item} />}
           >
-            <div>
+            <div
+              className={styles.itemFrom}
+              onClick={() =>
+                setState((prev) => ({ ...prev, selectedItem: item }))
+              }
+            >
               <ItemImage
                 key={item.iconPath}
                 imgName={item.iconPath}

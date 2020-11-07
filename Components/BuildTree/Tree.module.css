@@ -97,6 +97,10 @@
   margin: 0;
 }
 
+.imgFrame {
+  cursor: pointer;
+}
+
 @media (max-width: 1400px) {
   .treeFrame {
     min-height: 13rem;
