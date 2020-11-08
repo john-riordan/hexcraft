@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Tippy from '@tippy.js/react';
+import { useRouter } from 'next/router';
 
 import Icon from '../Icon/';
 import Tabs from '../Tabs/';
@@ -8,8 +9,11 @@ import styles from './Search.module.css';
 import { StateContext } from '../../StateContext';
 
 const Search = () => {
+  const router = useRouter();
+  const [hovered, setHovered] = useState(null);
   const { state, setState } = useContext(StateContext);
-  const { selectedItem } = state;
+
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
   const results = state.search?.length
     ? Object.values(state.itemsData?.items)
@@ -54,11 +58,53 @@ const Search = () => {
                 <div
                   key={item.id}
                   className={`${styles.result} ${
-                    selectedItem?.id === item.id && styles.resultSelected
+                    hovered?.id === item.id && styles.resultSelected
                   }`}
                   onClick={() =>
-                    setState((prev) => ({ ...prev, selectedItem: item }))
+                    setState((prev) => ({
+                      ...prev,
+                      selectedItem: item,
+                      searchOpen: false,
+                    }))
                   }
+                  onMouseOver={() => setHovered(item)}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    const isMythic = state.itemsData.mythicDictionary[item.id];
+                    if (
+                      inventory.length < 6 &&
+                      !state.inventoryHasMythic &&
+                      isMythic
+                    ) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, item.id],
+                      });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                      setState((prev) => ({
+                        ...prev,
+                        searchOpen: false,
+                      }));
+                    } else if (inventory.length < 6 && !isMythic) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, item.id],
+                      });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                      setState((prev) => ({
+                        ...prev,
+                        searchOpen: false,
+                      }));
+                    } else {
+                      state.soundCant.current.play();
+                    }
+                  }}
                 >
                   <ItemImage
                     imgName={item.iconPath}
@@ -75,24 +121,22 @@ const Search = () => {
               ))}
             </div>
             <div className={styles.selected}>
-              {selectedItem && (
+              {hovered && (
                 <div className={styles.selectedDetails}>
                   <div className={styles.detailsHeader}>
                     <ItemImage
-                      key={selectedItem.id}
-                      imgName={selectedItem.iconPath}
+                      key={hovered.id}
+                      imgName={hovered.iconPath}
                       className={styles.imgFrame}
                       size={42}
-                      alt={selectedItem.name}
-                      isMythic={
-                        state.itemsData.mythicDictionary[selectedItem.id]
-                      }
+                      alt={hovered.name}
+                      isMythic={state.itemsData.mythicDictionary[hovered.id]}
                       inline
                     />
                     <div className={styles.detailsTitle}>
-                      <p className={styles.detailsName}>{selectedItem.name}</p>
+                      <p className={styles.detailsName}>{hovered.name}</p>
                       <p className={styles.detailsPrice}>
-                        {selectedItem.priceTotal}
+                        {hovered.priceTotal}
                       </p>
                     </div>
                   </div>
@@ -100,7 +144,7 @@ const Search = () => {
                   <p
                     className={styles.detailsDescription}
                     dangerouslySetInnerHTML={{
-                      __html: selectedItem.description,
+                      __html: hovered.description,
                     }}
                   />
                 </div>
