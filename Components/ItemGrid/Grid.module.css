@@ -85,4 +85,7 @@
   .gridFrame {
     padding: 1.5rem 0.5rem 15rem;
   }
+  .imgFrame {
+    max-width: 48px;
+  }
 }
