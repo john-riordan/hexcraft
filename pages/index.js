@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -17,6 +17,9 @@ import styles from '../styles/Home.module.css';
 
 export default function Home({ itemsData }) {
   const router = useRouter();
+  const purchaseRef = useRef(null);
+  const sellRef = useRef(null);
+  const cantRef = useRef(null);
 
   const [state, setState] = useState({
     itemsData: itemsData,
@@ -29,6 +32,9 @@ export default function Home({ itemsData }) {
     inventoryCost: 0,
     inventoryHasMythic: false,
     modal: null,
+    soundPurchase: purchaseRef,
+    soundSell: sellRef,
+    soundCant: cantRef,
   });
 
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
@@ -115,6 +121,9 @@ export default function Home({ itemsData }) {
         {inventory.length && <Inventory />}
       </div>
       {state.modal && <Modal />}
+      <audio controls src="/purchase.mp3" ref={purchaseRef} />
+      <audio controls src="/sell.mp3" ref={sellRef} />
+      <audio controls src="/cant.mp3" ref={cantRef} />
     </StateContext.Provider>
   );
 }

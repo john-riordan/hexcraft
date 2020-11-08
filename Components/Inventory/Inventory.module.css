@@ -15,7 +15,8 @@
   z-index: 2;
   box-shadow: 0 0px 6.7px rgba(0, 0, 0, 0.191), 0 0px 16px rgba(0, 0, 0, 0.275),
     0 0px 30.2px rgba(0, 0, 0, 0.34), 0 0px 53.8px rgba(0, 0, 0, 0.405),
-    0 0px 100.7px rgba(0, 0, 0, 0.489), 0 0px 241px rgba(0, 0, 0, 0.68);
+    0 0px 100.7px rgba(0, 0, 0, 0.489), 0 0px 241px rgba(0, 0, 0, 0.68),
+    0 80px 10px black;
 }
 
 .header {
@@ -25,23 +26,17 @@
   font-family: 'Beaufort-bold';
 }
 
-.title,
 .cost,
 .share {
   margin: 0;
   text-transform: uppercase;
   line-height: 1;
 }
-.title {
-  margin-right: 1.25rem;
-  color: var(--text2);
-  letter-spacing: 0.05rem;
-}
 .cost {
   display: flex;
   align-items: center;
   letter-spacing: 0.05rem;
-  color: var(--text3);
+  color: var(--text2);
 }
 .cost svg {
   margin-right: 0.25rem;
@@ -69,6 +64,22 @@
 
 .imgFrame {
   cursor: pointer;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.itemFrame {
+  cursor: pointer;
+  animation-duration: 0.35s;
+  animation-name: enter;
 }
 
 .textarea {

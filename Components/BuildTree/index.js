@@ -44,6 +44,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
                       const params = new URLSearchParams({
                         i: [...inventory, itemData.id],
                       });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
                       router.replace(`?${params}`, undefined, {
                         shallow: true,
                       });
@@ -51,9 +53,13 @@ const BuildTree = ({ imageSize = 64, item }) => {
                       const params = new URLSearchParams({
                         i: [...inventory, itemData.id],
                       });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
                       router.replace(`?${params}`, undefined, {
                         shallow: true,
                       });
+                    } else {
+                      state.soundCant?.current?.play();
                     }
                   }}
                 >
