@@ -87,4 +87,19 @@
   .container {
     transform: translateX(-50%);
   }
+  .imgFrame {
+    max-width: 50px;
+  }
+}
+@media (max-width: 1000px) {
+  .container {
+    padding: 1rem;
+  }
+  .itemList {
+    gap: 0.5rem;
+  }
+
+  .imgFrame {
+    max-width: 36px;
+  }
 }
