@@ -72,6 +72,7 @@ const ItemGrid = ({ className }) => {
                           const params = new URLSearchParams({
                             i: [...inventory, item.id],
                           });
+                          state.soundPurchase.current.volume = 0.5;
                           state.soundPurchase.current.play();
                           router.replace(`?${params}`, undefined, {
                             shallow: true,
@@ -80,10 +81,13 @@ const ItemGrid = ({ className }) => {
                           const params = new URLSearchParams({
                             i: [...inventory, item.id],
                           });
+                          state.soundPurchase.current.volume = 0.5;
                           state.soundPurchase.current.play();
                           router.replace(`?${params}`, undefined, {
                             shallow: true,
                           });
+                        } else {
+                          state.soundCant.current.play();
                         }
                       }}
                       onClick={() =>

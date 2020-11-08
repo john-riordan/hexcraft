@@ -52,7 +52,6 @@ const Inventory = () => {
       </div> */}
       <div>
         <div className={styles.header}>
-          <p className={styles.title}>Build</p>
           <p className={styles.cost}>
             <Icon icon="gold" />
             <span>{inventoryCost}</span>
@@ -83,6 +82,7 @@ const Inventory = () => {
                 content={<ItemTooltip item={item} />}
               >
                 <div
+                  className={styles.itemFrame}
                   onContextMenu={(e) => {
                     e.preventDefault();
                     const index = inventory.indexOf(itemId);
@@ -93,6 +93,7 @@ const Inventory = () => {
                     const params = new URLSearchParams({
                       i: inv,
                     });
+                    state.soundSell.current.volume = 0.5;
                     state.soundSell.current.play();
                     router.replace(`?${params}`, undefined, {
                       shallow: true,

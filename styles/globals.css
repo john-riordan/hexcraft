@@ -153,6 +153,10 @@ rules {
   color: var(--text3);
 }
 
+audio {
+  display: none;
+}
+
 .scroll::-webkit-scrollbar-track {
   background: transparent;
 }
