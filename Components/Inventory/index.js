@@ -93,6 +93,7 @@ const Inventory = () => {
                     const params = new URLSearchParams({
                       i: inv,
                     });
+                    state.soundSell.current.play();
                     router.replace(`?${params}`, undefined, {
                       shallow: true,
                     });

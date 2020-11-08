@@ -32,6 +32,8 @@ const ItemGrid = ({ className }) => {
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
+  console.log(state);
+
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items]) => {
@@ -70,6 +72,7 @@ const ItemGrid = ({ className }) => {
                           const params = new URLSearchParams({
                             i: [...inventory, item.id],
                           });
+                          state.soundPurchase.current.play();
                           router.replace(`?${params}`, undefined, {
                             shallow: true,
                           });
@@ -77,6 +80,7 @@ const ItemGrid = ({ className }) => {
                           const params = new URLSearchParams({
                             i: [...inventory, item.id],
                           });
+                          state.soundPurchase.current.play();
                           router.replace(`?${params}`, undefined, {
                             shallow: true,
                           });
