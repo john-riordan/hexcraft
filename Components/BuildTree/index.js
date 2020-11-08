@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Tippy from '@tippy.js/react';
+import { useRouter } from 'next/router';
 
 import { StateContext } from '../../StateContext';
 import ItemTooltip from '../ItemTooltip/';
@@ -9,6 +10,9 @@ import styles from './Tree.module.css';
 const BuildTree = ({ imageSize = 64, item }) => {
   const { state, setState } = useContext(StateContext);
   const { itemsData } = state;
+  const router = useRouter();
+
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
   const itemData = itemsData.items[item];
 
@@ -27,7 +31,32 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 duration={0}
                 content={<ItemTooltip item={itemData} />}
               >
-                <div>
+                <div
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    const isMythic =
+                      state.itemsData.mythicDictionary[itemData.id];
+                    if (
+                      inventory.length < 6 &&
+                      !state.inventoryHasMythic &&
+                      isMythic
+                    ) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, itemData.id],
+                      });
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                    } else if (inventory.length < 6 && !isMythic) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, itemData.id],
+                      });
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                    }
+                  }}
+                >
                   <ItemImage
                     key={itemData.iconPath}
                     imgName={itemData.iconPath}

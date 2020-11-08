@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import Tippy from '@tippy.js/react';
+import { useRouter } from 'next/router';
 
 import ItemImage from '../ItemImage/';
 import ItemTooltip from '../ItemTooltip/';
@@ -19,13 +20,15 @@ const SUBTITLE = {
   starters: 'Simple starting items.',
 };
 
-const ItemGrid = ({ items, className }) => {
+const ItemGrid = ({ className }) => {
   const { state, setState } = useContext(StateContext);
+  const router = useRouter();
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
   const itemsData =
     state.tab === 'all'
-      ? Object.entries(items)
-      : Object.entries(buildDisplayItems(items, state.tab));
+      ? Object.entries(state.itemsData.all)
+      : Object.entries(buildDisplayItems(state.itemsData.all, state.tab));
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
@@ -57,7 +60,27 @@ const ItemGrid = ({ items, className }) => {
                       }`}
                       onContextMenu={(e) => {
                         e.preventDefault();
-                        setState((prev) => ({ ...prev, selectedItem: item }));
+                        const isMythic =
+                          state.itemsData.mythicDictionary[item.id];
+                        if (
+                          inventory.length < 6 &&
+                          !state.inventoryHasMythic &&
+                          isMythic
+                        ) {
+                          const params = new URLSearchParams({
+                            i: [...inventory, item.id],
+                          });
+                          router.replace(`?${params}`, undefined, {
+                            shallow: true,
+                          });
+                        } else if (inventory.length < 6 && !isMythic) {
+                          const params = new URLSearchParams({
+                            i: [...inventory, item.id],
+                          });
+                          router.replace(`?${params}`, undefined, {
+                            shallow: true,
+                          });
+                        }
                       }}
                       onClick={() =>
                         setState((prev) => ({ ...prev, selectedItem: item }))
@@ -83,4 +106,4 @@ const ItemGrid = ({ items, className }) => {
   );
 };
 
-export default ItemGrid;
+export default memo(ItemGrid);
