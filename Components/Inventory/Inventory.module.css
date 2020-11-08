@@ -1,0 +1,90 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--surface2);
+  left: 50%;
+  transform: translateX(-70%);
+  border: 1px solid var(--accent2);
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 2;
+  box-shadow: 0 0px 6.7px rgba(0, 0, 0, 0.191), 0 0px 16px rgba(0, 0, 0, 0.275),
+    0 0px 30.2px rgba(0, 0, 0, 0.34), 0 0px 53.8px rgba(0, 0, 0, 0.405),
+    0 0px 100.7px rgba(0, 0, 0, 0.489), 0 0px 241px rgba(0, 0, 0, 0.68);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  font-family: 'Beaufort-bold';
+}
+
+.title,
+.cost,
+.share {
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.title {
+  margin-right: 1.25rem;
+  color: var(--text2);
+  letter-spacing: 0.05rem;
+}
+.cost {
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05rem;
+  color: var(--text3);
+}
+.cost svg {
+  margin-right: 0.25rem;
+}
+.share {
+  margin-left: 1.5rem;
+  color: var(--text4);
+  cursor: pointer;
+}
+.share.copied {
+  color: var(--health);
+}
+
+.itemList {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.championFrame {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: var(--surface1);
+}
+
+.imgFrame {
+  cursor: pointer;
+}
+
+.textarea {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+@media (max-width: 1600px) {
+  .container {
+    transform: translateX(-95%);
+  }
+}
+@media (max-width: 1400px) {
+  .container {
+    transform: translateX(-50%);
+  }
+}

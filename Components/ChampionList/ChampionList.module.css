@@ -1,0 +1,19 @@
+.frame {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  padding: 2rem;
+  width: 600px;
+  max-height: 600px;
+  overflow-y: scroll;
+  background: var(--surface1);
+  box-shadow: 0 3.9px 2.2px -21px rgba(0, 0, 0, 0.053),
+    0 9.3px 5.3px -21px rgba(0, 0, 0, 0.077),
+    0 17.5px 10px -21px rgba(0, 0, 0, 0.095),
+    0 31.3px 17.9px -21px rgba(0, 0, 0, 0.113),
+    0 58.5px 33.4px -21px rgba(0, 0, 0, 0.137),
+    0 140px 80px -21px rgba(0, 0, 0, 0.19);
+}
+
+.grid {
+}

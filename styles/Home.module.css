@@ -1,5 +1,5 @@
 .container {
-  max-width: 1600px;
+  max-width: var(--container);
   margin: 0 auto;
 }
 
@@ -9,8 +9,7 @@
 }
 
 .center {
-  flex: 2;
-  /* padding: 1.25rem 0; */
+  flex: var(--centerCol);
   border-right: 1px solid var(--accent1);
   border-left: 1px solid var(--accent1);
 }
@@ -22,17 +21,15 @@
 }
 
 .filters {
-  flex: 0.6;
+  flex: var(--leftCol);
   top: var(--controls-height);
 }
 
 .details {
-  flex: 1;
+  flex: var(--rightCol);
   top: 0;
 }
 
-.grid {
-}
 .detailsOverlay {
   position: fixed;
   top: 0;

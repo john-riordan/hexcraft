@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { buildItemsData } from '../helpers/buildItemsData';
 
@@ -9,10 +10,14 @@ import ItemDetails from '../Components/ItemDetails/';
 import ItemGrid from '../Components/ItemGrid/';
 import StatFilters from '../Components/StatFilters/';
 import Search from '../Components/Search/';
+import Inventory from '../Components/Inventory/';
+import Modal from '../Components/Modal/';
 
 import styles from '../styles/Home.module.css';
 
 export default function Home({ itemsData }) {
+  const router = useRouter();
+
   const [state, setState] = useState({
     itemsData: itemsData,
     tab: 'all',
@@ -21,7 +26,29 @@ export default function Home({ itemsData }) {
     selectedItem: null,
     search: '',
     searchOpen: false,
+    inventoryCost: 0,
+    inventoryHasMythic: false,
+    modal: null,
   });
+
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+
+  const items = inventory.map((item) => itemsData.items[item]);
+  const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
+
+  let hasMythic = false;
+  items.forEach((item) => {
+    const isMythic = itemsData.mythicDictionary[item.id];
+    if (isMythic) hasMythic = true;
+  });
+
+  useEffect(() => {
+    setState((prev) => ({
+      ...prev,
+      inventoryHasMythic: hasMythic,
+      inventoryCost: cost,
+    }));
+  }, [hasMythic, cost]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -73,7 +100,7 @@ export default function Home({ itemsData }) {
           <StatFilters className={styles.filters} />
           <div className={styles.center}>
             <Search />
-            <ItemGrid className={styles.grid} items={itemsData.all} />
+            <ItemGrid className={styles.grid} />
           </div>
           {state.selectedItem && (
             <div
@@ -85,7 +112,9 @@ export default function Home({ itemsData }) {
           )}
           <ItemDetails className={styles.details} />
         </div>
+        {inventory.length && <Inventory />}
       </div>
+      {state.modal && <Modal />}
     </StateContext.Provider>
   );
 }
@@ -98,11 +127,21 @@ export async function getStaticProps() {
   );
   const items = await res.json();
 
+  // const c = await fetch(
+  //   'http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/champion.json'
+  // );
+  // const champs = await c.json();
+
   // By returning { props: itemsData }, the Blog component
   // will receive `itemsData` as a prop at build time
   return {
     props: {
       itemsData: buildItemsData(items),
+      // champsData: Object.values(champs.data).map((c) => ({
+      //   id: c.id,
+      //   key: c.key,
+      //   name: c.name,
+      // })),
     },
   };
 }

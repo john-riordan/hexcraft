@@ -1,5 +1,11 @@
 :root {
+  --container: 1600px;
+  --leftCol: 0.6;
+  --centerCol: 2;
+  --rightCol: 1;
+
   --surface1: hsl(212deg 100% 4%);
+  --surface2: hsl(212deg 100% 1%);
 
   --text1: hsl(0deg 0% 100%);
   --text2: hsl(39deg 55% 59%);
@@ -145,6 +151,18 @@ li {
 }
 rules {
   color: var(--text3);
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--text2);
+  border: 2px solid var(--surface1);
+  border-radius: 10px;
+}
+.scroll::-webkit-scrollbar {
+  width: 10px;
 }
 
 @media (max-width: 1200px) {
