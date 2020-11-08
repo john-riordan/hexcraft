@@ -48,7 +48,10 @@ export function buildItemsData(items) {
   const usableItems = items
     .filter(
       (item) =>
-        (item.inStore || item.name === 'Watchful Wardstone') &&
+        (item.inStore ||
+          item.name === 'Watchful Wardstone' ||
+          item.id === 3042 ||
+          item.id === 3048) &&
         item.priceTotal &&
         item.mapStringIdInclusions.includes('SR')
     )
@@ -106,6 +109,8 @@ export function buildItemsData(items) {
       !item.requiredBuffCurrencyCost
   );
 
+  const boots = usableItems.filter((item) => item.categories.includes('Boots'));
+
   const starters = usableItems.filter((item) => starter[item.id]);
 
   return {
@@ -124,6 +129,7 @@ export function buildItemsData(items) {
       epics,
       basics,
       starters,
+      boots,
     },
     mythicDictionary: mythics.reduce(function (acc, cur) {
       acc[cur.id] = cur.name;

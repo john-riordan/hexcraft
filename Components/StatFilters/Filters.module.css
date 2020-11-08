@@ -63,6 +63,12 @@
   opacity: 0.6;
 }
 
+.tooltip {
+  background: var(--surface1);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--accent1);
+}
+
 @media (max-width: 1600px) {
   .statItem {
     padding: 0.5rem;

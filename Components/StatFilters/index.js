@@ -1,4 +1,5 @@
 import { memo, useContext } from 'react';
+import Tippy from '@tippy.js/react';
 
 import { StateContext } from '../../StateContext';
 import Icon from '../Icon/';
@@ -52,11 +53,21 @@ const StatFilters = ({ className }) => {
                 }}
               >
                 {stat.icon && (
-                  <Icon
-                    icon={stat.icon}
-                    className={styles.statIcon}
-                    viewBox="0 0 48 48"
-                  />
+                  <Tippy
+                    key={stat.name}
+                    placement="right"
+                    offset="0, 0"
+                    duration={0}
+                    content={<div className={styles.tooltip}>{stat.name}</div>}
+                  >
+                    <div>
+                      <Icon
+                        icon={stat.icon}
+                        className={styles.statIcon}
+                        viewBox="0 0 48 48"
+                      />
+                    </div>
+                  </Tippy>
                 )}
                 <span>{stat.name}</span>
                 {isActive && <Icon icon="close" className={styles.close} />}
