@@ -209,6 +209,11 @@
   filter: brightness(1.4);
 }
 
+@media (max-width: 800px) {
+  .selected {
+    display: none;
+  }
+}
 @media (max-width: 600px) {
   .container {
     margin: 0 0.5rem;

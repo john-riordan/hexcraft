@@ -25,12 +25,13 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   fill: var(--text4);
   cursor: pointer;
   opacity: 0.6;
   transition: var(--transition);
+  z-index: 1;
 }
 .close:hover {
   fill: var(--text1);
