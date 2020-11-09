@@ -105,6 +105,8 @@ export function buildItemsData(items) {
       !item.categories.includes('Consumable') &&
       item.name !== 'Sheen' &&
       item.name !== 'Broken Stopwatch' &&
+      item.id !== 3042 && // seraphs
+      item.id !== 3048 && // Muramana
       !item.categories.includes('Boots') &&
       !item.requiredBuffCurrencyCost
   );
