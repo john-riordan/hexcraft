@@ -118,7 +118,7 @@ export default function Home({ itemsData }) {
           )}
           <ItemDetails className={styles.details} />
         </div>
-        {inventory.length && <Inventory />}
+        {inventory?.length ? <Inventory /> : null}
       </div>
       {state.modal && <Modal />}
       <audio controls src="/purchase.mp3" ref={purchaseRef} />
