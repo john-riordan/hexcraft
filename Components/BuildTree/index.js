@@ -18,6 +18,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
 
   if (!itemData) return null;
 
+  const ornnUpgrade = itemsData.ornn[item];
+
   return (
     <div className={styles.details}>
       {itemData && (
@@ -156,6 +158,32 @@ const BuildTree = ({ imageSize = 64, item }) => {
               dangerouslySetInnerHTML={{ __html: itemData.description }}
             />
           </div>
+          {ornnUpgrade ? (
+            <div className={styles.ornn}>
+              <Tippy
+                key={ornnUpgrade.name}
+                placement="bottom"
+                offset="0, 10"
+                duration={0}
+                content={<ItemTooltip item={ornnUpgrade} />}
+              >
+                <div className={styles.ornnFrame}>
+                  <ItemImage
+                    imgName={ornnUpgrade.iconPath}
+                    isMythic={state.itemsData.mythicDictionary?.[item.id]}
+                    alt={ornnUpgrade.name}
+                    size={36}
+                  />
+                  <ItemImage
+                    imgName="bordertreatmentornn.png"
+                    className={styles.ornnBorder}
+                    alt="Ornn border"
+                    size={36}
+                  />
+                </div>
+              </Tippy>
+            </div>
+          ) : null}
         </>
       )}
     </div>

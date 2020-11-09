@@ -44,6 +44,22 @@ const shoulderguards = `
   </mainText>
   `;
 
+const deicide = `
+  <mainText>
+    <stats>
+      <attention> 55</attention> Attack Damage<br>
+      <attention> 550</attention> Health<br>
+      <attention> 25</attention> Ability Haste
+    </stats><br>
+    <li>
+      <passive>Spellblade:</passive> After using an Ability, your next attack is enhanced with an additional <physicalDamage>10% target max Health physical damage</physicalDamage> (1.5s cooldown). If the target is a champion, <healing>restore (50% melee / 30% ranged)</healing> of the enhanced damage.
+    </li>
+    <li>
+      <br><rarityMythic>Mythic Passive:</rarityMythic> Grants all other <rarityLegendary>Legendary</rarityLegendary> items <attention> 5%</attention> Armor Penetration.
+    </li>  
+  </mainText>
+`;
+
 export function buildItemsData(items) {
   const usableItems = items
     .filter(
@@ -62,7 +78,6 @@ export function buildItemsData(items) {
       categories: item.categories,
       priceTotal: item.priceTotal,
       description: item.description
-        .replace(/<br>/, '<br>')
         .replace(/GeneratedTip_Item_6632_ExternalDescription/, divineSunderer)
         .replace(/GeneratedTip_Item_3858_ExternalDescription/, relic)
         .replace(/GeneratedTip_Item_3854_ExternalDescription/, shoulderguards)
@@ -111,11 +126,34 @@ export function buildItemsData(items) {
       !item.requiredBuffCurrencyCost
   );
 
+  const ornn = items
+    .filter((item) => item.name.includes('%i:ornnIcon%'))
+    .map((item) => ({
+      id: item.id,
+      name: item.name.replace('%i:ornnIcon% ', ''),
+      categories: item.categories,
+      priceTotal: item.priceTotal,
+      from: item.from,
+      description: item.description
+        .replace(/Immolate :/, 'Immolate:')
+        .replace(/GeneratedTip_Item_7017_ExternalDescription/, deicide)
+        .replace(
+          /<passive>Immolate:<\/passive>/,
+          '<immolate> Immolate :</immolate>'
+        ),
+      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
+    }))
+    .reduce(function (acc, cur, i) {
+      acc[cur.from[0]] = cur;
+      return acc;
+    }, {});
+
   const boots = usableItems.filter((item) => item.categories.includes('Boots'));
 
   const starters = usableItems.filter((item) => starter[item.id]);
 
   return {
+    ornn,
     items: usableItems
       .map((item) => ({
         ...item,
@@ -125,6 +163,7 @@ export function buildItemsData(items) {
         acc[cur.id] = cur;
         return acc;
       }, {}),
+
     all: {
       mythics,
       legendaries,
