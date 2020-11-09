@@ -110,7 +110,8 @@ stats {
 attention,
 active,
 passive,
-immolate {
+immolate,
+ornnBonus {
   font-weight: 700;
   color: var(--text1);
 }
