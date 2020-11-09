@@ -11,6 +11,7 @@ export const starter = {
   3862: 'Spectral Sickle',
   3858: 'Relic Shield',
 
+  2033: 'Corrupting Potion',
   3070: 'Tear of the Goddess',
   1082: 'Dark Seal',
   1083: 'Cull',
