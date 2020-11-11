@@ -16,7 +16,6 @@ export function buildItemsData(items) {
     )
     .sort((a, z) => a.gold.total - z.gold.total)
     .map((item) => ({
-      ...item,
       id: item.id,
       name: item.name,
       categories: item.tags || null,
@@ -24,11 +23,20 @@ export function buildItemsData(items) {
       from: item.from || [],
       stats: item.stats,
       iconPath: `${item.id}.png`,
-      description: item.description,
+      description: item.description
+        .replace(
+          /{{ Item_Range_Mod_0_Perc }}/,
+          'restore (50% melee / 30% ranged)'
+        )
+        .replace(
+          /{{ Item_Mythic_Passive }}/,
+          '<rarityMythic>Mythic Passive:</rarityMythic>'
+        ),
     }));
 
-  const mythics = usableItems.filter((item) =>
-    item.description?.includes('Mythic Passive:')
+  const mythics = usableItems.filter(
+    (item) =>
+      item.description?.includes('Mythic Passive:') || item.id === '6632'
   );
 
   const legendaries = usableItems.filter(
@@ -52,7 +60,8 @@ export function buildItemsData(items) {
       !item.categories.includes('Consumable') &&
       !starter[item.id] &&
       !item.categories.includes('GoldPer') &&
-      !item.name.includes('Stopwatch') &&
+      !item.name.includes('Broken Stopwatch') &&
+      !item.name.includes('Perfectly Timed Stopwatch') &&
       item.name !== 'Sheen' &&
       item.id !== '2010' && // biscuit
       item.id !== '3040' && // seraphs
@@ -84,7 +93,9 @@ export function buildItemsData(items) {
   //     return acc;
   //   }, {});
 
-  const boots = usableItems.filter((item) => item.tags?.includes('Boots'));
+  const boots = usableItems
+    .filter((item) => item.stats.FlatMovementSpeedMod)
+    .filter((item) => item.name !== 'Slightly Magical Footware');
 
   const starters = usableItems.filter((item) => starter[item.id]);
 
