@@ -37,6 +37,8 @@ export default function Home({ itemsData }) {
     soundCant: cantRef,
   });
 
+  console.log(state);
+
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
   const items = inventory.map((item) => itemsData.items[item]);
@@ -132,7 +134,7 @@ export default function Home({ itemsData }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const res = await fetch(
-    'https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
+    'https://ddragon.leagueoflegends.com/cdn/10.23.1/data/en_US/item.json'
   );
   const items = await res.json();
 
@@ -145,7 +147,7 @@ export async function getStaticProps() {
   // will receive `itemsData` as a prop at build time
   return {
     props: {
-      itemsData: buildItemsData(items),
+      itemsData: buildItemsData(items.data),
       // champsData: Object.values(champs.data).map((c) => ({
       //   id: c.id,
       //   key: c.key,
