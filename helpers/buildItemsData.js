@@ -1,6 +1,6 @@
 import { starter } from '../data/starter';
 
-export function buildItemsData(items) {
+export function buildItemsData(items, cdragonItems) {
   const itemsArr = Object.entries(items).map(([id, itemStats]) => ({
     ...itemStats,
     id,
@@ -71,27 +71,26 @@ export function buildItemsData(items) {
       !item.categories.includes('Boots')
   );
 
-  // const ornn = items
-  //   .filter((item) => item.name.includes('%i:ornnIcon%'))
-  //   .map((item) => ({
-  //     id: item.id,
-  //     name: item.name.replace('%i:ornnIcon% ', ''),
-  //     categories: item.categories,
-  //     priceTotal: item.gold.total,
-  //     from: item.from,
-  //     description: item.description
-  //       .replace(/Immolate :/, 'Immolate:')
-  //       .replace(/GeneratedTip_Item_7017_ExternalDescription/, deicide)
-  //       .replace(
-  //         /<passive>Immolate:<\/passive>/,
-  //         '<immolate> Immolate :</immolate>'
-  //       ),
-  //     iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-  //   }))
-  //   .reduce(function (acc, cur, i) {
-  //     acc[cur.from[0]] = cur;
-  //     return acc;
-  //   }, {});
+  const ornn = cdragonItems
+    .filter((item) => item.name.includes('%i:ornnIcon%'))
+    .map((item) => ({
+      id: item.id,
+      name: item.name.replace('%i:ornnIcon% ', ''),
+      categories: item.categories,
+      priceTotal: item.priceTotal,
+      from: item.from,
+      description: item.description
+        .replace(/Immolate :/, 'Immolate:')
+        .replace(
+          /<passive>Immolate:<\/passive>/,
+          '<immolate> Immolate :</immolate>'
+        ),
+      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
+    }))
+    .reduce(function (acc, cur, i) {
+      acc[cur.from[0]] = cur;
+      return acc;
+    }, {});
 
   const boots = usableItems
     .filter((item) => item.stats.FlatMovementSpeedMod)
@@ -100,7 +99,7 @@ export function buildItemsData(items) {
   const starters = usableItems.filter((item) => starter[item.id]);
 
   return {
-    ornn: {},
+    ornn: ornn,
     items: usableItems
       .map((item) => ({
         ...item,

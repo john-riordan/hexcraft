@@ -3,6 +3,7 @@ import Tippy from '@tippy.js/react';
 import { useRouter } from 'next/router';
 
 import { StateContext } from '../../StateContext';
+import computeInventoryStats from '../../helpers/computeInventoryStats';
 import styles from './Inventory.module.css';
 import ItemTooltip from '../ItemTooltip/';
 import ItemImage from '../ItemImage/';
@@ -22,6 +23,7 @@ const Inventory = () => {
   const inventoryItems = inventory.map((item) => {
     return state.itemsData.items[item];
   });
+  const inventoryStats = computeInventoryStats(inventoryItems);
 
   const empty =
     inventory.length < 7 ? [...Array(MAX_FROM - inventory.length).keys()] : [];
@@ -83,6 +85,9 @@ const Inventory = () => {
             >
               <div
                 className={styles.itemFrame}
+                onClick={() =>
+                  setState((prev) => ({ ...prev, selectedItem: item }))
+                }
                 onContextMenu={(e) => {
                   e.preventDefault();
                   const index = inventory.indexOf(item.id);
