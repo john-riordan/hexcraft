@@ -3,6 +3,7 @@ import Tippy from '@tippy.js/react';
 import { useRouter } from 'next/router';
 
 import { StateContext } from '../../StateContext';
+import computeInventoryStats from '../../helpers/computeInventoryStats';
 import styles from './Inventory.module.css';
 import ItemTooltip from '../ItemTooltip/';
 import ItemImage from '../ItemImage/';
@@ -19,6 +20,10 @@ const Inventory = () => {
   const textAreaRef = useRef(null);
   const router = useRouter();
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+  const inventoryItems = inventory.map((item) => {
+    return state.itemsData.items[item];
+  });
+  const inventoryStats = computeInventoryStats(inventoryItems);
 
   const empty =
     inventory.length < 7 ? [...Array(MAX_FROM - inventory.length).keys()] : [];
@@ -70,48 +75,47 @@ const Inventory = () => {
           readOnly
         />
         <div className={styles.itemList}>
-          {inventory.map((itemId, i) => {
-            const item = state.itemsData.items[itemId];
-            if (!item) return null;
-            return (
-              <Tippy
-                key={`${itemId}_${i}`}
-                placement="top"
-                offset="0, 20"
-                duration={0}
-                content={<ItemTooltip item={item} />}
+          {inventoryItems.map((item, i) => (
+            <Tippy
+              key={`${item.id}_${i}`}
+              placement="top"
+              offset="0, 20"
+              duration={0}
+              content={<ItemTooltip item={item} />}
+            >
+              <div
+                className={styles.itemFrame}
+                onClick={() =>
+                  setState((prev) => ({ ...prev, selectedItem: item }))
+                }
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  const index = inventory.indexOf(item.id);
+                  const inv = [...inventory];
+
+                  if (index !== -1) inv.splice(index, 1);
+
+                  const params = new URLSearchParams({
+                    i: inv,
+                  });
+                  state.soundSell.current.volume = 0.5;
+                  state.soundSell.current.play();
+                  router.replace(`?${params}`, undefined, {
+                    shallow: true,
+                  });
+                }}
               >
-                <div
-                  className={styles.itemFrame}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    const index = inventory.indexOf(itemId);
-                    const inv = [...inventory];
-
-                    if (index !== -1) inv.splice(index, 1);
-
-                    const params = new URLSearchParams({
-                      i: inv,
-                    });
-                    state.soundSell.current.volume = 0.5;
-                    state.soundSell.current.play();
-                    router.replace(`?${params}`, undefined, {
-                      shallow: true,
-                    });
-                  }}
-                >
-                  <ItemImage
-                    key={`${itemId}_${i}`}
-                    imgName={item.iconPath}
-                    className={styles.imgFrame}
-                    size={ITEM_SIZE}
-                    alt={item.name}
-                    isMythic={state.itemsData.mythicDictionary[item.id]}
-                  />
-                </div>
-              </Tippy>
-            );
-          })}
+                <ItemImage
+                  key={`${item.id}_${i}`}
+                  imgName={item.iconPath}
+                  className={styles.imgFrame}
+                  size={ITEM_SIZE}
+                  alt={item.name}
+                  isMythic={state.itemsData.mythicDictionary[item.id]}
+                />
+              </div>
+            </Tippy>
+          ))}
           {empty.map((i) => (
             <div key={i}>
               <ItemImage

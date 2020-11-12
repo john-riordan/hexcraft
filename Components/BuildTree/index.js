@@ -158,7 +158,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
               dangerouslySetInnerHTML={{ __html: itemData.description }}
             />
           </div>
-          {ornnUpgrade ? (
+          {/* {ornnUpgrade ? (
             <div className={styles.ornn}>
               <Tippy
                 key={ornnUpgrade.name}
@@ -169,8 +169,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
               >
                 <div className={styles.ornnFrame}>
                   <ItemImage
-                    imgName={ornnUpgrade.iconPath}
-                    isMythic={state.itemsData.mythicDictionary?.[item.id]}
+                    imgName={itemsData.items[ornnUpgrade.id]?.iconPath}
+                    isMythic={true}
                     alt={ornnUpgrade.name}
                     size={36}
                   />
@@ -183,7 +183,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 </div>
               </Tippy>
             </div>
-          ) : null}
+          ) : null} */}
         </>
       )}
     </div>
