@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { buildItemsData } from '../helpers/buildItemsData';
+import { DDRAGON_PATCH } from '../helpers/constants';
 
 import { StateContext } from '../StateContext';
 
@@ -135,9 +136,7 @@ export async function getStaticProps() {
     'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
   );
   const cdragonItems = await cdragon.json();
-  const ddragon = await fetch(
-    'https://ddragon.leagueoflegends.com/cdn/10.23.1/data/en_US/item.json'
-  );
+  const ddragon = await fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_PATCH}/data/en_US/item.json`);
   const ddragonItems = await ddragon.json();
 
   // const c = await fetch(
