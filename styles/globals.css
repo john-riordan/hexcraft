@@ -6,6 +6,7 @@
 
   --surface1: hsl(212deg 100% 4%);
   --surface2: hsl(212deg 100% 1%);
+  --modal-overlay: hsla(212deg 100% 4% / 0.8);
 
   --text1: hsl(0deg 0% 100%);
   --text2: hsl(39deg 55% 59%);
@@ -64,6 +65,7 @@ html {
 
 html,
 body {
+  position: relative;
   padding: 0;
   margin: 0;
   font-size: 1em;
@@ -180,4 +182,79 @@ audio {
   .tippy-popper {
     display: none !important;
   }
+}
+
+.item-change-modal {
+  width: 80%;
+  max-width: 90ch;
+  background: var(--surface1);
+  padding: 3rem;
+  border: 1px solid var(--orange2);
+}
+.item-change-modal .reference-link {
+  display: none;
+}
+.item-change-modal .change-title {
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+.item-change-modal .blockquote.context {
+  position: relative;
+  color: var(--text4);
+  border-bottom: 1px solid var(--accent2);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+.item-change-modal .blockquote.context::before,
+.item-change-modal .blockquote.context::after {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.3;
+}
+.item-change-modal .blockquote.context::before {
+  content: '\201C';
+  transform: translate(-2rem, -1.5rem);
+}
+.item-change-modal .blockquote.context::after {
+  content: '\201D';
+  transform: translate(1rem, -0.5rem);
+}
+.item-change-modal .attribute-change {
+  margin-top: 0.5rem;
+}
+.item-change-modal .attribute-change:not(:last-of-type) {
+  margin-bottom: 2.5rem;
+}
+.item-change-modal .attribute {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text4);
+  letter-spacing: 1px;
+}
+.item-change-modal .attribute::after {
+  content: ': ';
+}
+.item-change-modal .change-indicator {
+  color: var(--orange2);
+  margin: 0 0.25rem;
+}
+.item-change-modal .attribute-after {
+  color: var(--text5);
+}
+.item-change-modal .attribute .updated {
+  padding: 1px 6px 3px;
+  background: var(--change);
+  margin-right: 1ch;
+  font-weight: 700;
+  color: var(--text1);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+.item-change-modal span.attribute-before {
+  color: var(--text3);
 }

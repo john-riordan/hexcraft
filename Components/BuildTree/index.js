@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { StateContext } from '../../StateContext';
 import ItemTooltip from '../ItemTooltip/';
 import ItemImage from '../ItemImage/';
+import PatchChangeDetails from '../PatchChangeDetails/';
+
 import styles from './Tree.module.css';
 
 const BuildTree = ({ imageSize = 64, item }) => {
@@ -206,10 +208,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     setState((prev) => ({
                       ...prev,
                       modal: (
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: itemChanged.details,
-                          }}
+                        <PatchChangeDetails
+                          content={itemChanged.details}
                         />
                       ),
                     }))
