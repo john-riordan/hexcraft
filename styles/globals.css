@@ -185,7 +185,6 @@ audio {
 }
 
 .item-change-modal {
-  width: 80%;
   max-width: 90ch;
   background: var(--surface1);
   padding: 3rem;
