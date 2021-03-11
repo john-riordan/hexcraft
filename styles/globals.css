@@ -226,7 +226,7 @@ audio {
   margin-top: 0.5rem;
 }
 .item-change-modal .attribute-change:not(:last-of-type) {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 .item-change-modal .attribute {
   display: block;
@@ -243,17 +243,43 @@ audio {
   color: var(--orange2);
   margin: 0 0.25rem;
 }
-.item-change-modal .attribute-after {
+.item-change-modal .attribute-after,
+.item-change-modal .attribute-removed {
   color: var(--text5);
 }
+.item-change-modal .attribute .removed,
+.item-change-modal .attribute .new,
 .item-change-modal .attribute .updated {
-  padding: 1px 6px 3px;
-  background: var(--change);
+  position: relative;
+  padding: 2px 6px 3px;
   margin-right: 1ch;
   font-weight: 700;
-  color: var(--text1);
+  color: var(--att-color);
   text-transform: uppercase;
   letter-spacing: 0;
+}
+.item-change-modal .attribute .removed::before,
+.item-change-modal .attribute .new::before,
+.item-change-modal .attribute .updated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--att-color);
+  border-radius: 3px;
+  opacity: 0.2;
+}
+.item-change-modal .attribute .updated {
+  --att-color: var(--ap);
+}
+.item-change-modal .attribute .removed {
+  --att-color: var(--immolate);
+}
+
+.item-change-modal .attribute .new {
+  --att-color: var(--mana);
 }
 .item-change-modal span.attribute-before {
   color: var(--text3);

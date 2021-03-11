@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import ItemImage from '../ItemImage/';
 import ItemTooltip from '../ItemTooltip/';
 import Icon from '../Icon/';
+import PatchChangeDetails from '../PatchChangeDetails/';
 
 import { StateContext } from '../../StateContext';
 
@@ -145,6 +146,19 @@ const ItemGrid = ({ className }) => {
                       </p>
                       {itemChanged && (
                         <div
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setState((prev) => ({
+                              ...prev,
+                              modal: (
+                                <PatchChangeDetails
+                                  content={
+                                    itemChanged.details
+                                  }
+                                />
+                              ),
+                            }));
+                          }}
                           className={`${
                             styles.patchChange
                           } ${
