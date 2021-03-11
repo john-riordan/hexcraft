@@ -240,6 +240,32 @@ const Icon = ({ icon, ...rest }) => {
           />
         </svg>
       );
+    case 'nerf':
+      return (
+        <svg {...props}>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M8 13L24 23L40 13V24.75L24 35L8 24.75V13Z"
+          />
+        </svg>
+      );
+    case 'change':
+      return (
+        <svg {...props}>
+          <rect x="8" y="18" width="32" height="12" />
+        </svg>
+      );
+    case 'buff':
+      return (
+        <svg {...props}>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M8 35L24 25L40 35V23.25L24 13L8 23.25V35Z"
+          />
+        </svg>
+      );
     case 'axe':
     default:
       return (

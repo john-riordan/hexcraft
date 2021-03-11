@@ -38,6 +38,10 @@
   --shield: white;
   --immolate: #e63710;
 
+  --buff: #74f20e;
+  --nerf: #fa134a;
+  --change: #18d5ff;
+
   --controls-height: 4rem;
 
   --transition: 0.2s ease;
@@ -64,8 +68,9 @@ body {
   margin: 0;
   font-size: 1em;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 @media (max-width: 1400px) {
@@ -77,8 +82,9 @@ body {
 
 input,
 button {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 a {

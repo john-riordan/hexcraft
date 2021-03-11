@@ -16,11 +16,15 @@ const ItemDetails = ({ className }) => {
 
   const builtFrom = selectedItem
     ? Object.values(state.itemsData.items)
-        .filter((item) => item.from.includes(selectedItem.id))
+        .filter((item) =>
+          item.from.includes(selectedItem.id)
+        )
         .slice(0, MAX_FROM)
     : [];
 
-  const empty = [...Array(MAX_FROM - builtFrom.length).keys()];
+  const empty = [
+    ...Array(MAX_FROM - builtFrom.length).keys(),
+  ];
 
   return (
     <div
@@ -32,7 +36,12 @@ const ItemDetails = ({ className }) => {
         <Icon
           icon="close"
           className={styles.close}
-          onClick={() => setState((prev) => ({ ...prev, selectedItem: null }))}
+          onClick={() =>
+            setState((prev) => ({
+              ...prev,
+              selectedItem: null,
+            }))
+          }
         />
       )}
       <p className={styles.title}>
@@ -50,7 +59,10 @@ const ItemDetails = ({ className }) => {
             <div
               className={styles.itemFrom}
               onClick={() =>
-                setState((prev) => ({ ...prev, selectedItem: item }))
+                setState((prev) => ({
+                  ...prev,
+                  selectedItem: item,
+                }))
               }
             >
               <ItemImage
@@ -59,7 +71,9 @@ const ItemDetails = ({ className }) => {
                 className={styles.imgFrame}
                 size={36}
                 alt={item.name}
-                isMythic={state.itemsData.mythicDictionary[item.id]}
+                isMythic={
+                  state.itemsData.mythicDictionary[item.id]
+                }
               />
             </div>
           </Tippy>
@@ -75,7 +89,9 @@ const ItemDetails = ({ className }) => {
           </div>
         ))}
       </div>
-      {selectedItem && <BuildTree imageSize={58} item={selectedItem.id} />}
+      {selectedItem && (
+        <BuildTree imageSize={58} item={selectedItem.id} />
+      )}
     </div>
   );
 };
