@@ -24,7 +24,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
 
   const ornnUpgrade = itemsData.ornn[item];
 
-  const itemChanged = state.latestPatchChanges[itemData.id];
+  const itemChanged = itemData.patchChange;
 
   const formattedPatch = `${state.patch.split('.')[0]}.${
     state.patch.split('.')[1]

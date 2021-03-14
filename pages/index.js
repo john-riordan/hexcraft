@@ -163,7 +163,6 @@ export default function Home(props) {
 
 // This function gets called at build time
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts
   const cdragon = await fetch(
     'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
   );
@@ -175,26 +174,14 @@ export async function getStaticProps() {
 
   const latestPatchChanges = PATCHES[DDRAGON_PATCH];
 
-  // const c = await fetch(
-  //   'http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/champion.json'
-  // );
-  // const champs = await c.json();
-
-  // By returning { props: itemsData }, the Blog component
-  // will receive `itemsData` as a prop at build time
   return {
     props: {
       patch: DDRAGON_PATCH,
       itemsData: buildItemsData(
         ddragonItems.data,
-        cdragonItems
+        cdragonItems,
+        latestPatchChanges
       ),
-      latestPatchChanges,
-      // champsData: Object.values(champs.data).map((c) => ({
-      //   id: c.id,
-      //   key: c.key,
-      //   name: c.name,
-      // })),
     },
   };
 }

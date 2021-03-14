@@ -191,7 +191,15 @@ audio {
   border: 1px solid var(--orange2);
 }
 .item-change-modal .reference-link {
-  display: none;
+  display: block;
+  float: left;
+  width: 3rem;
+  margin-right: 1rem;
+  border: 2px solid var(--surface1);
+  box-shadow: 0 0 0 1px var(--orange2);
+}
+.item-change-modal .reference-link img {
+  display: block;
 }
 .item-change-modal .change-title {
   text-transform: uppercase;
@@ -206,6 +214,7 @@ audio {
   border-bottom: 1px solid var(--accent2);
   padding-bottom: 2rem;
   margin-bottom: 2rem;
+  margin-top: 3rem;
 }
 .item-change-modal .blockquote.context::before,
 .item-change-modal .blockquote.context::after {
@@ -223,6 +232,7 @@ audio {
 }
 .item-change-modal .attribute-change {
   margin-top: 0.5rem;
+  font-size: 1.125rem;
 }
 .item-change-modal .attribute-change:not(:last-of-type) {
   margin-bottom: 2rem;

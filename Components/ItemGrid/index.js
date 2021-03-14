@@ -61,9 +61,6 @@ const ItemGrid = ({ className }) => {
             </p>
             <div className={styles.grid}>
               {groupItems.map((item) => {
-                const itemChanged =
-                  state.latestPatchChanges[item.id];
-
                 return (
                   <Tippy
                     key={item.name}
@@ -144,7 +141,7 @@ const ItemGrid = ({ className }) => {
                       <p className={styles.price}>
                         {item.priceTotal}
                       </p>
-                      {itemChanged && (
+                      {item.patchChange && (
                         <div
                           onClick={(e) => {
                             e.stopPropagation();
@@ -153,7 +150,7 @@ const ItemGrid = ({ className }) => {
                               modal: (
                                 <PatchChangeDetails
                                   content={
-                                    itemChanged.details
+                                    item.patchChange.details
                                   }
                                 />
                               ),
@@ -163,12 +160,12 @@ const ItemGrid = ({ className }) => {
                             styles.patchChange
                           } ${
                             styles[
-                              itemChanged.change.toLowerCase()
+                              item.patchChange.change.toLowerCase()
                             ]
                           }`}
                         >
                           <Icon
-                            icon={itemChanged.change.toLowerCase()}
+                            icon={item.patchChange.change.toLowerCase()}
                             className={
                               styles.patchChangeIcon
                             }
