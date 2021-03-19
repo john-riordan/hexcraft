@@ -1,1 +1,1 @@
-export const DDRAGON_PATCH = '11.5.1';
+export const DDRAGON_PATCH = '11.6.1';
