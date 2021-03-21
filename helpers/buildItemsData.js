@@ -1,28 +1,31 @@
 import { starter } from '../data/starter';
 
-export function buildItemsData(items, cdragonItems) {
-  const itemsArr = Object.entries(items).map(([id, itemStats]) => ({
-    ...itemStats,
-    id,
-  }));
+export function buildItemsData(
+  items,
+  cdragonItems,
+  patchChanges
+) {
+  const itemsArr = Object.entries(items).map(
+    ([id, itemStats]) => ({
+      ...itemStats,
+      id,
+    })
+  );
 
   const usableItems = itemsArr
-    .filter(
-      (item) =>
-        item.gold.total &&
-        item.maps[11] &&
-        item.id !== '3040' && // muramana
-        item.id !== '3042' // seraphs
-    )
+    .filter((item) => item.gold.total && item.maps[11])
     .sort((a, z) => a.gold.total - z.gold.total)
     .map((item) => ({
       id: item.id,
       name: item.name,
-      categories: item.tags || null,
+      categories: patchChanges?.[item?.id]
+        ? [...item.tags, 'Patch']
+        : [],
       priceTotal: item.gold.total,
       from: item.from || [],
       stats: item.stats,
       iconPath: `${item.id}.png`,
+      patchChange: patchChanges?.[item?.id] || null,
       description: item.description
         .replace(
           /{{ Item_Range_Mod_0_Perc }}/,
@@ -36,12 +39,14 @@ export function buildItemsData(items, cdragonItems) {
 
   const mythics = usableItems.filter(
     (item) =>
-      item.description?.includes('Mythic Passive:') || item.id === '6632'
+      item.description?.includes('Mythic Passive:') ||
+      item.id === '6632'
   );
 
   const legendaries = usableItems.filter(
     (item) =>
-      item.priceTotal > 1500 && !item.description.includes('Mythic Passive:')
+      item.priceTotal > 1500 &&
+      !item.description.includes('Mythic Passive:')
   );
 
   const epics = usableItems.filter(
@@ -85,7 +90,10 @@ export function buildItemsData(items, cdragonItems) {
           /<passive>Immolate:<\/passive>/,
           '<immolate> Immolate :</immolate>'
         ),
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
+      iconPath: item.iconPath
+        .split('/')
+        .slice(-1)[0]
+        .toLowerCase(),
     }))
     .reduce(function (acc, cur, i) {
       acc[cur.from[0]] = cur;
@@ -94,16 +102,23 @@ export function buildItemsData(items, cdragonItems) {
 
   const boots = usableItems
     .filter((item) => item.stats.FlatMovementSpeedMod)
-    .filter((item) => item.name !== 'Slightly Magical Footware');
+    .filter(
+      (item) => item.name !== 'Slightly Magical Footware'
+    );
 
-  const starters = usableItems.filter((item) => starter[item.id]);
+  const starters = usableItems.filter(
+    (item) => starter[item.id]
+  );
 
   return {
     ornn: ornn,
     items: usableItems
       .map((item) => ({
         ...item,
-        search: item.categories.map((c) => c.toLowerCase()).join() || '',
+        search:
+          item.categories
+            .map((c) => c.toLowerCase())
+            .join() || '',
       }))
       .reduce(function (acc, cur, i) {
         acc[cur.id] = cur;

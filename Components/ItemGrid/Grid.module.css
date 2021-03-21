@@ -38,7 +38,11 @@
 }
 .gridItem:hover {
   filter: brightness(1.5);
-  background: linear-gradient(to top, var(--accent3), var(--accent2));
+  background: linear-gradient(
+    to top,
+    var(--accent3),
+    var(--accent2)
+  );
   transition: var(--transition);
 }
 .gridItem:hover .imgFrame {
@@ -60,8 +64,13 @@
   transition: var(--transition);
 }
 .gridItem.selected::before {
-  background: linear-gradient(to bottom, var(--blue), transparent 80%);
-  box-shadow: inset 0 0 0 1px var(--blue), inset 0 0 0 4px var(--surface1);
+  background: linear-gradient(
+    to bottom,
+    var(--blue),
+    transparent 80%
+  );
+  box-shadow: inset 0 0 0 1px var(--blue),
+    inset 0 0 0 4px var(--surface1);
   opacity: 0.4;
 }
 .gridItem.selected .imgFrame {
@@ -73,6 +82,35 @@
   font-size: 1.125rem;
   margin: 0;
   color: var(--text2);
+}
+
+.patchChange {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0.25rem;
+}
+.patchChange svg {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.patchChange.change svg {
+  fill: var(--change);
+  filter: drop-shadow(0px 2px 12px var(--change));
+}
+.patchChange path,
+.patchChange rect {
+  stroke: var(--surface1);
+  stroke-width: 4px;
+}
+.patchChange.buff svg {
+  fill: var(--buff);
+  filter: drop-shadow(0px 2px 12px var(--buff));
+}
+.patchChange.nerf svg {
+  fill: var(--nerf);
+  filter: drop-shadow(0px 2px 12px var(--nerf));
 }
 
 @media (max-width: 1600px) {

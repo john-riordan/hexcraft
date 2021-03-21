@@ -1,4 +1,13 @@
-.filters {
+.patchTitle {
+  font-family: 'Beaufort-bold';
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  color: var(--text3);
+  margin: 0;
+}
+.patchTitle span:nth-of-type(2) {
+  color: var(--text4);
 }
 
 .group {
@@ -31,7 +40,11 @@
   opacity: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to right, transparent 25%, var(--blue));
+  background: linear-gradient(
+    to right,
+    transparent 25%,
+    var(--blue)
+  );
   transition: var(--transition);
 }
 .statItem:hover {
@@ -71,6 +84,9 @@
 }
 
 @media (max-width: 1600px) {
+  .patchTitle {
+    display: none;
+  }
   .statItem {
     padding: 0.5rem;
   }
