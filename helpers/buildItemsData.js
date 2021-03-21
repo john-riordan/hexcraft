@@ -13,23 +13,19 @@ export function buildItemsData(
   );
 
   const usableItems = itemsArr
-    .filter(
-      (item) =>
-        item.gold.total &&
-        item.maps[11] &&
-        item.id !== '3040' && // muramana
-        item.id !== '3042' // seraphs
-    )
+    .filter((item) => item.gold.total && item.maps[11])
     .sort((a, z) => a.gold.total - z.gold.total)
     .map((item) => ({
       id: item.id,
       name: item.name,
-      categories: item.tags || null,
+      categories: patchChanges?.[item?.id]
+        ? [...item.tags, 'Patch']
+        : [],
       priceTotal: item.gold.total,
       from: item.from || [],
       stats: item.stats,
       iconPath: `${item.id}.png`,
-      patchChange: patchChanges[item.id] || null,
+      patchChange: patchChanges?.[item?.id] || null,
       description: item.description
         .replace(
           /{{ Item_Range_Mod_0_Perc }}/,

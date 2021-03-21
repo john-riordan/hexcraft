@@ -198,25 +198,26 @@ const BuildTree = ({ imageSize = 64, item }) => {
           </div>
           <div>
             {itemChanged && (
-              <div>
-                <p>
-                  {itemChanged.change} in patch{' '}
-                  {formattedPatch}
-                </p>
-                <button
-                  onClick={() =>
-                    setState((prev) => ({
-                      ...prev,
-                      modal: (
-                        <PatchChangeDetails
-                          content={itemChanged.details}
-                        />
-                      ),
-                    }))
-                  }
-                >
-                  Details
-                </button>
+              <div className={styles.patchChange}>
+                <div className="attribute">
+                  <button
+                    className={`${itemChanged.change.toLowerCase()}`}
+                    onClick={() =>
+                      setState((prev) => ({
+                        ...prev,
+                        modal: (
+                          <PatchChangeDetails
+                            content={itemChanged.details}
+                          />
+                        ),
+                      }))
+                    }
+                  >
+                    {itemChanged.change} in patch{' '}
+                    {formattedPatch}
+                  </button>
+                  CLICK FOR DETAILS
+                </div>
               </div>
             )}
             <header className={styles.header}>

@@ -8,12 +8,19 @@ import { StateContext } from '../../StateContext';
 const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
 
+  const itemChanged = item.patchChange;
+  const formattedPatch = `${state.patch.split('.')[0]}.${
+    state.patch.split('.')[1]
+  }`;
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <ItemImage
           imgName={item.iconPath}
-          isMythic={state.itemsData.mythicDictionary[item.id]}
+          isMythic={
+            state.itemsData.mythicDictionary[item.id]
+          }
           alt={item.name}
           size={48}
         />
@@ -24,8 +31,29 @@ const ItemTooltip = ({ item }) => {
       </div>
       <p
         className={styles.description}
-        dangerouslySetInnerHTML={{ __html: item.description }}
+        dangerouslySetInnerHTML={{
+          __html: item.description,
+        }}
       />
+      {itemChanged && (
+        <div className="attribute">
+          <p
+            className={`${itemChanged.change.toLowerCase()}`}
+            onClick={() =>
+              setState((prev) => ({
+                ...prev,
+                modal: (
+                  <PatchChangeDetails
+                    content={itemChanged.details}
+                  />
+                ),
+              }))
+            }
+          >
+            {itemChanged.change} in patch {formattedPatch}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.patchChange {
+  margin-bottom: 1rem;
+}
+
 .row {
   display: flex;
   justify-content: center;

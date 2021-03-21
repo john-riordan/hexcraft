@@ -1,140 +1,187 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
-  '11.5.1': {
-    3042: {
+  '11.6.1': {
+    6673: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8e4baf0cd1b641b/604aefeb1a42e25ce54e9dae/6653_Mage_T4_LiandrysAnguish.png"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.5.1/img/item/6673.png"></a>
+        <h3 class="change-title">Immortal Shieldbow</h3>
+        <div class="attribute-change">
+					<span class="attribute">LIFESTEAL</span> <span class="attribute-before">12%</span> <span class="change-indicator">⇒</span> <span class="attribute-after">10%</span>
+				</div>
+        <div class="attribute-change">
+					<span class="attribute"><span class="removed">removed</span>LIFELINE LIFESTEAL</span> <span class="attribute-removed">Immortal Shieldbow no longer grants 15% lifesteal for 8 seconds</span>
+				</div>
+        <div class="attribute-change">
+					<span class="attribute"><span class="new">new</span>LIFELINE</span> <span class="attribute-after">Immortal Shieldbow now grants 13-35 AD when triggered</span>
+				</div>
+        <div class="attribute-change">
+					<span class="attribute">SHIELD</span> <span class="attribute-before">250-700</span> <span class="change-indicator">⇒</span> <span class="attribute-after">300-800</span>
+				</div>
+      </div>`,
+    },
+    3153: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8e4baf0cd1b641b/604aefeb1a42e25ce54e9dae/6653_Mage_T4_LiandrysAnguish.png"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.5.1/img/item/3153.png"></a>
+        <h3 class="change-title">Blade of the Ruined King</h3>
+        <div class="attribute-change">
+					<span class="attribute">LIFESTEAL</span> <span class="attribute-before">12%</span> <span class="change-indicator">⇒</span> <span class="attribute-after">10%</span>
+				</div>
+        <div class="attribute-change">
+          <span class="attribute">SIPHON DAMAGE</span> <span class="attribute-before">40-120 (levels 1-18)</span> <span class="change-indicator">⇒</span> <span class="attribute-after">40-150 (levels 1-18)</span>
+        </div>
+      </div>`,
+    },
+    6653: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8e4baf0cd1b641b/604aefeb1a42e25ce54e9dae/6653_Mage_T4_LiandrysAnguish.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8e4baf0cd1b641b/604aefeb1a42e25ce54e9dae/6653_Mage_T4_LiandrysAnguish.png"></a>
+        <h3 class="change-title" id="patch-Liandrys-Anguish"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd8e4baf0cd1b641b/604aefeb1a42e25ce54e9dae/6653_Mage_T4_LiandrysAnguish.png">Liandry's Anguish</a></h3>
+        <blockquote class="blockquote context">
+          We’re aiming to open up more potential AP Mythics by making Liandry and Luden’s more usable across mages. These changes should entice burst mages to pick it up when facing tanky team comps.
+        </blockquote>
+        <div class="attribute-change">
+          <span class="attribute"><span class="removed">removed</span>TORMENT MAGIC PENETRATION</span> <span class="attribute-removed">Liandry’s no longer grants 5% magic penetration per second against burning targets</span>
+        </div>
+        <div class="attribute-change">
+          <span class="attribute"><span class="new">new</span>TORMENT BONUS DAMAGE</span> <span class="attribute-after">Liandry’s now grants up to 12% bonus magic damage to champions based on their bonus health (maximum 1250 bonus health)</span>
+        </div>
+      </div>`,
+    },
+    6655: {
       change: CHANGE_TYPES.buff,
       details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/3042.png"></a>
-        <h3 class="change-title" id="patch-Muramana">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Muramana</a>
-        </h3>
-
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbcdd3550bd5b5cf9/604aefdf3c41f30bce4851de/6655_Mage_T4_LudensTempest.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbcdd3550bd5b5cf9/604aefdf3c41f30bce4851de/6655_Mage_T4_LudensTempest.png"></a>
+        <h3 class="change-title" id="patch-Ludens-Tempest"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbcdd3550bd5b5cf9/604aefdf3c41f30bce4851de/6655_Mage_T4_LudensTempest.png">Luden's Tempest</a></h3>
         <blockquote class="blockquote context">
-          Muramana heavily overlaps with Essence Reaver, both in stats and use cases. To better differentiate between the two, we’re changing Muramana’s proc to focus more on empowering abilities, whereas Essence Reaver empowers auto attacks through abilities.
+          Like Liandry’s above, we’re adding another AP Mythic to the mix. This should be a better option for mages who deal damage over time.
         </blockquote>
-
         <div class="attribute-change">
-          <span class="attribute">SHOCK</span> <span class="attribute-before">Basic attacks and abilities deal 2.5% max mana as bonus damage against champions</span> <span class="change-indicator">⇒</span> <span class="attribute-after">Basic attacks deal 1.5% max mana as bonus damage. Melee abilities deal 3.5% max mana as bonus damage and ranged abilities deal 2.7% max mana as bonus damage; all abilities also deal +6% total AD as bonus damage against champions (on-hit attacks that trigger spell effects count as abilities for this purpose)</span>
+          <span class="attribute"><span class="new">new</span>ECHO COOLDOWN</span> <span class="attribute-after">Dealing ability damage to an enemy champion now also reduces Echo’s cooldown by 0.5 seconds (up to 3 seconds per ability)</span>
         </div>
-
+      </div>`,
+    },
+    3089: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt428b43ee40e005b7/604aefeb1322a9094ddf09d6/3089_Mage_T3_Deathcap.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt428b43ee40e005b7/604aefeb1322a9094ddf09d6/3089_Mage_T3_Deathcap.png"></a>
+        <h3 class="change-title" id="patch-Rabadons-Deathcap"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt428b43ee40e005b7/604aefeb1322a9094ddf09d6/3089_Mage_T3_Deathcap.png">Rabadon's Deathcap</a></h3>
+        <blockquote class="blockquote context">
+          Looking to make Rabadon’s a more snug and budget-friendly fit as a third purchase.
+        </blockquote>
         <div class="attribute-change">
-          <span class="attribute">SHOCK BUGFIX</span> <span class="attribute-after">Fixed a bug where damaging abilities would proc Shock's bonus damage once per ability, and should now only proc once per <strong>champion</strong> per ability</span>
+          <span class="attribute">TOTAL COST</span> <span class="attribute-before">3800 gold</span> <span class="change-indicator">⇒</span> <span class="attribute-after">3600 gold</span>
+        </div>
+      </div>`,
+    },
+    3191: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt473a4b6f09010eba/604aefeb3c41f30bce4851e2/3191_Battlemage_T2_SeekersArmguard.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt473a4b6f09010eba/604aefeb3c41f30bce4851e2/3191_Battlemage_T2_SeekersArmguard.png"></a>
+        <h3 class="change-title" id="patch-Seekers-Armguard"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt473a4b6f09010eba/604aefeb3c41f30bce4851e2/3191_Battlemage_T2_SeekersArmguard.png">Seeker's Armguard</a></h3>
+        <blockquote class="blockquote context">
+          Seeker's Armguard and Verdant Barrier have been doing their job a bit <em>too</em> well, keeping AP scaling champs too safe as the laning phase progresses, which masks their intended weaknesses and contributes to a particularly dull meta. We’re adjusting the strength of these mid-tier items, while retaining the power level of the Legendary items they build into (Zhonya’s Hourglass and Banshee’s Veil).
+        </blockquote>
+        <div class="attribute-change">
+          <span class="attribute">BONUS ARMOR PER KILL</span> <span class="attribute-before">1</span> <span class="change-indicator">⇒</span> <span class="attribute-after">0.5</span>
+        </div>
+        <div class="attribute-change">
+          <span class="attribute">MAX ARMOR</span> <span class="attribute-before">30</span> <span class="change-indicator">⇒</span> <span class="attribute-after">15</span>
+        </div>
+      </div>`,
+    },
+    4632: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbbc5790ea4af03b2/604aefebf9638443346d74a9/4632_Tank_T2_VerdantBarrier.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbbc5790ea4af03b2/604aefebf9638443346d74a9/4632_Tank_T2_VerdantBarrier.png"></a>
+        <h3 class="change-title" id="patch-Verdant-Barrier"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbbc5790ea4af03b2/604aefebf9638443346d74a9/4632_Tank_T2_VerdantBarrier.png">Verdant Barrier</a></h3>
+        <blockquote class="blockquote context">
+          Seek up to Seeker’s! Like the above, we’re nudging down Verdant’s power while keeping its final item strength.
+        </blockquote>
+        <div class="attribute-change">
+          <span class="attribute">MAGIC RESIST PER KILL</span> <span class="attribute-before">0.5</span> <span class="change-indicator">⇒</span> <span class="attribute-after">0.3</span>
+        </div>
+        <div class="attribute-change">
+          <span class="attribute">MAX MAGIC RESIST</span> <span class="attribute-before">15</span> <span class="change-indicator">⇒</span> <span class="attribute-after">9</span>
+        </div>
+        <div class="attribute-change">
+          <span class="attribute">ABILITY POWER</span> <span class="attribute-before">25</span> <span class="change-indicator">⇒</span> <span class="attribute-after">20</span>
+        </div>
+      </div>`,
+    },
+    2065: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt86900a4adb6609d4/604aeff47b7aea45bd9f7e30/2065_Tank_T4_ShurelyasBattlesong.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt86900a4adb6609d4/604aeff47b7aea45bd9f7e30/2065_Tank_T4_ShurelyasBattlesong.png"></a>
+        <h3 class="change-title" id="patch-Shurelyas-Battlesong"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt86900a4adb6609d4/604aeff47b7aea45bd9f7e30/2065_Tank_T4_ShurelyasBattlesong.png">Shurelya's Battlesong</a></h3>
+        <blockquote class="blockquote context">
+          By the numbers, Moonstone Renewer has been the dominating choice among enchanters, so we're buffing Battlesong to be an even catchier tune than it already is.
+        </blockquote>
+        <div class="attribute-change">
+          <span class="attribute">INSPIRE COOLDOWN</span> <span class="attribute-before">90 seconds</span> <span class="change-indicator">⇒</span> <span class="attribute-after">75 seconds</span>
         </div>
       </div>`,
     },
     6631: {
-      change: CHANGE_TYPES.change,
-      details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/10.25.1/img/item/6631.png"></a>
-        <h3 class="change-title" id="patch-Stridebreaker">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Stridebreaker</a>
-        </h3>
-
-        <blockquote class="blockquote context">
-          Stridebreaker's dash didn’t feel as powerful as its slash, so we’re balancing both while aiming for a power-neutral change.
-        </blockquote>
-
-        <div class="attribute-change">
-          <span class="attribute">HALTING SLASH DASH RANGE</span> <span class="attribute-before">200</span> <span class="change-indicator">⇒</span> <span class="attribute-after">300</span>
-        </div>
-
-        <div class="attribute-change">
-          <span class="attribute">HALTING SLASH DASH SPEED</span> <span class="attribute-after">Slightly increased</span>
-        </div>
-
-        <div class="attribute-change">
-          <span class="attribute">HALTING SLASH SLOW DECAY</span> <span class="attribute-before">60% over 2 seconds</span> <span class="change-indicator">⇒</span> <span class="attribute-after">40% over 2 seconds</span>
-        </div>
-
-        <div class="attribute-change">
-          <span class="attribute">DAMAGE</span> <span class="attribute-before">100% AD</span> <span class="change-indicator">⇒</span> <span class="attribute-after">75% AD</span>
-        </div>
-      </div>`,
-    },
-    3124: {
       change: CHANGE_TYPES.nerf,
       details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/10.24.1/img/item/3124.png"></a>
-        <h3 class="change-title" id="patch-guinsoos-rageblade">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Guinsoo's Rageblade</a>
-        </h3>
-
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt0fc482628ea11396/604aefebe122b53af551317a/6631_Fighter_T4_StrideBreaker.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt0fc482628ea11396/604aefebe122b53af551317a/6631_Fighter_T4_StrideBreaker.png"></a>
+        <h3 class="change-title" id="patch-Stridebreaker"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt0fc482628ea11396/604aefebe122b53af551317a/6631_Fighter_T4_StrideBreaker.png">Stridebreaker</a></h3>
         <blockquote class="blockquote context">
-          Certain champions, like Senna, benefit too much from Guinsoo’s Rageblade when you consider the fact that its crit strike chance can scale over 100% and it ignores crit damage modifiers. We’re adding some rules to it to circumvent these edge cases, allow for more item diversity with those champions, and help us better tune the item to be usable for more of the roster. <br>
-          <br>
-          Speaking of Senna, now, her passive can no longer give her above 100% crit strike chance, and any excess crit is converted into lifesteal at the same rate.
+          It’s time for Stridebreaker to take a break.
         </blockquote>
-
         <div class="attribute-change">
-          <span class="attribute"><span class="updated">updated</span>WRATH</span> <span class="attribute-after">Convert every 1% critical strike chance into 2 bonus physical damage on-hit, with a maximum of 100% critical strike chance. Wrath’s on-hit damage conversion is now affected by critical strike damage modifiers.</span>
+          <span class="attribute">HEALTH</span> <span class="attribute-before">300</span> <span class="change-indicator">⇒</span> <span class="attribute-after">200</span>
         </div>
       </div>`,
     },
-    6695: {
-      change: CHANGE_TYPES.buff,
+    6029: {
+      change: CHANGE_TYPES.change,
       details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbce97939435f1b2f/5fffc1e85c57ba54fd67ee2d/Serpent_27s_Fang_item.png"></a>
-        <h3 class="change-title" id="patch-Serpents-fang">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Serpent’s Fang</a>
-        </h3>
-
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt1920f76a50db4245/604aefebfef76d094c704209/6029_Fighter_T2_IronSpikeWhip.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt1920f76a50db4245/604aefebfef76d094c704209/6029_Fighter_T2_IronSpikeWhip.png"></a>
+        <h3 class="change-title" id="patch-Ironspike-Whip"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt1920f76a50db4245/604aefebfef76d094c704209/6029_Fighter_T2_IronSpikeWhip.png">Ironspike Whip</a></h3>
         <blockquote class="blockquote context">
-          Serpent’s Fang is a powerful but underwhelming and confusing item, so we're making it more broadly usable. Imagine Grievous Wounds for shields, but with extra profits!
+          Strangely, Stridebreaker had a longer cooldown than Ironspike, so we’re rectifying that. We’re also bringing down its cost to account for its power loss.
         </blockquote>
-
         <div class="attribute-change">
-          <span class="attribute"><span class="updated">updated</span>SHIELD REAVER</span> <span class="attribute-after">Dealing damage to an enemy champion reduces any shields they gain by 50% for melee champions and 25% for ranged champions for the next three seconds. When you damage an enemy who is unaffected by Shield Reaver, reduce all shields on them by 50% for melee champions and 25% for ranged champions.</span>
+          <span class="attribute">TOTAL COST</span> <span class="attribute-before">1200 gold</span> <span class="change-indicator">⇒</span> <span class="attribute-after">1100 gold</span>
         </div>
-
         <div class="attribute-change">
-          <span class="attribute">ON-HIT ITEM BUGFIX</span> <span class="attribute-after">Fixed a bug where Serpent's Fang's Shield Reaver passive would not reduce an enemy's shields if the user had any on-hit items equipped</span>
+          <span class="attribute">COOLDOWN</span> <span class="attribute-before">15 seconds</span> <span class="change-indicator">⇒</span> <span class="attribute-after">20 seconds</span>
         </div>
       </div>`,
     },
-    3156: {
+    3068: {
       change: CHANGE_TYPES.buff,
       details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/3156.png"></a>
-        <h3 class="change-title" id="patch-Maw-of-Malmortius">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Maw of Malmortius</a>
-        </h3>
-
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt9d40f6af45f1b8a4/604aeff42d310e5a62e1a336/3068_Tank_T4_SunfireAegis.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt9d40f6af45f1b8a4/604aeff42d310e5a62e1a336/3068_Tank_T4_SunfireAegis.png"></a>
+        <h3 class="change-title" id="patch-Sunfire-Aegis"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt9d40f6af45f1b8a4/604aeff42d310e5a62e1a336/3068_Tank_T4_SunfireAegis.png">Sunfire Aegis</a></h3>
         <blockquote class="blockquote context">
-          Dropping Maw's price to be a more attractive and affordable defensive option.
+          Now that players are starting to realize other tank Mythics are reasonable options, we feel comfortable giving back some of Sunfire’s oomph, considering it has been the worst performing item among its peers for a while.
         </blockquote>
-
         <div class="attribute-change">
-          <span class="attribute">TOTAL COST</span> <span class="attribute-before">3100 gold</span> <span class="change-indicator">⇒</span> <span class="attribute-after">2800 gold</span>
+          <span class="attribute">ABILITY HASTE</span> <span class="attribute-before">15</span> <span class="change-indicator">⇒</span> <span class="attribute-after">20</span>
+        </div>
+        <div class="attribute-change">
+          <span class="attribute">IMMOLATE SUBSEQUENT DAMAGE</span> <span class="attribute-before">10% per second, up to 60%</span> <span class="change-indicator">⇒</span> <span class="attribute-after">12% per second, up to 72%</span>
         </div>
       </div>`,
     },
-    3071: {
-      change: CHANGE_TYPES.buff,
+    3135: {
+      change: CHANGE_TYPES.change,
       details: `<div>
-        <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltf1da4536b280ae57/5fa1efd0432f517518d427ac/3071_Fighter_T3_BlackCleaver.png"></a>
-        <h3 class="change-title" id="patch-Black-Cleaver">
-          <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Black Cleaver</a>
-        </h3>
-
+        <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt6f186dc3cca75f50/604aefeba8c6585cda24dd66/3135_Mage_T3_VoidStaff.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt6f186dc3cca75f50/604aefeba8c6585cda24dd66/3135_Mage_T3_VoidStaff.png"></a>
+        <h3 class="change-title" id="patch-Void-Staff"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt6f186dc3cca75f50/604aefeba8c6585cda24dd66/3135_Mage_T3_VoidStaff.png">Void Staff</a></h3>
         <blockquote class="blockquote context">
-          Adjusting Black Cleaver to be better suited for longer fights while packing it with more punch for its cost.
+          With a strong passive and low cost, we’re making it worse as an early rush item.
         </blockquote>
-
         <div class="attribute-change">
-          <span class="attribute">TOTAL COST</span> <span class="attribute-before">3300 gold</span> <span class="change-indicator">⇒</span> <span class="attribute-after">3100 gold</span>
+          <span class="attribute">ABILITY POWER</span> <span class="attribute-before">65</span> <span class="change-indicator">⇒</span> <span class="attribute-after">70</span>
         </div>
-
         <div class="attribute-change">
-          <span class="attribute">HEALTH</span> <span class="attribute-before">300</span> <span class="change-indicator">⇒</span> <span class="attribute-after">400</span>
-        </div>
-
-        <div class="attribute-change">
-          <span class="attribute"><span class="removed">removed</span>BUTCHER</span> <span class="attribute-removed">Black Cleaver no longer deals bonus physical damage</span>
-        </div>
-
-        <div class="attribute-change">
-          <span class="attribute"><span class="new">new</span>RAGE</span> <span class="attribute-after">Dealing physical damage to a champion grants 5 movement speed per stack of Carve on them for 2 seconds</span>
+          <span class="attribute">COMBINE COST</span> <span class="attribute-before">400 gold</span> <span class="change-indicator">⇒</span> <span class="attribute-after">600 gold</span>
         </div>
       </div>`,
     },
