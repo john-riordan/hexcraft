@@ -52,6 +52,7 @@ const ItemTooltip = ({ item }) => {
           >
             {itemChanged.change} in patch {formattedPatch}
           </p>
+          CLICK FOR DETAILS
         </div>
       )}
     </div>
