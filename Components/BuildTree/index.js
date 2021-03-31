@@ -9,6 +9,8 @@ import PatchChangeDetails from '../PatchChangeDetails/';
 
 import styles from './Tree.module.css';
 
+import formatPatch from '../../helpers/formatPatch';
+
 const BuildTree = ({ imageSize = 64, item }) => {
   const { state, setState } = useContext(StateContext);
   const { itemsData } = state;
@@ -25,10 +27,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
   const ornnUpgrade = itemsData.ornn[item];
 
   const itemChanged = itemData.patchChange;
-
-  const formattedPatch = `${state.patch.split('.')[0]}.${
-    state.patch.split('.')[1]
-  }`;
+  const patch = formatPatch(state.patch);
 
   return (
     <div className={styles.details}>
@@ -214,7 +213,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     }
                   >
                     {itemChanged.change} in patch{' '}
-                    {formattedPatch}
+                    {patch}
                   </button>
                   CLICK FOR DETAILS
                 </div>

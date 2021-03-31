@@ -1,6 +1,222 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
+  '11.7.1': {
+    3508: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/3508.png"
+      /></a>
+      <h3 class="change-title" id="patch-Essence-Reaver">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Essence Reaver</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        Essence Reaver is overperforming amongst peers in its class, and then some. Essence should still feel like an
+        appropriate buy, but rushing it shouldn't be as efficient as it currently is.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">TOTAL COST</span> <span class="attribute-before">2900 gold</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">2800 gold</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">55</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">45</span>
+      </div>
+    </div>`,
+    },
+    6656: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/6656.png"
+      /></a>
+      <h3 class="change-title" id="patch-Everfrost">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Everfrost</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        Since the changes in 11.4, Everfrost has been ever-present on the Rift. It's cool that players have found
+        interesting ways to utilize all three Mythics, but Everfrost's damage was a little too high for its lockdown power,
+        so we're bringing that down.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">GLACIATE DAMAGE</span> <span class="attribute-before">125 (35% AP)</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">100 (30% AP)</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">GLACIATE COOLDOWN</span> <span class="attribute-before">20 seconds</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">30 seconds</span>
+      </div>
+    
+      <hr class="divider" />
+      <h4 class="change-detail-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt552a5f8914f372cd/6024d9b929a02c49ba1f6a3c/ItemSquareEternal_Winter.png"
+        />Eternal Winter (Ornn Upgrade)
+      </h4>
+      <br />
+    
+      <div class="attribute-change">
+        <span class="attribute">GLACIATE DAMAGE</span> <span class="attribute-before">125 (35% AP)</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">100 (30% AP)</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">GLACIATE COOLDOWN</span> <span class="attribute-before">20 seconds</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">30 seconds</span>
+      </div>
+    </div>`,
+    },
+    3036: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/3036.png"
+      /></a>
+      <h3 class="change-title" id="patch-Lord-Dominik-s-Regard">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Lord Dominik's Regard</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        Lord Dominik's Regard has quickly caught on as the go-to second purchase for marksfolk. We're adjusting it so it's
+        no longer a catch-all item, but rather something to be picked up specifically for facing tanky terrors.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">COST</span> <span class="attribute-before">2900 gold</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">3000 gold</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">35</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">30</span>
+      </div>
+    </div>`,
+    },
+    6694: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/6694.png"
+      /></a>
+      <h3 class="change-title" id="patch-Serylda-s-Grudge">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Serylda's Grudge</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        We've gotten over our grudge. Making Serylda's more accessible for assassins.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">COST</span> <span class="attribute-before">3400 gold</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">3200 gold</span>
+      </div>
+    </div>`,
+    },
+    3078: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/3078.png"
+      /></a>
+      <h3 class="change-title" id="patch-Trinity-Force">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Trinity Force</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        Trinity Force went a bit too heavy on attack speed, which cut it off from a larger audience. In turn, we're forcing
+        a new hand of stats (and Mythic passive!) that should make it feel like a real contender for more users.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">25</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">30</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK SPEED</span> <span class="attribute-before">35</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">30</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="new">new</span>ANOTHER FOLD</span>
+        <span class="attribute-after">Threefold Strike now stacks on towers</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">MYTHIC PASSIVE</span> <span class="attribute-before">10% attack speed</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">3 attack damage, 3 movement speed, 3 ability haste</span>
+      </div>
+    
+      <hr class="divider" />
+      <h4 class="change-detail-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt48d9a7973572002f/605c13668a6d130ee5e840cd/ItemSquareInfinity_Force.png"
+        />Infinity Force (Ornn Upgrade)
+      </h4>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">35</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">40</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">ATTACK SPEED</span> <span class="attribute-before">45</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">40</span>
+      </div>
+    </div>`,
+    },
+    6664: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/6664.png"
+      /></a>
+      <h3 class="change-title" id="patch-Turbo-Chemtank">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Turbo Chemtank</a>
+      </h3>
+      <br />
+      <blockquote class="blockquote context">
+        Turbo Chemtank quickly broke speed limits and our expectations, so we're shifting some power from its zoom to its
+        sloom.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">SUPERCHARGED BONUS MOVEMENT SPEED</span> <span class="attribute-before">75%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">60%</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">SUPERCHARGED SLOW</span> <span class="attribute-before">40%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">50%</span>
+      </div>
+    
+      <hr class="divider" />
+      <h4 class="change-detail-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt78a2af9cabf1a623/605c12b7dfb49b0f38b4b383/ItemSquareTurbocharged_Hexperiment.png"
+        />Turbocharged Hexperiment (Ornn Upgrade)
+      </h4>
+    
+      <div class="attribute-change">
+        <span class="attribute">SUPERCHARGED BONUS MOVEMENT SPEED</span> <span class="attribute-before">75%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">60%</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">SUPERCHARGED SLOW</span> <span class="attribute-before">40%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">50%</span>
+      </div>
+    </div>`,
+    },
+  },
   '11.6.1': {
     6673: {
       change: CHANGE_TYPES.nerf,

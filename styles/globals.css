@@ -195,7 +195,8 @@ audio {
   padding: 3rem;
   border: 1px solid var(--orange2);
 }
-.item-change-modal .reference-link {
+.item-change-modal .reference-link,
+.change-detail-title img {
   display: block;
   float: left;
   width: 3rem;
@@ -212,6 +213,9 @@ audio {
   letter-spacing: 2px;
   margin-bottom: 2rem;
   font-size: 1.75rem;
+}
+.item-change-modal .change-title + br {
+  display: none;
 }
 .item-change-modal .blockquote.context {
   position: relative;
@@ -240,7 +244,7 @@ audio {
   font-size: 1.125rem;
 }
 .item-change-modal .attribute-change:not(:last-of-type) {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .attribute {
   display: block;
@@ -260,6 +264,18 @@ audio {
 .item-change-modal .attribute-after,
 .item-change-modal .attribute-removed {
   color: var(--text5);
+}
+.item-change-modal .change-detail-title {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 2rem 0 1rem 0;
+  font-size: 1rem;
+}
+.item-change-modal .divider {
+  border: none;
+  border-bottom: 1px solid var(--accent2);
 }
 .attribute > * {
   --att-color: var(--text2);
