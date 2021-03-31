@@ -5,6 +5,8 @@ import { StateContext } from '../../StateContext';
 import Icon from '../Icon/';
 import styles from './Filters.module.css';
 
+import formatPatch from '../../helpers/formatPatch';
+
 const statGroups = [
   [
     { key: 'Damage', name: 'Attack Damage', icon: 'ad' },
@@ -62,11 +64,13 @@ const statGroups = [
 const StatFilters = ({ className }) => {
   const { state, setState } = useContext(StateContext);
 
+  const patch = formatPatch(state.patch);
+
   return (
     <div className={`${styles.filters} ${className}`}>
       <h3 className={styles.patchTitle}>
         <span>Patch: </span>
-        <span>{state.patch}</span>
+        <span>{patch}</span>
       </h3>
       <div className={styles.group}>
         <div

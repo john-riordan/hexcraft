@@ -5,13 +5,13 @@ import styles from './ItemTip.module.css';
 import ItemImage from '../ItemImage/';
 import { StateContext } from '../../StateContext';
 
+import formatPatch from '../../helpers/formatPatch';
+
 const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
 
   const itemChanged = item.patchChange;
-  const formattedPatch = `${state.patch.split('.')[0]}.${
-    state.patch.split('.')[1]
-  }`;
+  const patch = formatPatch(state.patch);
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ const ItemTooltip = ({ item }) => {
               }))
             }
           >
-            {itemChanged.change} in patch {formattedPatch}
+            {itemChanged.change} in patch {patch}
           </p>
           CLICK FOR DETAILS
         </div>
