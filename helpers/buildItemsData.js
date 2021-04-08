@@ -13,14 +13,14 @@ export function buildItemsData(
   );
 
   const usableItems = itemsArr
-    .filter((item) => item.gold.total && item.maps[11])
+    .filter(item => item.gold.total && item.maps[11])
     .sort((a, z) => a.gold.total - z.gold.total)
-    .map((item) => ({
+    .map(item => ({
       id: item.id,
       name: item.name,
       categories: patchChanges?.[item?.id]
         ? [...item.tags, 'Patch']
-        : [],
+        : [...item.tags],
       priceTotal: item.gold.total,
       from: item.from || [],
       stats: item.stats,
@@ -38,19 +38,19 @@ export function buildItemsData(
     }));
 
   const mythics = usableItems.filter(
-    (item) =>
+    item =>
       item.description?.includes('Mythic Passive:') ||
       item.id === '6632'
   );
 
   const legendaries = usableItems.filter(
-    (item) =>
+    item =>
       item.priceTotal > 1500 &&
       !item.description.includes('Mythic Passive:')
   );
 
   const epics = usableItems.filter(
-    (item) =>
+    item =>
       item.priceTotal <= 1500 &&
       item.priceTotal > 500 &&
       (item.from.length || item.name === 'Sheen') &&
@@ -58,7 +58,7 @@ export function buildItemsData(
   );
 
   const basics = usableItems.filter(
-    (item) =>
+    item =>
       !starter[item.id] &&
       item.priceTotal &&
       !item.from.length &&
@@ -77,8 +77,8 @@ export function buildItemsData(
   );
 
   const ornn = cdragonItems
-    .filter((item) => item.name.includes('%i:ornnIcon%'))
-    .map((item) => ({
+    .filter(item => item.name.includes('%i:ornnIcon%'))
+    .map(item => ({
       id: item.id,
       name: item.name.replace('%i:ornnIcon% ', ''),
       categories: item.categories,
@@ -101,23 +101,23 @@ export function buildItemsData(
     }, {});
 
   const boots = usableItems
-    .filter((item) => item.stats.FlatMovementSpeedMod)
+    .filter(item => item.stats.FlatMovementSpeedMod)
     .filter(
-      (item) => item.name !== 'Slightly Magical Footware'
+      item => item.name !== 'Slightly Magical Footware'
     );
 
   const starters = usableItems.filter(
-    (item) => starter[item.id]
+    item => starter[item.id]
   );
 
   return {
     ornn: ornn,
     items: usableItems
-      .map((item) => ({
+      .map(item => ({
         ...item,
         search:
           item.categories
-            .map((c) => c.toLowerCase())
+            .map(c => c.toLowerCase())
             .join() || '',
       }))
       .reduce(function (acc, cur, i) {
