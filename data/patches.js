@@ -1,6 +1,274 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
+  '11.8.1': {
+    6617: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.7.1/img/item/6617.png"
+      /></a>
+      <h3 class="change-title" id="patch-Moonstone-Renewer">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Moonstone Renewer</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        With Moonstone Renewer as the only Mythic that truly fulfilled enchanter’s dreams, they haven’t had much of a
+        selection to choose from. To expand their horizons and inventories, we’re adjusting the following items to be picked
+        up based on the situation at hand: Moonstone for more heals and shields, and Shurelya’s for more nimble feet and
+        aggressive plays. We don’t want to overload the game with movement speed, so we’re also pivoting Staff of Flowing
+        Water to focus from fast zooms to AP booms.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">STARLIT GRACE HEAL</span>
+        <span class="attribute-before">50-100 (based on target's level)</span> <span class="change-indicator">⇒</span>
+        <span class="attribute-after">60 (at all levels)</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">STARLIT GRACE HEAL AMPLIFICATION</span>
+        <span class="attribute-before"
+          >Each second spent in combat increases the base heal by 12.5%, stacking up to 4 times, up to 50%</span
+        >
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after"
+          >Each second spent in combat increases your healing and shielding power by 4%, stacking up to 5 times, up to
+          20%</span
+        >
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">MYTHIC PASSIVE</span>
+        <span class="attribute-before">Empowers each of your other Legendary items with 5 ability haste</span>
+        <span class="change-indicator"> ⇒ </span> <span class="attribute-after">Increases Starlit Grace’s heal by 10</span>
+      </div>
+    </div>`,
+    },
+    2065: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.7.1/img/item/2065.png"
+      /></a>
+      <h3 class="change-title" id="patch-Shurelyas-Battlesong">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Shurelya's Battlesong</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        With Moonstone Renewer as the only Mythic that truly fulfilled enchanter’s dreams, they haven’t had much of a
+        selection to choose from. To expand their horizons and inventories, we’re adjusting the following items to be picked
+        up based on the situation at hand: Moonstone for more heals and shields, and Shurelya’s for more nimble feet and
+        aggressive plays. We don’t want to overload the game with movement speed, so we’re also pivoting Staff of Flowing
+        Water to focus from fast zooms to AP booms.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="removed">removed</span>INSPIRE DAMAGE EMPOWERMENT</span>
+        <span class="attribute-removed"
+          >No longer empowers the next 3 instances of damage to deal an additional 35-55 magic damage</span
+        >
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="new">new</span>PASSIVE - MOTIVATE</span>
+        <span class="attribute-after"
+          >Empowering or protecting another allied champion (excluding yourself) grants both allies 25% movement speed over
+          1.5 seconds</span
+        >
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">MYTHIC PASSIVE</span> <span class="attribute-before">3% movement speed</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">5 ability haste</span>
+      </div>
+    </div>`,
+    },
+    6616: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.7.1/img/item/6616.png"
+      /></a>
+      <h3 class="change-title" id="patch-Staff-of-Flowing-Water">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Staff of Flowing Water</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        With Moonstone Renewer as the only Mythic that truly fulfilled enchanter’s dreams, they haven’t had much of a
+        selection to choose from. To expand their horizons and inventories, we’re adjusting the following items to be picked
+        up based on the situation at hand: Moonstone for more heals and shields, and Shurelya’s for more nimble feet and
+        aggressive plays. We don’t want to overload the game with movement speed, so we’re also pivoting Staff of Flowing
+        Water to focus from fast zooms to AP booms.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">RAPIDS</span>
+        <span class="attribute-before"
+          >Grants 15% bonus movement speed and 20-40 (based on target's level) AP for 3 seconds</span
+        >
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">Grants 20 ability haste and 20-40 AP for 4 seconds</span>
+      </div>
+    </div>`,
+    },
+    3110: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.7.1/img/item/3110.png"
+      /></a>
+      <h3 class="change-title" id="patch-Frozen-Heart">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Frozen Heart</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        Frozen Heart’s been getting looked over in the tank item department. Have some heart (and more armor, while you’re
+        at it).
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">ARMOR</span> <span class="attribute-before">70</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">80</span>
+      </div>
+    </div>`,
+    },
+    3011: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.2.1/img/item/3011.png"
+      /></a>
+      <h3 class="change-title" id="patch-Frozen-Heart">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Chemtech Putrifier</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        We set out to make Chemtech Putrifier a more sought after choice for supports by substantially broadening its use
+        cases. First and foremost, we’re making it so you have to target an ally to receive the benefits yourself (much like
+        Ardent Censer and Staff of Flowing Water). The ability to apply it to oneself didn't seem to have significant power
+        implications, but it did have odd interactions (like with Ravenous Hunter) that were not intended. In addition,
+        we’re giving the item a slight buff because it's still a bit niche and underperforms compared to other options.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">ABILITY POWER</span> <span class="attribute-before">50</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">55</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="updated">updated</span>PUFFCAP TOXIN ALLY EMPOWERMENT</span>
+        <span class="attribute-before"
+          >Healing or shielding an allied champion (including yourself) empowers the ally’s next damage to an enemy champion
+          with 60% Grievous Wounds for 3 seconds</span
+        >
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after"
+          >Healing or shielding another allied champion (excluding yourself) empowers both the ally’s <em>and</em> your next
+          damage to an enemy champion with 60% Grievous Wounds for 3 seconds</span
+        >
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="updated">updated</span>TOOLTIP CONSISTENCY</span>
+        <span class="attribute-after"
+          >To match Chemtech Putrifier, Ardent Censer’s tooltip has been updated to specify the requirement of
+          <strong>another</strong> ally. Their functionality is entirely unchanged.</span
+        >
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="new">new</span>NO MORE GRIEVANCES</span>
+        <span class="attribute-after"
+          >Items that apply Grievous Wounds will now be called out in chat to notify your team when purchased</span
+        >
+      </div>
+    </div>`,
+    },
+    3158: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a
+        class="reference-link"
+        href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt527d49336b821803/5fa1f004432f517518d427b4/3158_Class_T2_IonianBootsofLucidity.png"
+        ><img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt527d49336b821803/5fa1f004432f517518d427b4/3158_Class_T2_IonianBootsofLucidity.png"
+      /></a>
+      <h3 class="change-title" id="patch-Ionian-Boots-of-Lucidity">
+        <a
+          href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt527d49336b821803/5fa1f004432f517518d427b4/3158_Class_T2_IonianBootsofLucidity.png"
+          >Ionian Boots of Lucidity</a
+        >
+      </h3>
+    
+      <blockquote class="blockquote context">
+        These kicks have become very popular in Pro play, crowding out other footwear options in the jungle. We’re slapping
+        on a higher price tag since their cost is a contributor to an unsustainable jungle meta centered around fast clears
+        and fast ganks at low costs.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">TOTAL COST</span> <span class="attribute-before">900 gold</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">950 gold</span>
+      </div>
+    </div>`,
+    },
+    3152: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltdd5b5a3fcbadb7f7/5fffbe7d22252d41f7286fac/Hextech_Rocketbelt_item.png"
+      /></a>
+      <h3 class="change-title" id="patch-hextech-rocketbelt">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Hextech Rocketbelt</a>
+      </h3>
+    
+      <blockquote class="blockquote context">
+        Night Harvester tends to be purchased more and performs better than Rocketbelt, even by one of the item’s intended
+        audiences—champions who aim to assassinate single targets. We’re bringing it back into style by sharpening the
+        differences between the two items.
+      </blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">HEALTH</span> <span class="attribute-before">350</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">250</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="new">new</span>MAGIC PENETRATION</span> <span class="attribute-after">6</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute">UPGRADED AEROPACK (ORNN UPGRADE) HEALTH</span> <span class="attribute-before">450</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">350</span>
+      </div>
+    
+      <div class="attribute-change">
+        <span class="attribute"><span class="new">new</span>UPGRADED AEROPACK (ORNN UPGRADE) MAGIC PENETRATION</span>
+        <span class="attribute-after">10</span>
+      </div>
+    </div>`,
+    },
+    3748: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.7.1/img/item/3748.png"
+      /></a>
+      <h3 class="change-title" id="patch-Titanic-Hydra">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Titanic Hydra</a>
+      </h3>
+    
+      <blockquote class="blockquote context">Shifting its power away from early game and low-health builds.</blockquote>
+    
+      <div class="attribute-change">
+        <span class="attribute">COLOSSUS BONUS AD</span> <span class="attribute-before">Equal to 1% maximum health</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">Equal to 2% bonus health</span>
+      </div>
+    </div>`,
+    },
+  },
   '11.7.1': {
     3508: {
       change: CHANGE_TYPES.nerf,
