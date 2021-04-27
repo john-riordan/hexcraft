@@ -13,7 +13,7 @@ export function buildItemsData(
   );
 
   const usableItems = itemsArr
-    .filter(item => item.gold.total && item.maps[11])
+    .filter(item => item.gold.total && item.maps[11] && item.id < 7000)
     .sort((a, z) => a.gold.total - z.gold.total)
     .map(item => ({
       id: item.id,

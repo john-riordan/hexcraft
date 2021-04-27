@@ -1,6 +1,186 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
+  '11.9.1': {
+    3742: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/3742.png"
+      /></a>
+      <h3 class="change-title" id="patch-Dead-Mans-Plate">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Dead Man's Plate</a>
+      </h3>
+      <blockquote class="blockquote context">
+        Dead Man’s Plate is dominating as a second item choice for a wide range of champions, including tanks, fighters, and
+        juggernauts. We're reducing its raw defensive stats to highlight its unique mobility passive.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">HEALTH</span> <span class="attribute-before">400</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">300</span>
+      </div>
+    </div>`,
+    },
+    6333: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/6333.png"
+      /></a>
+      <h3 class="change-title" id="patch-Deaths-Dance">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Death's Dance</a>
+      </h3>
+      <blockquote class="blockquote context">
+        Death’s Dance has been a step behind its peers, so we’re bumping up its raw efficiency to bring it back in full
+        swing.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">50</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">55</span>
+      </div>
+      <div class="attribute-change">
+        <span class="attribute">ARMOR</span> <span class="attribute-before">40</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">45</span>
+      </div>
+    </div>`,
+    },
+    6617: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/6617.png"
+      /></a>
+      <h3 class="change-title" id="patch-Moonstone-Renewer">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Moonstone Renewer</a>
+      </h3>
+      <blockquote class="blockquote context">
+        Our adjustments to Moonstone in 11.8 left the item weaker than other options for supports, so we’re returning some
+        power back to its base healing, which should feel even more satisfying when combined with its heal and shield power.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">STARLIT GRACE HEAL</span> <span class="attribute-before">60</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">70</span>
+      </div>
+      <h4 class="change-detail-title ability-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte9b93915533059ea/6080e09bc661f15b3da7862a/4_27_21_ItemSquareStarcaster.png"
+        />Starcaster (Ornn Upgrade)
+      </h4>
+      <div class="attribute-change">
+        <span class="attribute">STARLIT GRACE HEAL</span> <span class="attribute-before">60</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">70</span>
+      </div>
+    </div>`,
+    },
+    6693: {
+      change: CHANGE_TYPES.change,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt24dfd987b154b12f/5fa1f0a31f9166620ed88bf9/6693_Assassin_T4_ProwlersClaw.png"
+      /></a>
+      <h3 class="change-title" id="patch-Prowlers-Claw">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Prowler's Claw</a>
+      </h3>
+      <blockquote class="blockquote context">
+        We’re adjusting the way Prowler’s Claw’s active targeting works to make it more user-friendly and forgiving, as it’s
+        been more challenging to use in some kits than intended. We’re not increasing the item’s actual range, but now if
+        you misclick slightly while trying to cast it in the middle of your combo, Prowler’s will hit the target you
+        probably meant to click on instead of doing nothing.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute"><span class="updated">updated</span>SANDSWIPE TARGETING</span>
+        <span class="attribute-before">Targets enemy exactly at the cursor</span> <span class="change-indicator">⇒</span>
+        <span class="attribute-after"
+          >Looks for a target in the following order: Nearest champion within 50 units of the cursor, nearest non-champion
+          within 50 units of the cursor, nearest champion within 200 units of cursor, nearest non-champion within 200 units
+          of cursor</span
+        >
+      </div>
+    </div>`,
+    },
+    3068: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/3068.png"
+      /></a>
+      <h3 class="change-title" id="patch-Sunfire-Aegis">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Sunfire Aegis</a>
+      </h3>
+      <blockquote class="blockquote context">
+        In the olden times, there was a sunnier era, or dare we say, a Sunfirey era. That was until the Chemtanks crushed
+        all who would dare oppose them. We’re bringing back the fire by helping Aegis melt down its enemies once more.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">IMMOLATE BONUS DAMAGE TO MONSTERS</span> <span class="attribute-before">100%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">150%</span>
+      </div>
+      <h4 class="change-detail-title ability-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt00ee244c73ce95c0/6080dc6feed217453bf27a5e/4_27_21_ItemSquareForgefire_Crest.png"
+        />Forgefire Crest (Ornn Upgrade)
+      </h4>
+      <div class="attribute-change">
+        <span class="attribute">IMMOLATE BONUS DAMAGE TO MONSTERS</span> <span class="attribute-before">100%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">150%</span>
+      </div>
+    </div>`,
+    },
+    6664: {
+      change: CHANGE_TYPES.nerf,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/6664.png"
+      /></a>
+      <h3 class="change-title" id="patch-Turbo-Chemtank">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Turbo Chemtank</a>
+      </h3>
+      <blockquote class="blockquote context">
+        With Turbo in tow, junglers are able to consistently engage and gank as they gallop in from across the map, so we’re
+        putting it on a tighter leash.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">BONUS MOVEMENT SPEED</span> <span class="attribute-before">60%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">40%</span>
+      </div>
+      <h4 class="change-detail-title ability-title">
+        <img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltf4a82bf58bb80820/6080dc6fe0753d466aa6c6ea/4_27_21_ItemSquareTurbocharged_Hexperiment.png"
+        />Turbocharged Hexperiment (Ornn Upgrade)
+      </h4>
+      <div class="attribute-change">
+        <span class="attribute">BONUS MOVEMENT SPEED</span> <span class="attribute-before">60%</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">40%</span>
+      </div>
+    </div>`,
+    },
+    3091: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/11.8.1/img/item/3091.png"
+      /></a>
+      <h3 class="change-title" id="patch-Wits-End">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Wit's End</a>
+      </h3>
+      <blockquote class="blockquote context">
+        For such a niche item, Wit's End lacks oomph, even when picked up in the right scenario. Adjusting the build path
+        and adding more damage should make it feel more powerful all around and appeal to more champions.
+      </blockquote>
+      <div class="attribute-change">
+        <span class="attribute">BUILD PATH</span>
+        <span class="attribute-before">Hearthbound Axe + Negatron Cloak + Dagger + 800 gold</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">Hearthbound Axe + Negatron Cloak + Long Sword + 750 gold</span>
+      </div>
+      <div class="attribute-change">
+        <span class="attribute">ATTACK DAMAGE</span> <span class="attribute-before">30</span>
+        <span class="change-indicator">⇒</span> <span class="attribute-after">40</span>
+      </div>
+    </div>`,
+    },
+  },
   '11.8.1': {
     6617: {
       change: CHANGE_TYPES.change,
