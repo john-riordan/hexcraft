@@ -10,6 +10,9 @@
 .imgFrame img {
   filter: contrast(1.1);
 }
+.imgFrame > div {
+  display: block !important;
+}
 
 .mythicBorder {
   position: absolute;
@@ -17,7 +20,11 @@
   left: -1px;
   bottom: -1px;
   right: -1px;
-  background: linear-gradient(to bottom, var(--orange1), var(--orange2));
+  background: linear-gradient(
+    to bottom,
+    var(--orange1),
+    var(--orange2)
+  );
 }
 .mythicBorder::before {
   content: '';
