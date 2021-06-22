@@ -1,3 +1,4 @@
+import { ORNN_ITEMS } from './constants';
 import { starter } from '../data/starter';
 
 export function buildItemsData(
@@ -13,7 +14,7 @@ export function buildItemsData(
   );
 
   const usableItems = itemsArr
-    .filter(item => item.gold.total && item.maps[11] && item.id < 7000)
+    .filter(item => item.gold.total && item.maps[11] && item?.requiredAlly !== 'Ornn')
     .sort((a, z) => a.gold.total - z.gold.total)
     .map(item => ({
       id: item.id,
