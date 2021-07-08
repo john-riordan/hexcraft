@@ -1,4 +1,4 @@
-import { ORNN_ITEMS } from './constants';
+import { BLACKLISTED_ITEMS } from './constants';
 import { starter } from '../data/starter';
 
 export function buildItemsData(
@@ -14,7 +14,11 @@ export function buildItemsData(
   );
 
   const usableItems = itemsArr
-    .filter(item => item.gold.total && item.maps[11] && item?.requiredAlly !== 'Ornn')
+    .filter(item => item.gold.total &&
+      /* Temporary due to Riot messing up info about items on maps */
+      // item.maps[11] &&
+      !Object.keys(BLACKLISTED_ITEMS).includes(item.id) &&
+      item?.requiredAlly !== 'Ornn')
     .sort((a, z) => a.gold.total - z.gold.total)
     .map(item => ({
       id: item.id,
