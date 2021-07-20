@@ -1,6 +1,37 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
+  '11.15.1': {
+    3181: {
+      change: CHANGE_TYPES.buff,
+      details: `<div>
+      <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"
+        ><img
+          src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt99f3441041dba5ca/60f5c98b1929bc58854d0054/Hullbreakerv2.png"
+      /></a>
+      <h3 class="change-title" id="patch-hullbreaker">
+        <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Hullbreaker</a>
+      </h3>
+      <blockquote class="blockquote context">
+        Hullbreaker could use some help as the game reaches later phases of the game. We’re giving more durability for
+        anyone who’s hunting alone.
+      </blockquote>
+      <hr class="divider" />
+      <div class="attribute-change">
+        <span class="attribute">BOARDING PARTY BONUS RESISTANCES</span>
+        <span class="attribute-before">20-45 bonus armor and bonus magic resistance (level 9-18)</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">20-60 bonus armor and bonus magic resistance (level 9-18)</span>
+      </div>
+      <div class="attribute-change">
+        <span class="attribute">BOARDING PARTY MINION BONUS RESISTANCES</span>
+        <span class="attribute-before">60-135 bonus armor and bonus magic resistance (level 9-18)</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">60-180 bonus armor and bonus magic resistance (level 9-18)</span>
+      </div>
+    </div>`,
+    },
+  },
   '11.14.1': {
     3742: {
       change: CHANGE_TYPES.buff,
