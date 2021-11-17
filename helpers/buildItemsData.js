@@ -74,10 +74,12 @@ export function buildItemsData(
       !item.name.includes('Perfectly Timed Stopwatch') &&
       item.name !== 'Sheen' &&
       item.id !== '2010' && // biscuit
-      item.id !== '3040' && // seraphs
-      item.id !== '3042' && // muramana
-      item.id !== '3043' && // muramana
-      item.id !== '3048' && // seraphs
+      item.id !== '3004' && // Manamune
+      item.id !== '3042' && // Muramana
+      item.id !== '3043' && // Archangel's Staff
+      item.id !== '3040' && // Seraph's Embrace
+      item.id !== '3119' && // Winter's Approach
+      item.id !== '3121' && // Fimbulwinter
       !item.categories.includes('Boots')
   );
 

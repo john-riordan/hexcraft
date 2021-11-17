@@ -1,6 +1,7 @@
-export const DDRAGON_PATCH = '11.15.1';
+export const DDRAGON_PATCH = '11.23.1';
 
 export const CHANGE_TYPES = {
+  new: 'New',
   buff: 'Buff',
   nerf: 'Nerf',
   change: 'Change',
