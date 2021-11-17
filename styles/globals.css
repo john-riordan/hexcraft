@@ -42,6 +42,7 @@
   --buff: #74f20e;
   --nerf: #fa134a;
   --change: #18d5ff;
+  --new: #ffc333;
 
   --controls-height: 4rem;
 
@@ -244,13 +245,13 @@ audio {
   font-size: 1.125rem;
 }
 .item-change-modal .attribute-change:not(:last-of-type) {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 .attribute {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.675rem;
   color: var(--text4);
   letter-spacing: 1px;
 }
@@ -320,8 +321,9 @@ audio {
   --att-color: var(--ap);
 }
 .attribute .new {
-  --att-color: var(--mana);
+  --att-color: var(--new);
 }
+
 span.attribute-before {
   color: var(--text3);
 }

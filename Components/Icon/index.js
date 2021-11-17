@@ -270,7 +270,11 @@ const Icon = ({ icon, ...rest }) => {
         </svg>
       );
     case 'new':
-      return 'New';
+      return (
+        <svg {...props}>
+          <path d="M24 4L30.2952 16.3354L43.9722 18.5106L34.1858 28.3096L36.3435 41.9894L24 35.71L11.6565 41.9894L13.8142 28.3096L4.02781 18.5106L17.7048 16.3354L24 4Z" />
+        </svg>
+      );
     case 'axe':
       return (
         <svg {...props}>

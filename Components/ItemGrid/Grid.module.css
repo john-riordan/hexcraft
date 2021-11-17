@@ -108,6 +108,10 @@
   fill: var(--buff);
   filter: drop-shadow(0px 2px 12px var(--buff));
 }
+.patchChange.new svg {
+  fill: var(--new);
+  filter: drop-shadow(0px 2px 12px var(--new));
+}
 .patchChange.nerf svg {
   fill: var(--nerf);
   filter: drop-shadow(0px 2px 12px var(--nerf));
