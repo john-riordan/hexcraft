@@ -4,7 +4,7 @@ import styles from './Image.module.css';
 
 const ItemImage = ({
   imgName,
-  alt = 'Season 2021 Item',
+  alt = 'Season 2022 Item',
   size = 64,
   className,
   isMythic = false,
