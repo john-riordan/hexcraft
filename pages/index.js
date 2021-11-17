@@ -95,21 +95,21 @@ export default function Home(props) {
             }}
           />
           <title>
-            LoL Shop - League of Legends Season 11 Item
+            LoL Shop - League of Legends Season 12 Item
             Changes
           </title>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="Description"
-            content="League of Legends Season 2021 / Season 11 Item Changes"
+            content="League of Legends Season 2022 / Season 12 Item Changes"
           />
           <meta
             property="og:title"
-            content="LoL Shop - League of Legends Season 11 Item Changes"
+            content="LoL Shop - League of Legends Season 12 Item Changes"
           />
           <meta
             property="og:description"
-            content="Season 2021 Pre-Season Item changes"
+            content="Season 2022 Pre-Season Item changes"
           />
           <meta property="og:type" content="website" />
           <meta
