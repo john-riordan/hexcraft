@@ -4,6 +4,7 @@ export const support = {
     3190: 'Locket of the Iron Solari',
     4005: 'Imperial Mandate',
     6617: 'Moonstone Renewer',
+    3001: "Evenshroud"
   },
   legendary: {
     3109: "Knight's Vow",

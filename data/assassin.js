@@ -18,6 +18,7 @@ export const assassin = {
     3074: 'Ravenous Hydra',
     3071: 'Black Cleaver',
     6694: "Serylda's Grudge",
+    6696: "Axiom Arc"
   },
   epic: {
     1031: 'Chain Vest',
