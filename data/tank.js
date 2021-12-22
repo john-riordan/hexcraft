@@ -20,6 +20,8 @@ export const tank = {
     3053: "Sterak's Gage",
     3193: 'Gargoyle Stoneplate',
     3748: 'Titanic Hydra',
+    3119: "Winter's Approach",
+    3121: "Fimbulwinter"
   },
   epic: {
     3801: 'Crystalline Bracer',
