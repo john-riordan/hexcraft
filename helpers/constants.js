@@ -1,4 +1,4 @@
-export const DDRAGON_PATCH = '11.24.1';
+export const DDRAGON_PATCH = '12.3.1';
 
 export const CHANGE_TYPES = {
   new: 'New',
