@@ -260,7 +260,7 @@ const Icon = ({ icon, ...rest }) => {
     case 'change':
       return (
         <svg {...props}>
-          <rect x='8' y='18' width='32' height='12' />
+          <path d="M37 24C37 31.1797 31.1797 37 24 37C16.8203 37 11 31.1797 11 24C11 16.8203 16.8203 11 24 11C31.1797 11 37 16.8203 37 24Z" />
         </svg>
       );
     case 'buff':
