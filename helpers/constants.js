@@ -1,4 +1,4 @@
-export const DDRAGON_PATCH = '12.3.1';
+export const DDRAGON_PATCH = '12.7.1';
 
 export const CHANGE_TYPES = {
   new: 'New',
@@ -12,5 +12,6 @@ export const BLACKLISTED_ITEMS = {
   3112: "Guardian's Orb",
   3177: "Guardian's Blad",
   3184: "Guardian's Hammer",
-  4403: "The Golden Spatula",
-}
+  4403: 'The Golden Spatula',
+  7023: 'Equinox', // Rito didnt flag this as an Ornn item
+};
