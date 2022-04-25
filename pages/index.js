@@ -44,26 +44,19 @@ export default function Home(props) {
     soundCant: cantRef,
   });
 
-  const inventory = router.query?.i
-    ? router.query?.i?.split(',')
-    : [];
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
-  const items = inventory.map(
-    (item) => itemsData.items[item]
-  );
-  const cost = items.reduce(
-    (acc, curr) => acc + curr.priceTotal,
-    0
-  );
+  const items = inventory.map(item => itemsData.items[item]);
+  const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
 
   let hasMythic = false;
-  items.forEach((item) => {
+  items.forEach(item => {
     const isMythic = itemsData.mythicDictionary[item.id];
     if (isMythic) hasMythic = true;
   });
 
   useEffect(() => {
-    setState((prev) => ({
+    setState(prev => ({
       ...prev,
       inventoryHasMythic: hasMythic,
       inventoryCost: cost,
@@ -81,7 +74,7 @@ export default function Home(props) {
           <script
             script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2"
+            src='https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2'
           />
           <script
             dangerouslySetInnerHTML={{
@@ -94,38 +87,26 @@ export default function Home(props) {
               `,
             }}
           />
-          <title>
-            LoL Shop - League of Legends Season 12 Item
-            Changes
-          </title>
-          <link rel="icon" href="/favicon.ico" />
+          <title>LoL Shop - League of Legends Season 12 Item Changes</title>
+          <link rel='icon' href='/favicon.ico' />
           <meta
-            name="Description"
-            content="League of Legends Season 2022 / Season 12 Item Changes"
+            name='Description'
+            content='League of Legends Season 2022 / Season 12 Item Changes'
           />
           <meta
-            property="og:title"
-            content="LoL Shop - League of Legends Season 12 Item Changes"
+            property='og:title'
+            content='LoL Shop - League of Legends Season 12 Item Changes'
           />
           <meta
-            property="og:description"
-            content="Season 2022 Pre-Season Item changes"
+            property='og:description'
+            content='Season 2022 Pre-Season Item changes'
           />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:url"
-            content="https://lolshop.gg"
-          />
-          <meta
-            property="og:image"
-            content="https://lolshop.gg/lolshop.jpg"
-          />
-          <meta
-            property="og:image:type"
-            content="image/jpeg"
-          />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="627" />
+          <meta property='og:type' content='website' />
+          <meta property='og:url' content='https://lolshop.gg' />
+          <meta property='og:image' content='https://lolshop.gg/lolshop.jpg' />
+          <meta property='og:image:type' content='image/jpeg' />
+          <meta property='og:image:width' content='1200' />
+          <meta property='og:image:height' content='627' />
         </Head>
 
         <div className={styles.main}>
@@ -138,7 +119,7 @@ export default function Home(props) {
             <div
               className={styles.detailsOverlay}
               onClick={() =>
-                setState((prev) => ({
+                setState(prev => ({
                   ...prev,
                   selectedItem: null,
                 }))
@@ -150,13 +131,9 @@ export default function Home(props) {
         {inventory?.length ? <Inventory /> : null}
       </div>
       {state.modal && <Modal />}
-      <audio
-        controls
-        src="/purchase.mp3"
-        ref={purchaseRef}
-      />
-      <audio controls src="/sell.mp3" ref={sellRef} />
-      <audio controls src="/cant.mp3" ref={cantRef} />
+      <audio controls src='/purchase.mp3' ref={purchaseRef} />
+      <audio controls src='/sell.mp3' ref={sellRef} />
+      <audio controls src='/cant.mp3' ref={cantRef} />
     </StateContext.Provider>
   );
 }
