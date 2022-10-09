@@ -14,14 +14,15 @@ const ItemImage = ({
     className={`${styles.imgFrame} ${inline && styles.inline}  ${className}`}
   >
     {isMythic && <div className={styles.mythicBorder} />}
-    <Image
+    <img src={imgName} alt={alt} width={size} height={size} loading='lazy' />
+    {/* <Image
       src={`/${imgName}`}
       width={size}
       height={size}
       quality={80}
       alt={alt}
       loading="lazy"
-    />
+    /> */}
   </div>
 );
 

@@ -18,9 +18,7 @@ const ItemTooltip = ({ item }) => {
       <div className={styles.header}>
         <ItemImage
           imgName={item.iconPath}
-          isMythic={
-            state.itemsData.mythicDictionary[item.id]
-          }
+          isMythic={state.itemsData.mythicDictionary[item.id]}
           alt={item.name}
           size={48}
         />
@@ -36,21 +34,17 @@ const ItemTooltip = ({ item }) => {
         }}
       />
       {itemChanged && (
-        <div className="attribute">
+        <div className='attribute'>
           <p
             className={`${itemChanged.change.toLowerCase()}`}
             onClick={() =>
-              setState((prev) => ({
+              setState(prev => ({
                 ...prev,
-                modal: (
-                  <PatchChangeDetails
-                    content={itemChanged.details}
-                  />
-                ),
+                modal: <PatchChangeDetails content={itemChanged.details} />,
               }))
             }
           >
-            {itemChanged.change} in patch {patch}
+            {itemChanged.change} in {patch}
           </p>
           CLICK FOR DETAILS
         </div>

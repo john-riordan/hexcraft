@@ -21,6 +21,8 @@ import styles from '../styles/Home.module.css';
 export default function Home(props) {
   const { patch, itemsData, latestPatchChanges } = props;
 
+  console.log(itemsData);
+
   const router = useRouter();
   const purchaseRef = useRef(null);
   const sellRef = useRef(null);
@@ -149,7 +151,8 @@ export async function getStaticProps() {
   );
   const ddragonItems = await ddragon.json();
 
-  const latestPatchChanges = PATCHES[DDRAGON_PATCH];
+  // const latestPatchChanges = PATCHES[DDRAGON_PATCH];
+  const latestPatchChanges = PATCHES['Season 2023'];
 
   return {
     props: {

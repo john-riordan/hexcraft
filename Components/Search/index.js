@@ -18,7 +18,7 @@ const Search = () => {
   const results = state.search?.length
     ? Object.values(state.itemsData?.items)
         .filter(
-          (item) =>
+          item =>
             item.name.toLowerCase().includes(state.search) ||
             item.search.includes(state.search) ||
             item.description.toLowerCase().includes(state.search)
@@ -31,22 +31,22 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
-        <Icon icon="search" className={styles.search} />
+        <Icon icon='search' className={styles.search} />
         <input
           className={styles.input}
-          type="text"
-          placeholder="Search"
+          type='text'
+          placeholder='Search'
           value={state.search}
-          onClick={() => setState((prev) => ({ ...prev, searchOpen: true }))}
-          onChange={(e) => {
-            setState((prev) => ({ ...prev, search: e.target.value }));
+          onClick={() => setState(prev => ({ ...prev, searchOpen: true }))}
+          onChange={e => {
+            setState(prev => ({ ...prev, search: e.target.value }));
           }}
         />
         {state.searchOpen && (
           <Icon
-            icon="close"
+            icon='close'
             className={styles.close}
-            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
+            onClick={() => setState(prev => ({ ...prev, searchOpen: false }))}
           />
         )}
       </div>
@@ -54,21 +54,21 @@ const Search = () => {
         <>
           <div className={styles.resultsFrame}>
             <div className={styles.resultsList}>
-              {results.map((item) => (
+              {results.map(item => (
                 <div
                   key={item.id}
                   className={`${styles.result} ${
                     hovered?.id === item.id && styles.resultSelected
                   }`}
                   onClick={() =>
-                    setState((prev) => ({
+                    setState(prev => ({
                       ...prev,
                       selectedItem: item,
                       searchOpen: false,
                     }))
                   }
                   onMouseOver={() => setHovered(item)}
-                  onContextMenu={(e) => {
+                  onContextMenu={e => {
                     e.preventDefault();
                     const isMythic = state.itemsData.mythicDictionary[item.id];
                     if (
@@ -84,7 +84,7 @@ const Search = () => {
                       router.replace(`?${params}`, undefined, {
                         shallow: true,
                       });
-                      setState((prev) => ({
+                      setState(prev => ({
                         ...prev,
                         searchOpen: false,
                       }));
@@ -97,7 +97,7 @@ const Search = () => {
                       router.replace(`?${params}`, undefined, {
                         shallow: true,
                       });
-                      setState((prev) => ({
+                      setState(prev => ({
                         ...prev,
                         searchOpen: false,
                       }));
@@ -153,24 +153,24 @@ const Search = () => {
           </div>
           <div
             className={styles.overlay}
-            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
+            onClick={() => setState(prev => ({ ...prev, searchOpen: false }))}
           />
         </>
       )}
       <div className={styles.controls}>
         <Tabs />
         <Tippy
-          placement="right-start"
-          offset="0, 10"
+          placement='right-start'
+          offset='0, 10'
           duration={0}
           content={'Reverse Order'}
         >
           <button
-            name="Change Sort Direction"
+            name='Change Sort Direction'
             className={`${styles.orderBtn} ${state.desc && styles.active}`}
-            onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
+            onClick={() => setState(prev => ({ ...prev, desc: !prev.desc }))}
           >
-            <Icon icon="order" />
+            <Icon icon='order' />
           </button>
         </Tippy>
       </div>

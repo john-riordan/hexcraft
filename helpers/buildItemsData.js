@@ -2,9 +2,14 @@ import { BLACKLISTED_ITEMS } from './constants';
 import { starter } from '../data/starter';
 
 export function buildItemsData(items, cdragonItems, patchChanges) {
-  const itemsArr = Object.entries(items).map(([id, itemStats]) => ({
+  const itemsArr = cdragonItems.map(itemStats => ({
     ...itemStats,
-    id,
+    id: Number(itemStats.id),
+    tags: itemStats.categories ?? [],
+    stats: items[itemStats.id]?.stats ?? {},
+    gold: {
+      total: itemStats.priceTotal,
+    },
   }));
 
   const usableItems = itemsArr
@@ -14,9 +19,11 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
         /* Temporary due to Riot messing up info about items on maps */
         // item.maps[11] &&
         !Object.keys(BLACKLISTED_ITEMS).includes(item.id) &&
-        item?.requiredAlly !== 'Ornn'
+        item?.requiredAlly !== 'Ornn' &&
+        !item.description.includes('ornnBonus') &&
+        item.id !== 4403
     )
-    .sort((a, z) => a.gold.total - z.gold.total)
+    .sort((a, z) => z.gold.total - a.gold.total)
     .map(item => ({
       id: item.id,
       name: item.name,
@@ -26,7 +33,13 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
       priceTotal: item.gold.total,
       from: item.from || [],
       stats: item.stats,
-      iconPath: `${item.id}.png`,
+      iconPath: item.id ? `${item.id}.png` : '',
+      iconPath: `${item.iconPath
+        .replace(
+          '/lol-game-data/assets/ASSETS',
+          'https://raw.communitydragon.org/pbe/game/assets'
+        )
+        .toLowerCase()}`,
       patchChange: patchChanges?.[item?.id] || null,
       description: item.description
         .replace(
@@ -67,13 +80,17 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
       !item.name.includes('Broken Stopwatch') &&
       !item.name.includes('Perfectly Timed Stopwatch') &&
       item.name !== 'Sheen' &&
-      item.id !== '2010' && // biscuit
-      item.id !== '3004' && // Manamune
-      item.id !== '3042' && // Muramana
-      item.id !== '3043' && // Archangel's Staff
-      item.id !== '3040' && // Seraph's Embrace
-      item.id !== '3119' && // Winter's Approach
-      item.id !== '3121' && // Fimbulwinter
+      item.id !== 1040 &&
+      item.id !== 2001 &&
+      item.id !== 2007 &&
+      item.id !== 2008 &&
+      item.id !== 2010 && // biscuit
+      item.id !== 3004 && // Manamune
+      item.id !== 3042 && // Muramana
+      item.id !== 3043 && // Archangel's Staff
+      item.id !== 3040 && // Seraph's Embrace
+      item.id !== 3119 && // Winter's Approach
+      item.id !== 3121 && // Fimbulwinter
       !item.categories.includes('Boots')
   );
 
