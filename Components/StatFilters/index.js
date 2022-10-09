@@ -64,7 +64,8 @@ const statGroups = [
 const StatFilters = ({ className }) => {
   const { state, setState } = useContext(StateContext);
 
-  const patch = formatPatch(state.patch);
+  // const patch = formatPatch(state.patch);
+  const patch = 'Season 2023';
 
   return (
     <div className={`${styles.filters} ${className}`}>
@@ -79,12 +80,12 @@ const StatFilters = ({ className }) => {
           }`}
           onClick={() => {
             if (state.stat === 'Patch') {
-              setState((prev) => ({
+              setState(prev => ({
                 ...prev,
                 stat: null,
               }));
             } else {
-              setState((prev) => ({
+              setState(prev => ({
                 ...prev,
                 stat: 'Patch',
               }));
@@ -92,47 +93,41 @@ const StatFilters = ({ className }) => {
           }}
         >
           <Tippy
-            placement="right"
-            offset="0, 0"
+            placement='right'
+            offset='0, 0'
             duration={0}
-            content={
-              <div className={styles.tooltip}>
-                Patch Changes
-              </div>
-            }
+            content={<div className={styles.tooltip}>Patch Changes</div>}
           >
             <div>
               <Icon
-                icon="mask"
+                icon='mask'
                 className={styles.statIcon}
-                viewBox="0 0 48 48"
+                viewBox='0 0 48 48'
               />
             </div>
           </Tippy>
           <span>Patch Changes</span>
           {state.stat === 'Patch' && (
-            <Icon icon="close" className={styles.close} />
+            <Icon icon='close' className={styles.close} />
           )}
         </div>
       </div>
       {statGroups.map((group, i) => (
         <div key={i} className={styles.group}>
-          {group.map((stat) => {
+          {group.map(stat => {
             const isActive = state.stat === stat.key;
             return (
               <div
                 key={stat.name}
-                className={`${styles.statItem} ${
-                  isActive && styles.active
-                }`}
+                className={`${styles.statItem} ${isActive && styles.active}`}
                 onClick={() => {
                   if (isActive) {
-                    setState((prev) => ({
+                    setState(prev => ({
                       ...prev,
                       stat: null,
                     }));
                   } else {
-                    setState((prev) => ({
+                    setState(prev => ({
                       ...prev,
                       stat: stat.key,
                     }));
@@ -142,31 +137,22 @@ const StatFilters = ({ className }) => {
                 {stat.icon && (
                   <Tippy
                     key={stat.name}
-                    placement="right"
-                    offset="0, 0"
+                    placement='right'
+                    offset='0, 0'
                     duration={0}
-                    content={
-                      <div className={styles.tooltip}>
-                        {stat.name}
-                      </div>
-                    }
+                    content={<div className={styles.tooltip}>{stat.name}</div>}
                   >
                     <div>
                       <Icon
                         icon={stat.icon}
                         className={styles.statIcon}
-                        viewBox="0 0 48 48"
+                        viewBox='0 0 48 48'
                       />
                     </div>
                   </Tippy>
                 )}
                 <span>{stat.name}</span>
-                {isActive && (
-                  <Icon
-                    icon="close"
-                    className={styles.close}
-                  />
-                )}
+                {isActive && <Icon icon='close' className={styles.close} />}
               </div>
             );
           })}

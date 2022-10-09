@@ -3,11 +3,14 @@
   display: block;
   padding: 0.125rem;
   border: 1px solid var(--accent1);
+  aspect-ratio: 1;
 }
 .imgFrame.inline {
   display: inline-block;
 }
 .imgFrame img {
+  display: block;
+  aspect-ratio: 1;
   filter: contrast(1.1);
 }
 .imgFrame span {
@@ -21,6 +24,7 @@
   bottom: -1px;
   right: -1px;
   background: linear-gradient(to bottom, var(--orange1), var(--orange2));
+  aspect-ratio: 1;
 }
 .mythicBorder::before {
   content: '';
@@ -31,4 +35,5 @@
   right: 2px;
   box-shadow: inset 0 0 0 2px var(--surface1);
   z-index: 1;
+  aspect-ratio: 1;
 }

@@ -16,15 +16,11 @@ const ItemDetails = ({ className }) => {
 
   const builtFrom = selectedItem
     ? Object.values(state.itemsData.items)
-        .filter((item) =>
-          item.from.includes(selectedItem.id)
-        )
+        .filter(item => item.from.includes(selectedItem.id))
         .slice(0, MAX_FROM)
     : [];
 
-  const empty = [
-    ...Array(MAX_FROM - builtFrom.length).keys(),
-  ];
+  const empty = [...Array(MAX_FROM - builtFrom.length).keys()];
 
   return (
     <div
@@ -34,10 +30,10 @@ const ItemDetails = ({ className }) => {
     >
       {selectedItem && (
         <Icon
-          icon="close"
+          icon='close'
           className={styles.close}
           onClick={() =>
-            setState((prev) => ({
+            setState(prev => ({
               ...prev,
               selectedItem: null,
             }))
@@ -48,18 +44,18 @@ const ItemDetails = ({ className }) => {
         {selectedItem ? 'Builds Into' : 'Select an Item'}
       </p>
       <div className={styles.buildsFrom}>
-        {builtFrom.map((item) => (
+        {builtFrom.map(item => (
           <Tippy
             key={item.name}
-            placement="bottom"
-            offset="0, 10"
+            placement='bottom'
+            offset='0, 10'
             duration={0}
             content={<ItemTooltip item={item} />}
           >
             <div
               className={styles.itemFrom}
               onClick={() =>
-                setState((prev) => ({
+                setState(prev => ({
                   ...prev,
                   selectedItem: item,
                 }))
@@ -71,27 +67,23 @@ const ItemDetails = ({ className }) => {
                 className={styles.imgFrame}
                 size={36}
                 alt={item.name}
-                isMythic={
-                  state.itemsData.mythicDictionary[item.id]
-                }
+                isMythic={state.itemsData.mythicDictionary[item.id]}
               />
             </div>
           </Tippy>
         ))}
-        {empty.map((i) => (
+        {empty.map(i => (
           <div key={i}>
             <ItemImage
               size={36}
               className={styles.imgFrame}
-              imgName="empty.png"
-              alt="Empty Item"
+              imgName='empty.png'
+              alt='Empty Item'
             />
           </div>
         ))}
       </div>
-      {selectedItem && (
-        <BuildTree imageSize={58} item={selectedItem.id} />
-      )}
+      {selectedItem && <BuildTree imageSize={58} item={selectedItem.id} />}
     </div>
   );
 };

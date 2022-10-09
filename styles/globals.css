@@ -71,9 +71,8 @@ body {
   margin: 0;
   font-size: 1em;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 @media (max-width: 1400px) {
@@ -86,9 +85,8 @@ body {
 input,
 button {
   all: unset;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 button {
@@ -102,6 +100,7 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 svg {
@@ -153,7 +152,8 @@ attackSpeed {
 scaleMana {
   color: var(--mana);
 }
-healing {
+healing,
+scalehealth {
   color: var(--health);
 }
 rarityMythic {
@@ -251,7 +251,7 @@ audio {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 600;
-  font-size: 0.675rem;
+  font-size: 0.875rem;
   color: var(--text4);
   letter-spacing: 1px;
 }
