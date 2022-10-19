@@ -6,6 +6,7 @@ export const tank = {
     3084: 'Heartsteel',
     6667: 'Radiant Virtue',
     6665: `Jak'Sho, The Protean`,
+    6657: 'Rod of Ages',
   },
   legendary: {
     3068: 'Sunfire Aegis',
