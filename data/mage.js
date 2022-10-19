@@ -6,7 +6,8 @@ export const mage = {
     6653: "Liandry's Anguish",
     6655: "Luden's Tempest",
     6656: 'Everfrost',
-    4644: "Crown of the Shattered Queen"
+    4644: 'Crown of the Shattered Queen',
+    6657: 'Rod of Ages',
   },
   legendary: {
     3041: "Mejai's Soulstealer",
@@ -22,7 +23,7 @@ export const mage = {
     4629: 'Cosmic Drive',
     4637: 'Demonic Embrace',
     3089: "Rabadon's Deathcap",
-    4645: "Shadowflame"
+    4645: 'Shadowflame',
   },
   epic: {
     3057: 'Sheen',

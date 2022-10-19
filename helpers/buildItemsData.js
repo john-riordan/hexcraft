@@ -53,12 +53,17 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
     }));
 
   const mythics = usableItems.filter(
-    item => item.description?.includes('Mythic Passive:') || item.id === '6632'
+    item =>
+      item.description?.includes('Mythic Passive:') ||
+      item.id === '6632' ||
+      item.id === 6662
   );
 
   const legendaries = usableItems.filter(
     item =>
-      item.priceTotal > 1500 && !item.description.includes('Mythic Passive:')
+      (item.priceTotal > 1500 &&
+        !item.description.includes('Mythic Passive:')) ||
+      item.id !== 6662
   );
 
   const epics = usableItems.filter(

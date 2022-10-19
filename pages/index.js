@@ -21,8 +21,6 @@ import styles from '../styles/Home.module.css';
 export default function Home(props) {
   const { patch, itemsData, latestPatchChanges } = props;
 
-  console.log(itemsData);
-
   const router = useRouter();
   const purchaseRef = useRef(null);
   const sellRef = useRef(null);
@@ -89,19 +87,20 @@ export default function Home(props) {
               `,
             }}
           />
-          <title>LoL Shop - League of Legends Season 12 Item Changes</title>
+          <title>LoL Shop - League of Legends Season 13 Item Changes</title>
           <link rel='icon' href='/favicon.ico' />
+          <meta name='darkreader-lock' />
           <meta
             name='Description'
-            content='League of Legends Season 2022 / Season 12 Item Changes'
+            content='League of Legends Season 2023 / Season 13 Item Changes'
           />
           <meta
             property='og:title'
-            content='LoL Shop - League of Legends Season 12 Item Changes'
+            content='LoL Shop - League of Legends Season 13 Item Changes'
           />
           <meta
             property='og:description'
-            content='Season 2022 Pre-Season Item changes'
+            content='Season 2023 Pre-Season Item changes'
           />
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://lolshop.gg' />

@@ -30,5 +30,13 @@ export const PATCHES = {
       change: CHANGE_TYPES.new,
       details: null,
     },
+    6665: {
+      change: CHANGE_TYPES.new,
+      details: null,
+    },
+    6662: {
+      change: CHANGE_TYPES.new,
+      details: null,
+    },
   },
 };
