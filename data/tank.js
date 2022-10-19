@@ -2,11 +2,14 @@ export const tank = {
   mythic: {
     2065: "Shurelya's Battlesong",
     3190: 'Locket of the Iron Solari',
-    3068: 'Sunfire Aegis',
-    6662: 'Frostfire Gauntlet',
-    6664: 'Turbo Chemtank',
+    6662: 'Iceborn Gauntlet',
+    3084: 'Heartsteel',
+    6667: 'Radiant Virtue',
+    6665: `Jak'Sho, The Protean`,
   },
   legendary: {
+    3068: 'Sunfire Aegis',
+    6664: 'Turbo Chemtank',
     3109: "Knight's Vow",
     3050: "Zeke's Convergence",
     3001: 'Abyssal Mask',
@@ -21,7 +24,7 @@ export const tank = {
     3193: 'Gargoyle Stoneplate',
     3748: 'Titanic Hydra',
     3119: "Winter's Approach",
-    3121: "Fimbulwinter"
+    3121: 'Fimbulwinter',
   },
   epic: {
     3801: 'Crystalline Bracer',
