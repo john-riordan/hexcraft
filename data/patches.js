@@ -21,5 +21,22 @@ export const PATCHES = {
         </div>
       `,
     },
+    3179: {
+      change: CHANGE_TYPES.nerf,
+      details: `
+        <div>
+          <a class="reference-link" href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blta30e18f48bfcd256/63e1d447c338484e3b195829/020723_3179_Assassin_T3_UmbralGlaive.png"><img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blta30e18f48bfcd256/63e1d447c338484e3b195829/020723_3179_Assassin_T3_UmbralGlaive.png"></a>
+          <h3 class="change-title" id="patch-umbral-glaive"><a href="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blta30e18f48bfcd256/63e1d447c338484e3b195829/020723_3179_Assassin_T3_UmbralGlaive.png">Umbral Glaive</a></h3>
+          <blockquote class="blockquote context">
+            Umbral Glaive is currently much too effective at choking out enemy vision for assassins, supports, assassin supports, and especially marksman supports (stop killing my defenseless wards, Ashe). We do think this item deserves a spot on the roster though, so we’re reducing its uptime and general ability to devastate enemy traps and vision.
+          </blockquote>
+          <ul>
+            <li><strong>Cooldown</strong>: 40 seconds ⇒ 50 seconds</li>
+            <li><span class="updated">updated</span><strong>Ranged Champion Reduced Damage to Wards</strong>: When a ranged champion using Umbral Glaive attacks a ward they will deal 2 true damage to it <em>(Note: Melee champions will still deal 3 damage to wards using Umbral Glaive)</em></li>
+            <li><span class="removed">removed</span><strong>Trap Interactions</strong>: Umbral Glaive will no longer instantly kill traps, but it will still reveal them</li>
+          </ul>
+        </div>
+      `,
+    },
   },
 };

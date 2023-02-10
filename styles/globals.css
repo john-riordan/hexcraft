@@ -254,9 +254,7 @@ audio {
   font-size: 0.875rem;
   color: var(--text4);
 }
-.item-change-modal .attribute::after {
-  content: ': ';
-}
+
 .item-change-modal .change-indicator {
   color: var(--orange2);
   margin: 0 0.25rem;
@@ -276,7 +274,7 @@ audio {
   border: none;
   border-bottom: 1px solid var(--accent2);
 }
-.attribute > * {
+.attribute > *:not(em) {
   --att-color: var(--text4);
   display: inline-block;
   position: relative;
@@ -287,7 +285,7 @@ audio {
   color: var(--att-color);
   text-transform: uppercase;
 }
-.attribute > *::before {
+.attribute > *:not(em)::before {
   content: '';
   position: absolute;
   top: 0;
@@ -319,6 +317,10 @@ audio {
 }
 .attribute .new {
   --att-color: var(--new);
+}
+.attribute em {
+  display: block;
+  color: var(--text5);
 }
 
 span.attribute-before {

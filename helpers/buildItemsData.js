@@ -59,19 +59,17 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
       item.id === 6662
   );
 
-  const legendaries = usableItems.filter(
-    item =>
-      (item.priceTotal > 1500 &&
-        !item.description.includes('Mythic Passive:')) ||
-      item.id !== 6662
-  );
+  const legendaries = usableItems.filter(item => {
+    return (
+      item.priceTotal > 1500 && !item.description.includes('Mythic Passive:')
+    );
+  });
 
   const epics = usableItems.filter(
     item =>
       item.priceTotal <= 1500 &&
       item.priceTotal > 500 &&
-      (item.from.length || item.name === 'Sheen') &&
-      !item.categories.includes('Boots')
+      (item.from.length || item.name === 'Sheen')
   );
 
   const basics = usableItems.filter(
