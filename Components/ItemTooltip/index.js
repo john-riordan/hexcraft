@@ -11,8 +11,7 @@ const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
 
   const itemChanged = item.patchChange;
-  // const patch = formatPatch(state.patch);
-  const patch = 'Season 2023';
+  const patch = formatPatch(state.patch);
 
   return (
     <div className={styles.container}>

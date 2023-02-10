@@ -63,9 +63,7 @@ const statGroups = [
 
 const StatFilters = ({ className }) => {
   const { state, setState } = useContext(StateContext);
-
-  // const patch = formatPatch(state.patch);
-  const patch = 'Season 2023';
+  const patch = formatPatch(state.patch);
 
   return (
     <div className={`${styles.filters} ${className}`}>

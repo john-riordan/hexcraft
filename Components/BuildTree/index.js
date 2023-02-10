@@ -25,8 +25,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
   const ornnUpgrade = itemsData.ornn[item];
 
   const itemChanged = itemData.patchChange;
-  // const patch = formatPatch(state.patch);
-  const patch = 'Season 2023';
+  const patch = formatPatch(state.patch);
 
   return (
     <div className={styles.details}>

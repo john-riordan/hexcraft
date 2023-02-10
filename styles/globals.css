@@ -211,7 +211,7 @@ audio {
 .item-change-modal .change-title {
   text-transform: uppercase;
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: 2rem;
   font-size: 1.75rem;
 }
@@ -222,9 +222,9 @@ audio {
   position: relative;
   color: var(--text4);
   border-bottom: 1px solid var(--accent2);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
 }
 .item-change-modal .blockquote.context::before,
 .item-change-modal .blockquote.context::after {
@@ -253,7 +253,6 @@ audio {
   font-weight: 600;
   font-size: 0.875rem;
   color: var(--text4);
-  letter-spacing: 1px;
 }
 .item-change-modal .attribute::after {
   content: ': ';
@@ -270,7 +269,6 @@ audio {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
   margin: 2rem 0 1rem 0;
   font-size: 1rem;
 }
@@ -279,7 +277,7 @@ audio {
   border-bottom: 1px solid var(--accent2);
 }
 .attribute > * {
-  --att-color: var(--text2);
+  --att-color: var(--text4);
   display: inline-block;
   position: relative;
   padding: 2px 6px 3px;
@@ -288,7 +286,6 @@ audio {
   font-weight: 700;
   color: var(--att-color);
   text-transform: uppercase;
-  letter-spacing: 0;
 }
 .attribute > *::before {
   content: '';
@@ -326,4 +323,8 @@ audio {
 
 span.attribute-before {
   color: var(--text3);
+}
+
+.item-change-modal li {
+  margin-block: 1rem;
 }

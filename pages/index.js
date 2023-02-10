@@ -150,8 +150,7 @@ export async function getStaticProps() {
   );
   const ddragonItems = await ddragon.json();
 
-  // const latestPatchChanges = PATCHES[DDRAGON_PATCH];
-  const latestPatchChanges = PATCHES['Season 2023'];
+  const latestPatchChanges = PATCHES[DDRAGON_PATCH];
 
   return {
     props: {
