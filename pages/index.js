@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Analytics } from '@vercel/analytics/react';
 
 import { buildItemsData } from '../helpers/buildItemsData';
 import { DDRAGON_PATCH } from '../helpers/constants';
@@ -68,74 +69,80 @@ export default function Home(props) {
   }, [state.desc, state.tab, state.stat]);
 
   return (
-    <StateContext.Provider value={{ state, setState }}>
-      <div className={styles.container}>
-        <Head>
-          <script
-            script
-            async
-            src='https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2'
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+    <>
+      <StateContext.Provider value={{ state, setState }}>
+        <div className={styles.container}>
+          <Head>
+            <script
+              script
+              async
+              src='https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2'
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
                 gtag('config', 'G-N7F0JT23B2');
               `,
-            }}
-          />
-          <title>LoL Shop - League of Legends Season 13 Item Changes</title>
-          <link rel='icon' href='/favicon.ico' />
-          <meta name='darkreader-lock' />
-          <meta
-            name='Description'
-            content='League of Legends Season 2023 / Season 13 Item Changes'
-          />
-          <meta
-            property='og:title'
-            content='LoL Shop - League of Legends Season 13 Item Changes'
-          />
-          <meta
-            property='og:description'
-            content='Season 2023 Pre-Season Item changes'
-          />
-          <meta property='og:type' content='website' />
-          <meta property='og:url' content='https://lolshop.gg' />
-          <meta property='og:image' content='https://lolshop.gg/lolshop.jpg' />
-          <meta property='og:image:type' content='image/jpeg' />
-          <meta property='og:image:width' content='1200' />
-          <meta property='og:image:height' content='627' />
-        </Head>
-
-        <div className={styles.main}>
-          <StatFilters className={styles.filters} />
-          <div className={styles.center}>
-            <Search />
-            <ItemGrid className={styles.grid} />
-          </div>
-          {state.selectedItem && (
-            <div
-              className={styles.detailsOverlay}
-              onClick={() =>
-                setState(prev => ({
-                  ...prev,
-                  selectedItem: null,
-                }))
-              }
+              }}
             />
-          )}
-          <ItemDetails className={styles.details} />
+            <title>LoL Shop - League of Legends Season 13 Item Changes</title>
+            <link rel='icon' href='/favicon.ico' />
+            <meta name='darkreader-lock' />
+            <meta
+              name='Description'
+              content='League of Legends Season 2023 / Season 13 Item Changes'
+            />
+            <meta
+              property='og:title'
+              content='LoL Shop - League of Legends Season 13 Item Changes'
+            />
+            <meta
+              property='og:description'
+              content='Season 2023 Pre-Season Item changes'
+            />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://lolshop.gg' />
+            <meta
+              property='og:image'
+              content='https://lolshop.gg/lolshop.jpg'
+            />
+            <meta property='og:image:type' content='image/jpeg' />
+            <meta property='og:image:width' content='1200' />
+            <meta property='og:image:height' content='627' />
+          </Head>
+
+          <div className={styles.main}>
+            <StatFilters className={styles.filters} />
+            <div className={styles.center}>
+              <Search />
+              <ItemGrid className={styles.grid} />
+            </div>
+            {state.selectedItem && (
+              <div
+                className={styles.detailsOverlay}
+                onClick={() =>
+                  setState(prev => ({
+                    ...prev,
+                    selectedItem: null,
+                  }))
+                }
+              />
+            )}
+            <ItemDetails className={styles.details} />
+          </div>
+          {inventory?.length ? <Inventory /> : null}
         </div>
-        {inventory?.length ? <Inventory /> : null}
-      </div>
-      {state.modal && <Modal />}
-      <audio controls src='/purchase.mp3' ref={purchaseRef} />
-      <audio controls src='/sell.mp3' ref={sellRef} />
-      <audio controls src='/cant.mp3' ref={cantRef} />
-    </StateContext.Provider>
+        {state.modal && <Modal />}
+        <audio controls src='/purchase.mp3' ref={purchaseRef} />
+        <audio controls src='/sell.mp3' ref={sellRef} />
+        <audio controls src='/cant.mp3' ref={cantRef} />
+      </StateContext.Provider>
+      <Analytics />
+    </>
   );
 }
 

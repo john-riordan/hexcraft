@@ -11,7 +11,7 @@
 .imgFrame img {
   display: block;
   aspect-ratio: 1;
-  filter: contrast(1.1);
+  filter: contrast(1);
 }
 .imgFrame span {
   display: block !important;
