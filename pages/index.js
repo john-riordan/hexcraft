@@ -102,7 +102,7 @@ export default function Home(props) {
             />
             <meta
               property='og:description'
-              content='Season 2023 Pre-Season Item changes'
+              content='Season 2023 Item changes'
             />
             <meta property='og:type' content='website' />
             <meta property='og:url' content='https://lolshop.gg' />
