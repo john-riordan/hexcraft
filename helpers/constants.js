@@ -1,4 +1,4 @@
-export const DDRAGON_PATCH = '13.3.1';
+export const DDRAGON_PATCH = '13.10.1';
 
 export const CHANGE_TYPES = {
   new: 'New',
@@ -14,4 +14,8 @@ export const BLACKLISTED_ITEMS = {
   3184: "Guardian's Hammer",
   4403: 'The Golden Spatula',
   7023: 'Equinox', // Rito didnt flag this as an Ornn item
+};
+
+export const MYTHIC_WHITELIST = {
+  3124: "Guinsoo's Rageblade",
 };

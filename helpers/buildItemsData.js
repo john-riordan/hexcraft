@@ -1,4 +1,4 @@
-import { BLACKLISTED_ITEMS } from './constants';
+import { BLACKLISTED_ITEMS, MYTHIC_WHITELIST } from './constants';
 import { starter } from '../data/starter';
 
 export function buildItemsData(items, cdragonItems, patchChanges) {
@@ -54,14 +54,14 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
 
   const mythics = usableItems.filter(
     item =>
-      item.description?.includes('Mythic Passive:') ||
-      item.id === '6632' ||
-      item.id === 6662
+      MYTHIC_WHITELIST[item.id] || item.description?.includes('<rarityMythic>')
   );
 
   const legendaries = usableItems.filter(item => {
     return (
-      item.priceTotal > 1500 && !item.description.includes('Mythic Passive:')
+      item.priceTotal > 1500 &&
+      !item.description.includes('Mythic Passive:') &&
+      !MYTHIC_WHITELIST[item.id]
     );
   });
 

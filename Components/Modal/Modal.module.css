@@ -3,6 +3,8 @@
 }
 
 .overlay {
+  container-type: inline-size;
+  container-name: modal-container;
   position: fixed;
   display: flex;
   align-items: center;

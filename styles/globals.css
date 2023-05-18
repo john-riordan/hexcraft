@@ -193,15 +193,21 @@ audio {
 .item-change-modal {
   max-width: 90ch;
   background: var(--surface1);
-  padding: 3rem;
+  padding: 3em;
   border: 1px solid var(--orange2);
+}
+@container modal-container (max-width: 600px) {
+  .item-change-modal {
+    padding: 1.25em;
+    font-size: 0.875em;
+  }
 }
 .item-change-modal .reference-link,
 .change-detail-title img {
   display: block;
   float: left;
-  width: 3rem;
-  margin-right: 1rem;
+  width: 3em;
+  margin-right: 1em;
   border: 2px solid var(--surface1);
   box-shadow: 0 0 0 1px var(--orange2);
 }
@@ -213,7 +219,7 @@ audio {
   margin: 0;
   letter-spacing: 1px;
   margin-bottom: 2rem;
-  font-size: 1.75rem;
+  font-size: 1.5em;
 }
 .item-change-modal .change-title + br {
   display: none;
@@ -222,14 +228,14 @@ audio {
   position: relative;
   color: var(--text4);
   border-bottom: 1px solid var(--accent2);
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
+  padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
+  margin-top: 2em;
 }
 .item-change-modal .blockquote.context::before,
 .item-change-modal .blockquote.context::after {
   position: absolute;
-  font-size: 3rem;
+  font-size: 3em;
   opacity: 0.3;
 }
 .item-change-modal .blockquote.context::before {
@@ -242,7 +248,7 @@ audio {
 }
 .item-change-modal .attribute-change {
   margin-top: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1.125em;
 }
 .item-change-modal .attribute-change:not(:last-of-type) {
   margin-bottom: 1.25rem;
@@ -251,7 +257,7 @@ audio {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   color: var(--text4);
 }
 
@@ -268,7 +274,7 @@ audio {
   align-items: center;
   text-transform: uppercase;
   margin: 2rem 0 1rem 0;
-  font-size: 1rem;
+  font-size: 1em;
 }
 .item-change-modal .divider {
   border: none;
@@ -328,5 +334,5 @@ span.attribute-before {
 }
 
 .item-change-modal li {
-  margin-block: 1rem;
+  margin-block: 1em;
 }
