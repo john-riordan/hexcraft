@@ -133,7 +133,7 @@ const Search = () => {
                       size={42}
                       alt={hovered.name}
                       isMythic={state.itemsData.mythicDictionary[hovered.id]}
-                      isOrnn={isOrnnItem(item)}
+                      isOrnn={isOrnnItem(hovered)}
                       inline
                     />
                     <div className={styles.detailsTitle}>
