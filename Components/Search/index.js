@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import Tippy from '@tippy.js/react';
 import { useRouter } from 'next/router';
 
+import isOrnnItem from '../../helpers/isOrnnItem';
 import Icon from '../Icon/';
 import Tabs from '../Tabs/';
 import ItemImage from '../ItemImage/';
@@ -112,6 +113,7 @@ const Search = () => {
                     size={42}
                     alt={item.name}
                     isMythic={state.itemsData.mythicDictionary[item.id]}
+                    isOrnn={isOrnnItem(item)}
                   />
                   <div className={styles.resultInfo}>
                     <p className={styles.resultName}>{item.name}</p>
@@ -131,6 +133,7 @@ const Search = () => {
                       size={42}
                       alt={hovered.name}
                       isMythic={state.itemsData.mythicDictionary[hovered.id]}
+                      isOrnn={isOrnnItem(item)}
                       inline
                     />
                     <div className={styles.detailsTitle}>

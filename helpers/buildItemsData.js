@@ -1,5 +1,6 @@
 import { BLACKLISTED_ITEMS, MYTHIC_WHITELIST } from './constants';
 import { starter } from '../data/starter';
+import isOrnnItem from '../helpers/isOrnnItem';
 
 export function buildItemsData(items, cdragonItems, patchChanges) {
   const itemsArr = cdragonItems.map(itemStats => ({
@@ -13,16 +14,7 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
   }));
 
   const usableItems = itemsArr
-    .filter(
-      item =>
-        item.gold.total &&
-        /* Temporary due to Riot messing up info about items on maps */
-        // item.maps[11] &&
-        !Object.keys(BLACKLISTED_ITEMS).includes(item.id) &&
-        item?.requiredAlly !== 'Ornn' &&
-        !item.description.includes('ornnBonus') &&
-        item.id !== 4403
-    )
+    .filter(item => item.gold.total && !BLACKLISTED_ITEMS[item.id])
     .sort((a, z) => z.gold.total - a.gold.total)
     .map(item => ({
       id: item.id,
@@ -52,16 +44,24 @@ export function buildItemsData(items, cdragonItems, patchChanges) {
         ),
     }));
 
-  const mythics = usableItems.filter(
-    item =>
-      MYTHIC_WHITELIST[item.id] || item.description?.includes('<rarityMythic>')
-  );
+  const mythics = usableItems
+    .filter(
+      item =>
+        MYTHIC_WHITELIST[item.id] ||
+        item.description?.includes('<rarityMythic>')
+    )
+    .map(item => ({
+      ...item,
+      ornnId: isOrnnItem(item) && item.from[0] ? item.from[0] + 0.1 : item.id,
+    }))
+    .sort((a, b) => b.ornnId - a.ornnId);
 
   const legendaries = usableItems.filter(item => {
     return (
       item.priceTotal > 1500 &&
       !item.description.includes('Mythic Passive:') &&
-      !MYTHIC_WHITELIST[item.id]
+      !MYTHIC_WHITELIST[item.id] &&
+      !isOrnnItem(item)
     );
   });
 

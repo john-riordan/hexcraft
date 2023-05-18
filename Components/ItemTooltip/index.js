@@ -4,6 +4,7 @@ import styles from './ItemTip.module.css';
 
 import ItemImage from '../ItemImage/';
 import { StateContext } from '../../StateContext';
+import isOrnnItem from '../../helpers/isOrnnItem';
 
 import formatPatch from '../../helpers/formatPatch';
 
@@ -19,6 +20,7 @@ const ItemTooltip = ({ item }) => {
         <ItemImage
           imgName={item.iconPath}
           isMythic={state.itemsData.mythicDictionary[item.id]}
+          isOrnn={isOrnnItem(item)}
           alt={item.name}
           size={48}
         />

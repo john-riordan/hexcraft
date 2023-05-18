@@ -21,6 +21,7 @@
   font-family: 'Beaufort-bold';
   margin: 0;
   font-size: 1.25rem;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 .price {

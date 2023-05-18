@@ -6,6 +6,7 @@ import { StateContext } from '../../StateContext';
 import ItemTooltip from '../ItemTooltip/';
 import ItemImage from '../ItemImage/';
 import PatchChangeDetails from '../PatchChangeDetails/';
+import isOrnnItem from '../../helpers/isOrnnItem';
 
 import styles from './Tree.module.css';
 
@@ -21,8 +22,6 @@ const BuildTree = ({ imageSize = 64, item }) => {
   const itemData = itemsData.items[item];
 
   if (!itemData) return null;
-
-  const ornnUpgrade = itemsData.ornn[item];
 
   const itemChanged = itemData.patchChange;
   const patch = formatPatch(state.patch);
@@ -78,6 +77,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     className={styles.imgFrame}
                     size={imageSize}
                     isMythic={state.itemsData.mythicDictionary[itemData.id]}
+                    isOrnn={isOrnnItem(item)}
                     alt={itemData.name}
                   />
                 </div>
@@ -114,6 +114,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                         className={styles.imgFrame}
                         size={imageSize - 16}
                         alt={itemsData.items[item]?.name}
+                        isOrnn={isOrnnItem(item)}
                       />
                     </div>
                   </Tippy>
@@ -147,6 +148,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                             className={styles.imgFrame}
                             size={imageSize - 30}
                             alt={itemsData.items[item]?.name}
+                            isOrnn={isOrnnItem(item)}
                           />
                         </div>
                       </Tippy>
@@ -189,32 +191,6 @@ const BuildTree = ({ imageSize = 64, item }) => {
               }}
             />
           </div>
-          {/* {ornnUpgrade ? (
-            <div className={styles.ornn}>
-              <Tippy
-                key={ornnUpgrade.name}
-                placement="bottom"
-                offset="0, 10"
-                duration={0}
-                content={<ItemTooltip item={ornnUpgrade} />}
-              >
-                <div className={styles.ornnFrame}>
-                  <ItemImage
-                    imgName={itemsData.items[ornnUpgrade.id]?.iconPath}
-                    isMythic={true}
-                    alt={ornnUpgrade.name}
-                    size={36}
-                  />
-                  <ItemImage
-                    imgName="bordertreatmentornn.png"
-                    className={styles.ornnBorder}
-                    alt="Ornn border"
-                    size={36}
-                  />
-                </div>
-              </Tippy>
-            </div>
-          ) : null} */}
         </>
       )}
     </div>

@@ -8,6 +8,7 @@ const ItemImage = ({
   size = 64,
   className,
   isMythic = false,
+  isOrnn = false,
   inline = false,
 }) => (
   <div
@@ -15,6 +16,7 @@ const ItemImage = ({
   >
     {isMythic && <div className={styles.mythicBorder} />}
     <img src={imgName} alt={alt} width={size} height={size} loading='lazy' />
+    {isOrnn && <div className={styles.ornnBorder} />}
     {/* <Image
       src={`/${imgName}`}
       width={size}

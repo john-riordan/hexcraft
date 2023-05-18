@@ -38,11 +38,7 @@
 }
 .gridItem:hover {
   filter: brightness(1.5);
-  background: linear-gradient(
-    to top,
-    var(--accent3),
-    var(--accent2)
-  );
+  background: linear-gradient(to top, var(--accent3), var(--accent2));
   transition: var(--transition);
 }
 .gridItem:hover .imgFrame {
@@ -64,13 +60,8 @@
   transition: var(--transition);
 }
 .gridItem.selected::before {
-  background: linear-gradient(
-    to bottom,
-    var(--blue),
-    transparent 80%
-  );
-  box-shadow: inset 0 0 0 1px var(--blue),
-    inset 0 0 0 4px var(--surface1);
+  background: linear-gradient(to bottom, var(--blue), transparent 80%);
+  box-shadow: inset 0 0 0 1px var(--blue), inset 0 0 0 4px var(--surface1);
   opacity: 0.4;
 }
 .gridItem.selected .imgFrame {
@@ -88,7 +79,7 @@
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 0.25rem;
+  right: 0;
 }
 .patchChange svg {
   display: block;

@@ -2,6 +2,7 @@ import { memo, useContext } from 'react';
 import Tippy from '@tippy.js/react';
 
 import { StateContext } from '../../StateContext';
+import isOrnnItem from '../../helpers/isOrnnItem';
 import styles from './Details.module.css';
 import ItemTooltip from '../ItemTooltip/';
 import BuildTree from '../BuildTree/';
@@ -68,6 +69,7 @@ const ItemDetails = ({ className }) => {
                 size={36}
                 alt={item.name}
                 isMythic={state.itemsData.mythicDictionary[item.id]}
+                isOrnn={isOrnnItem(item)}
               />
             </div>
           </Tippy>

@@ -107,24 +107,6 @@
   cursor: pointer;
 }
 
-.ornn {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.ornnFrame {
-  position: relative;
-}
-
-.ornnBorder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 @media (max-width: 1400px) {
   .treeFrame {
     min-height: 13rem;

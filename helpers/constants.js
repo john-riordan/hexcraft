@@ -19,4 +19,5 @@ export const BLACKLISTED_ITEMS = {
 
 export const MYTHIC_WHITELIST = {
   3124: "Guinsoo's Rageblade",
+  7030: 'Seething Sorrow',
 };

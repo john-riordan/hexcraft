@@ -8,6 +8,7 @@ import Icon from '../Icon/';
 import PatchChangeDetails from '../PatchChangeDetails/';
 
 import { StateContext } from '../../StateContext';
+import isOrnnItem from '../../helpers/isOrnnItem';
 
 import styles from './Grid.module.css';
 
@@ -101,6 +102,7 @@ const ItemGrid = ({ className }) => {
                         imgName={item.iconPath}
                         className={styles.imgFrame}
                         isMythic={state.itemsData.mythicDictionary?.[item.id]}
+                        isOrnn={isOrnnItem(item)}
                         alt={item.name}
                         size={46}
                       />

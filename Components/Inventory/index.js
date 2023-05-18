@@ -3,6 +3,7 @@ import Tippy from '@tippy.js/react';
 import { useRouter } from 'next/router';
 
 import { StateContext } from '../../StateContext';
+import isOrnnItem from '../../helpers/isOrnnItem';
 import computeInventoryStats from '../../helpers/computeInventoryStats';
 import styles from './Inventory.module.css';
 import ItemTooltip from '../ItemTooltip/';
@@ -112,6 +113,7 @@ const Inventory = () => {
                   size={ITEM_SIZE}
                   alt={item.name}
                   isMythic={state.itemsData.mythicDictionary[item.id]}
+                  isOrnn={isOrnnItem(item)}
                 />
               </div>
             </Tippy>
