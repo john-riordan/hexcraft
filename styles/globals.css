@@ -191,16 +191,11 @@ audio {
 }
 
 .item-change-modal {
+  width: 93vw;
   max-width: 90ch;
   background: var(--surface1);
   padding: 3em;
   border: 1px solid var(--orange2);
-}
-@container modal-container (max-width: 600px) {
-  .item-change-modal {
-    padding: 1.25em;
-    font-size: 0.875em;
-  }
 }
 .item-change-modal .reference-link,
 .change-detail-title img {
@@ -335,4 +330,25 @@ span.attribute-before {
 
 .item-change-modal li {
   margin-block: 1em;
+}
+
+@container modal-container (max-width: 600px) {
+  .item-change-modal {
+    padding: 1.25em;
+    font-size: 0.875em;
+  }
+  .item-change-modal .change-title {
+    margin-bottom: 0;
+  }
+  .item-change-modal .blockquote.context {
+    display: none;
+  }
+  .item-change-modal ul {
+    padding: 0;
+  }
+}
+@container modal-container (max-width: 400px) {
+  .item-change-modal {
+    font-size: 0.75em;
+  }
 }
