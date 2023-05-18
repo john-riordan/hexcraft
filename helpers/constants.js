@@ -8,6 +8,7 @@ export const CHANGE_TYPES = {
 };
 
 export const BLACKLISTED_ITEMS = {
+  2019: 'Steel Sigil',
   2051: "Guardian's Horn",
   3112: "Guardian's Orb",
   3177: "Guardian's Blad",

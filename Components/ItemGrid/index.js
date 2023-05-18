@@ -60,36 +60,36 @@ const ItemGrid = ({ className }) => {
                       className={`${styles.gridItem} ${
                         state.selectedItem?.id === item.id && styles.selected
                       }`}
-                      onContextMenu={e => {
-                        e.preventDefault();
-                        const isMythic =
-                          state.itemsData.mythicDictionary[item.id];
-                        if (
-                          inventory.length < 6 &&
-                          !state.inventoryHasMythic &&
-                          isMythic
-                        ) {
-                          const params = new URLSearchParams({
-                            i: [...inventory, item.id],
-                          });
-                          state.soundPurchase.current.volume = 0.5;
-                          state.soundPurchase.current.play();
-                          router.replace(`?${params}`, undefined, {
-                            shallow: true,
-                          });
-                        } else if (inventory.length < 6 && !isMythic) {
-                          const params = new URLSearchParams({
-                            i: [...inventory, item.id],
-                          });
-                          state.soundPurchase.current.volume = 0.5;
-                          state.soundPurchase.current.play();
-                          router.replace(`?${params}`, undefined, {
-                            shallow: true,
-                          });
-                        } else {
-                          state.soundCant.current.play();
-                        }
-                      }}
+                      // onContextMenu={e => {
+                      //   e.preventDefault();
+                      //   const isMythic =
+                      //     state.itemsData.mythicDictionary[item.id];
+                      //   if (
+                      //     inventory.length < 6 &&
+                      //     !state.inventoryHasMythic &&
+                      //     isMythic
+                      //   ) {
+                      //     const params = new URLSearchParams({
+                      //       i: [...inventory, item.id],
+                      //     });
+                      //     state.soundPurchase.current.volume = 0.5;
+                      //     state.soundPurchase.current.play();
+                      //     router.replace(`?${params}`, undefined, {
+                      //       shallow: true,
+                      //     });
+                      //   } else if (inventory.length < 6 && !isMythic) {
+                      //     const params = new URLSearchParams({
+                      //       i: [...inventory, item.id],
+                      //     });
+                      //     state.soundPurchase.current.volume = 0.5;
+                      //     state.soundPurchase.current.play();
+                      //     router.replace(`?${params}`, undefined, {
+                      //       shallow: true,
+                      //     });
+                      //   } else {
+                      //     state.soundCant.current.play();
+                      //   }
+                      // }}
                       onClick={() =>
                         setState(prev => ({
                           ...prev,

@@ -41,36 +41,36 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 content={<ItemTooltip item={itemData} />}
               >
                 <div
-                  onContextMenu={e => {
-                    e.preventDefault();
-                    const isMythic =
-                      state.itemsData.mythicDictionary[itemData.id];
-                    if (
-                      inventory.length < 6 &&
-                      !state.inventoryHasMythic &&
-                      isMythic
-                    ) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, itemData.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                    } else if (inventory.length < 6 && !isMythic) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, itemData.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                    } else {
-                      state.soundCant?.current?.play();
-                    }
-                  }}
+                // onContextMenu={e => {
+                //   e.preventDefault();
+                //   const isMythic =
+                //     state.itemsData.mythicDictionary[itemData.id];
+                //   if (
+                //     inventory.length < 6 &&
+                //     !state.inventoryHasMythic &&
+                //     isMythic
+                //   ) {
+                //     const params = new URLSearchParams({
+                //       i: [...inventory, itemData.id],
+                //     });
+                //     state.soundPurchase.current.volume = 0.5;
+                //     state.soundPurchase.current.play();
+                //     router.replace(`?${params}`, undefined, {
+                //       shallow: true,
+                //     });
+                //   } else if (inventory.length < 6 && !isMythic) {
+                //     const params = new URLSearchParams({
+                //       i: [...inventory, itemData.id],
+                //     });
+                //     state.soundPurchase.current.volume = 0.5;
+                //     state.soundPurchase.current.play();
+                //     router.replace(`?${params}`, undefined, {
+                //       shallow: true,
+                //     });
+                //   } else {
+                //     state.soundCant?.current?.play();
+                //   }
+                // }}
                 >
                   <ItemImage
                     key={itemData.iconPath}
