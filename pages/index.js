@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Analytics } from '@vercel/analytics/react';
 
 import { buildItemsData } from '../helpers/buildItemsData';
 import { DDRAGON_PATCH } from '../helpers/constants';
@@ -47,17 +46,17 @@ export default function Home(props) {
 
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
-  const items = inventory.map(item => itemsData.items[item]);
+  const items = inventory.map((item) => itemsData.items[item]);
   const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
 
   let hasMythic = false;
-  items.forEach(item => {
+  items.forEach((item) => {
     const isMythic = itemsData.mythicDictionary[item.id];
     if (isMythic) hasMythic = true;
   });
 
   useEffect(() => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       inventoryHasMythic: hasMythic,
       inventoryCost: cost,
@@ -125,7 +124,7 @@ export default function Home(props) {
               <div
                 className={styles.detailsOverlay}
                 onClick={() =>
-                  setState(prev => ({
+                  setState((prev) => ({
                     ...prev,
                     selectedItem: null,
                   }))
@@ -141,7 +140,6 @@ export default function Home(props) {
         <audio controls src='/sell.mp3' ref={sellRef} />
         <audio controls src='/cant.mp3' ref={cantRef} />
       </StateContext.Provider>
-      <Analytics />
     </>
   );
 }
