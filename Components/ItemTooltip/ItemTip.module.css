@@ -1,4 +1,5 @@
 .container {
+  pointer-events: none;
   background: var(--surface1);
   padding: 1rem;
   padding: 1rem;

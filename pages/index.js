@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Analytics } from '@vercel/analytics/react';
 
 import { buildItemsData } from '../helpers/buildItemsData';
 import { DDRAGON_PATCH } from '../helpers/constants';
@@ -47,17 +46,17 @@ export default function Home(props) {
 
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
-  const items = inventory.map(item => itemsData.items[item]);
+  const items = inventory.map((item) => itemsData.items[item]);
   const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
 
   let hasMythic = false;
-  items.forEach(item => {
+  items.forEach((item) => {
     const isMythic = itemsData.mythicDictionary[item.id];
     if (isMythic) hasMythic = true;
   });
 
   useEffect(() => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       inventoryHasMythic: hasMythic,
       inventoryCost: cost,
@@ -125,7 +124,7 @@ export default function Home(props) {
               <div
                 className={styles.detailsOverlay}
                 onClick={() =>
-                  setState(prev => ({
+                  setState((prev) => ({
                     ...prev,
                     selectedItem: null,
                   }))
@@ -141,32 +140,42 @@ export default function Home(props) {
         <audio controls src='/sell.mp3' ref={sellRef} />
         <audio controls src='/cant.mp3' ref={cantRef} />
       </StateContext.Provider>
-      <Analytics />
     </>
   );
 }
 
 // This function gets called at build time
 export async function getStaticProps() {
-  const cdragon = await fetch(
+  // CDragon data - PBE
+  const cdragonReq = await fetch(
     'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
   );
-  const cdragonItems = await cdragon.json();
-  const ddragon = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_PATCH}/data/en_US/item.json`
-  );
-  const ddragonItems = await ddragon.json();
+  const cdragonItems = await cdragonReq.json();
 
-  const latestPatchChanges = PATCHES[DDRAGON_PATCH];
+  // DDragon data
+  const ddragonPatchesReq = await fetch(
+    'https://ddragon.leagueoflegends.com/api/versions.json'
+  );
+  const ddragonPatchesRes = await ddragonPatchesReq.json();
+  const ddragonPatchesLatest = ddragonPatchesRes?.length
+    ? ddragonPatchesRes[0]
+    : DDRAGON_PATCH;
+
+  const ddragonItemsReq = await fetch(
+    `https://ddragon.leagueoflegends.com/cdn/${ddragonPatchesLatest}/data/en_US/item.json`
+  );
+  const ddragonItems = await ddragonItemsReq.json();
+
+  const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
     props: {
-      patch: DDRAGON_PATCH,
-      itemsData: buildItemsData(
-        ddragonItems.data,
+      patch: ddragonPatchesLatest,
+      itemsData: buildItemsData({
+        ddragonItems: ddragonItems.data,
         cdragonItems,
-        latestPatchChanges
-      ),
+        patchChanges: latestPatchChanges,
+      }),
     },
   };
 }

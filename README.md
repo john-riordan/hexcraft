@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project for [LoL Shop](https://lolshop.gg/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project for [LoL Shop](https://lolshop.gg/)
 
 ## Getting Started
 
