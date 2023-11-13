@@ -146,25 +146,36 @@ export default function Home(props) {
 
 // This function gets called at build time
 export async function getStaticProps() {
-  const cdragon = await fetch(
+  // CDragon data - PBE
+  const cdragonReq = await fetch(
     'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
   );
-  const cdragonItems = await cdragon.json();
-  const ddragon = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_PATCH}/data/en_US/item.json`
-  );
-  const ddragonItems = await ddragon.json();
+  const cdragonItems = await cdragonReq.json();
 
-  const latestPatchChanges = PATCHES[DDRAGON_PATCH];
+  // DDragon data
+  const ddragonPatchesReq = await fetch(
+    'https://ddragon.leagueoflegends.com/api/versions.json'
+  );
+  const ddragonPatchesRes = await ddragonPatchesReq.json();
+  const ddragonPatchesLatest = ddragonPatchesRes?.length
+    ? ddragonPatchesRes[0]
+    : DDRAGON_PATCH;
+
+  const ddragonItemsReq = await fetch(
+    `https://ddragon.leagueoflegends.com/cdn/${ddragonPatchesLatest}/data/en_US/item.json`
+  );
+  const ddragonItems = await ddragonItemsReq.json();
+
+  const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
     props: {
-      patch: DDRAGON_PATCH,
-      itemsData: buildItemsData(
-        ddragonItems.data,
+      patch: ddragonPatchesLatest,
+      itemsData: buildItemsData({
+        ddragonItems: ddragonItems.data,
         cdragonItems,
-        latestPatchChanges
-      ),
+        patchChanges: latestPatchChanges,
+      }),
     },
   };
 }

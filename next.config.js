@@ -1,7 +1,15 @@
 module.exports = {
-  swcMinify: true,
   images: {
-    domains: ['https://ddragon.leagueoflegends.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ddragon.leagueoflegends.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'https://raw.communitydragon.org',
+      },
+    ],
   },
   i18n: {
     locales: ['en'],
