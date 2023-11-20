@@ -22,7 +22,7 @@
 
 .filters {
   flex: var(--leftCol);
-  top: var(--controls-height);
+  top: 0;
 }
 
 .details {

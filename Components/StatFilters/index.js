@@ -66,11 +66,14 @@ const StatFilters = ({ className }) => {
   const patch = formatPatch(state.patch);
 
   return (
-    <div className={`${styles.filters} ${className}`}>
-      <h3 className={styles.patchTitle}>
-        <span>Patch: </span>
-        <span>{patch}</span>
-      </h3>
+    <aside className={`${styles.filters} ${className}`}>
+      <header className={styles.sidebarHeader}>
+        <h3 className={styles.patchTitle}>
+          {/* <span>Patch: </span> */}
+          <span>Season 2024</span>
+          {/* <span>{patch}</span> */}
+        </h3>
+      </header>
       <div className={styles.group}>
         <div
           className={`${styles.statItem} ${
@@ -78,12 +81,12 @@ const StatFilters = ({ className }) => {
           }`}
           onClick={() => {
             if (state.stat === 'Patch') {
-              setState(prev => ({
+              setState((prev) => ({
                 ...prev,
                 stat: null,
               }));
             } else {
-              setState(prev => ({
+              setState((prev) => ({
                 ...prev,
                 stat: 'Patch',
               }));
@@ -112,7 +115,7 @@ const StatFilters = ({ className }) => {
       </div>
       {statGroups.map((group, i) => (
         <div key={i} className={styles.group}>
-          {group.map(stat => {
+          {group.map((stat) => {
             const isActive = state.stat === stat.key;
             return (
               <div
@@ -120,12 +123,12 @@ const StatFilters = ({ className }) => {
                 className={`${styles.statItem} ${isActive && styles.active}`}
                 onClick={() => {
                   if (isActive) {
-                    setState(prev => ({
+                    setState((prev) => ({
                       ...prev,
                       stat: null,
                     }));
                   } else {
-                    setState(prev => ({
+                    setState((prev) => ({
                       ...prev,
                       stat: stat.key,
                     }));
@@ -156,7 +159,7 @@ const StatFilters = ({ className }) => {
           })}
         </div>
       ))}
-    </div>
+    </aside>
   );
 };
 

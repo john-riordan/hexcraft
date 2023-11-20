@@ -1,4 +1,8 @@
-import { BLACKLISTED_ITEMS, USE_CDRAGON_DATA } from './constants';
+import {
+  BLACKLISTED_ITEMS,
+  EPIC_LEGENDARY_BREAKPOINT,
+  USE_CDRAGON_DATA,
+} from './constants';
 import { starter } from '../data/starter';
 import isOrnnItem from '../helpers/isOrnnItem';
 
@@ -24,6 +28,7 @@ export function buildItemsData({
     .map((item) => ({
       id: item.id,
       name: item.name,
+      description: item.description,
       categories: patchChanges?.[item?.id]
         ? [...item.tags, 'Patch']
         : [...item.tags],
@@ -40,40 +45,17 @@ export function buildItemsData({
     }));
 
   const legendaries = usableItems.filter((item) => {
-    return item.priceTotal > 1500;
+    return item.priceTotal > EPIC_LEGENDARY_BREAKPOINT;
   });
 
   const epics = usableItems.filter(
     (item) =>
-      item.priceTotal <= 1500 &&
+      item.priceTotal <= EPIC_LEGENDARY_BREAKPOINT &&
       item.priceTotal > 500 &&
       (item.from.length || item.name === 'Sheen')
   );
 
-  const basics = usableItems.filter(
-    (item) =>
-      !starter[item.id] &&
-      item.priceTotal &&
-      !item.from.length &&
-      !item.categories.includes('Consumable') &&
-      !starter[item.id] &&
-      !item.categories.includes('GoldPer') &&
-      !item.name.includes('Broken Stopwatch') &&
-      !item.name.includes('Perfectly Timed Stopwatch') &&
-      item.name !== 'Sheen' &&
-      item.id !== 1040 &&
-      item.id !== 2001 &&
-      item.id !== 2007 &&
-      item.id !== 2008 &&
-      item.id !== 2010 && // biscuit
-      item.id !== 3004 && // Manamune
-      item.id !== 3042 && // Muramana
-      item.id !== 3043 && // Archangel's Staff
-      item.id !== 3040 && // Seraph's Embrace
-      item.id !== 3119 && // Winter's Approach
-      item.id !== 3121 && // Fimbulwinter
-      !item.categories.includes('Boots')
-  );
+  const basics = usableItems.filter((item) => !item.from?.length);
 
   // const ornn = cdragonItems
   //   .filter((item) => item.description.includes('ornnBonus'))

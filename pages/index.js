@@ -108,10 +108,10 @@ export default function Home(props) {
 
           <div className={styles.main}>
             <StatFilters className={styles.filters} />
-            <div className={styles.center}>
+            <main className={styles.center}>
               <Search />
               <ItemGrid className={styles.grid} />
-            </div>
+            </main>
             {state.selectedItem && (
               <div
                 className={styles.detailsOverlay}

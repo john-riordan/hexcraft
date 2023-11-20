@@ -2,6 +2,8 @@ export const USE_CDRAGON_DATA = true;
 
 export const DDRAGON_PATCH = '13.22.1';
 
+export const EPIC_LEGENDARY_BREAKPOINT = 1800;
+
 export const CHANGE_TYPES = {
   new: 'New',
   buff: 'Buff',
