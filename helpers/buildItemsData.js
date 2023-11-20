@@ -6,6 +6,7 @@ import {
 import { starter } from '../data/starter';
 import { basic } from '../data/basic';
 import { epic } from '../data/epic';
+import { legendary } from '../data/legendary';
 import isOrnnItem from '../helpers/isOrnnItem';
 
 export function buildItemsData({
@@ -30,7 +31,9 @@ export function buildItemsData({
     .map((item) => ({
       id: item.id,
       name: item.name,
-      description: item.description,
+      description: item.description.startsWith('GeneratedTip')
+        ? "Unfortunately this item's description is missing at the moment"
+        : item.description,
       categories: patchChanges?.[item?.id]
         ? [...item.tags, 'Patch']
         : [...item.tags],
@@ -47,7 +50,8 @@ export function buildItemsData({
     }));
 
   const legendaries = usableItems.filter((item) => {
-    return item.priceTotal > EPIC_LEGENDARY_BREAKPOINT;
+    const minPrice = item.priceTotal > EPIC_LEGENDARY_BREAKPOINT;
+    return legendary[item.id] || minPrice;
   });
 
   const epics = usableItems.filter((item) => {

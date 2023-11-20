@@ -11,7 +11,9 @@ const ItemImage = ({
   itemId = 0,
 }) => (
   <div
-    className={`${styles.imgFrame} ${inline && styles.inline}  ${className}`}
+    className={`${styles.imgFrame} ${
+      inline && styles.inline
+    } ${className} item`}
     data-id={itemId}
   >
     {isMythic && <div className={styles.mythicBorder} />}

@@ -49,7 +49,8 @@ const ItemGrid = ({ className }) => {
             <p className={styles.groupSubtitle}>{SUBTITLE[groupName]}</p>
             <div className={styles.grid}>
               {groupItems
-                .sort((a, b) => a.priceTotal - b.priceTotal || a.id - b.id)
+                // .sort((a, b) => a.priceTotal - b.priceTotal || a.id - b.id)
+                .sort((a, b) => b.priceTotal - a.priceTotal || a.id - b.id)
                 .map((item, i) => {
                   return (
                     <Tippy

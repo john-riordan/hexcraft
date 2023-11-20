@@ -8,10 +8,16 @@
 .sidebarHeader::before {
   content: '';
   position: absolute;
-  inset: 0 0 -0.5rem -2rem;
-  background: url('/season-2024-splash.webp') no-repeat center;
+  inset: 0 0 -6.5rem -2rem;
+  background: url(/season-2024-splash.webp) no-repeat center;
   background-size: cover;
-  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 20%,
+    transparent
+  );
+  opacity: 0.75;
 }
 
 .patchTitle {
