@@ -48,94 +48,96 @@ const ItemGrid = ({ className }) => {
             <h2 className={styles.groupTitle}>{groupName}</h2>
             <p className={styles.groupSubtitle}>{SUBTITLE[groupName]}</p>
             <div className={styles.grid}>
-              {groupItems.map((item, i) => {
-                return (
-                  <Tippy
-                    key={`${item.name}:${i}`}
-                    placement='right-start'
-                    offset='0, 10'
-                    duration={0}
-                    content={<ItemTooltip item={item} />}
-                  >
-                    <div
-                      data-item-id={item.id}
-                      data-item-name={item.name}
-                      className={`${styles.gridItem} ${
-                        state.selectedItem?.id === item.id
-                          ? styles.selected
-                          : ''
-                      }`}
-                      // onContextMenu={e => {
-                      //   e.preventDefault();
-                      //   if (
-                      //     inventory.length < 6
-                      //   ) {
-                      //     const params = new URLSearchParams({
-                      //       i: [...inventory, item.id],
-                      //     });
-                      //     state.soundPurchase.current.volume = 0.5;
-                      //     state.soundPurchase.current.play();
-                      //     router.replace(`?${params}`, undefined, {
-                      //       shallow: true,
-                      //     });
-                      //   } else if (inventory.length < 6) {
-                      //     const params = new URLSearchParams({
-                      //       i: [...inventory, item.id],
-                      //     });
-                      //     state.soundPurchase.current.volume = 0.5;
-                      //     state.soundPurchase.current.play();
-                      //     router.replace(`?${params}`, undefined, {
-                      //       shallow: true,
-                      //     });
-                      //   } else {
-                      //     state.soundCant.current.play();
-                      //   }
-                      // }}
-                      onClick={() =>
-                        setState((prev) => ({
-                          ...prev,
-                          selectedItem: item,
-                        }))
-                      }
+              {groupItems
+                .sort((a, b) => a.priceTotal - b.priceTotal || a.id - b.id)
+                .map((item, i) => {
+                  return (
+                    <Tippy
+                      key={`${item.name}:${i}`}
+                      placement='right-start'
+                      offset='0, 10'
+                      duration={0}
+                      content={<ItemTooltip item={item} />}
                     >
-                      <ItemImage
-                        imgName={item.iconPath}
-                        className={styles.imgFrame}
-                        isOrnn={isOrnnItem(item)}
-                        alt={item.name}
-                        size={46}
-                        itemId={item.id}
-                      />
-                      <p className={styles.price}>{item.priceTotal}</p>
-                      {item.patchChange && (
-                        <div
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (!item.patchChange.details) return;
-                            setState((prev) => ({
-                              ...prev,
-                              modal: (
-                                <PatchChangeDetails
-                                  content={item.patchChange.details}
-                                />
-                              ),
-                            }));
-                          }}
-                          className={`${styles.patchChange} ${
-                            styles[item.patchChange.change.toLowerCase()]
-                          }`}
-                        >
-                          <Icon
-                            icon={item.patchChange.change.toLowerCase()}
-                            className={styles.patchChangeIcon}
-                            viewBox='0 0 48 48'
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </Tippy>
-                );
-              })}
+                      <div
+                        data-item-id={item.id}
+                        data-item-name={item.name}
+                        className={`${styles.gridItem} ${
+                          state.selectedItem?.id === item.id
+                            ? styles.selected
+                            : ''
+                        }`}
+                        // onContextMenu={e => {
+                        //   e.preventDefault();
+                        //   if (
+                        //     inventory.length < 6
+                        //   ) {
+                        //     const params = new URLSearchParams({
+                        //       i: [...inventory, item.id],
+                        //     });
+                        //     state.soundPurchase.current.volume = 0.5;
+                        //     state.soundPurchase.current.play();
+                        //     router.replace(`?${params}`, undefined, {
+                        //       shallow: true,
+                        //     });
+                        //   } else if (inventory.length < 6) {
+                        //     const params = new URLSearchParams({
+                        //       i: [...inventory, item.id],
+                        //     });
+                        //     state.soundPurchase.current.volume = 0.5;
+                        //     state.soundPurchase.current.play();
+                        //     router.replace(`?${params}`, undefined, {
+                        //       shallow: true,
+                        //     });
+                        //   } else {
+                        //     state.soundCant.current.play();
+                        //   }
+                        // }}
+                        onClick={() =>
+                          setState((prev) => ({
+                            ...prev,
+                            selectedItem: item,
+                          }))
+                        }
+                      >
+                        <ItemImage
+                          imgName={item.iconPath}
+                          className={styles.imgFrame}
+                          isOrnn={isOrnnItem(item)}
+                          alt={item.name}
+                          size={46}
+                          itemId={item.id}
+                        />
+                        <p className={styles.price}>{item.priceTotal}</p>
+                        {item.patchChange && (
+                          <div
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (!item.patchChange.details) return;
+                              setState((prev) => ({
+                                ...prev,
+                                modal: (
+                                  <PatchChangeDetails
+                                    content={item.patchChange.details}
+                                  />
+                                ),
+                              }));
+                            }}
+                            className={`${styles.patchChange} ${
+                              styles[item.patchChange.change.toLowerCase()]
+                            }`}
+                          >
+                            <Icon
+                              icon={item.patchChange.change.toLowerCase()}
+                              className={styles.patchChangeIcon}
+                              viewBox='0 0 48 48'
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </Tippy>
+                  );
+                })}
             </div>
           </div>
         );

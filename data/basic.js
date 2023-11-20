@@ -1,0 +1,17 @@
+export const basic = {
+  2022: 'glowing mote',
+  1004: 'Faerie Charm',
+  1042: 'dagger',
+  1029: 'cloth armor',
+  1006: 'rejuv bead',
+  1027: 'sapph crystal',
+  1036: 'long sword',
+  1052: 'amp tome',
+  1028: 'ruby crystal',
+  1033: 'null magic',
+  1018: 'Agility cloak',
+  1026: 'blasting wand',
+  1037: 'pick axe',
+  1058: 'large rod',
+  1038: 'bf sword',
+};

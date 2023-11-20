@@ -37,4 +37,17 @@ export const BLACKLISTED_ITEMS = {
   4402: true,
   4003: true,
   3131: true,
+  2423: true, // Perfectly timed seekers
+  3005: true,
+  1035: true,
+  1039: true,
+  2424: true,
+  2049: true,
+  2421: true,
+  3105: true,
+  6677: true,
+  6029: true,
+  3041: true,
+  4635: true,
+  3023: true,
 };

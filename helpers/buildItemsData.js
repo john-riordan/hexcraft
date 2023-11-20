@@ -4,6 +4,8 @@ import {
   USE_CDRAGON_DATA,
 } from './constants';
 import { starter } from '../data/starter';
+import { basic } from '../data/basic';
+import { epic } from '../data/epic';
 import isOrnnItem from '../helpers/isOrnnItem';
 
 export function buildItemsData({
@@ -22,7 +24,7 @@ export function buildItemsData({
       const hasCost = item.gold?.total;
       const isBlacklisted = BLACKLISTED_ITEMS[item.id];
       const idIsTooLong = `${item.id}`.length > 4;
-      return hasCost && !isBlacklisted && !idIsTooLong;
+      return hasCost && !isBlacklisted && !idIsTooLong && !isOrnnItem(item);
     })
     .sort((a, z) => z.gold.total - a.gold.total)
     .map((item) => ({
@@ -48,14 +50,21 @@ export function buildItemsData({
     return item.priceTotal > EPIC_LEGENDARY_BREAKPOINT;
   });
 
-  const epics = usableItems.filter(
-    (item) =>
-      item.priceTotal <= EPIC_LEGENDARY_BREAKPOINT &&
-      item.priceTotal > 500 &&
-      (item.from.length || item.name === 'Sheen')
-  );
+  const epics = usableItems.filter((item) => {
+    const epicWhitelist = epic[item.id];
+    const lowerPrice = item.priceTotal <= EPIC_LEGENDARY_BREAKPOINT;
+    const minPrice = item.priceTotal > 500;
+    const consumable = (item.categories || []).includes('Consumable');
+    const boots = (item.categories || []).includes('Boots');
+    const isBasic = basic[item.id];
 
-  const basics = usableItems.filter((item) => !item.from?.length);
+    return (
+      epicWhitelist ||
+      (!consumable && !boots && !isBasic && lowerPrice && minPrice)
+    );
+  });
+
+  const basics = usableItems.filter((item) => basic[item.id]);
 
   // const ornn = cdragonItems
   //   .filter((item) => item.description.includes('ornnBonus'))
