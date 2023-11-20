@@ -15,10 +15,8 @@ import styles from './Grid.module.css';
 import { buildDisplayItems } from '../../helpers/buildDisplayItems';
 
 const SUBTITLE = {
-  mythics:
-    'Special completed item (limit of 1). Grants bonus stats per additional completed Legendary.',
   legendaries: 'Typical fully completed item.',
-  epics: 'Sub-components that build into a Legendary/Mythic.',
+  epics: 'Sub-components that build into a Legendary items.',
   basics: 'The most basic item component.',
   starters: 'Simple starting items.',
 };
@@ -35,11 +33,13 @@ const ItemGrid = ({ className }) => {
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
+  console.log(state);
+
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items], i) => {
         const groupItems = state.stat
-          ? items.filter(item => item.categories.includes(state.stat))
+          ? items.filter((item) => item.categories.includes(state.stat))
           : items;
         if (!groupItems.length) return null;
 
@@ -58,17 +58,17 @@ const ItemGrid = ({ className }) => {
                     content={<ItemTooltip item={item} />}
                   >
                     <div
+                      data-item-id={item.id}
+                      data-item-name={item.name}
                       className={`${styles.gridItem} ${
-                        state.selectedItem?.id === item.id && styles.selected
+                        state.selectedItem?.id === item.id
+                          ? styles.selected
+                          : ''
                       }`}
                       // onContextMenu={e => {
                       //   e.preventDefault();
-                      //   const isMythic =
-                      //     state.itemsData.mythicDictionary[item.id];
                       //   if (
-                      //     inventory.length < 6 &&
-                      //     !state.inventoryHasMythic &&
-                      //     isMythic
+                      //     inventory.length < 6
                       //   ) {
                       //     const params = new URLSearchParams({
                       //       i: [...inventory, item.id],
@@ -78,7 +78,7 @@ const ItemGrid = ({ className }) => {
                       //     router.replace(`?${params}`, undefined, {
                       //       shallow: true,
                       //     });
-                      //   } else if (inventory.length < 6 && !isMythic) {
+                      //   } else if (inventory.length < 6) {
                       //     const params = new URLSearchParams({
                       //       i: [...inventory, item.id],
                       //     });
@@ -92,7 +92,7 @@ const ItemGrid = ({ className }) => {
                       //   }
                       // }}
                       onClick={() =>
-                        setState(prev => ({
+                        setState((prev) => ({
                           ...prev,
                           selectedItem: item,
                         }))
@@ -101,18 +101,18 @@ const ItemGrid = ({ className }) => {
                       <ItemImage
                         imgName={item.iconPath}
                         className={styles.imgFrame}
-                        isMythic={state.itemsData.mythicDictionary?.[item.id]}
                         isOrnn={isOrnnItem(item)}
                         alt={item.name}
                         size={46}
+                        itemId={item.id}
                       />
                       <p className={styles.price}>{item.priceTotal}</p>
                       {item.patchChange && (
                         <div
-                          onClick={e => {
+                          onClick={(e) => {
                             e.stopPropagation();
                             if (!item.patchChange.details) return;
-                            setState(prev => ({
+                            setState((prev) => ({
                               ...prev,
                               modal: (
                                 <PatchChangeDetails

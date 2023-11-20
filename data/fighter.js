@@ -1,11 +1,4 @@
 export const fighter = {
-  mythic: {
-    6692: 'Eclipse',
-    6630: 'Goredrinker',
-    6631: 'Stridebreaker',
-    6632: 'Divine Sunderer',
-    3078: 'Trinity Force',
-  },
   legendary: {
     6609: 'Chempunk Chainsword',
     3026: 'Guardian Angel',

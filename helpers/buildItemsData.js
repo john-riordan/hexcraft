@@ -1,24 +1,25 @@
-import { BLACKLISTED_ITEMS, MYTHIC_WHITELIST } from './constants';
+import { BLACKLISTED_ITEMS, USE_CDRAGON_DATA } from './constants';
 import { starter } from '../data/starter';
 import isOrnnItem from '../helpers/isOrnnItem';
 
 export function buildItemsData({
-  ddragonItems = {},
-  cdragonItems = [],
+  ddragonItemsMap = {},
+  cdragonItemsMap = {},
   patchChanges = {},
 }) {
-  const itemsArr = cdragonItems.map((itemStats) => ({
-    ...itemStats,
-    id: Number(itemStats.id),
-    tags: itemStats.categories ?? [],
-    stats: ddragonItems[itemStats.id]?.stats ?? {},
-    gold: {
-      total: itemStats.priceTotal,
-    },
-  }));
+  // Use cdragon or ddragon
+  // cdragon if you want to show pbe
+  const itemListBase = USE_CDRAGON_DATA
+    ? Object.values(cdragonItemsMap)
+    : Object.values(ddragonItemsMap);
 
-  const usableItems = itemsArr
-    .filter((item) => item.gold.total && !BLACKLISTED_ITEMS[item.id])
+  const usableItems = itemListBase
+    .filter((item) => {
+      const hasCost = item.gold?.total;
+      const isBlacklisted = BLACKLISTED_ITEMS[item.id];
+      const idIsTooLong = `${item.id}`.length > 4;
+      return hasCost && !isBlacklisted && !idIsTooLong;
+    })
     .sort((a, z) => z.gold.total - a.gold.total)
     .map((item) => ({
       id: item.id,
@@ -29,44 +30,17 @@ export function buildItemsData({
       priceTotal: item.gold.total,
       from: item.from || [],
       stats: item.stats,
-      iconPath: item.id ? `${item.id}.png` : '',
-      iconPath: `${item.iconPath
+      iconPath: `${cdragonItemsMap[item.id]?.iconPath
         .replace(
           '/lol-game-data/assets/ASSETS',
           'https://raw.communitydragon.org/pbe/game/assets'
         )
         .toLowerCase()}`,
-      patchChange: patchChanges?.[item?.id] || null,
-      description: item.description
-        .replace(
-          /{{ Item_Range_Mod_0_Perc }}/,
-          'restore (50% melee / 30% ranged)'
-        )
-        .replace(
-          /{{ Item_Mythic_Passive }}/,
-          '<rarityMythic>Mythic Passive:</rarityMythic>'
-        ),
+      patchChange: patchChanges?.[item.id] || null,
     }));
 
-  const mythics = usableItems
-    .filter(
-      (item) =>
-        MYTHIC_WHITELIST[item.id] ||
-        item.description?.includes('<rarityMythic>')
-    )
-    .map((item) => ({
-      ...item,
-      ornnId: isOrnnItem(item) && item.from[0] ? item.from[0] + 0.1 : item.id,
-    }))
-    .sort((a, b) => b.ornnId - a.ornnId);
-
   const legendaries = usableItems.filter((item) => {
-    return (
-      item.priceTotal > 1500 &&
-      !item.description.includes('Mythic Passive:') &&
-      !MYTHIC_WHITELIST[item.id] &&
-      !isOrnnItem(item)
-    );
+    return item.priceTotal > 1500;
   });
 
   const epics = usableItems.filter(
@@ -101,26 +75,26 @@ export function buildItemsData({
       !item.categories.includes('Boots')
   );
 
-  const ornn = cdragonItems
-    .filter((item) => item.description.includes('ornnBonus'))
-    .map((item) => ({
-      id: item.id,
-      name: item.name,
-      categories: item.categories,
-      priceTotal: item.priceTotal,
-      from: item.from,
-      description: item.description
-        .replace(/Immolate :/, 'Immolate:')
-        .replace(
-          /<passive>Immolate:<\/passive>/,
-          '<immolate> Immolate :</immolate>'
-        ),
-      iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
-    }))
-    .reduce(function (acc, cur, i) {
-      acc[cur.from[0]] = cur;
-      return acc;
-    }, {});
+  // const ornn = cdragonItems
+  //   .filter((item) => item.description.includes('ornnBonus'))
+  //   .map((item) => ({
+  //     id: item.id,
+  //     name: item.name,
+  //     categories: item.categories,
+  //     priceTotal: item.priceTotal,
+  //     from: item.from,
+  //     description: item.description
+  //       .replace(/Immolate :/, 'Immolate:')
+  //       .replace(
+  //         /<passive>Immolate:<\/passive>/,
+  //         '<immolate> Immolate :</immolate>'
+  //       ),
+  //     iconPath: item.iconPath.split('/').slice(-1)[0].toLowerCase(),
+  //   }))
+  //   .reduce(function (acc, cur, i) {
+  //     acc[cur.from[0]] = cur;
+  //     return acc;
+  //   }, {});
 
   const boots = usableItems
     .filter((item) => item.stats.FlatMovementSpeedMod)
@@ -129,7 +103,7 @@ export function buildItemsData({
   const starters = usableItems.filter((item) => starter[item.id]);
 
   return {
-    ornn: ornn,
+    // ornn: ornn,
     items: usableItems
       .map((item) => ({
         ...item,
@@ -141,16 +115,11 @@ export function buildItemsData({
       }, {}),
 
     all: {
-      mythics,
       legendaries,
       epics,
       basics,
       starters,
       boots,
     },
-    mythicDictionary: mythics.reduce(function (acc, cur) {
-      acc[cur.id] = cur.name;
-      return acc;
-    }, {}),
   };
 }

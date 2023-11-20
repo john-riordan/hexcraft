@@ -37,7 +37,6 @@ export default function Home(props) {
     search: '',
     searchOpen: false,
     inventoryCost: 0,
-    inventoryHasMythic: false,
     modal: null,
     soundPurchase: purchaseRef,
     soundSell: sellRef,
@@ -49,19 +48,12 @@ export default function Home(props) {
   const items = inventory.map((item) => itemsData.items[item]);
   const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
 
-  let hasMythic = false;
-  items.forEach((item) => {
-    const isMythic = itemsData.mythicDictionary[item.id];
-    if (isMythic) hasMythic = true;
-  });
-
   useEffect(() => {
     setState((prev) => ({
       ...prev,
-      inventoryHasMythic: hasMythic,
       inventoryCost: cost,
     }));
-  }, [hasMythic, cost]);
+  }, [cost]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -166,14 +158,38 @@ export async function getStaticProps() {
   );
   const ddragonItems = await ddragonItemsReq.json();
 
+  const ddragonItemsMap = Object.entries(ddragonItems.data || {}).reduce(
+    (acc, curr) => {
+      const [id, info] = curr;
+      acc[id] = {
+        ...info,
+        id: Number(id),
+      };
+      return acc;
+    },
+    {}
+  );
+  const cdragonItemsMap = cdragonItems.reduce((acc, curr) => {
+    acc[curr.id] = {
+      ...curr,
+      to: curr.into,
+      tags: curr.categories || [],
+      stats: ddragonItemsMap[curr.id]?.stats ?? {},
+      gold: {
+        total: curr.priceTotal,
+      },
+    };
+    return acc;
+  }, {});
+
   const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
     props: {
       patch: ddragonPatchesLatest,
       itemsData: buildItemsData({
-        ddragonItems: ddragonItems.data,
-        cdragonItems,
+        ddragonItemsMap,
+        cdragonItemsMap,
         patchChanges: latestPatchChanges,
       }),
     },

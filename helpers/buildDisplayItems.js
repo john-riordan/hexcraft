@@ -9,7 +9,6 @@ export function buildDisplayItems(itemsData, tab) {
   switch (tab) {
     case 'assassin':
       return {
-        mythics: itemsData.mythics.filter((i) => assassin.mythic[i.id]),
         legendaries: itemsData.legendaries.filter(
           (i) => assassin.legendary[i.id]
         ),
@@ -19,7 +18,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     case 'fighter':
       return {
-        mythics: itemsData.mythics.filter((i) => fighter.mythic[i.id]),
         legendaries: itemsData.legendaries.filter(
           (i) => fighter.legendary[i.id]
         ),
@@ -29,7 +27,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     case 'mage':
       return {
-        mythics: itemsData.mythics.filter((i) => mage.mythic[i.id]),
         legendaries: itemsData.legendaries.filter((i) => mage.legendary[i.id]),
         epics: itemsData.epics.filter((i) => mage.epic[i.id]),
         basics: itemsData.basics.filter((i) => mage.basic[i.id]),
@@ -37,7 +34,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     case 'marksman':
       return {
-        mythics: itemsData.mythics.filter((i) => marksman.mythic[i.id]),
         legendaries: itemsData.legendaries.filter(
           (i) => marksman.legendary[i.id]
         ),
@@ -47,7 +43,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     case 'support':
       return {
-        mythics: itemsData.mythics.filter((i) => support.mythic[i.id]),
         legendaries: itemsData.legendaries.filter(
           (i) => support.legendary[i.id]
         ),
@@ -57,7 +52,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     case 'tank':
       return {
-        mythics: itemsData.mythics.filter((i) => tank.mythic[i.id]),
         legendaries: itemsData.legendaries.filter((i) => tank.legendary[i.id]),
         epics: itemsData.epics.filter((i) => tank.epic[i.id]),
         basics: itemsData.basics.filter((i) => tank.basic[i.id]),
@@ -65,7 +59,6 @@ export function buildDisplayItems(itemsData, tab) {
       };
     default:
       return {
-        mythics: itemsData,
         legendaries: itemsData.legendaries,
         epics: itemsData.epics,
         basics: itemsData.basics,
