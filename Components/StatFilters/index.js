@@ -159,6 +159,13 @@ const StatFilters = ({ className }) => {
           })}
         </div>
       ))}
+      <a
+        href='https://twitter.com/JohnRiordan'
+        target='_blank'
+        className={styles.twitter}
+      >
+        @JohnRiordan
+      </a>
     </aside>
   );
 };

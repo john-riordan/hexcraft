@@ -110,6 +110,17 @@
   border: 1px solid var(--accent1);
 }
 
+.twitter {
+  display: block;
+  padding-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--text4);
+  padding-inline-start: 0.25rem;
+}
+.twitter:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 1600px) {
   .patchTitle {
     display: none;
