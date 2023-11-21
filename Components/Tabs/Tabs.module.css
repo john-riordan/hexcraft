@@ -33,6 +33,11 @@
   opacity: 1;
 }
 
+.tab[disabled] {
+  opacity: 0.38;
+  pointer-events: none;
+}
+
 .tab svg {
   font-size: 1.25rem;
   margin-right: 0.25rem;
