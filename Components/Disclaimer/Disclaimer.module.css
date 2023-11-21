@@ -1,0 +1,31 @@
+.disclaimer {
+  position: relative;
+  display: grid;
+  place-content: center;
+  padding: 1rem 2rem;
+  text-align: center;
+  color: var(--text4);
+}
+.disclaimer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url(/season-2024-splash-lg.webp) no-repeat center;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  opacity: 0.25;
+}
+.disclaimer > * {
+  position: relative;
+}
+.disclaimer h2 {
+  font-family: 'Beaufort-bold';
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin: 0;
+  font-size: 1rem;
+}
+.disclaimer span {
+  font-size: 0.875rem;
+  color: var(--text3);
+}

@@ -1,14 +1,4 @@
 export const mage = {
-  mythic: {
-    3152: 'Hextech Rocketbelt',
-    4633: 'Riftmaker',
-    4636: 'Night Harvester',
-    6653: "Liandry's Anguish",
-    6655: "Luden's Tempest",
-    6656: 'Everfrost',
-    4644: 'Crown of the Shattered Queen',
-    6657: 'Rod of Ages',
-  },
   legendary: {
     3041: "Mejai's Soulstealer",
     3135: 'Void Staff',

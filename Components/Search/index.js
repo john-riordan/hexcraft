@@ -19,7 +19,7 @@ const Search = () => {
   const results = state.search?.length
     ? Object.values(state.itemsData?.items)
         .filter(
-          item =>
+          (item) =>
             item.name.toLowerCase().includes(state.search) ||
             item.search.includes(state.search) ||
             item.description.toLowerCase().includes(state.search)
@@ -38,16 +38,16 @@ const Search = () => {
           type='text'
           placeholder='Search'
           value={state.search}
-          onClick={() => setState(prev => ({ ...prev, searchOpen: true }))}
-          onChange={e => {
-            setState(prev => ({ ...prev, search: e.target.value }));
+          onClick={() => setState((prev) => ({ ...prev, searchOpen: true }))}
+          onChange={(e) => {
+            setState((prev) => ({ ...prev, search: e.target.value }));
           }}
         />
         {state.searchOpen && (
           <Icon
             icon='close'
             className={styles.close}
-            onClick={() => setState(prev => ({ ...prev, searchOpen: false }))}
+            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
           />
         )}
       </div>
@@ -55,14 +55,14 @@ const Search = () => {
         <>
           <div className={styles.resultsFrame}>
             <div className={styles.resultsList}>
-              {results.map(item => (
+              {results.map((item) => (
                 <div
                   key={item.id}
                   className={`${styles.result} ${
                     hovered?.id === item.id && styles.resultSelected
                   }`}
                   onClick={() =>
-                    setState(prev => ({
+                    setState((prev) => ({
                       ...prev,
                       selectedItem: item,
                       searchOpen: false,
@@ -71,11 +71,8 @@ const Search = () => {
                   onMouseOver={() => setHovered(item)}
                   // onContextMenu={e => {
                   //   e.preventDefault();
-                  //   const isMythic = state.itemsData.mythicDictionary[item.id];
                   //   if (
-                  //     inventory.length < 6 &&
-                  //     !state.inventoryHasMythic &&
-                  //     isMythic
+                  //     inventory.length < 6
                   //   ) {
                   //     const params = new URLSearchParams({
                   //       i: [...inventory, item.id],
@@ -89,7 +86,7 @@ const Search = () => {
                   //       ...prev,
                   //       searchOpen: false,
                   //     }));
-                  //   } else if (inventory.length < 6 && !isMythic) {
+                  //   } else if (inventory.length < 6) {
                   //     const params = new URLSearchParams({
                   //       i: [...inventory, item.id],
                   //     });
@@ -112,7 +109,6 @@ const Search = () => {
                     className={styles.imgFrame}
                     size={42}
                     alt={item.name}
-                    isMythic={state.itemsData.mythicDictionary[item.id]}
                     isOrnn={isOrnnItem(item)}
                   />
                   <div className={styles.resultInfo}>
@@ -132,7 +128,6 @@ const Search = () => {
                       className={styles.imgFrame}
                       size={42}
                       alt={hovered.name}
-                      isMythic={state.itemsData.mythicDictionary[hovered.id]}
                       isOrnn={isOrnnItem(hovered)}
                       inline
                     />
@@ -156,7 +151,7 @@ const Search = () => {
           </div>
           <div
             className={styles.overlay}
-            onClick={() => setState(prev => ({ ...prev, searchOpen: false }))}
+            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
           />
         </>
       )}
@@ -171,7 +166,7 @@ const Search = () => {
           <button
             name='Change Sort Direction'
             className={`${styles.orderBtn} ${state.desc && styles.active}`}
-            onClick={() => setState(prev => ({ ...prev, desc: !prev.desc }))}
+            onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
           >
             <Icon icon='order' />
           </button>

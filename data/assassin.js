@@ -1,9 +1,4 @@
 export const assassin = {
-  mythic: {
-    6691: 'Duskblade of Draktharr',
-    6692: 'Eclipse',
-    6693: "Prowler's Claw",
-  },
   legendary: {
     6609: 'Chempunk Chainsword',
     3026: 'Guardian Angel',
@@ -18,7 +13,7 @@ export const assassin = {
     3074: 'Ravenous Hydra',
     3071: 'Black Cleaver',
     6694: "Serylda's Grudge",
-    6696: "Axiom Arc"
+    6696: 'Axiom Arc',
   },
   epic: {
     1031: 'Chain Vest',

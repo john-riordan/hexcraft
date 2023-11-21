@@ -11,7 +11,7 @@ import formatPatch from '../../helpers/formatPatch';
 const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
 
-  const itemChanged = item.patchChange;
+  const itemChanged = item?.patchChange;
   const patch = formatPatch(state.patch);
 
   return (
@@ -19,7 +19,6 @@ const ItemTooltip = ({ item }) => {
       <div className={styles.header}>
         <ItemImage
           imgName={item.iconPath}
-          isMythic={state.itemsData.mythicDictionary[item.id]}
           isOrnn={isOrnnItem(item)}
           alt={item.name}
           size={48}
@@ -40,7 +39,7 @@ const ItemTooltip = ({ item }) => {
           <p
             className={`${itemChanged.change.toLowerCase()}`}
             onClick={() =>
-              setState(prev => ({
+              setState((prev) => ({
                 ...prev,
                 modal: <PatchChangeDetails content={itemChanged.details} />,
               }))

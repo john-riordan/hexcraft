@@ -1,10 +1,4 @@
 export const marksman = {
-  mythic: {
-    3078: 'Trinity Force',
-    6671: 'Galeforce',
-    6672: 'Kraken Slayer',
-    6673: 'Immortal Shieldbow',
-  },
   legendary: {
     3004: 'Manamune',
     3033: 'Mortal Reminder',

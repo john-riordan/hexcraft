@@ -1,3 +1,25 @@
+.sidebarHeader {
+  position: relative;
+  padding-top: 5rem;
+}
+.sidebarHeader > * {
+  position: relative;
+}
+.sidebarHeader::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -6.5rem -2rem;
+  background: url(/season-2024-splash.webp) no-repeat center;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 20%,
+    transparent
+  );
+  opacity: 0.75;
+}
+
 .patchTitle {
   font-family: 'Beaufort-bold';
   text-transform: uppercase;
@@ -9,13 +31,15 @@
   line-height: 1;
 }
 .patchTitle span:nth-of-type(1) {
-  color: var(--text3);
-  font-size: 1rem;
-}
-.patchTitle span:nth-of-type(2) {
-  color: var(--text4);
+  color: var(--text6);
   font-size: 1.5rem;
+  line-height: 1.5;
 }
+/* .patchTitle span:nth-of-type(2) {
+  color: var(--text6);
+  font-size: 1.5rem;
+  line-height: 1.5;
+} */
 
 .group {
   padding: 0.5rem 0;
@@ -28,13 +52,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.375rem 0;
   letter-spacing: 0.025rem;
   font-size: 0.875rem;
   color: var(--text5);
   cursor: pointer;
   user-select: none;
-  transition: var(--transition);
+  transition: color var(--transition);
 }
 .statItem > * {
   position: relative;
@@ -48,7 +72,7 @@
   left: 0;
   width: 100%;
   background: linear-gradient(to right, transparent 25%, var(--blue));
-  transition: var(--transition);
+  transition: opacity var(--transition);
 }
 .statItem:hover {
   color: var(--text1);

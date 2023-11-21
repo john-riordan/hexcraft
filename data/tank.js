@@ -1,13 +1,4 @@
 export const tank = {
-  mythic: {
-    2065: "Shurelya's Battlesong",
-    3190: 'Locket of the Iron Solari',
-    6662: 'Iceborn Gauntlet',
-    3084: 'Heartsteel',
-    6667: 'Radiant Virtue',
-    6665: `Jak'Sho, The Protean`,
-    6657: 'Rod of Ages',
-  },
   legendary: {
     3068: 'Sunfire Aegis',
     6664: 'Turbo Chemtank',

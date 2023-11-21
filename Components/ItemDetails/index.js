@@ -17,7 +17,7 @@ const ItemDetails = ({ className }) => {
 
   const builtFrom = selectedItem
     ? Object.values(state.itemsData.items)
-        .filter(item => item.from.includes(selectedItem.id))
+        .filter((item) => item.from.includes(selectedItem.id))
         .slice(0, MAX_FROM)
     : [];
 
@@ -34,7 +34,7 @@ const ItemDetails = ({ className }) => {
           icon='close'
           className={styles.close}
           onClick={() =>
-            setState(prev => ({
+            setState((prev) => ({
               ...prev,
               selectedItem: null,
             }))
@@ -45,7 +45,7 @@ const ItemDetails = ({ className }) => {
         {selectedItem ? 'Builds Into' : 'Select an Item'}
       </p>
       <div className={styles.buildsFrom}>
-        {builtFrom.map(item => (
+        {builtFrom.map((item) => (
           <Tippy
             key={item.name}
             placement='bottom'
@@ -56,7 +56,7 @@ const ItemDetails = ({ className }) => {
             <div
               className={styles.itemFrom}
               onClick={() =>
-                setState(prev => ({
+                setState((prev) => ({
                   ...prev,
                   selectedItem: item,
                 }))
@@ -68,13 +68,12 @@ const ItemDetails = ({ className }) => {
                 className={styles.imgFrame}
                 size={36}
                 alt={item.name}
-                isMythic={state.itemsData.mythicDictionary[item.id]}
                 isOrnn={isOrnnItem(item)}
               />
             </div>
           </Tippy>
         ))}
-        {empty.map(i => (
+        {empty.map((i) => (
           <div key={i}>
             <ItemImage
               size={36}

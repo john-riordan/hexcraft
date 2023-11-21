@@ -1,4 +1,8 @@
+export const USE_CDRAGON_DATA = true;
+
 export const DDRAGON_PATCH = '13.22.1';
+
+export const EPIC_LEGENDARY_BREAKPOINT = 1800;
 
 export const CHANGE_TYPES = {
   new: 'New',
@@ -14,9 +18,54 @@ export const BLACKLISTED_ITEMS = {
   3177: "Guardian's Blad",
   3184: "Guardian's Hammer",
   4403: 'The Golden Spatula',
-};
-
-export const MYTHIC_WHITELIST = {
-  3124: "Guinsoo's Rageblade",
-  7030: 'Seething Sorrow',
+  228003: true,
+  228008: true,
+  228002: true,
+  228004: true,
+  4004: true,
+  3039: true,
+  3128: true,
+  3430: true,
+  4010: true,
+  4011: true,
+  4012: true,
+  4013: true,
+  4014: true,
+  4015: true,
+  4016: true,
+  4017: true,
+  4402: true,
+  4003: true,
+  3131: true,
+  2423: true, // Perfectly timed seekers
+  3005: true,
+  1035: true,
+  1039: true,
+  2424: true,
+  2049: true,
+  2421: true,
+  3105: true,
+  6677: true,
+  6029: true,
+  3041: true,
+  4635: true,
+  3023: true,
+  6700: true,
+  6656: true,
+  6632: true,
+  6671: true,
+  3146: true,
+  6630: true,
+  3193: true,
+  6691: true,
+  4637: true,
+  6035: true,
+  7036: true,
+  3001: true,
+  4644: true,
+  4636: true,
+  226655: true,
+  226664: true,
+  6667: true,
+  3011: true,
 };

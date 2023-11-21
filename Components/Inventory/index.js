@@ -21,7 +21,7 @@ const Inventory = () => {
   const textAreaRef = useRef(null);
   const router = useRouter();
   const inventory = router.query?.i ? router.query?.i?.split(',') : [];
-  const inventoryItems = inventory.map(item => {
+  const inventoryItems = inventory.map((item) => {
     return state.itemsData.items[item];
   });
   const inventoryStats = computeInventoryStats(inventoryItems);
@@ -87,7 +87,7 @@ const Inventory = () => {
               <div
                 className={styles.itemFrame}
                 onClick={() =>
-                  setState(prev => ({ ...prev, selectedItem: item }))
+                  setState((prev) => ({ ...prev, selectedItem: item }))
                 }
                 // onContextMenu={e => {
                 //   e.preventDefault();
@@ -112,13 +112,12 @@ const Inventory = () => {
                   className={styles.imgFrame}
                   size={ITEM_SIZE}
                   alt={item.name}
-                  isMythic={state.itemsData.mythicDictionary[item.id]}
                   isOrnn={isOrnnItem(item)}
                 />
               </div>
             </Tippy>
           ))}
-          {empty.map(i => (
+          {empty.map((i) => (
             <div key={i}>
               <ItemImage
                 size={ITEM_SIZE}

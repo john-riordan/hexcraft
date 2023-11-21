@@ -42,12 +42,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 <div
                 // onContextMenu={e => {
                 //   e.preventDefault();
-                //   const isMythic =
-                //     state.itemsData.mythicDictionary[itemData.id];
                 //   if (
-                //     inventory.length < 6 &&
-                //     !state.inventoryHasMythic &&
-                //     isMythic
+                //     inventory.length < 6
                 //   ) {
                 //     const params = new URLSearchParams({
                 //       i: [...inventory, itemData.id],
@@ -57,7 +53,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 //     router.replace(`?${params}`, undefined, {
                 //       shallow: true,
                 //     });
-                //   } else if (inventory.length < 6 && !isMythic) {
+                //   } else if (inventory.length < 6) {
                 //     const params = new URLSearchParams({
                 //       i: [...inventory, itemData.id],
                 //     });
@@ -76,7 +72,6 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     imgName={itemData.iconPath}
                     className={styles.imgFrame}
                     size={imageSize}
-                    isMythic={state.itemsData.mythicDictionary[itemData.id]}
                     isOrnn={isOrnnItem(item)}
                     alt={itemData.name}
                   />
@@ -101,7 +96,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                   >
                     <div
                       onClick={() =>
-                        setState(prev => ({
+                        setState((prev) => ({
                           ...prev,
                           selectedItem: itemsData.items[item],
                         }))
@@ -136,7 +131,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                         <div
                           className={styles.itemCol}
                           onClick={() =>
-                            setState(prev => ({
+                            setState((prev) => ({
                               ...prev,
                               selectedItem: itemsData.items[item],
                             }))
@@ -165,7 +160,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                   className='attribute'
                   onClick={() => {
                     if (!itemChanged.details) return;
-                    setState(prev => ({
+                    setState((prev) => ({
                       ...prev,
                       modal: (
                         <PatchChangeDetails content={itemChanged.details} />
