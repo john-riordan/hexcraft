@@ -4,6 +4,7 @@
   place-content: center;
   padding: 1rem 2rem;
   text-align: center;
+  color: var(--text4);
 }
 .disclaimer::before {
   content: '';
@@ -22,6 +23,9 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   margin: 0;
-  color: var(--text4);
   font-size: 1rem;
+}
+.disclaimer span {
+  font-size: 0.875rem;
+  color: var(--text3);
 }
