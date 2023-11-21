@@ -86,15 +86,15 @@ export default function Home(props) {
             <meta name='darkreader-lock' />
             <meta
               name='Description'
-              content='League of Legends Season 2023 / Season 13 Item Changes'
+              content='League of Legends Season 2024 / Season 14 Item Changes'
             />
             <meta
               property='og:title'
-              content='LoL Shop - League of Legends Season 13 Item Changes'
+              content='LoL Shop - League of Legends Season 14 Item Changes'
             />
             <meta
               property='og:description'
-              content='Season 2023 Item changes'
+              content='Season 2024 Item changes'
             />
             <meta property='og:type' content='website' />
             <meta property='og:url' content='https://lolshop.gg' />
