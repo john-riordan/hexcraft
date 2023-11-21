@@ -69,40 +69,38 @@ const Search = () => {
                     }))
                   }
                   onMouseOver={() => setHovered(item)}
-                  // onContextMenu={e => {
-                  //   e.preventDefault();
-                  //   if (
-                  //     inventory.length < 6
-                  //   ) {
-                  //     const params = new URLSearchParams({
-                  //       i: [...inventory, item.id],
-                  //     });
-                  //     state.soundPurchase.current.volume = 0.5;
-                  //     state.soundPurchase.current.play();
-                  //     router.replace(`?${params}`, undefined, {
-                  //       shallow: true,
-                  //     });
-                  //     setState(prev => ({
-                  //       ...prev,
-                  //       searchOpen: false,
-                  //     }));
-                  //   } else if (inventory.length < 6) {
-                  //     const params = new URLSearchParams({
-                  //       i: [...inventory, item.id],
-                  //     });
-                  //     state.soundPurchase.current.volume = 0.5;
-                  //     state.soundPurchase.current.play();
-                  //     router.replace(`?${params}`, undefined, {
-                  //       shallow: true,
-                  //     });
-                  //     setState(prev => ({
-                  //       ...prev,
-                  //       searchOpen: false,
-                  //     }));
-                  //   } else {
-                  //     state.soundCant.current.play();
-                  //   }
-                  // }}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    if (inventory.length < 6) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, item.id],
+                      });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                      setState((prev) => ({
+                        ...prev,
+                        searchOpen: false,
+                      }));
+                    } else if (inventory.length < 6) {
+                      const params = new URLSearchParams({
+                        i: [...inventory, item.id],
+                      });
+                      state.soundPurchase.current.volume = 0.5;
+                      state.soundPurchase.current.play();
+                      router.replace(`?${params}`, undefined, {
+                        shallow: true,
+                      });
+                      setState((prev) => ({
+                        ...prev,
+                        searchOpen: false,
+                      }));
+                    } else {
+                      state.soundCant.current.play();
+                    }
+                  }}
                 >
                   <ItemImage
                     imgName={item.iconPath}

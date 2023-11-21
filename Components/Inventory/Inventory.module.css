@@ -14,17 +14,24 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   z-index: 2;
-  box-shadow: 0 0px 6.7px rgba(0, 0, 0, 0.191), 0 0px 16px rgba(0, 0, 0, 0.275),
-    0 0px 30.2px rgba(0, 0, 0, 0.34), 0 0px 53.8px rgba(0, 0, 0, 0.405),
-    0 0px 100.7px rgba(0, 0, 0, 0.489), 0 0px 241px rgba(0, 0, 0, 0.68),
+  box-shadow: 0 0px 7px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.3),
+    0 0px 30px rgba(0, 0, 0, 0.4), 0 0px 54px rgba(0, 0, 0, 0.4),
+    0 0px 100px rgba(0, 0, 0, 0.5), 0 0px 240px rgba(0, 0, 0, 0.7),
     0 80px 10px black;
 }
 
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: 1.25rem;
   font-family: 'Beaufort-bold';
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .cost,
@@ -43,7 +50,6 @@
   margin-right: 0.25rem;
 }
 .share {
-  margin-left: 1.5rem;
   color: var(--text4);
   cursor: pointer;
 }

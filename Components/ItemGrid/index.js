@@ -33,8 +33,6 @@ const ItemGrid = ({ className }) => {
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
-  console.log(state);
-
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items], i) => {
@@ -68,32 +66,30 @@ const ItemGrid = ({ className }) => {
                             ? styles.selected
                             : ''
                         }`}
-                        // onContextMenu={e => {
-                        //   e.preventDefault();
-                        //   if (
-                        //     inventory.length < 6
-                        //   ) {
-                        //     const params = new URLSearchParams({
-                        //       i: [...inventory, item.id],
-                        //     });
-                        //     state.soundPurchase.current.volume = 0.5;
-                        //     state.soundPurchase.current.play();
-                        //     router.replace(`?${params}`, undefined, {
-                        //       shallow: true,
-                        //     });
-                        //   } else if (inventory.length < 6) {
-                        //     const params = new URLSearchParams({
-                        //       i: [...inventory, item.id],
-                        //     });
-                        //     state.soundPurchase.current.volume = 0.5;
-                        //     state.soundPurchase.current.play();
-                        //     router.replace(`?${params}`, undefined, {
-                        //       shallow: true,
-                        //     });
-                        //   } else {
-                        //     state.soundCant.current.play();
-                        //   }
-                        // }}
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          if (inventory.length < 6) {
+                            const params = new URLSearchParams({
+                              i: [...inventory, item.id],
+                            });
+                            state.soundPurchase.current.volume = 0.5;
+                            state.soundPurchase.current.play();
+                            router.replace(`?${params}`, undefined, {
+                              shallow: true,
+                            });
+                          } else if (inventory.length < 6) {
+                            const params = new URLSearchParams({
+                              i: [...inventory, item.id],
+                            });
+                            state.soundPurchase.current.volume = 0.5;
+                            state.soundPurchase.current.play();
+                            router.replace(`?${params}`, undefined, {
+                              shallow: true,
+                            });
+                          } else {
+                            state.soundCant.current.play();
+                          }
+                        }}
                         onClick={() =>
                           setState((prev) => ({
                             ...prev,

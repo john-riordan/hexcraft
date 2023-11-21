@@ -43,6 +43,16 @@ const Inventory = () => {
     };
   }, []);
 
+  const handleClear = useCallback(() => {
+    if (state.soundSell) {
+      state.soundSell.current.volume = 0.5;
+      state.soundSell.current.play();
+    }
+    router.replace(``, undefined, {
+      shallow: true,
+    });
+  }, [state]);
+
   return (
     <div className={styles.container}>
       {/* <div>
@@ -58,15 +68,20 @@ const Inventory = () => {
       </div> */}
       <div>
         <div className={styles.header}>
-          <p className={styles.cost}>
-            <Icon icon='gold' />
-            <span>{inventoryCost}</span>
-          </p>
-          <p
-            className={`${styles.share} ${copied && styles.copied}`}
-            onClick={handleCopy}
-          >
-            {copied ? 'Copied!' : 'Copy Link'}
+          <div className={styles.headerLeft}>
+            <p className={styles.cost}>
+              <Icon icon='gold' />
+              <span>{inventoryCost}</span>
+            </p>
+            <p
+              className={`${styles.share} ${copied && styles.copied}`}
+              onClick={handleCopy}
+            >
+              {copied ? 'Copied!' : 'Copy Link'}
+            </p>
+          </div>
+          <p className={styles.share} onClick={handleClear}>
+            Clear
           </p>
         </div>
         <textarea
@@ -89,22 +104,22 @@ const Inventory = () => {
                 onClick={() =>
                   setState((prev) => ({ ...prev, selectedItem: item }))
                 }
-                // onContextMenu={e => {
-                //   e.preventDefault();
-                //   const index = inventory.indexOf(item.id);
-                //   const inv = [...inventory];
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  const index = inventory.indexOf(`${item.id}`);
+                  const inv = [...inventory];
 
-                //   if (index !== -1) inv.splice(index, 1);
+                  if (index !== -1) inv.splice(index, 1);
 
-                //   const params = new URLSearchParams({
-                //     i: inv,
-                //   });
-                //   state.soundSell.current.volume = 0.5;
-                //   state.soundSell.current.play();
-                //   router.replace(`?${params}`, undefined, {
-                //     shallow: true,
-                //   });
-                // }}
+                  const params = new URLSearchParams({
+                    i: inv,
+                  });
+                  state.soundSell.current.volume = 0.5;
+                  state.soundSell.current.play();
+                  router.replace(`?${params}`, undefined, {
+                    shallow: true,
+                  });
+                }}
               >
                 <ItemImage
                   key={`${item.id}_${i}`}
