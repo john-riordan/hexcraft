@@ -129,6 +129,9 @@ ornnBonus {
   font-weight: 700;
   color: var(--text1);
 }
+passive {
+  color: var(--text2);
+}
 immolate {
   color: var(--immolate);
 }

@@ -17,6 +17,7 @@ import Inventory from '../Components/Inventory/';
 import Modal from '../Components/Modal/';
 
 import styles from '../styles/Home.module.css';
+import Disclaimer from '../Components/Disclaimer';
 
 export default function Home(props) {
   const { patch, itemsData, latestPatchChanges } = props;
@@ -109,6 +110,7 @@ export default function Home(props) {
           <div className={styles.main}>
             <StatFilters className={styles.filters} />
             <main className={styles.center}>
+              <Disclaimer />
               <Search />
               <ItemGrid className={styles.grid} />
             </main>

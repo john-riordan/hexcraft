@@ -11,7 +11,7 @@ import formatPatch from '../../helpers/formatPatch';
 const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
 
-  const itemChanged = item.patchChange;
+  const itemChanged = item?.patchChange;
   const patch = formatPatch(state.patch);
 
   return (
