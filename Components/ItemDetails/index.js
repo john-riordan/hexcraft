@@ -48,7 +48,7 @@ const ItemDetails = ({ className }) => {
         {builtFrom.map((item) => (
           <Tippy
             key={item.name}
-            placement='bottom'
+            placement='left-start'
             offset='0, 10'
             duration={0}
             content={<ItemTooltip item={item} />}
