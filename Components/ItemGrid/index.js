@@ -36,8 +36,11 @@ const ItemGrid = ({ className }) => {
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items], i) => {
-        const groupItems = state.stat
-          ? items.filter((item) => item.categories.includes(state.stat))
+        const groupItems = state.stat.length
+          ? items.filter((item) => {
+              // all filters must match
+              return state.stat.every((s) => item.categories.includes(s));
+            })
           : items;
         if (!groupItems.length) return null;
 

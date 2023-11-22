@@ -4,4 +4,5 @@ export const legendary = {
   3876: 'Solstice Sleigh',
   3870: 'Dream Maker',
   3869: 'Celestial Opposition',
+  3041: 'mejais',
 };

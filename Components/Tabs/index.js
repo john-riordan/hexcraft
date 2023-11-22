@@ -22,10 +22,15 @@ const Tabs = () => {
     <div className={styles.tabs}>
       {TABS.map((tab) => (
         <button
-          disabled
           key={tab.key}
           name={tab.name}
-          onClick={() => setState((prev) => ({ ...prev, tab: tab.key }))}
+          onClick={() => {
+            if (state.tab === tab.key) {
+              setState((prev) => ({ ...prev, tab: null }));
+              return;
+            }
+            setState((prev) => ({ ...prev, tab: tab.key }));
+          }}
           className={`${styles.tab} ${state.tab === tab.key && styles.active}`}
         >
           <div>

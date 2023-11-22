@@ -77,18 +77,18 @@ const StatFilters = ({ className }) => {
       <div className={styles.group}>
         <div
           className={`${styles.statItem} ${
-            state.stat === 'Patch' && styles.active
+            state.stat.includes('Patch') && styles.active
           }`}
           onClick={() => {
-            if (state.stat === 'Patch') {
+            if (state.stat.includes('Patch')) {
               setState((prev) => ({
                 ...prev,
-                stat: null,
+                stat: state.stat.filter((s) => s !== 'Patch'),
               }));
             } else {
               setState((prev) => ({
                 ...prev,
-                stat: 'Patch',
+                stat: [...state.stat, 'Patch'],
               }));
             }
           }}
@@ -116,7 +116,7 @@ const StatFilters = ({ className }) => {
       {statGroups.map((group, i) => (
         <div key={i} className={styles.group}>
           {group.map((stat) => {
-            const isActive = state.stat === stat.key;
+            const isActive = state.stat.includes(stat.key);
             return (
               <div
                 key={stat.name}
@@ -125,12 +125,12 @@ const StatFilters = ({ className }) => {
                   if (isActive) {
                     setState((prev) => ({
                       ...prev,
-                      stat: null,
+                      stat: state.stat.filter((s) => s !== stat.key),
                     }));
                   } else {
                     setState((prev) => ({
                       ...prev,
-                      stat: stat.key,
+                      stat: [...state.stat, stat.key],
                     }));
                   }
                 }}

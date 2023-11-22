@@ -32,7 +32,7 @@ export default function Home(props) {
     itemsData,
     latestPatchChanges,
     tab: 'all',
-    stat: null,
+    stat: [],
     desc: true,
     selectedItem: null,
     search: '',

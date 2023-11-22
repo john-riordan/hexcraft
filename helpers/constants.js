@@ -47,7 +47,7 @@ export const BLACKLISTED_ITEMS = {
   3105: true,
   6677: true,
   6029: true,
-  3041: true,
+  // 3041: true,
   4635: true,
   3023: true,
   6700: true,
