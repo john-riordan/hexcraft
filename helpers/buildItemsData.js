@@ -7,6 +7,7 @@ import { starter } from '../data/starter';
 import { basic } from '../data/basic';
 import { epic } from '../data/epic';
 import { legendary } from '../data/legendary';
+import { whitelist } from '../data/whitelist';
 import isOrnnItem from '../helpers/isOrnnItem';
 
 export function buildItemsData({
@@ -23,9 +24,9 @@ export function buildItemsData({
   const usableItems = itemListBase
     .filter((item) => {
       const hasCost = item.gold?.total;
-      const isBlacklisted = BLACKLISTED_ITEMS[item.id];
-      const idIsTooLong = `${item.id}`.length > 4;
-      return hasCost && !isBlacklisted && !idIsTooLong && !isOrnnItem(item);
+      const isWhitelisted = whitelist[item.id];
+
+      return hasCost && isWhitelisted && !isOrnnItem(item);
     })
     .sort((a, z) => z.gold.total - a.gold.total)
     .map((item) => ({
@@ -110,11 +111,11 @@ export function buildItemsData({
       }, {}),
 
     all: {
-      legendaries,
-      epics,
-      basics,
-      starters,
-      boots,
+      legendaries: legendaries.map((i) => i.id),
+      epics: epics.map((i) => i.id),
+      basics: basics.map((i) => i.id),
+      starters: starters.map((i) => i.id),
+      boots: boots.map((i) => i.id),
     },
   };
 }

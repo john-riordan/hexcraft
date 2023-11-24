@@ -28,8 +28,13 @@ const ItemGrid = ({ className }) => {
 
   const itemsData =
     state.tab === 'all'
-      ? Object.entries(state.itemsData.all)
-      : Object.entries(buildDisplayItems(state.itemsData.all, state.tab));
+      ? Object.entries(state.itemsData.all).map(([groupName, list]) => {
+          return [
+            groupName,
+            list.map((itemId) => state.itemsData.items[itemId]),
+          ];
+        })
+      : Object.entries(buildDisplayItems(state.itemsData, state.tab));
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 

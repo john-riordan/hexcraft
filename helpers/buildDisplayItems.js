@@ -5,64 +5,45 @@ import { marksman } from '../data/marksman';
 import { support } from '../data/support';
 import { tank } from '../data/tank';
 
-export function buildDisplayItems(itemsData, tab) {
-  switch (tab) {
-    case 'assassin':
-      return {
-        legendaries: itemsData.legendaries.filter(
-          (i) => assassin.legendary[i.id]
-        ),
-        epics: itemsData.epics.filter((i) => assassin.epic[i.id]),
-        basics: itemsData.basics.filter((i) => assassin.basic[i.id]),
-        starters: itemsData.starters.filter((i) => assassin.starter[i.id]),
-      };
-    case 'fighter':
-      return {
-        legendaries: itemsData.legendaries.filter(
-          (i) => fighter.legendary[i.id]
-        ),
-        epics: itemsData.epics.filter((i) => fighter.epic[i.id]),
-        basics: itemsData.basics.filter((i) => fighter.basic[i.id]),
-        starters: itemsData.starters.filter((i) => fighter.starter[i.id]),
-      };
-    case 'mage':
-      return {
-        legendaries: itemsData.legendaries.filter((i) => mage.legendary[i.id]),
-        epics: itemsData.epics.filter((i) => mage.epic[i.id]),
-        basics: itemsData.basics.filter((i) => mage.basic[i.id]),
-        starters: itemsData.starters.filter((i) => mage.starter[i.id]),
-      };
-    case 'marksman':
-      return {
-        legendaries: itemsData.legendaries.filter(
-          (i) => marksman.legendary[i.id]
-        ),
-        epics: itemsData.epics.filter((i) => marksman.epic[i.id]),
-        basics: itemsData.basics.filter((i) => marksman.basic[i.id]),
-        starters: itemsData.starters.filter((i) => marksman.starter[i.id]),
-      };
-    case 'support':
-      return {
-        legendaries: itemsData.legendaries.filter(
-          (i) => support.legendary[i.id]
-        ),
-        epics: itemsData.epics.filter((i) => support.epic[i.id]),
-        basics: itemsData.basics.filter((i) => support.basic[i.id]),
-        starters: itemsData.starters.filter((i) => support.starter[i.id]),
-      };
-    case 'tank':
-      return {
-        legendaries: itemsData.legendaries.filter((i) => tank.legendary[i.id]),
-        epics: itemsData.epics.filter((i) => tank.epic[i.id]),
-        basics: itemsData.basics.filter((i) => tank.basic[i.id]),
-        starters: itemsData.starters.filter((i) => tank.starter[i.id]),
-      };
-    default:
-      return {
-        legendaries: itemsData.legendaries,
-        epics: itemsData.epics,
-        basics: itemsData.basics,
-        starters: itemsData.starters,
-      };
+const BASE = {
+  assassin,
+  fighter,
+  mage,
+  marksman,
+  support,
+  tank,
+};
+
+export function buildDisplayItems(itemsData = {}, tab) {
+  const dict = itemsData.items;
+  const groups = itemsData.all;
+
+  const legendaryBase = BASE[tab]?.legendary;
+  const epicBase = BASE[tab]?.epic;
+  const basicsBase = BASE[tab]?.basic;
+  const startersBase = BASE[tab]?.starter;
+
+  if (tab) {
+    return {
+      legendaries: groups.legendaries
+        .filter((itemId) => legendaryBase[itemId])
+        .map((itemId) => dict[itemId]),
+      epics: groups.epics
+        .filter((itemId) => epicBase[itemId])
+        .map((itemId) => dict[itemId]),
+      basics: groups.basics
+        .filter((itemId) => basicsBase[itemId])
+        .map((itemId) => dict[itemId]),
+      starters: groups.starters
+        .filter((itemId) => startersBase[itemId])
+        .map((itemId) => dict[itemId]),
+    };
   }
+
+  return {
+    legendaries: groups.legendaries.map((itemId) => dict[itemId]),
+    epics: groups.epics.map((itemId) => dict[itemId]),
+    basics: groups.basics.map((itemId) => dict[itemId]),
+    starters: groups.starters.map((itemId) => dict[itemId]),
+  };
 }
