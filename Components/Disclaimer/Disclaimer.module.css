@@ -1,10 +1,8 @@
 .disclaimer {
   position: relative;
   display: grid;
-  place-content: center;
   padding: 1rem 2rem;
-  text-align: center;
-  color: var(--text4);
+  color: var(--text6);
 }
 .disclaimer::before {
   content: '';
@@ -18,14 +16,16 @@
 .disclaimer > * {
   position: relative;
 }
-.disclaimer h2 {
+.disclaimer h1 {
   font-family: 'Beaufort-bold';
   text-transform: uppercase;
+  line-height: 2;
   letter-spacing: 0.1rem;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 .disclaimer span {
+  display: block;
   font-size: 0.875rem;
-  color: var(--text3);
+  color: var(--text5);
 }

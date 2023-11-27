@@ -1,7 +1,6 @@
 .container {
   position: sticky;
   margin: 0 1.5rem 0;
-  padding-top: 1rem;
   top: 0;
   background: var(--surface1);
   border-bottom: 1px solid var(--accent1);
