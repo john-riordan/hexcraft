@@ -81,7 +81,7 @@ export default function Home(props) {
               `,
               }}
             />
-            <title>LoL Shop - League of Legends Season 13 Item Changes</title>
+            <title>League Item Changes Season 14 (2014) - LoL Shop</title>
             <link rel='icon' href='/favicon.ico' />
             <meta name='darkreader-lock' />
             <meta
