@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 import { buildItemsData } from '../helpers/buildItemsData';
 import { DDRAGON_PATCH } from '../helpers/constants';
@@ -65,10 +66,9 @@ export default function Home(props) {
       <StateContext.Provider value={{ state, setState }}>
         <div className={styles.container}>
           <Head>
-            <script
-              script
-              async
+            <Script
               src='https://www.googletagmanager.com/gtag/js?id=G-N7F0JT23B2'
+              strategy='beforeInteractive'
             />
             <script
               dangerouslySetInnerHTML={{

@@ -5,34 +5,27 @@ import { marksman } from './marksman';
 import { support } from './support';
 import { tank } from './tank';
 
-export const whitelist = {
-  ...assassin.legendary,
-  ...assassin.epic,
-  ...assassin.basic,
-  ...assassin.starter,
+function makeWhitelist(grps = []) {
+  const subGrps = ['legendary', 'epic', 'basic', 'starter'];
 
-  ...fighter.legendary,
-  ...fighter.epic,
-  ...fighter.basic,
-  ...fighter.starter,
+  const whitelist = {};
 
-  ...mage.legendary,
-  ...mage.epic,
-  ...mage.basic,
-  ...mage.starter,
+  for (const grp of grps) {
+    for (const subGrp of subGrps) {
+      for (const [itemId, itemName] of Object.entries(grp[subGrp])) {
+        whitelist[itemId] = itemName;
+      }
+    }
+  }
 
-  ...marksman.legendary,
-  ...marksman.epic,
-  ...marksman.basic,
-  ...marksman.starter,
+  return whitelist;
+}
 
-  ...support.legendary,
-  ...support.epic,
-  ...support.basic,
-  ...support.starter,
-
-  ...tank.legendary,
-  ...tank.epic,
-  ...tank.basic,
-  ...tank.starter,
-};
+export const whitelist = makeWhitelist([
+  assassin,
+  fighter,
+  mage,
+  marksman,
+  support,
+  tank,
+]);
