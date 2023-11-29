@@ -41,6 +41,7 @@ export const mage = {
     3802: 'Lost Chapter',
     3803: 'catalyst',
     3147: 'haunting guise',
+    2420: 'Seekers',
   },
   basic: {
     1004: 'Faerie Charm',
