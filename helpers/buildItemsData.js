@@ -1,8 +1,4 @@
-import {
-  BLACKLISTED_ITEMS,
-  EPIC_LEGENDARY_BREAKPOINT,
-  USE_CDRAGON_DATA,
-} from './constants';
+import { EPIC_LEGENDARY_BREAKPOINT, USE_CDRAGON_DATA } from './constants';
 import { starter } from '../data/starter';
 import { basic } from '../data/basic';
 import { epic } from '../data/epic';
