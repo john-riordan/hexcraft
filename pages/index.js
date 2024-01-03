@@ -4,7 +4,11 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import { buildItemsData } from '../helpers/buildItemsData';
-import { DDRAGON_PATCH } from '../helpers/constants';
+import {
+  DDRAGON_PATCH,
+  USE_CDRAGON_DATA,
+  CDRAGON_PATCH,
+} from '../helpers/constants';
 
 import { PATCHES } from '../data/patches';
 
@@ -141,24 +145,29 @@ export default function Home(props) {
 // This function gets called at build time
 export async function getStaticProps() {
   // CDragon data - PBE
-  const cdragonReq = await fetch(
-    'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
-  );
-  const cdragonItems = await cdragonReq.json();
+  const cdragonReq =
+    USE_CDRAGON_DATA &&
+    (await fetch(
+      'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
+    ));
+  const cdragonItems = USE_CDRAGON_DATA && (await cdragonReq.json());
 
   // DDragon data
-  const ddragonPatchesReq = await fetch(
-    'https://ddragon.leagueoflegends.com/api/versions.json'
-  );
-  const ddragonPatchesRes = await ddragonPatchesReq.json();
-  const ddragonPatchesLatest = ddragonPatchesRes?.length
+  const ddragonPatchesReq =
+    !USE_CDRAGON_DATA &&
+    (await fetch('https://ddragon.leagueoflegends.com/api/versions.json'));
+  const ddragonPatchesRes =
+    !USE_CDRAGON_DATA && (await ddragonPatchesReq.json());
+  const ddragonPatchesLatest = USE_CDRAGON_DATA
+    ? CDRAGON_PATCH
+    : ddragonPatchesRes?.length
     ? ddragonPatchesRes[0]
     : DDRAGON_PATCH;
 
   const ddragonItemsReq = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${ddragonPatchesLatest}/data/en_US/item.json`
   );
-  const ddragonItems = await ddragonItemsReq.json();
+  const ddragonItems = !USE_CDRAGON_DATA ? await ddragonItemsReq.json() : {};
 
   const ddragonItemsMap = Object.entries(ddragonItems.data || {}).reduce(
     (acc, curr) => {
