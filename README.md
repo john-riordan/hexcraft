@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project for [LoL Shop](https://lolshop.gg/)
+This is a [Next.js](https://nextjs.org/) web-app for [LoL Shop](https://lolshop.gg/)
 
 ## Getting Started
 
