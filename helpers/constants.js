@@ -1,7 +1,7 @@
 export const USE_CDRAGON_DATA = true;
-export const CDRAGON_PATCH = '14.1.1';
+export const CDRAGON_PATCH = '14.7.1';
 
-export const DDRAGON_PATCH = '14.1.1';
+export const DDRAGON_PATCH = '14.7.1';
 
 export const EPIC_LEGENDARY_BREAKPOINT = 1800;
 

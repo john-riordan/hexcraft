@@ -69,9 +69,9 @@ const StatFilters = ({ className }) => {
     <aside className={`${styles.filters} ${className}`}>
       <header className={styles.sidebarHeader}>
         <h2 className={styles.patchTitle}>
-          {/* <span>Patch: </span> */}
-          <span>Season 2024</span>
-          {/* <span>{patch}</span> */}
+          <span>Patch: </span>
+          {/* <span>Season 2024</span> */}
+          <span>{patch}</span>
         </h2>
       </header>
       <div className={styles.group}>

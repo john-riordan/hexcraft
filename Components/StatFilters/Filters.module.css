@@ -27,7 +27,7 @@
   margin: 0;
 }
 .patchTitle span {
-  display: block;
+  /* display: block; */
   line-height: 1;
   text-shadow: 0px 2px 5px black;
 }

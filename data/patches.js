@@ -1,130 +1,68 @@
 import { CHANGE_TYPES } from '../helpers/constants';
 
 export const PATCHES = {
-  '13.10.1': {
-    3078: {
-      change: CHANGE_TYPES.change,
+  '14.7.1': {
+    3871: {
+      change: CHANGE_TYPES.nerf,
       details: `
-      <div>
-				<a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/3078.png"></a>
-				<h3 class="change-title" id="patch-Trinity-Force"><a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Trinity Force</a></h3>
-				<blockquote class="blockquote context">
-					We’re buffing Trinity Force to better match Sunderer, and adding a QOL buff to Threefold Strikes to match Conqueror’s duration and limit how many things you have to track. The trigger conditions aren't quite the same, but they should line up fairly often now.
-				</blockquote>
-				<hr class="divider">
-				<ul>
-					<li><strong>Threefold Strike Duration</strong>: 3 seconds ⇒ 5 seconds</li>
-					<li><strong>Attack Damage</strong>: 35 ⇒ 40</li>
-					<li><strong>Attack Speed</strong>: 30% ⇒ 35%</li>
-				</ul>
-			</div>
+        <div>
+					<a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/14.6.1/img/item/3871.png"></a>
+					<h3 class="change-title" id="patch-Statikk-Shiv"><a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Zaz’Zak’s Realmspike</a></h3><br>
+					<blockquote class="blockquote context">
+						We’re taking a long look at the damage coming out of the support role and this patch we’re going after some exclusively-damage sections.
+					</blockquote>
+					<p>Zaz’Zak’s is bound to mage supports where champions like Xerath and Lux have support as their strongest role, which leaves us little room to buff them in places like mid lane. Bloodsong creates similar problems for fighters like Camille and Pantheon with respect to their top lane power. In general, we don’t expect these damage-focused champions to switch support items, but would like if enchanters and tanks would build these items less frequently. Imperial Mandate rounds out this list as a support item that provides almost exclusively damage.</p>
+					<ul>
+						<li><strong>Void Explosion Damage</strong>: 20 (+20%AP) (+4% Target Max HP) ⇒ 10 (+20% AP) (+3% Target Max HP)</li>
+						<li><strong>Cooldown</strong>: 8/7/6 at level 1/11/16 ⇒ 10</li>
+					</ul>
+				</div>
       `,
     },
-  },
-  '14.1.1': {
-    6698: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3073: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6610: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6655: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6697: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    2504: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    4646: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6699: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3137: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    2502: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3118: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6664: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6621: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6701: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3002: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3869: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3870: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3871: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    3876: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
     3877: {
-      change: CHANGE_TYPES.new,
-      details: ``,
+      change: CHANGE_TYPES.nerf,
+      details: `
+        <div>
+          <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/14.6.1/img/item/3877.png"></a>
+          <h3 class="change-title" id="patch-Bloodsong"><a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Bloodsong</a></h3><br>
+          <blockquote class="blockquote context">
+            See Zaz’Zak for more context.
+          </blockquote>
+          <ul>
+            <li><strong>Spellblade AD Ratio</strong>: 150% ⇒ 100%</li>
+          </ul>
+        </div>
+      `,
     },
-    2020: {
-      change: CHANGE_TYPES.new,
-      details: ``,
+    4005: {
+      change: CHANGE_TYPES.nerf,
+      details: `
+        <div>
+          <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/14.6.1/img/item/4005.png"></a>
+          <h3 class="change-title" id="patch-Bloodsong"><a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Imperial Mandate</a></h3><br>
+          <blockquote class="blockquote context">
+            See Zaz’Zak for more context.
+          </blockquote>
+          <ul>
+            <li><strong>Current HP Damage</strong>: 12% ⇒ 10%</li>
+          </ul>
+        </div>
+      `,
     },
-    3147: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    2019: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    2021: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    6690: {
-      change: CHANGE_TYPES.new,
-      details: ``,
-    },
-    2022: {
-      change: CHANGE_TYPES.new,
-      details: ``,
+    3087: {
+      change: CHANGE_TYPES.nerf,
+      details: `
+        <div>
+          <a class="reference-link" href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/"><img src="https://am-a.akamaihd.net/image?f=http://ddragon.leagueoflegends.com/cdn/14.6.1/img/item/3087.png"></a>
+          <h3 class="change-title" id="patch-Statikk-Shiv"><a href="http://gameinfo.na.leagueoflegends.com/en/game-info/items/">Statikk Shiv</a></h3><br>
+          <blockquote class="blockquote context">
+            Statikk Shiv is a bit too strong now that crit ADCs have a great late game awaiting them. So we’ve adjusted the cost so that it doesn’t hastily bring them to the late game as much as it did in the past.
+          </blockquote>
+          <ul>
+            <li><strong>Total Cost</strong>: 2700 ⇒ 2900</li>
+          </ul>
+        </div>
+      `,
     },
   },
 };
