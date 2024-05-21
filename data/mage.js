@@ -26,6 +26,7 @@ export const mage = {
     6655: "Caster's Companion",
     6653: 'liandries',
     4633: 'riftmaker',
+    2503: 'Blackfire torch',
   },
   epic: {
     3057: 'Sheen',
@@ -42,6 +43,7 @@ export const mage = {
     3803: 'catalyst',
     3147: 'haunting guise',
     2420: 'Seekers',
+    2508: 'Fated Ashes',
   },
   basic: {
     1004: 'Faerie Charm',

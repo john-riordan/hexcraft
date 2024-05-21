@@ -16,7 +16,7 @@ export const tank = {
     3119: "Winter's Approach",
     3121: 'Fimbulwinter',
     3002: 'Trailblazer',
-    8001: "Anathema's Chains",
+    // 8001: "Anathema's Chains",
     6662: 'Iceborn Gauntlet',
     2502: 'Unending Despair',
     6664: 'Hollow Radiance',
@@ -24,6 +24,7 @@ export const tank = {
     3084: 'Heartsteel',
     6665: 'jaksho',
     3190: 'locket',
+    2501: 'overlords bloodmail',
   },
   epic: {
     3801: 'Crystalline Bracer',

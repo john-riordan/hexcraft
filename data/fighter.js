@@ -21,6 +21,7 @@ export const fighter = {
     3078: 'tri force',
     6694: "Serylda's Grudge",
     3004: 'manamune',
+    2501: 'overlords bloodmail',
   },
   epic: {
     3057: 'Sheen',
