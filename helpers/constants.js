@@ -1,24 +1,24 @@
 export const USE_CDRAGON_DATA = true;
-export const CDRAGON_PATCH = '14.10.1';
 
-export const DDRAGON_PATCH = '14.10.1';
+export const CDRAGON_PATCH = "14.15.1";
+export const DDRAGON_PATCH = "14.15.1";
 
 export const EPIC_LEGENDARY_BREAKPOINT = 1800;
 
 export const CHANGE_TYPES = {
-  new: 'New',
-  buff: 'Buff',
-  nerf: 'Nerf',
-  change: 'Change',
+  new: "New",
+  buff: "Buff",
+  nerf: "Nerf",
+  change: "Change",
 };
 
 export const BLACKLISTED_ITEMS = {
-  2019: 'Steel Sigil',
+  2019: "Steel Sigil",
   2051: "Guardian's Horn",
   3112: "Guardian's Orb",
   3177: "Guardian's Blad",
   3184: "Guardian's Hammer",
-  4403: 'The Golden Spatula',
+  4403: "The Golden Spatula",
   228003: true,
   228008: true,
   228002: true,
