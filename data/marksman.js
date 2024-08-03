@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const marksman = {
   legendary: {
     3004: 'Manamune',
@@ -63,4 +65,5 @@ export const marksman = {
     1103: 'mosstomper',
     3070: 'tear',
   },
+  consumables,
 };

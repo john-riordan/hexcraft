@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const fighter = {
   legendary: {
     6692: 'Eclipse',
@@ -61,4 +63,5 @@ export const fighter = {
     1103: 'mosstomper',
     3070: 'tear',
   },
+  consumables,
 };

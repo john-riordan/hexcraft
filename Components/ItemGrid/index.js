@@ -1,33 +1,33 @@
-import { memo, useContext } from "react";
-import Tippy from "@tippy.js/react";
-import { useRouter } from "next/router";
+import { memo, useContext } from 'react';
+import Tippy from '@tippy.js/react';
+import { useRouter } from 'next/router';
 
-import ItemImage from "../ItemImage/";
-import ItemTooltip from "../ItemTooltip/";
-import Icon from "../Icon/";
-import PatchChangeDetails from "../PatchChangeDetails/";
+import ItemImage from '../ItemImage/';
+import ItemTooltip from '../ItemTooltip/';
+import Icon from '../Icon/';
+import PatchChangeDetails from '../PatchChangeDetails/';
 
-import { StateContext } from "../../StateContext";
-import isOrnnItem from "../../helpers/isOrnnItem";
+import { StateContext } from '../../StateContext';
+import isOrnnItem from '../../helpers/isOrnnItem';
 
-import styles from "./Grid.module.css";
+import styles from './Grid.module.css';
 
-import { buildDisplayItems } from "../../helpers/buildDisplayItems";
+import { buildDisplayItems } from '../../helpers/buildDisplayItems';
 
 const SUBTITLE = {
-  legendaries: "Typical fully completed item.",
-  epics: "Sub-components that build into a Legendary items.",
-  basics: "The most basic item component.",
-  starters: "Simple starting items.",
+  legendaries: 'Typical fully completed item.',
+  epics: 'Sub-components that build into a Legendary items.',
+  basics: 'The most basic item component.',
+  starters: 'Simple starting items.',
 };
 
 const ItemGrid = ({ className }) => {
   const { state, setState } = useContext(StateContext);
   const router = useRouter();
-  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
+  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
 
   const itemsData =
-    state.tab === "all"
+    state.tab === 'all'
       ? Object.entries(state.itemsData.all).map(([groupName, list]) => {
           return [
             groupName,
@@ -61,8 +61,8 @@ const ItemGrid = ({ className }) => {
                   return (
                     <Tippy
                       key={`${item.name}:${i}`}
-                      placement="right-start"
-                      offset="0, 10"
+                      placement='right-start'
+                      offset='0, 10'
                       duration={0}
                       content={<ItemTooltip item={item} />}
                     >
@@ -72,7 +72,7 @@ const ItemGrid = ({ className }) => {
                         className={`${styles.gridItem} ${
                           state.selectedItem?.id === item.id
                             ? styles.selected
-                            : ""
+                            : ''
                         }`}
                         onContextMenu={(e) => {
                           e.preventDefault();
@@ -135,7 +135,7 @@ const ItemGrid = ({ className }) => {
                             <Icon
                               icon={item.patchChange.change.toLowerCase()}
                               className={styles.patchChangeIcon}
-                              viewBox="0 0 48 48"
+                              viewBox='0 0 48 48'
                             />
                           </div>
                         )}

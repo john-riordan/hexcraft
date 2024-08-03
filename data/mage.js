@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const mage = {
   legendary: {
     3041: "Mejai's Soulstealer",
@@ -67,4 +69,5 @@ export const mage = {
     3070: 'tear',
     3865: 'world atlas',
   },
+  consumables,
 };

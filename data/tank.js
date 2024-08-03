@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const tank = {
   legendary: {
     3068: 'Sunfire Aegis',

@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const assassin = {
   legendary: {
     6609: 'Chempunk Chainsword',
@@ -54,4 +56,5 @@ export const assassin = {
     1103: 'mosstomper',
     3070: 'tear',
   },
+  consumables,
 };

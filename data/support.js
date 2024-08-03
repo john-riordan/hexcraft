@@ -1,3 +1,5 @@
+import { consumables } from './consumables.js';
+
 export const support = {
   legendary: {
     3109: "Knight's Vow",
@@ -54,4 +56,5 @@ export const support = {
     1102: 'gustwalker',
     1103: 'mosstomper',
   },
+  consumables,
 };

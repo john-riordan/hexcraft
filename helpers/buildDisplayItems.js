@@ -22,6 +22,7 @@ export function buildDisplayItems(itemsData = {}, tab) {
   const epicBase = BASE[tab]?.epic;
   const basicsBase = BASE[tab]?.basic;
   const startersBase = BASE[tab]?.starter;
+  const consumablesBase = BASE[tab]?.consumables;
 
   if (tab) {
     return {
@@ -37,6 +38,9 @@ export function buildDisplayItems(itemsData = {}, tab) {
       starters: groups.starters
         .filter((itemId) => startersBase[itemId])
         .map((itemId) => dict[itemId]),
+      consumables: groups.consumables
+        .filter((itemId) => consumablesBase[itemId])
+        .map((itemId) => dict[itemId]),
     };
   }
 
@@ -45,5 +49,6 @@ export function buildDisplayItems(itemsData = {}, tab) {
     epics: groups.epics.map((itemId) => dict[itemId]),
     basics: groups.basics.map((itemId) => dict[itemId]),
     starters: groups.starters.map((itemId) => dict[itemId]),
+    consumables: groups.consumables.map((itemId) => dict[itemId]),
   };
 }
