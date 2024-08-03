@@ -19,6 +19,7 @@ const SUBTITLE = {
   epics: 'Sub-components that build into a Legendary items.',
   basics: 'The most basic item component.',
   starters: 'Simple starting items.',
+  consumables: 'Single-use items.',
 };
 
 const ItemGrid = ({ className }) => {
