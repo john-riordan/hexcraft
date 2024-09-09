@@ -1,4 +1,4 @@
-import { EPIC_LEGENDARY_BREAKPOINT, USE_CDRAGON_DATA } from './constants';
+import { EPIC_LEGENDARY_BREAKPOINT } from './constants';
 import { starter } from '../data/starter';
 import { basic } from '../data/basic';
 import { epic } from '../data/epic';
@@ -8,21 +8,22 @@ import isOrnnItem from '../helpers/isOrnnItem';
 import { consumables } from '../data/consumables';
 
 export function buildItemsData({
+  usePBE = false,
   ddragonItemsMap = {},
   cdragonItemsMap = {},
   patchChanges = {},
 }) {
   // Use cdragon or ddragon
   // cdragon if you want to show pbe
-  const itemListBase = USE_CDRAGON_DATA
+  const itemListBase = usePBE
     ? Object.values(cdragonItemsMap)
     : Object.values(ddragonItemsMap);
 
   const whitelistedItems = itemListBase.filter((item) => {
-    const hasCost = item.gold?.total;
+    const cost = usePBE ? item.priceTotal : item.gold?.total;
     const isWhitelisted = whitelist[item.id];
-
-    return hasCost && isWhitelisted && !isOrnnItem(item);
+    const isBoots = item.tags.includes('Boots') && cost >= 900;
+    return (cost && isWhitelisted && !isOrnnItem(item)) || isBoots;
   });
 
   const usableItems = whitelistedItems
@@ -75,7 +76,10 @@ export function buildItemsData({
   const basics = usableItems.filter((item) => basic[item.id]);
 
   const boots = usableItems
-    .filter((item) => item.stats.FlatMovementSpeedMod)
+    .filter(
+      (item) =>
+        item.stats.FlatMovementSpeedMod || item.categories.includes('Boots')
+    )
     .filter((item) => item.name !== 'Slightly Magical Footware');
 
   const starters = usableItems.filter((item) => starter[item.id]);
@@ -86,7 +90,7 @@ export function buildItemsData({
         ...item,
         search: item.categories.map((c) => c.toLowerCase()).join() || '',
       }))
-      .reduce(function (acc, cur, i) {
+      .reduce((acc, cur, i) => {
         acc[cur.id] = cur;
         return acc;
       }, {}),

@@ -4,11 +4,6 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 
 import { buildItemsData } from '../helpers/buildItemsData';
-import {
-  DDRAGON_PATCH,
-  USE_CDRAGON_DATA,
-  CDRAGON_PATCH,
-} from '../helpers/constants';
 
 import { PATCHES } from '../data/patches';
 
@@ -142,33 +137,23 @@ export default function Home(props) {
   );
 }
 
+const USE_PBE = false;
+
 // This function gets called at build time
 export async function getStaticProps() {
-  // CDragon data - PBE
-  const cdragonReq =
-    USE_CDRAGON_DATA &&
-    (await fetch(
-      'http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
-    ));
-  const cdragonItems = (USE_CDRAGON_DATA && (await cdragonReq.json())) || [];
+  // 1) Fetch latest patch(es)
+  const ddragonPatchesReq = await fetch(
+    'https://ddragon.leagueoflegends.com/api/versions.json'
+  );
+  const ddragonPatchesRes = await ddragonPatchesReq.json();
+  const ddragonPatchesLatest = ddragonPatchesRes[0];
+  const [major, minor] = ddragonPatchesLatest.split('.');
 
-  // DDragon data
-  const ddragonPatchesReq =
-    !USE_CDRAGON_DATA &&
-    (await fetch('https://ddragon.leagueoflegends.com/api/versions.json'));
-  const ddragonPatchesRes =
-    !USE_CDRAGON_DATA && (await ddragonPatchesReq.json());
-  const ddragonPatchesLatest = USE_CDRAGON_DATA
-    ? CDRAGON_PATCH
-    : ddragonPatchesRes?.length
-    ? ddragonPatchesRes[0]
-    : DDRAGON_PATCH;
-
+  // 2) DDragon data - Live
   const ddragonItemsReq = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${ddragonPatchesLatest}/data/en_US/item.json`
   );
-  const ddragonItems = !USE_CDRAGON_DATA ? await ddragonItemsReq.json() : {};
-
+  const ddragonItems = (await ddragonItemsReq.json()) || {};
   const ddragonItemsMap = Object.entries(ddragonItems.data || {}).reduce(
     (acc, curr) => {
       const [id, info] = curr;
@@ -180,6 +165,13 @@ export async function getStaticProps() {
     },
     {}
   );
+
+  // 3) CDragon data - Live OR PBE
+  const cdragonURL = USE_PBE
+    ? `http://raw.communitydragon.org/${major}.${minor}/plugins/rcp-be-lol-game-data/global/default/v1/items.json`
+    : `http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json`;
+  const cdragonReq = await fetch(cdragonURL);
+  const cdragonItems = (await cdragonReq.json()) || [];
   const cdragonItemsMap = cdragonItems.reduce((acc, curr) => {
     acc[curr.id] = {
       ...curr,
@@ -197,8 +189,11 @@ export async function getStaticProps() {
 
   return {
     props: {
+      updatedAt: Date.now(),
+      pbe: USE_PBE,
       patch: ddragonPatchesLatest,
       itemsData: buildItemsData({
+        usePBE: USE_PBE,
         ddragonItemsMap,
         cdragonItemsMap,
         patchChanges: latestPatchChanges,
