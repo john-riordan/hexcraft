@@ -36,6 +36,11 @@
   font-size: 1.5rem;
   line-height: 1.5;
 }
+.updatedAt {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text2);
+}
 /* .patchTitle span:nth-of-type(2) {
   color: var(--text6);
   font-size: 1.5rem;
@@ -124,6 +129,9 @@
 
 @media (max-width: 1600px) {
   .patchTitle {
+    display: none;
+  }
+  .updatedAt {
     display: none;
   }
   .statItem {

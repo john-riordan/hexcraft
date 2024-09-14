@@ -45,16 +45,14 @@
 @media (max-width: 1600px) {
   .container {
     max-width: 98%;
+    border-right: 1px solid var(--accent1);
+    border-left: 1px solid var(--accent1);
   }
   .filters {
     flex: initial;
   }
 }
 @media (max-width: 1400px) {
-  .container {
-    border-right: 1px solid var(--accent1);
-    border-left: 1px solid var(--accent1);
-  }
   .details {
     position: fixed;
     top: 0;

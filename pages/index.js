@@ -20,7 +20,7 @@ import styles from '../styles/Home.module.css';
 import Disclaimer from '../Components/Disclaimer';
 
 export default function Home(props) {
-  const { patch, itemsData, latestPatchChanges } = props;
+  const { patch, pbe, updatedAt, itemsData, latestPatchChanges } = props;
 
   const router = useRouter();
   const purchaseRef = useRef(null);
@@ -29,6 +29,8 @@ export default function Home(props) {
 
   const [state, setState] = useState({
     patch,
+    pbe,
+    updatedAt,
     itemsData,
     latestPatchChanges,
     tab: 'all',
@@ -192,6 +194,7 @@ export async function getStaticProps() {
       updatedAt: Date.now(),
       pbe: USE_PBE,
       patch: ddragonPatchesLatest,
+      hasPatchChanges: !!latestPatchChanges,
       itemsData: buildItemsData({
         usePBE: USE_PBE,
         ddragonItemsMap,
