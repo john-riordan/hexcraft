@@ -202,5 +202,6 @@ export async function getStaticProps() {
         patchChanges: latestPatchChanges,
       }),
     },
+    revalidate: 5 * 60,
   };
 }
