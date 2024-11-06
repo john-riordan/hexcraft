@@ -190,6 +190,7 @@ export async function getStaticProps() {
   const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
+    revalidate: 6 * 60 * 60, // 6 hours
     props: {
       updatedAt: Date.now(),
       pbe: USE_PBE,
@@ -202,6 +203,5 @@ export async function getStaticProps() {
         patchChanges: latestPatchChanges,
       }),
     },
-    revalidate: 5 * 60,
   };
 }
