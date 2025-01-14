@@ -1,8 +1,8 @@
-import styles from './Image.module.css';
+import styles from "./Image.module.css";
 
 const ItemImage = ({
   imgName,
-  alt = 'Season 2024 Item',
+  alt = "Season 2025 Item",
   size = 64,
   className,
   isMythic = false,
@@ -17,7 +17,7 @@ const ItemImage = ({
     data-id={itemId}
   >
     {isMythic && <div className={styles.mythicBorder} />}
-    <img src={imgName} alt={alt} width={size} height={size} loading='lazy' />
+    <img src={imgName} alt={alt} width={size} height={size} loading="lazy" />
     {isOrnn && <div className={styles.ornnBorder} />}
   </div>
 );

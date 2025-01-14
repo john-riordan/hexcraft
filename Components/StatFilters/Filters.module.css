@@ -6,10 +6,10 @@
   position: relative;
 }
 .sidebarHeader::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0 0 -6.5rem -2rem;
-  background: url(/season-2024-splash.webp) no-repeat center;
+  background: url(/season-2025-splash.webp) no-repeat center;
   background-size: cover;
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -21,7 +21,7 @@
 }
 
 .patchTitle {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   margin: 0;
@@ -70,7 +70,7 @@
   position: relative;
 }
 .statItem::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   height: 100%;

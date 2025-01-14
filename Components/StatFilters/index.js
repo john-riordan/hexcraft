@@ -1,65 +1,65 @@
-import { memo, useContext } from 'react';
-import Tippy from '@tippy.js/react';
+import { memo, useContext } from "react";
+import Tippy from "@tippy.js/react";
 
-import { StateContext } from '../../StateContext';
-import Icon from '../Icon/';
-import styles from './Filters.module.css';
+import { StateContext } from "../../StateContext";
+import Icon from "../Icon/";
+import styles from "./Filters.module.css";
 
-import formatPatch from '../../helpers/formatPatch';
-import unixToTimeAgo from '../../helpers/daysAgo';
+import formatPatch from "../../helpers/formatPatch";
+import unixToTimeAgo from "../../helpers/daysAgo";
 
 const statGroups = [
   [
-    { key: 'Damage', name: 'Attack Damage', icon: 'ad' },
+    { key: "Damage", name: "Attack Damage", icon: "ad" },
     {
-      key: 'CriticalStrike',
-      name: 'Crit Chance',
-      icon: 'crit',
+      key: "CriticalStrike",
+      name: "Crit Chance",
+      icon: "crit",
     },
     {
-      key: 'AttackSpeed',
-      name: 'Attack Speed',
-      icon: 'as',
+      key: "AttackSpeed",
+      name: "Attack Speed",
+      icon: "as",
     },
     {
-      key: 'ArmorPenetration',
-      name: 'Armor Penetration',
-      icon: 'apen',
+      key: "ArmorPenetration",
+      name: "Armor Penetration",
+      icon: "apen",
     },
-    { key: 'OnHit', name: 'On-Hit', icon: 'onhit' },
-    { key: 'LifeSteal', name: 'Life Steal', icon: 'vamp' },
+    { key: "OnHit", name: "On-Hit", icon: "onhit" },
+    { key: "LifeSteal", name: "Life Steal", icon: "vamp" },
   ],
   [
     {
-      key: 'SpellDamage',
-      name: 'Ability Power',
-      icon: 'ap',
+      key: "SpellDamage",
+      name: "Ability Power",
+      icon: "ap",
     },
-    { key: 'Mana', name: 'Mana', icon: 'mana' },
+    { key: "Mana", name: "Mana", icon: "mana" },
     {
-      key: 'MagicPenetration',
-      name: 'Magic Penetration',
-      icon: 'mpen',
+      key: "MagicPenetration",
+      name: "Magic Penetration",
+      icon: "mpen",
     },
   ],
   [
-    { key: 'Health', name: 'Health', icon: 'health' },
-    { key: 'Armor', name: 'Armor', icon: 'armor' },
-    { key: 'SpellBlock', name: 'Magic Resist', icon: 'mr' },
+    { key: "Health", name: "Health", icon: "health" },
+    { key: "Armor", name: "Armor", icon: "armor" },
+    { key: "SpellBlock", name: "Magic Resist", icon: "mr" },
   ],
   [
     {
-      key: 'CooldownReduction',
-      name: 'Ability Haste',
-      icon: 'cdr',
+      key: "CooldownReduction",
+      name: "Ability Haste",
+      icon: "cdr",
     },
     {
-      key: 'NonbootsMovement',
-      name: 'Movement Speed',
-      icon: 'ms',
+      key: "NonbootsMovement",
+      name: "Movement Speed",
+      icon: "ms",
     },
-    { key: 'SpellVamp', name: 'Omni-Vamp', icon: 'vamp' },
-    { key: 'GreviousWounds', name: 'Grevious Wounds', icon: 'grevious' },
+    { key: "SpellVamp", name: "Omni-Vamp", icon: "vamp" },
+    { key: "GreviousWounds", name: "Grevious Wounds", icon: "grevious" },
   ],
 ];
 
@@ -72,8 +72,8 @@ const StatFilters = ({ className }) => {
       <header className={styles.sidebarHeader}>
         <h2 className={styles.patchTitle}>
           <span>Patch: </span>
-          {/* <span>Season 2024</span> */}
-          <span>{state.pbe ? 'PBE' : formatPatch(state.patch)}</span>
+          {/* <span>Season S25</span> */}
+          <span>{state.pbe ? "PBE" : formatPatch(state.patch)}</span>
         </h2>
         <span className={styles.updatedAt}>
           Updated {unixToTimeAgo(state.updatedAt)}
@@ -82,39 +82,39 @@ const StatFilters = ({ className }) => {
       <div className={styles.group}>
         <div
           className={`${styles.statItem} ${
-            state.stat.includes('Patch') && styles.active
+            state.stat.includes("Patch") && styles.active
           }`}
           onClick={() => {
-            if (state.stat.includes('Patch')) {
+            if (state.stat.includes("Patch")) {
               setState((prev) => ({
                 ...prev,
-                stat: state.stat.filter((s) => s !== 'Patch'),
+                stat: state.stat.filter((s) => s !== "Patch"),
               }));
             } else {
               setState((prev) => ({
                 ...prev,
-                stat: [...state.stat, 'Patch'],
+                stat: [...state.stat, "Patch"],
               }));
             }
           }}
         >
           <Tippy
-            placement='right'
-            offset='0, 0'
+            placement="right"
+            offset="0, 0"
             duration={0}
             content={<div className={styles.tooltip}>Patch Changes</div>}
           >
             <div>
               <Icon
-                icon='mask'
+                icon="mask"
                 className={styles.statIcon}
-                viewBox='0 0 48 48'
+                viewBox="0 0 48 48"
               />
             </div>
           </Tippy>
           <span>Patch Changes</span>
-          {state.stat === 'Patch' && (
-            <Icon icon='close' className={styles.close} />
+          {state.stat === "Patch" && (
+            <Icon icon="close" className={styles.close} />
           )}
         </div>
       </div>
@@ -143,8 +143,8 @@ const StatFilters = ({ className }) => {
                 {stat.icon && (
                   <Tippy
                     key={stat.name}
-                    placement='right'
-                    offset='0, 0'
+                    placement="right"
+                    offset="0, 0"
                     duration={0}
                     content={<div className={styles.tooltip}>{stat.name}</div>}
                   >
@@ -152,21 +152,21 @@ const StatFilters = ({ className }) => {
                       <Icon
                         icon={stat.icon}
                         className={styles.statIcon}
-                        viewBox='0 0 48 48'
+                        viewBox="0 0 48 48"
                       />
                     </div>
                   </Tippy>
                 )}
                 <span>{stat.name}</span>
-                {isActive && <Icon icon='close' className={styles.close} />}
+                {isActive && <Icon icon="close" className={styles.close} />}
               </div>
             );
           })}
         </div>
       ))}
       <a
-        href='https://twitter.com/JohnRiordan'
-        target='_blank'
+        href="https://twitter.com/JohnRiordan"
+        target="_blank"
         className={styles.twitter}
       >
         @JohnRiordan

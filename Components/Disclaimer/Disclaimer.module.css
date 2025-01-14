@@ -5,10 +5,10 @@
   color: var(--text6);
 }
 .disclaimer::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: url(/season-2024-splash-lg.webp) no-repeat center;
+  background: url(/season-2025-splash-lg.webp) no-repeat center;
   background-size: cover;
   -webkit-mask-image: linear-gradient(to bottom, black, transparent);
   opacity: 0.25;
@@ -17,7 +17,7 @@
   position: relative;
 }
 .disclaimer h1 {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   text-transform: uppercase;
   line-height: 2;
   letter-spacing: 0.1rem;

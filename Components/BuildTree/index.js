@@ -1,23 +1,23 @@
-import { useContext } from 'react';
-import Tippy from '@tippy.js/react';
-import { useRouter } from 'next/router';
+import { useContext } from "react";
+import Tippy from "@tippy.js/react";
+import { useRouter } from "next/router";
 
-import { StateContext } from '../../StateContext';
-import ItemTooltip from '../ItemTooltip/';
-import ItemImage from '../ItemImage/';
-import PatchChangeDetails from '../PatchChangeDetails/';
-import isOrnnItem from '../../helpers/isOrnnItem';
+import { StateContext } from "../../StateContext";
+import ItemTooltip from "../ItemTooltip/";
+import ItemImage from "../ItemImage/";
+import PatchChangeDetails from "../PatchChangeDetails/";
+import isOrnnItem from "../../helpers/isOrnnItem";
 
-import styles from './Tree.module.css';
+import styles from "./Tree.module.css";
 
-import formatPatch from '../../helpers/formatPatch';
+import formatPatch from "../../helpers/formatPatch";
 
 const BuildTree = ({ imageSize = 64, item }) => {
   const { state, setState } = useContext(StateContext);
   const { itemsData } = state;
   const router = useRouter();
 
-  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
 
   const itemData = itemsData.items[item];
 
@@ -25,6 +25,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
 
   const itemChanged = itemData.patchChange;
   const patch = formatPatch(state.patch);
+
+  console.log(itemData);
 
   return (
     <div className={styles.details}>
@@ -34,8 +36,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
             <div className={styles.row}>
               <Tippy
                 key={itemData.name}
-                placement='bottom'
-                offset='0, 10'
+                placement="bottom"
+                offset="0, 10"
                 duration={0}
                 content={<ItemTooltip item={itemData} />}
               >
@@ -87,8 +89,8 @@ const BuildTree = ({ imageSize = 64, item }) => {
                   className={styles.itemCol}
                 >
                   <Tippy
-                    placement='bottom'
-                    offset='0, 10'
+                    placement="bottom"
+                    offset="0, 10"
                     duration={0}
                     content={<ItemTooltip item={itemsData.items[item]} />}
                   >
@@ -121,13 +123,14 @@ const BuildTree = ({ imageSize = 64, item }) => {
                     {itemsData.items[item]?.from.map((item, i) => (
                       <Tippy
                         key={`${itemsData.items[item]?.id}_${i}`}
-                        placement='bottom'
-                        offset='0, 10'
+                        placement="bottom"
+                        offset="0, 10"
                         duration={0}
                         content={<ItemTooltip item={itemsData.items[item]} />}
                       >
                         <div
                           className={styles.itemCol}
+                          data-test={item.id}
                           onClick={() =>
                             setState((prev) => ({
                               ...prev,
@@ -155,7 +158,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
             {itemChanged && (
               <div className={styles.patchChange}>
                 <button
-                  className='attribute'
+                  className="attribute"
                   onClick={() => {
                     if (!itemChanged.details) return;
                     setState((prev) => ({
@@ -169,7 +172,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                   <span className={`${itemChanged.change.toLowerCase()}`}>
                     {itemChanged.change} in {patch}
                   </span>
-                  {itemChanged.details && 'CLICK FOR DETAILS'}
+                  {itemChanged.details && "CLICK FOR DETAILS"}
                 </button>
               </div>
             )}
