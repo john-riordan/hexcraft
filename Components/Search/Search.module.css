@@ -62,7 +62,7 @@
   flex: 1;
   height: var(--results-height);
   padding: 1.5rem 0;
-  overflow: hidden;
+  overflow: clip;
   overflow-y: scroll;
   mask-image: linear-gradient(
     to top,
@@ -71,6 +71,7 @@
     black 90%,
     transparent 100%
   );
+  scrollbar-width: thin;
 }
 .resultsList::-webkit-scrollbar-track {
   background: transparent;
@@ -123,7 +124,7 @@
   font-family: "Beaufort-bold";
   width: 18ch;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: clip;
   text-overflow: ellipsis;
   font-size: 1.125rem;
   margin: 0;

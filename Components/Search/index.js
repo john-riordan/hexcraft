@@ -43,7 +43,8 @@ const Search = () => {
     posthog.capture("reverse_order_clicked");
   };
 
-  const handleSearchItemClick = (item) => {
+  const handleSearchItemClick = (e, item) => {
+    e.preventDefault();
     setState((prev) => ({
       ...prev,
       selectedItem: item,
@@ -123,7 +124,7 @@ const Search = () => {
                   className={`${styles.result} ${
                     hovered?.id === item.id && styles.resultSelected
                   }`}
-                  onClick={() => handleSearchItemClick(item)}
+                  onClick={(e) => handleSearchItemClick(e, item)}
                   onMouseOver={() => setHovered(item)}
                   onContextMenu={(e) => handleSearchItemContextMenu(e, item)}
                 >

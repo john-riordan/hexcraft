@@ -40,7 +40,8 @@ const ItemGrid = ({ className }) => {
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
 
-  const handleItemClick = (item) => {
+  const handleItemClick = (e, item) => {
+    e.preventDefault();
     setState((prev) => ({
       ...prev,
       selectedItem: item,
@@ -116,7 +117,7 @@ const ItemGrid = ({ className }) => {
                             : ""
                         }`}
                         onContextMenu={(e) => handleItemContextMenu(e, item)}
-                        onClick={() => handleItemClick(item)}
+                        onClick={(e) => handleItemClick(e, item)}
                       >
                         <ItemImage
                           imgName={item.iconPath}

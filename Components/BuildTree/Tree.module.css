@@ -101,6 +101,7 @@
   padding-top: 1rem;
   padding-bottom: 2rem;
   margin: 0;
+  scrollbar-width: thin;
 }
 
 .imgFrame {
@@ -116,7 +117,7 @@
   }
   .description {
     font-size: 0.825rem;
-    max-height: 16rem;
+    max-height: 18rem;
     overflow-y: scroll;
     margin-bottom: 0;
     mask-image: linear-gradient(
@@ -142,7 +143,6 @@
   .description {
     font-size: 0.75rem;
     max-height: 20rem;
-    scrollbar-width: thin;
   }
   .imgFrame {
     max-width: 40px;

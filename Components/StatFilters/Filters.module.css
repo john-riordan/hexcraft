@@ -140,6 +140,7 @@
   }
   .statItem {
     padding: 0.5rem;
+    width: auto;
   }
   .statIcon {
     margin: 0;

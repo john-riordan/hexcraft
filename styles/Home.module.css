@@ -58,6 +58,8 @@
     top: 0;
     right: 0;
     bottom: 0;
+    height: 100vh;
+    height: 100dvh;
     width: 80%;
     max-width: 450px;
     z-index: 3;
@@ -71,11 +73,5 @@
   }
   .center {
     border-right: none;
-  }
-}
-@media screen and (max-width: 600px) {
-  .details {
-    height: 100vh;
-    height: 100dvh;
   }
 }
