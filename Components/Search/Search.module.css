@@ -90,11 +90,14 @@
   padding: 0.5rem 0.75rem;
   cursor: pointer;
 }
+.result * {
+  pointer-events: none;
+}
 .result > * {
   position: relative;
 }
 .result::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -117,7 +120,7 @@
   padding-left: 0.5rem;
 }
 .resultName {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   width: 18ch;
   white-space: nowrap;
   overflow: hidden;
@@ -127,7 +130,7 @@
   color: var(--text2);
 }
 .resultPrice {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   font-size: 1rem;
   margin: 0;
   color: var(--text4);
@@ -148,13 +151,13 @@
   padding-left: 1rem;
 }
 .detailsName {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   font-size: 1.25rem;
   color: var(--text2);
   margin: 0;
 }
 .detailsPrice {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   font-size: 1rem;
   color: var(--text4);
   margin: 0;
