@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next";
+// import { Analytics } from "@vercel/analytics/next";
 import { useEffect } from "react";
 import { Router } from "next/router";
 import posthog from "posthog-js";
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
       <PostHogProvider client={posthog}>
         <Component {...pageProps} />
       </PostHogProvider>
-      <Analytics />
+      {/* <Analytics /> */}
     </>
   );
 }
