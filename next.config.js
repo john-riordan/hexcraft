@@ -1,24 +1,22 @@
-module.exports = {
-  images: {
-    remotePatterns: [
+const nextConfig = {
+  async rewrites() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'ddragon.leagueoflegends.com',
+        source: "/ingest/:path*",
+        destination: "https://app.posthog.com/:path*",
       },
-      {
-        protocol: 'https',
-        hostname: 'https://raw.communitydragon.org',
-      },
-    ],
+    ];
   },
   i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+    locales: ["en"],
+    defaultLocale: "en",
     domains: [
       {
-        domain: 'lolshop.gg',
-        defaultLocale: 'en',
+        domain: "lolshop.gg",
+        defaultLocale: "en",
       },
     ],
   },
 };
+
+module.exports = nextConfig;
