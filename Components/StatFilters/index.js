@@ -68,21 +68,25 @@ const StatFilters = ({ className }) => {
   const context = useContext(StateContext);
   const { state, setState } = context;
 
-  const handleStatClick = (stat) => {
+  const handleStatClick = (e, stat) => {
+    e.preventDefault();
     if (state.stat.includes(stat)) {
       setState((prev) => ({
         ...prev,
         stat: state.stat.filter((s) => s !== stat),
       }));
+      posthog.capture("stat_filter_removed", {
+        stat: stat,
+      });
     } else {
       setState((prev) => ({
         ...prev,
         stat: [...state.stat, stat],
       }));
+      posthog.capture("stat_filter_added", {
+        stat: stat,
+      });
     }
-    posthog.capture("stat_filter_clicked", {
-      stat: stat,
-    });
   };
 
   return (
@@ -102,7 +106,7 @@ const StatFilters = ({ className }) => {
           className={`${styles.statItem} ${
             state.stat.includes("Patch") && styles.active
           }`}
-          onClick={() => handleStatClick("Patch")}
+          onClick={(e) => handleStatClick(e, "Patch")}
         >
           <Tippy
             placement="right"
@@ -132,7 +136,7 @@ const StatFilters = ({ className }) => {
               <button
                 key={stat.name}
                 className={`${styles.statItem} ${isActive && styles.active}`}
-                onClick={() => handleStatClick(stat.key)}
+                onClick={(e) => handleStatClick(e, stat.key)}
               >
                 {stat.icon && (
                   <Tippy

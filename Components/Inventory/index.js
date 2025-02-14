@@ -76,16 +76,16 @@ const Inventory = () => {
               <Icon icon="gold" />
               <span>{inventoryCost}</span>
             </p>
-            <p
+            <button
               className={`${styles.share} ${copied && styles.copied}`}
               onClick={handleCopy}
             >
               {copied ? "Copied!" : "Copy Link"}
-            </p>
+            </button>
           </div>
-          <p className={styles.share} onClick={handleClear}>
+          <button className={styles.share} onClick={handleClear}>
             Clear
-          </p>
+          </button>
         </div>
         <textarea
           ref={textAreaRef}

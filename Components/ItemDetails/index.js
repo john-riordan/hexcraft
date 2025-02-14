@@ -39,7 +39,9 @@ const ItemDetails = ({ className }) => {
       }`}
     >
       {selectedItem && (
-        <Icon icon="close" className={styles.close} onClick={handleClose} />
+        <button className={styles.close} onClick={handleClose}>
+          <Icon icon="close" />
+        </button>
       )}
       <p className={styles.title}>
         {selectedItem ? "Builds Into" : "Select an Item"}

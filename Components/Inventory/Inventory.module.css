@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1.25rem;
-  font-family: 'Beaufort-bold';
+  padding-bottom: 1rem;
+  font-family: "Beaufort-bold";
 }
 
 .headerLeft {
@@ -39,6 +39,9 @@
   margin: 0;
   text-transform: uppercase;
   line-height: 1;
+  font-family: "Beaufort-bold";
+  font-size: 1.25rem;
+  line-height: 1;
 }
 .cost {
   display: flex;
@@ -50,7 +53,7 @@
   margin-right: 0.25rem;
 }
 .share {
-  color: var(--text4);
+  color: var(--text2);
   cursor: pointer;
 }
 .share.copied {
