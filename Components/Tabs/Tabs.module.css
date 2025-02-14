@@ -18,7 +18,7 @@
   transition: var(--transition);
 }
 .tab::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -43,6 +43,9 @@
   margin-right: 0.25rem;
   transform: translateY(2px);
 }
+.tab * {
+  pointer-events: none;
+}
 .tab > * {
   display: flex;
   align-items: center;
@@ -59,7 +62,7 @@
   opacity: 0.15;
 }
 .tab span::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;

@@ -1,34 +1,35 @@
-import { memo, useContext } from 'react';
-import Tippy from '@tippy.js/react';
-import { useRouter } from 'next/router';
+import { memo, useContext } from "react";
+import Tippy from "@tippy.js/react";
+import { useRouter } from "next/router";
+import posthog from "posthog-js";
 
-import ItemImage from '../ItemImage/';
-import ItemTooltip from '../ItemTooltip/';
-import Icon from '../Icon/';
-import PatchChangeDetails from '../PatchChangeDetails/';
+import ItemImage from "../ItemImage/";
+import ItemTooltip from "../ItemTooltip/";
+import Icon from "../Icon/";
+import PatchChangeDetails from "../PatchChangeDetails/";
 
-import { StateContext } from '../../StateContext';
-import isOrnnItem from '../../helpers/isOrnnItem';
+import { StateContext } from "../../StateContext";
+import isOrnnItem from "../../helpers/isOrnnItem";
 
-import styles from './Grid.module.css';
+import styles from "./Grid.module.css";
 
-import { buildDisplayItems } from '../../helpers/buildDisplayItems';
+import { buildDisplayItems } from "../../helpers/buildDisplayItems";
 
 const SUBTITLE = {
-  legendaries: 'Typical fully completed item.',
-  epics: 'Sub-components that build into a Legendary items.',
-  basics: 'The most basic item component.',
-  starters: 'Simple starting items.',
-  consumables: 'Single-use items.',
+  legendaries: "Typical fully completed item.",
+  epics: "Sub-components that build into a Legendary items.",
+  basics: "The most basic item component.",
+  starters: "Simple starting items.",
+  consumables: "Single-use items.",
 };
 
 const ItemGrid = ({ className }) => {
   const { state, setState } = useContext(StateContext);
   const router = useRouter();
-  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
 
   const itemsData =
-    state.tab === 'all'
+    state.tab === "all"
       ? Object.entries(state.itemsData.all).map(([groupName, list]) => {
           return [
             groupName,
@@ -38,6 +39,45 @@ const ItemGrid = ({ className }) => {
       : Object.entries(buildDisplayItems(state.itemsData, state.tab));
 
   const itemGroups = state.desc ? itemsData : itemsData.reverse();
+
+  const handleItemClick = (item) => {
+    setState((prev) => ({
+      ...prev,
+      selectedItem: item,
+    }));
+    posthog.capture("item_clicked", {
+      item_name: item.name,
+      item_id: item.id,
+    });
+  };
+  const handleItemContextMenu = (e, item) => {
+    e.preventDefault();
+    if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+    } else if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+    } else {
+      state.soundCant.current.play();
+    }
+    posthog.capture("item_right_clicked", {
+      item_name: item.name,
+      item_id: item.id,
+    });
+  };
 
   return (
     <div className={`${styles.gridFrame} ${className}`}>
@@ -62,8 +102,8 @@ const ItemGrid = ({ className }) => {
                   return (
                     <Tippy
                       key={`${item.name}:${i}`}
-                      placement='right-start'
-                      offset='0, 10'
+                      placement="right-start"
+                      offset="0, 10"
                       duration={0}
                       content={<ItemTooltip item={item} />}
                     >
@@ -73,38 +113,10 @@ const ItemGrid = ({ className }) => {
                         className={`${styles.gridItem} ${
                           state.selectedItem?.id === item.id
                             ? styles.selected
-                            : ''
+                            : ""
                         }`}
-                        onContextMenu={(e) => {
-                          e.preventDefault();
-                          if (inventory.length < 6) {
-                            const params = new URLSearchParams({
-                              i: [...inventory, item.id],
-                            });
-                            state.soundPurchase.current.volume = 0.5;
-                            state.soundPurchase.current.play();
-                            router.replace(`?${params}`, undefined, {
-                              shallow: true,
-                            });
-                          } else if (inventory.length < 6) {
-                            const params = new URLSearchParams({
-                              i: [...inventory, item.id],
-                            });
-                            state.soundPurchase.current.volume = 0.5;
-                            state.soundPurchase.current.play();
-                            router.replace(`?${params}`, undefined, {
-                              shallow: true,
-                            });
-                          } else {
-                            state.soundCant.current.play();
-                          }
-                        }}
-                        onClick={() =>
-                          setState((prev) => ({
-                            ...prev,
-                            selectedItem: item,
-                          }))
-                        }
+                        onContextMenu={(e) => handleItemContextMenu(e, item)}
+                        onClick={() => handleItemClick(item)}
                       >
                         <ItemImage
                           imgName={item.iconPath}
@@ -136,7 +148,7 @@ const ItemGrid = ({ className }) => {
                             <Icon
                               icon={item.patchChange.change.toLowerCase()}
                               className={styles.patchChangeIcon}
-                              viewBox='0 0 48 48'
+                              viewBox="0 0 48 48"
                             />
                           </div>
                         )}

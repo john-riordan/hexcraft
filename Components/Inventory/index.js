@@ -1,15 +1,16 @@
-import { useContext, useRef, useState, useCallback } from 'react';
-import Tippy from '@tippy.js/react';
-import { useRouter } from 'next/router';
+import { useContext, useRef, useState, useCallback } from "react";
+import Tippy from "@tippy.js/react";
+import { useRouter } from "next/router";
+import posthog from "posthog-js";
 
-import { StateContext } from '../../StateContext';
-import isOrnnItem from '../../helpers/isOrnnItem';
-import computeInventoryStats from '../../helpers/computeInventoryStats';
-import styles from './Inventory.module.css';
-import ItemTooltip from '../ItemTooltip/';
-import ItemImage from '../ItemImage/';
-import Icon from '../Icon/';
-import ChampionList from '../ChampionList/';
+import { StateContext } from "../../StateContext";
+import isOrnnItem from "../../helpers/isOrnnItem";
+import computeInventoryStats from "../../helpers/computeInventoryStats";
+import styles from "./Inventory.module.css";
+import ItemTooltip from "../ItemTooltip/";
+import ItemImage from "../ItemImage/";
+import Icon from "../Icon/";
+import ChampionList from "../ChampionList/";
 
 const MAX_FROM = 6;
 const ITEM_SIZE = 60;
@@ -20,7 +21,7 @@ const Inventory = () => {
   const { inventoryCost } = state;
   const textAreaRef = useRef(null);
   const router = useRouter();
-  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
   const inventoryItems = inventory.map((item) => {
     return state.itemsData.items[item];
   });
@@ -31,8 +32,9 @@ const Inventory = () => {
 
   const handleCopy = useCallback(() => {
     textAreaRef.current.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     setCopied(true);
+    posthog.capture("build_copied");
 
     let timer1 = setTimeout(() => {
       setCopied(false);
@@ -51,6 +53,7 @@ const Inventory = () => {
     router.replace(``, undefined, {
       shallow: true,
     });
+    posthog.capture("build_cleared");
   }, [state]);
 
   return (
@@ -70,14 +73,14 @@ const Inventory = () => {
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <p className={styles.cost}>
-              <Icon icon='gold' />
+              <Icon icon="gold" />
               <span>{inventoryCost}</span>
             </p>
             <p
               className={`${styles.share} ${copied && styles.copied}`}
               onClick={handleCopy}
             >
-              {copied ? 'Copied!' : 'Copy Link'}
+              {copied ? "Copied!" : "Copy Link"}
             </p>
           </div>
           <p className={styles.share} onClick={handleClear}>
@@ -94,8 +97,8 @@ const Inventory = () => {
           {inventoryItems.map((item, i) => (
             <Tippy
               key={`${item.id}_${i}`}
-              placement='top'
-              offset='0, 20'
+              placement="top"
+              offset="0, 20"
               duration={0}
               content={<ItemTooltip item={item} />}
             >
@@ -137,8 +140,8 @@ const Inventory = () => {
               <ItemImage
                 size={ITEM_SIZE}
                 className={styles.imgFrame}
-                imgName='empty.png'
-                alt='Empty Item'
+                imgName="empty.png"
+                alt="Empty Item"
               />
             </div>
           ))}

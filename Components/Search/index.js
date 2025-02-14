@@ -1,20 +1,21 @@
-import { useContext, useState } from 'react';
-import Tippy from '@tippy.js/react';
-import { useRouter } from 'next/router';
+import { useContext, useState } from "react";
+import Tippy from "@tippy.js/react";
+import { useRouter } from "next/router";
+import posthog from "posthog-js";
 
-import isOrnnItem from '../../helpers/isOrnnItem';
-import Icon from '../Icon/';
-import Tabs from '../Tabs/';
-import ItemImage from '../ItemImage/';
-import styles from './Search.module.css';
-import { StateContext } from '../../StateContext';
+import isOrnnItem from "../../helpers/isOrnnItem";
+import Icon from "../Icon/";
+import Tabs from "../Tabs/";
+import ItemImage from "../ItemImage/";
+import styles from "./Search.module.css";
+import { StateContext } from "../../StateContext";
 
 const Search = () => {
   const router = useRouter();
   const [hovered, setHovered] = useState(null);
   const { state, setState } = useContext(StateContext);
 
-  const inventory = router.query?.i ? router.query?.i?.split(',') : [];
+  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
 
   const results = state.search?.length
     ? Object.values(state.itemsData?.items)
@@ -29,25 +30,86 @@ const Search = () => {
         (a, z) => z.priceTotal - a.priceTotal
       );
 
+  const handleSearchClick = () => {
+    setState((prev) => ({ ...prev, searchOpen: true }));
+    posthog.capture("search_clicked");
+  };
+  const handleCloseSearch = () => {
+    setState((prev) => ({ ...prev, searchOpen: false }));
+    posthog.capture("search_closed");
+  };
+  const handleReverseOrder = () => {
+    setState((prev) => ({ ...prev, desc: !prev.desc }));
+    posthog.capture("reverse_order_clicked");
+  };
+
+  const handleSearchItemClick = (item) => {
+    setState((prev) => ({
+      ...prev,
+      selectedItem: item,
+      searchOpen: false,
+    }));
+    posthog.capture("search_item_clicked", {
+      item_name: item.name,
+      item_id: item.id,
+    });
+  };
+  const handleSearchItemContextMenu = (e, item) => {
+    e.preventDefault();
+    if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+      setState((prev) => ({
+        ...prev,
+        searchOpen: false,
+      }));
+    } else if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+      setState((prev) => ({
+        ...prev,
+        searchOpen: false,
+      }));
+    } else {
+      state.soundCant.current.play();
+    }
+    posthog.capture("search_item_right_clicked", {
+      item_name: item.name,
+      item_id: item.id,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
-        <Icon icon='search' className={styles.search} />
+        <Icon icon="search" className={styles.search} />
         <input
           className={styles.input}
-          type='text'
-          placeholder='Search'
+          type="text"
+          placeholder="Search"
           value={state.search}
-          onClick={() => setState((prev) => ({ ...prev, searchOpen: true }))}
+          onClick={handleSearchClick}
           onChange={(e) => {
             setState((prev) => ({ ...prev, search: e.target.value }));
           }}
         />
         {state.searchOpen && (
           <Icon
-            icon='close'
+            icon="close"
             className={styles.close}
-            onClick={() => setState((prev) => ({ ...prev, searchOpen: false }))}
+            onClick={handleCloseSearch}
           />
         )}
       </div>
@@ -61,46 +123,9 @@ const Search = () => {
                   className={`${styles.result} ${
                     hovered?.id === item.id && styles.resultSelected
                   }`}
-                  onClick={() =>
-                    setState((prev) => ({
-                      ...prev,
-                      selectedItem: item,
-                      searchOpen: false,
-                    }))
-                  }
+                  onClick={() => handleSearchItemClick(item)}
                   onMouseOver={() => setHovered(item)}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    if (inventory.length < 6) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, item.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                      setState((prev) => ({
-                        ...prev,
-                        searchOpen: false,
-                      }));
-                    } else if (inventory.length < 6) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, item.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                      setState((prev) => ({
-                        ...prev,
-                        searchOpen: false,
-                      }));
-                    } else {
-                      state.soundCant.current.play();
-                    }
-                  }}
+                  onContextMenu={(e) => handleSearchItemContextMenu(e, item)}
                 >
                   <ItemImage
                     imgName={item.iconPath}
@@ -156,17 +181,17 @@ const Search = () => {
       <div className={styles.controls}>
         <Tabs />
         <Tippy
-          placement='right-start'
-          offset='0, 10'
+          placement="right-start"
+          offset="0, 10"
           duration={0}
-          content={'Reverse Order'}
+          content={"Reverse Order"}
         >
           <button
-            name='Change Sort Direction'
+            name="Change Sort Direction"
             className={`${styles.orderBtn} ${state.desc && styles.active}`}
-            onClick={() => setState((prev) => ({ ...prev, desc: !prev.desc }))}
+            onClick={handleReverseOrder}
           >
-            <Icon icon='order' />
+            <Icon icon="order" />
           </button>
         </Tippy>
       </div>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Tippy from "@tippy.js/react";
 import { useRouter } from "next/router";
+import posthog from "posthog-js";
 
 import { StateContext } from "../../StateContext";
 import ItemTooltip from "../ItemTooltip/";
@@ -26,7 +27,45 @@ const BuildTree = ({ imageSize = 64, item }) => {
   const itemChanged = itemData.patchChange;
   const patch = formatPatch(state.patch);
 
-  console.log(itemData);
+  const handleItemClick = (item) => {
+    const itemInfo = itemsData.items[item];
+    setState((prev) => ({
+      ...prev,
+      selectedItem: itemInfo,
+    }));
+    posthog.capture("buildtree_item_clicked", {
+      item_name: itemInfo.name,
+      item_id: itemInfo.id,
+    });
+  };
+  const handleItemRightClick = (e, item) => {
+    e.preventDefault();
+    if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+    } else if (inventory.length < 6) {
+      const params = new URLSearchParams({
+        i: [...inventory, item.id],
+      });
+      state.soundPurchase.current.volume = 0.5;
+      state.soundPurchase.current.play();
+      router.replace(`?${params}`, undefined, {
+        shallow: true,
+      });
+    } else {
+      state.soundCant?.current?.play();
+    }
+    posthog.capture("buildtree_item_right_clicked", {
+      item_name: item.name,
+      item_id: item.id,
+    });
+  };
 
   return (
     <div className={styles.details}>
@@ -41,32 +80,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                 duration={0}
                 content={<ItemTooltip item={itemData} />}
               >
-                <div
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    if (inventory.length < 6) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, itemData.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                    } else if (inventory.length < 6) {
-                      const params = new URLSearchParams({
-                        i: [...inventory, itemData.id],
-                      });
-                      state.soundPurchase.current.volume = 0.5;
-                      state.soundPurchase.current.play();
-                      router.replace(`?${params}`, undefined, {
-                        shallow: true,
-                      });
-                    } else {
-                      state.soundCant?.current?.play();
-                    }
-                  }}
-                >
+                <div onContextMenu={(e) => handleItemRightClick(e, item)}>
                   <ItemImage
                     key={itemData.iconPath}
                     imgName={itemData.iconPath}
@@ -131,12 +145,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
                         <div
                           className={styles.itemCol}
                           data-test={item.id}
-                          onClick={() =>
-                            setState((prev) => ({
-                              ...prev,
-                              selectedItem: itemsData.items[item],
-                            }))
-                          }
+                          onClick={() => handleItemClick(item)}
                         >
                           <ItemImage
                             key={`${item.id}_${i}`}

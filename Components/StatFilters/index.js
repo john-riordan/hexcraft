@@ -1,5 +1,6 @@
 import { memo, useContext } from "react";
 import Tippy from "@tippy.js/react";
+import posthog from "posthog-js";
 
 import { StateContext } from "../../StateContext";
 import Icon from "../Icon/";
@@ -67,6 +68,23 @@ const StatFilters = ({ className }) => {
   const context = useContext(StateContext);
   const { state, setState } = context;
 
+  const handleStatClick = (stat) => {
+    if (state.stat.includes(stat)) {
+      setState((prev) => ({
+        ...prev,
+        stat: state.stat.filter((s) => s !== stat),
+      }));
+    } else {
+      setState((prev) => ({
+        ...prev,
+        stat: [...state.stat, stat],
+      }));
+    }
+    posthog.capture("stat_filter_clicked", {
+      stat: stat,
+    });
+  };
+
   return (
     <aside className={`${styles.filters} ${className}`}>
       <header className={styles.sidebarHeader}>
@@ -84,19 +102,7 @@ const StatFilters = ({ className }) => {
           className={`${styles.statItem} ${
             state.stat.includes("Patch") && styles.active
           }`}
-          onClick={() => {
-            if (state.stat.includes("Patch")) {
-              setState((prev) => ({
-                ...prev,
-                stat: state.stat.filter((s) => s !== "Patch"),
-              }));
-            } else {
-              setState((prev) => ({
-                ...prev,
-                stat: [...state.stat, "Patch"],
-              }));
-            }
-          }}
+          onClick={() => handleStatClick("Patch")}
         >
           <Tippy
             placement="right"
@@ -123,22 +129,10 @@ const StatFilters = ({ className }) => {
           {group.map((stat) => {
             const isActive = state.stat.includes(stat.key);
             return (
-              <div
+              <button
                 key={stat.name}
                 className={`${styles.statItem} ${isActive && styles.active}`}
-                onClick={() => {
-                  if (isActive) {
-                    setState((prev) => ({
-                      ...prev,
-                      stat: state.stat.filter((s) => s !== stat.key),
-                    }));
-                  } else {
-                    setState((prev) => ({
-                      ...prev,
-                      stat: [...state.stat, stat.key],
-                    }));
-                  }
-                }}
+                onClick={() => handleStatClick(stat.key)}
               >
                 {stat.icon && (
                   <Tippy
@@ -159,7 +153,7 @@ const StatFilters = ({ className }) => {
                 )}
                 <span>{stat.name}</span>
                 {isActive && <Icon icon="close" className={styles.close} />}
-              </div>
+              </button>
             );
           })}
         </div>

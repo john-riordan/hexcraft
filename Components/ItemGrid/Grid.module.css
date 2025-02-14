@@ -4,7 +4,7 @@
 }
 
 .groupTitle {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 1.5rem;
@@ -60,6 +60,9 @@
   padding-bottom: 0.25rem;
   cursor: pointer;
 }
+.gridItem * {
+  pointer-events: none;
+}
 .gridItem > * {
   position: relative;
 }
@@ -81,7 +84,7 @@
   background: transparent;
 }
 .gridItem.selected::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -100,7 +103,7 @@
 }
 
 .price {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   font-size: 1.125rem;
   margin: 0;
   color: var(--text2);

@@ -1,13 +1,14 @@
-import { memo, useContext } from 'react';
-import Tippy from '@tippy.js/react';
+import { memo, useContext } from "react";
+import Tippy from "@tippy.js/react";
+import posthog from "posthog-js";
 
-import { StateContext } from '../../StateContext';
-import isOrnnItem from '../../helpers/isOrnnItem';
-import styles from './Details.module.css';
-import ItemTooltip from '../ItemTooltip/';
-import BuildTree from '../BuildTree/';
-import ItemImage from '../ItemImage/';
-import Icon from '../Icon/';
+import { StateContext } from "../../StateContext";
+import isOrnnItem from "../../helpers/isOrnnItem";
+import styles from "./Details.module.css";
+import ItemTooltip from "../ItemTooltip/";
+import BuildTree from "../BuildTree/";
+import ItemImage from "../ItemImage/";
+import Icon from "../Icon/";
 
 const MAX_FROM = 7;
 
@@ -23,6 +24,14 @@ const ItemDetails = ({ className }) => {
 
   const empty = [...Array(MAX_FROM - builtFrom.length).keys()];
 
+  const handleClose = () => {
+    setState((prev) => ({
+      ...prev,
+      selectedItem: null,
+    }));
+    posthog.capture("itemdetails_closed");
+  };
+
   return (
     <div
       className={`${styles.details} ${className} ${
@@ -30,26 +39,17 @@ const ItemDetails = ({ className }) => {
       }`}
     >
       {selectedItem && (
-        <Icon
-          icon='close'
-          className={styles.close}
-          onClick={() =>
-            setState((prev) => ({
-              ...prev,
-              selectedItem: null,
-            }))
-          }
-        />
+        <Icon icon="close" className={styles.close} onClick={handleClose} />
       )}
       <p className={styles.title}>
-        {selectedItem ? 'Builds Into' : 'Select an Item'}
+        {selectedItem ? "Builds Into" : "Select an Item"}
       </p>
       <div className={styles.buildsFrom}>
         {builtFrom.map((item) => (
           <Tippy
             key={item.name}
-            placement='left-start'
-            offset='0, 10'
+            placement="left-start"
+            offset="0, 10"
             duration={0}
             content={<ItemTooltip item={item} />}
           >
@@ -78,8 +78,8 @@ const ItemDetails = ({ className }) => {
             <ItemImage
               size={36}
               className={styles.imgFrame}
-              imgName='empty.png'
-              alt='Empty Item'
+              imgName="empty.png"
+              alt="Empty Item"
             />
           </div>
         ))}
