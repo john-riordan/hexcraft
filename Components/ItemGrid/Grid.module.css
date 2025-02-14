@@ -47,7 +47,7 @@
 }
 @media (max-width: 500px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -150,6 +150,12 @@
 
 @media (max-width: 600px) {
   .gridFrame {
-    padding: 1.5rem 0.5rem 15rem;
+    padding: 0.5rem 0.5rem 15rem;
+  }
+  .grid {
+    margin-bottom: 1rem;
+  }
+  .gridItem {
+    padding: 0.35rem;
   }
 }

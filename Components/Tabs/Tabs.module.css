@@ -89,7 +89,7 @@
 
 @media (max-width: 600px) {
   .tab {
-    padding: 0 0.25rem;
+    padding: 0 0.35rem;
   }
   .tab svg {
     font-size: 1.25rem;

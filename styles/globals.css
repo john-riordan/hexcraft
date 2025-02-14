@@ -52,12 +52,14 @@
 html {
   background: var(--surface1);
   color: var(--text1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--text3) var(--accent3);
 }
 
 @font-face {
-  font-family: 'Beaufort-bold';
-  src: url('https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff')
-    format('woff');
+  font-family: "Beaufort-bold";
+  src: url("https://s.lolstatic.com/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff")
+    format("woff");
   font-display: swap;
   font-weight: 700;
   font-display: auto;
@@ -239,11 +241,11 @@ audio {
   opacity: 0.3;
 }
 .item-change-modal .blockquote.context::before {
-  content: '\201C';
+  content: "\201C";
   transform: translate(-2rem, -1.5rem);
 }
 .item-change-modal .blockquote.context::after {
-  content: '\201D';
+  content: "\201D";
   transform: translate(1rem, -0.5rem);
 }
 .item-change-modal .attribute-change {
@@ -292,7 +294,7 @@ audio {
   text-transform: uppercase;
 }
 .attribute > *:not(em)::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

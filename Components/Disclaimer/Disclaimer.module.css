@@ -30,3 +30,13 @@
   font-size: 0.875rem;
   color: var(--text5);
 }
+
+@media screen and (max-width: 600px) {
+  .disclaimer {
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .disclaimer span {
+    display: none;
+  }
+}
