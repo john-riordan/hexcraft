@@ -1,9 +1,9 @@
-import { assassin } from '../data/assassin';
-import { fighter } from '../data/fighter';
-import { mage } from '../data/mage';
-import { marksman } from '../data/marksman';
-import { support } from '../data/support';
-import { tank } from '../data/tank';
+import { assassin } from "../data/assassin";
+import { fighter } from "../data/fighter";
+import { mage } from "../data/mage";
+import { marksman } from "../data/marksman";
+import { support } from "../data/support";
+import { tank } from "../data/tank";
 
 const BASE = {
   assassin,
@@ -18,11 +18,11 @@ export function buildDisplayItems(itemsData = {}, tab) {
   const dict = itemsData.items;
   const groups = itemsData.all;
 
-  const legendaryBase = BASE[tab]?.legendary;
-  const epicBase = BASE[tab]?.epic;
-  const basicsBase = BASE[tab]?.basic;
-  const startersBase = BASE[tab]?.starter;
-  const consumablesBase = BASE[tab]?.consumables;
+  const legendaryBase = BASE[tab]?.legendary || [];
+  const epicBase = BASE[tab]?.epic || [];
+  const basicsBase = BASE[tab]?.basic || [];
+  const startersBase = BASE[tab]?.starter || [];
+  const consumablesBase = BASE[tab]?.consumables || [];
 
   if (tab) {
     return {
