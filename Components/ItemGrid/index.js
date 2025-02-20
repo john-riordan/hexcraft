@@ -79,7 +79,14 @@ const ItemGrid = ({ className }) => {
       item_id: item.id,
     });
   };
-
+  const handlePatchChange = (e, item) => {
+    e.stopPropagation();
+    if (!item.patchChange.details) return;
+    setState((prev) => ({
+      ...prev,
+      modal: <PatchChangeDetails content={item.patchChange.details} />,
+    }));
+  };
   return (
     <div className={`${styles.gridFrame} ${className}`}>
       {itemGroups.map(([groupName, items], i) => {
@@ -129,19 +136,8 @@ const ItemGrid = ({ className }) => {
                         />
                         <p className={styles.price}>{item.priceTotal}</p>
                         {item.patchChange && (
-                          <div
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (!item.patchChange.details) return;
-                              setState((prev) => ({
-                                ...prev,
-                                modal: (
-                                  <PatchChangeDetails
-                                    content={item.patchChange.details}
-                                  />
-                                ),
-                              }));
-                            }}
+                          <button
+                            onClick={(e) => handlePatchChange(e, item)}
                             className={`${styles.patchChange} ${
                               styles[item.patchChange.change.toLowerCase()]
                             }`}
@@ -151,7 +147,7 @@ const ItemGrid = ({ className }) => {
                               className={styles.patchChangeIcon}
                               viewBox="0 0 48 48"
                             />
-                          </div>
+                          </button>
                         )}
                       </div>
                     </Tippy>

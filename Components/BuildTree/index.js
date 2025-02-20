@@ -66,6 +66,17 @@ const BuildTree = ({ imageSize = 64, item }) => {
       item_id: item.id,
     });
   };
+  const handlePatchChange = (itemChanged) => {
+    if (!itemChanged.details) return;
+    setState((prev) => ({
+      ...prev,
+      modal: <PatchChangeDetails content={itemChanged.details} />,
+    }));
+    posthog.capture("buildtree_patch_change_clicked", {
+      item_name: itemChanged.name,
+      item_id: itemChanged.id,
+    });
+  };
 
   return (
     <div className={styles.details}>
@@ -168,15 +179,7 @@ const BuildTree = ({ imageSize = 64, item }) => {
               <div className={styles.patchChange}>
                 <button
                   className="attribute"
-                  onClick={() => {
-                    if (!itemChanged.details) return;
-                    setState((prev) => ({
-                      ...prev,
-                      modal: (
-                        <PatchChangeDetails content={itemChanged.details} />
-                      ),
-                    }));
-                  }}
+                  onClick={() => handlePatchChange(itemChanged)}
                 >
                   <span className={`${itemChanged.change.toLowerCase()}`}>
                     {itemChanged.change} in {patch}

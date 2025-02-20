@@ -1,12 +1,12 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import styles from './ItemTip.module.css';
+import styles from "./ItemTip.module.css";
 
-import ItemImage from '../ItemImage/';
-import { StateContext } from '../../StateContext';
-import isOrnnItem from '../../helpers/isOrnnItem';
+import ItemImage from "../ItemImage/";
+import { StateContext } from "../../StateContext";
+import isOrnnItem from "../../helpers/isOrnnItem";
 
-import formatPatch from '../../helpers/formatPatch';
+import formatPatch from "../../helpers/formatPatch";
 
 const ItemTooltip = ({ item }) => {
   const { state } = useContext(StateContext);
@@ -37,19 +37,10 @@ const ItemTooltip = ({ item }) => {
         }}
       />
       {itemChanged && (
-        <div className='attribute'>
-          <p
-            className={`${itemChanged.change.toLowerCase()}`}
-            onClick={() =>
-              setState((prev) => ({
-                ...prev,
-                modal: <PatchChangeDetails content={itemChanged.details} />,
-              }))
-            }
-          >
+        <div className="attribute">
+          <p className={`${itemChanged.change.toLowerCase()}`}>
             {itemChanged.change} in {patch}
           </p>
-          CLICK FOR DETAILS
         </div>
       )}
     </div>

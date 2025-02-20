@@ -60,15 +60,13 @@
   padding-bottom: 0.25rem;
   cursor: pointer;
 }
-.gridItem * {
-  pointer-events: none;
-}
 .gridItem > * {
   position: relative;
 }
 .gridItem .imgFrame,
 .gridItem .imgFrame img {
   width: 100%;
+  pointer-events: none;
 }
 .gridItem:hover {
   filter: brightness(1.5);
