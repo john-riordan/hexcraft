@@ -84,6 +84,8 @@ export default function Home(props) {
             />
             <title>League Item Changes Season 2025 - LoL Shop</title>
             <link rel="icon" href="/favicon.ico" />
+            <link rel="preconnect" href="https://lolstatic-a.akamaihd.net" />
+            <link rel="preconnect" href="https://raw.communitydragon.org" />
             <meta name="darkreader-lock" />
             <meta
               name="Description"

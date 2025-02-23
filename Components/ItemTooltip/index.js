@@ -21,7 +21,6 @@ const ItemTooltip = ({ item }) => {
     item,
     state.itemsData.statGoldValues
   );
-  // const goldEfficiency = 0;
 
   return (
     <div className={styles.container}>
@@ -34,11 +33,13 @@ const ItemTooltip = ({ item }) => {
         />
         <div className={styles.info}>
           <p className={styles.name}>{item.name}</p>
-          <p className={styles.price}>
-            {item.priceTotal} (
-            {goldEfficiency.toLocaleString("en-us", { style: "percent" })} Gold
-            Efficient)
-          </p>
+          <div className={styles.priceContainer}>
+            <span className={styles.price}>{item.priceTotal}g</span>
+            <span className={styles.priceEfficiency}>
+              ({goldEfficiency.toLocaleString("en-us", { style: "percent" })}{" "}
+              Efficient)
+            </span>
+          </div>
         </div>
       </div>
       <p
