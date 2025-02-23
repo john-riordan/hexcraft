@@ -5,6 +5,7 @@ import styles from "./ItemTip.module.css";
 import ItemImage from "../ItemImage/";
 import { StateContext } from "../../StateContext";
 import isOrnnItem from "../../helpers/isOrnnItem";
+import { calculateGoldEfficiency } from "../../helpers/calculateGoldEfficiency";
 
 import formatPatch from "../../helpers/formatPatch";
 
@@ -15,6 +16,12 @@ const ItemTooltip = ({ item }) => {
 
   const itemChanged = item?.patchChange;
   const patch = formatPatch(state.patch);
+
+  const goldEfficiency = calculateGoldEfficiency(
+    item,
+    state.itemsData.statGoldValues
+  );
+  // const goldEfficiency = 0;
 
   return (
     <div className={styles.container}>
@@ -27,7 +34,11 @@ const ItemTooltip = ({ item }) => {
         />
         <div className={styles.info}>
           <p className={styles.name}>{item.name}</p>
-          <p className={styles.price}>{item.priceTotal}</p>
+          <p className={styles.price}>
+            {item.priceTotal} (
+            {goldEfficiency.toLocaleString("en-us", { style: "percent" })} Gold
+            Efficient)
+          </p>
         </div>
       </div>
       <p

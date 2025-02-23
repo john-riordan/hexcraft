@@ -187,6 +187,29 @@ export async function getStaticProps() {
     return acc;
   }, {});
 
+  // 3) meraki data
+  const merakiURL =
+    "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/items.json";
+  const merakiReq = await fetch(merakiURL);
+  const merakiItems = (await merakiReq.json()) || {};
+  const merakiItemsMap = Object.values(merakiItems).reduce((acc, curr) => {
+    const stats = Object.entries(curr.stats).reduce((acc, curr) => {
+      const [key, stats] = curr;
+      if (!stats.flat && !stats.percent) return acc;
+      acc[key] = {
+        flat: stats.flat,
+        percent: stats.percent,
+      };
+      return acc;
+    }, {});
+
+    acc[curr.id] = {
+      id: curr.id,
+      stats,
+    };
+    return acc;
+  }, {});
+
   const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
@@ -200,6 +223,7 @@ export async function getStaticProps() {
         usePBE: USE_PBE,
         ddragonItemsMap,
         cdragonItemsMap,
+        merakiItemsMap,
         patchChanges: latestPatchChanges,
       }),
     },
