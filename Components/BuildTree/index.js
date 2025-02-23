@@ -8,10 +8,9 @@ import ItemTooltip from "../ItemTooltip/";
 import ItemImage from "../ItemImage/";
 import PatchChangeDetails from "../PatchChangeDetails/";
 import isOrnnItem from "../../helpers/isOrnnItem";
-
-import styles from "./Tree.module.css";
-
+import { calculateGoldEfficiency } from "../../helpers/calculateGoldEfficiency";
 import formatPatch from "../../helpers/formatPatch";
+import styles from "./Tree.module.css";
 
 const BuildTree = ({ imageSize = 64, item }) => {
   const { state, setState } = useContext(StateContext);
@@ -26,6 +25,11 @@ const BuildTree = ({ imageSize = 64, item }) => {
 
   const itemChanged = itemData.patchChange;
   const patch = formatPatch(state.patch);
+
+  const goldEfficiency = calculateGoldEfficiency(
+    itemData,
+    state.itemsData.statGoldValues
+  );
 
   const handleItemClick = (item) => {
     const itemInfo = itemsData.items[item];
@@ -190,7 +194,14 @@ const BuildTree = ({ imageSize = 64, item }) => {
             )}
             <header className={styles.header}>
               <p className={styles.name}>{itemData.name}</p>
-              <p className={styles.price}>{itemData.priceTotal}</p>
+              <p className={styles.priceContainer}>
+                <span className={styles.price}>{itemData.priceTotal}</span>
+                <span className={styles.priceEfficiency}>
+                  (
+                  {goldEfficiency.toLocaleString("en-us", { style: "percent" })}{" "}
+                  Efficient)
+                </span>
+              </p>
             </header>
             <p
               className={styles.description}

@@ -37,9 +37,7 @@
   color: var(--text2);
 }
 .priceEfficiency {
-  /* font-size: 0.875rem; */
   font-weight: 600;
-  letter-spacing: 0.025rem;
   color: var(--text4);
 }
 .description {

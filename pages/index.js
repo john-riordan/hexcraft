@@ -82,22 +82,22 @@ export default function Home(props) {
               `,
               }}
             />
-            <title>League Item Changes Season 2025 - LoL Shop</title>
+            <title>League of Legends Items Season 2025 - LoL Shop</title>
             <link rel="icon" href="/favicon.ico" />
             <link rel="preconnect" href="https://lolstatic-a.akamaihd.net" />
             <link rel="preconnect" href="https://raw.communitydragon.org" />
             <meta name="darkreader-lock" />
             <meta
               name="Description"
-              content="League of Legends Season 2025 / Season 15 Item Changes"
+              content="League of Legends Season 2025 / Season 15 Items"
             />
             <meta
               property="og:title"
-              content="LoL Shop - League of Legends Season 15 Item Changes"
+              content="LoL Shop - League of Legends Season 15 Items"
             />
             <meta
               property="og:description"
-              content="Season 2025 Item changes"
+              content="List of all League of Legends items including the Season 2025 changes, buff, nerfs, and patch notes."
             />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://lolshop.gg" />
