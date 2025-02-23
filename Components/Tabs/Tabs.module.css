@@ -40,7 +40,6 @@
 
 .tab svg {
   font-size: 1.25rem;
-  margin-right: 0.25rem;
   transform: translateY(2px);
 }
 .tab * {
@@ -49,8 +48,13 @@
 .tab > * {
   display: flex;
   align-items: center;
+  gap: 0.25rem;
   position: relative;
   padding: 1rem 0;
+}
+.tab span {
+  line-height: 1;
+  padding-block-start: 0.125rem;
 }
 
 .tab.active {

@@ -195,6 +195,8 @@ export async function getStaticProps() {
   const merakiReq = await fetch(merakiURL);
   const merakiItems = (await merakiReq.json()) || {};
   const merakiItemsMap = Object.values(merakiItems).reduce((acc, curr) => {
+    console.log(curr.name);
+
     const stats = Object.entries(curr.stats).reduce((acc, curr) => {
       const [key, stats] = curr;
       if (!stats.flat && !stats.percent) return acc;

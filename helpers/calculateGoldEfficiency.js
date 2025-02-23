@@ -1,6 +1,8 @@
 export function calculateGoldEfficiency(item, statGoldValues = {}) {
   let statsValue = 0;
 
+  if (!item) return statsValue;
+
   for (const [statKey, statValue] of Object.entries(item.stats)) {
     if (!statGoldValues[statKey]) continue;
     const statFlatValue = statGoldValues[statKey].flat;

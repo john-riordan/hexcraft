@@ -9,6 +9,7 @@ import Tabs from "../Tabs/";
 import ItemImage from "../ItemImage/";
 import styles from "./Search.module.css";
 import { StateContext } from "../../StateContext";
+import { calculateGoldEfficiency } from "../../helpers/calculateGoldEfficiency";
 
 const Search = () => {
   const router = useRouter();
@@ -92,6 +93,11 @@ const Search = () => {
     });
   };
 
+  const hoverGoldEfficiency = calculateGoldEfficiency(
+    hovered,
+    state.itemsData.statGoldValues
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
@@ -118,29 +124,39 @@ const Search = () => {
         <>
           <div className={styles.resultsFrame}>
             <div className={styles.resultsList}>
-              {results.map((item) => (
-                <div
-                  key={item.id}
-                  className={`${styles.result} ${
-                    hovered?.id === item.id && styles.resultSelected
-                  }`}
-                  onClick={(e) => handleSearchItemClick(e, item)}
-                  onMouseOver={() => setHovered(item)}
-                  onContextMenu={(e) => handleSearchItemContextMenu(e, item)}
-                >
-                  <ItemImage
-                    imgName={item.iconPath}
-                    className={styles.imgFrame}
-                    size={42}
-                    alt={item.name}
-                    isOrnn={isOrnnItem(item)}
-                  />
-                  <div className={styles.resultInfo}>
-                    <p className={styles.resultName}>{item.name}</p>
-                    <p className={styles.resultPrice}>{item.priceTotal}</p>
+              {results.map((item) => {
+                // const goldEfficiency = calculateGoldEfficiency(
+                //   item,
+                //   state.itemsData.statGoldValues
+                // );
+                return (
+                  <div
+                    key={item.id}
+                    className={`${styles.result} ${
+                      hovered?.id === item.id && styles.resultSelected
+                    }`}
+                    onClick={(e) => handleSearchItemClick(e, item)}
+                    onMouseOver={() => setHovered(item)}
+                    onContextMenu={(e) => handleSearchItemContextMenu(e, item)}
+                  >
+                    <ItemImage
+                      imgName={item.iconPath}
+                      className={styles.imgFrame}
+                      size={42}
+                      alt={item.name}
+                      isOrnn={isOrnnItem(item)}
+                    />
+                    <div className={styles.resultInfo}>
+                      <p className={styles.resultName}>{item.name}</p>
+                      <p className={styles.priceContainer}>
+                        <span className={styles.resultPrice}>
+                          {item.priceTotal}
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <div className={styles.selected}>
               {hovered && (
@@ -157,12 +173,20 @@ const Search = () => {
                     />
                     <div className={styles.detailsTitle}>
                       <p className={styles.detailsName}>{hovered.name}</p>
-                      <p className={styles.detailsPrice}>
-                        {hovered.priceTotal}
+                      <p className={styles.priceContainer}>
+                        <span className={styles.detailsPrice}>
+                          {hovered.priceTotal}
+                        </span>
+                        <span className={styles.detailsPriceEfficiency}>
+                          (
+                          {hoverGoldEfficiency.toLocaleString("en-us", {
+                            style: "percent",
+                          })}{" "}
+                          Efficient)
+                        </span>
                       </p>
                     </div>
                   </div>
-
                   <p
                     className={styles.detailsDescription}
                     dangerouslySetInnerHTML={{

@@ -10,12 +10,12 @@
 
   --text1: hsl(0deg 0% 100%);
   --text2: hsl(39deg 55% 59%);
-  --text3: hsl(213deg 5% 65%);
-  --text4: hsl(0deg 0% 60%);
+  --text3: hsl(213deg 15% 50%);
+  --text4: hsl(0deg 10% 60%);
   --text5: #cebe94;
   --text6: #fffddd;
 
-  --accent1: hsl(0deg 0% 100% / 20%);
+  --accent1: hsl(213deg 5% 100% / 20%);
   --accent2: hsl(213deg 5% 38% / 35%);
   --accent3: hsl(213deg 5% 38% / 5%);
 
@@ -53,7 +53,7 @@ html {
   background: var(--surface1);
   color: var(--text1);
   scrollbar-width: thin;
-  scrollbar-color: var(--text3) var(--accent3);
+  scrollbar-color: var(--accent2) var(--accent3);
 }
 
 @font-face {
