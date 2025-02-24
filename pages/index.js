@@ -191,12 +191,10 @@ export async function getStaticProps() {
 
   // 3) meraki data
   const merakiURL =
-    "https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/items.json";
+    "https://pub-6bad7b1d5c7746f9a9f1579d0356d740.r2.dev/items.json";
   const merakiReq = await fetch(merakiURL);
   const merakiItems = (await merakiReq.json()) || {};
   const merakiItemsMap = Object.values(merakiItems).reduce((acc, curr) => {
-    console.log(curr.name);
-
     const stats = Object.entries(curr.stats).reduce((acc, curr) => {
       const [key, stats] = curr;
       if (!stats.flat && !stats.percent) return acc;

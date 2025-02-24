@@ -177,13 +177,15 @@ const Search = () => {
                         <span className={styles.detailsPrice}>
                           {hovered.priceTotal}
                         </span>
-                        <span className={styles.detailsPriceEfficiency}>
-                          (
-                          {hoverGoldEfficiency.toLocaleString("en-us", {
-                            style: "percent",
-                          })}{" "}
-                          Efficient)
-                        </span>
+                        {hoverGoldEfficiency ? (
+                          <span className={styles.detailsPriceEfficiency}>
+                            (
+                            {hoverGoldEfficiency.toLocaleString("en-us", {
+                              style: "percent",
+                            })}{" "}
+                            Efficient)
+                          </span>
+                        ) : null}
                       </p>
                     </div>
                   </div>

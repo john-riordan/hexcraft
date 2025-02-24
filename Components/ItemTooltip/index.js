@@ -35,10 +35,12 @@ const ItemTooltip = ({ item }) => {
           <p className={styles.name}>{item.name}</p>
           <div className={styles.priceContainer}>
             <span className={styles.price}>{item.priceTotal}g</span>
-            <span className={styles.priceEfficiency}>
-              ({goldEfficiency.toLocaleString("en-us", { style: "percent" })}{" "}
-              Efficient)
-            </span>
+            {goldEfficiency ? (
+              <span className={styles.priceEfficiency}>
+                ({goldEfficiency.toLocaleString("en-us", { style: "percent" })}{" "}
+                Efficient)
+              </span>
+            ) : null}
           </div>
         </div>
       </div>

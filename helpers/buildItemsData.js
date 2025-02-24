@@ -7,6 +7,7 @@ import { whitelist } from "../data/whitelist";
 import isOrnnItem from "../helpers/isOrnnItem";
 import { consumables } from "../data/consumables";
 import { baseItems } from "../data/base-items";
+import { BLACKLISTED_ITEMS } from "./constants";
 
 export function buildItemsData({
   usePBE = false,
@@ -22,6 +23,9 @@ export function buildItemsData({
     : Object.values(ddragonItemsMap);
 
   const whitelistedItems = itemListBase.filter((item) => {
+    const isBlacklisted = BLACKLISTED_ITEMS[item.id];
+    if (isBlacklisted) return false;
+
     const cost = usePBE ? item.priceTotal : item.gold?.total;
     const isWhitelisted = whitelist[item.id];
     const isBoots =

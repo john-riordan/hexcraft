@@ -196,11 +196,15 @@ const BuildTree = ({ imageSize = 64, item }) => {
               <p className={styles.name}>{itemData.name}</p>
               <p className={styles.priceContainer}>
                 <span className={styles.price}>{itemData.priceTotal}</span>
-                <span className={styles.priceEfficiency}>
-                  (
-                  {goldEfficiency.toLocaleString("en-us", { style: "percent" })}{" "}
-                  Efficient)
-                </span>
+                {goldEfficiency ? (
+                  <span className={styles.priceEfficiency}>
+                    (
+                    {goldEfficiency.toLocaleString("en-us", {
+                      style: "percent",
+                    })}{" "}
+                    Efficient)
+                  </span>
+                ) : null}
               </p>
             </header>
             <p
