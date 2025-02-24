@@ -13,7 +13,7 @@
   align-items: center;
   padding-left: 1rem;
   background: var(--surface1);
-  border: 1px solid var(--text3);
+  border: 1px solid var(--accent2);
   z-index: 3;
 }
 .search {
@@ -48,29 +48,27 @@
 
 .resultsFrame {
   --results-height: 33rem;
-
   position: absolute;
   width: 100%;
   display: flex;
-  border: 1px solid var(--text3);
+  border: 1px solid var(--accent2);
   background: var(--surface1);
   height: var(--results-height);
   border-top: none;
   z-index: 3;
 }
+.resultsFrame .priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5ch;
+  margin: 0;
+}
 .resultsList {
   flex: 1;
   height: var(--results-height);
-  padding: 1.5rem 0;
+  padding: 0.5rem 0;
   overflow: clip;
   overflow-y: scroll;
-  mask-image: linear-gradient(
-    to top,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
   scrollbar-width: thin;
 }
 .resultsList::-webkit-scrollbar-track {
@@ -128,12 +126,16 @@
   text-overflow: ellipsis;
   font-size: 1.125rem;
   margin: 0;
-  color: var(--text2);
 }
 .resultPrice {
   font-family: "Beaufort-bold";
   font-size: 1rem;
   margin: 0;
+  color: var(--text2);
+}
+.resultPriceEfficiency {
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--text4);
 }
 
@@ -154,14 +156,24 @@
 .detailsName {
   font-family: "Beaufort-bold";
   font-size: 1.25rem;
-  color: var(--text2);
+  margin: 0;
+}
+.detailsPriceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5ch;
   margin: 0;
 }
 .detailsPrice {
   font-family: "Beaufort-bold";
   font-size: 1rem;
-  color: var(--text4);
+  color: var(--text2);
   margin: 0;
+}
+.detailsPriceEfficiency {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text4);
 }
 .detailsDescription {
   font-size: 0.875rem;

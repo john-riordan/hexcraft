@@ -19,17 +19,25 @@
   padding-left: 1rem;
 }
 .name {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.25;
-  text-transform: uppercase;
+}
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 1ch;
 }
 .price {
-  font-family: 'Beaufort-bold';
+  font-family: "Beaufort-bold";
   font-size: 1.125rem;
   margin: 0;
   color: var(--text2);
+}
+.priceEfficiency {
+  font-weight: 600;
+  color: var(--text4);
 }
 .description {
   font-size: 0.875rem;
