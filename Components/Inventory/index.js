@@ -18,13 +18,22 @@ const ITEM_SIZE = 60;
 const Inventory = () => {
   const [copied, setCopied] = useState(false);
   const { state, setState } = useContext(StateContext);
-  const { inventoryCost } = state;
   const textAreaRef = useRef(null);
   const router = useRouter();
+
+  const role = "top";
+
   const inventory = router.query?.i ? router.query?.i?.split(",") : [];
   const inventoryItems = inventory.map((item) => {
     return state.itemsData.items[item];
   });
+  const inventoryCost = inventoryItems.reduce(
+    (acc, curr) => acc + curr.priceTotal,
+    0
+  );
+  const earnableTime = state.gpmBenchmark?.[role]?.findIndex(
+    (minGold) => minGold >= inventoryCost
+  );
   const inventoryStats = computeInventoryStats(inventoryItems);
 
   const empty =
@@ -57,95 +66,94 @@ const Inventory = () => {
   }, [state]);
 
   return (
-    <div className={styles.container}>
-      {/* <div>
-        <div className={styles.header}>
-          <p className={styles.title}>Champ</p>
+    <div className={styles.container} data-has-items={inventory.length > 0}>
+      <div className={styles.header}>
+        <div className={styles.headerLeft}>
+          <p className={styles.cost}>
+            <Icon icon="gold" width="20" height="20" />
+            <span>{inventoryCost.toLocaleString()}</span>
+          </p>
+          {earnableTime >= 0 && <span>~ {earnableTime} minutes</span>}
         </div>
-        <div
-          className={styles.championFrame}
-          onClick={() =>
-            setState((prev) => ({ ...prev, modal: <ChampionList /> }))
-          }
-        />
-      </div> */}
-      <div>
-        <div className={styles.header}>
-          <div className={styles.headerLeft}>
-            <p className={styles.cost}>
-              <Icon icon="gold" />
-              <span>{inventoryCost}</span>
-            </p>
-            <button
-              className={`${styles.share} ${copied && styles.copied}`}
-              onClick={handleCopy}
-            >
-              {copied ? "Copied!" : "Copy Link"}
-            </button>
-          </div>
+        <div className={styles.controls}>
+          <button
+            className={`${styles.share} ${copied && styles.copied}`}
+            onClick={handleCopy}
+          >
+            {copied ? (
+              <Icon
+                icon="check"
+                width="20"
+                height="20"
+                stlye={{ color: "var(--buff)" }}
+              />
+            ) : (
+              <Icon icon="copy" width="20" height="20" />
+            )}
+          </button>
           <button className={styles.share} onClick={handleClear}>
-            Clear
+            <Icon icon="close" width="20" height="20" />
           </button>
         </div>
-        <textarea
-          ref={textAreaRef}
-          className={styles.textarea}
-          value={`https://lolshop.gg${router.asPath}`}
-          readOnly
-        />
-        <div className={styles.itemList}>
-          {inventoryItems.map((item, i) => (
-            <Tippy
-              key={`${item.id}_${i}`}
-              placement="top"
-              offset="0, 20"
-              duration={0}
-              content={<ItemTooltip item={item} />}
+      </div>
+      <textarea
+        ref={textAreaRef}
+        className={styles.textarea}
+        value={`https://lolshop.gg${router.asPath}`}
+        readOnly
+      />
+      <div className={styles.itemList}>
+        {inventoryItems.map((item, i) => (
+          <Tippy
+            key={`${item.id}_${i}`}
+            placement="top"
+            offset="0, 20"
+            duration={0}
+            content={<ItemTooltip item={item} />}
+          >
+            <div
+              className={styles.itemFrame}
+              onClick={() =>
+                setState((prev) => ({ ...prev, selectedItem: item }))
+              }
+              onContextMenu={(e) => {
+                e.preventDefault();
+                const index = inventory.indexOf(`${item.id}`);
+                const inv = [...inventory];
+
+                if (index !== -1) inv.splice(index, 1);
+
+                const params = new URLSearchParams({
+                  i: inv,
+                });
+                state.soundSell.current.volume = 0.5;
+                state.soundSell.current.play();
+                router.replace(`?${params}`, undefined, {
+                  shallow: true,
+                });
+              }}
             >
-              <div
-                className={styles.itemFrame}
-                onClick={() =>
-                  setState((prev) => ({ ...prev, selectedItem: item }))
-                }
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                  const index = inventory.indexOf(`${item.id}`);
-                  const inv = [...inventory];
-
-                  if (index !== -1) inv.splice(index, 1);
-
-                  const params = new URLSearchParams({
-                    i: inv,
-                  });
-                  state.soundSell.current.volume = 0.5;
-                  state.soundSell.current.play();
-                  router.replace(`?${params}`, undefined, {
-                    shallow: true,
-                  });
-                }}
-              >
-                <ItemImage
-                  key={`${item.id}_${i}`}
-                  imgName={item.iconPath}
-                  className={styles.imgFrame}
-                  size={ITEM_SIZE}
-                  alt={item.name}
-                  isOrnn={isOrnnItem(item)}
-                />
-              </div>
-            </Tippy>
-          ))}
-          {empty.map((i) => (
-            <div key={i}>
               <ItemImage
-                size={ITEM_SIZE}
+                key={`${item.id}_${i}`}
+                imgName={item.iconPath}
                 className={styles.imgFrame}
-                imgName="empty.png"
-                alt="Empty Item"
+                size={ITEM_SIZE}
+                alt={item.name}
+                isOrnn={isOrnnItem(item)}
               />
             </div>
-          ))}
-        </div>
+          </Tippy>
+        ))}
+        {empty.map((i) => (
+          <div key={i}>
+            <ItemImage
+              size={ITEM_SIZE}
+              className={styles.imgFrame}
+              imgName="empty.png"
+              alt="Empty Item"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

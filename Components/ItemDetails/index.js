@@ -40,7 +40,7 @@ const ItemDetails = ({ className }) => {
     >
       {selectedItem && (
         <button className={styles.close} onClick={handleClose}>
-          <Icon icon="close" />
+          <Icon icon="close" width="20" height="20" />
         </button>
       )}
       <p className={styles.title}>

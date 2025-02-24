@@ -30,8 +30,6 @@
 }
 
 .close svg {
-  width: 1.75rem;
-  height: 1.75rem;
   fill: var(--text4);
   opacity: 0.6;
   transition: var(--transition);

@@ -40,7 +40,7 @@ const Tabs = () => {
           className={`${styles.tab} ${state.tab === tab.key && styles.active}`}
         >
           <div>
-            <Icon icon={tab.icon} />
+            <Icon icon={tab.icon} width={24} height={24} />
             <span>{tab.name}</span>
           </div>
         </button>

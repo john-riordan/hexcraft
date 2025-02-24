@@ -3,12 +3,11 @@ const computeInventoryStats = (inventoryItems) => {
 
   for (const item of inventoryItems) {
     const itemStats = Object.entries(item.stats);
-    for (const [key, value] of itemStats) {
-      if (inventoryStats[key]) {
-        inventoryStats[key] += value;
-      } else {
-        inventoryStats[key] = value;
-      }
+    for (const [statKey, { flat, percent }] of itemStats) {
+      if (!inventoryStats[statKey])
+        inventoryStats[statKey] = { flat: 0, percent: 0 };
+      inventoryStats[statKey].flat += flat;
+      inventoryStats[statKey].percent += percent;
     }
   }
 
