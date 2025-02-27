@@ -2,6 +2,7 @@
   position: relative;
   display: grid;
   padding: 1rem 2rem;
+  padding-top: var(--page-top-padding);
   color: var(--text6);
 }
 .disclaimer::before {
@@ -11,7 +12,7 @@
   background: url(/season-2025-splash-lg.webp) no-repeat center;
   background-size: cover;
   mask-image: linear-gradient(to bottom, black, transparent);
-  opacity: 0.75;
+  opacity: 0.5;
 }
 .disclaimer > * {
   position: relative;
@@ -22,8 +23,8 @@
   line-height: 1;
   letter-spacing: 0.1rem;
   margin: 0;
-  padding-block: 0.25rem;
-  font-size: 1.25rem;
+  padding-block-end: 0.5rem;
+  font-size: 1.5rem;
 }
 .disclaimer span {
   display: block;
