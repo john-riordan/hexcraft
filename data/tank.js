@@ -44,6 +44,7 @@ export const tank = {
     3044: "Phage",
     3803: "catalyst",
     4638: "watchful wardstone",
+    3105: "Aegis of Legion",
   },
   basic: {
     1029: "Cloth Armor",
