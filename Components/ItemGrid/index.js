@@ -7,6 +7,7 @@ import ItemImage from "../ItemImage/";
 import ItemTooltip from "../ItemTooltip/";
 import Icon from "../Icon/";
 import PatchChangeDetails from "../PatchChangeDetails/";
+import isBoots from "../../helpers/isBoots";
 
 import { StateContext } from "../../StateContext";
 import isOrnnItem from "../../helpers/isOrnnItem";

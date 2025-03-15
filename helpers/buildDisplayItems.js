@@ -4,6 +4,7 @@ import { mage } from "../data/mage";
 import { marksman } from "../data/marksman";
 import { support } from "../data/support";
 import { tank } from "../data/tank";
+import isBoots from "./isBoots";
 
 const BASE = {
   assassin,
@@ -23,6 +24,7 @@ export function buildDisplayItems(itemsData = {}, tab) {
   const basicsBase = BASE[tab]?.basic || [];
   const startersBase = BASE[tab]?.starter || [];
   const consumablesBase = BASE[tab]?.consumables || [];
+  const boots = Object.values(itemsData.items).filter(isBoots);
 
   if (tab) {
     return {
@@ -35,6 +37,7 @@ export function buildDisplayItems(itemsData = {}, tab) {
       basics: groups.basics
         .filter((itemId) => basicsBase[itemId])
         .map((itemId) => dict[itemId]),
+      boots,
       starters: groups.starters
         .filter((itemId) => startersBase[itemId])
         .map((itemId) => dict[itemId]),
@@ -48,6 +51,7 @@ export function buildDisplayItems(itemsData = {}, tab) {
     legendaries: groups.legendaries.map((itemId) => dict[itemId]),
     epics: groups.epics.map((itemId) => dict[itemId]),
     basics: groups.basics.map((itemId) => dict[itemId]),
+    boots,
     starters: groups.starters.map((itemId) => dict[itemId]),
     consumables: groups.consumables.map((itemId) => dict[itemId]),
   };

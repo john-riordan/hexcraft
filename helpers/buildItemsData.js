@@ -8,6 +8,7 @@ import isOrnnItem from "../helpers/isOrnnItem";
 import { consumables } from "../data/consumables";
 import { baseItems } from "../data/base-items";
 import { BLACKLISTED_ITEMS } from "./constants";
+import isBoots from "./isBoots";
 
 export function buildItemsData({
   usePBE = false,
@@ -28,14 +29,18 @@ export function buildItemsData({
 
     const cost = usePBE ? item.priceTotal : item.gold?.total;
     const isWhitelisted = whitelist[item.id];
-    const isBoots =
-      item.id === 1001 || (item.tags.includes("Boots") && cost >= 900);
-    return (cost && isWhitelisted && !isOrnnItem(item)) || isBoots;
+
+    const isArenaItem = `${item.id}`.length === 6;
+    if (isArenaItem) return false;
+
+    return (cost && isWhitelisted && !isOrnnItem(item)) || isBoots(item);
   });
 
   const usableItems = whitelistedItems
     .sort((a, z) => z.gold.total - a.gold.total)
     .map((item) => {
+      const categories = item.categories || [];
+      const tags = item.tags || [];
       const itemCategories = patchChanges?.[item?.id]
         ? [...item.tags, "Patch"]
         : [...item.tags];
@@ -53,6 +58,7 @@ export function buildItemsData({
         categories: itemCategories,
         priceTotal: item.gold.total,
         from: item.from || [],
+        isBoots: isBoots(item),
         // stats: item.stats,
         stats,
         iconPath: `${cdragonItemsMap[item.id]?.iconPath
@@ -75,20 +81,17 @@ export function buildItemsData({
     const lowerPrice = item.priceTotal <= EPIC_LEGENDARY_BREAKPOINT;
     const minPrice = item.priceTotal > 500;
     const consumable = (item.categories || []).includes("Consumable");
-    const boots = (item.categories || []).includes("Boots");
     const isBasic = basic[item.id];
 
     return (
       epicWhitelist ||
-      (!consumable && !boots && !isBasic && lowerPrice && minPrice)
+      (!consumable && !item.isBoots && !isBasic && lowerPrice && minPrice)
     );
   });
 
   const basics = usableItems.filter((item) => basic[item.id]);
 
-  const boots = usableItems
-    .filter((item) => item.categories.includes("Boots"))
-    .filter((item) => item.name !== "Slightly Magical Footware");
+  const boots = usableItems.filter((item) => item.isBoots);
 
   const starters = usableItems.filter((item) => starter[item.id]);
 
