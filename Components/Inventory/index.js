@@ -14,14 +14,18 @@ import ChampionList from "../ChampionList/";
 
 const MAX_FROM = 6;
 const ITEM_SIZE = 60;
+const ROLES = ["top", "jungle", "mid", "adc", "support"];
+function cap(val) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
 
 const Inventory = () => {
   const [copied, setCopied] = useState(false);
+  const [role, setRole] = useState("mid");
+  const [roleSelectOpen, setRoleSelectOpen] = useState(false);
   const { state, setState } = useContext(StateContext);
   const textAreaRef = useRef(null);
   const router = useRouter();
-
-  const role = "top";
 
   const inventory = router.query?.i ? router.query?.i?.split(",") : [];
   const inventoryItems = inventory.map((item) => {
@@ -73,7 +77,54 @@ const Inventory = () => {
             <Icon icon="gold" width="20" height="20" />
             <span>{inventoryCost.toLocaleString()}</span>
           </p>
-          {earnableTime >= 0 && <span>~ {earnableTime} minutes</span>}
+          <div className={styles.roleSelectContainer}>
+            {roleSelectOpen && (
+              <div className={styles.roleSelect}>
+                {ROLES.map((rolekey) => (
+                  <button
+                    key={rolekey}
+                    className={styles.roleSelectItem}
+                    onClick={() => {
+                      setRoleSelectOpen(false);
+                      setRole(rolekey);
+                    }}
+                  >
+                    <Icon icon={`role-${rolekey}`} width="20" height="20" />
+                    <span>{cap(rolekey)}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+            <button
+              className={styles.roleButton}
+              onClick={() => setRoleSelectOpen((prev) => !prev)}
+            >
+              <Icon icon={`role-${role}`} width="20" height="20" />
+              {/* <span>{cap(role)}</span> */}
+            </button>
+          </div>
+          <Tippy
+            placement="top"
+            offset="0, 20"
+            duration={0}
+            content={
+              <div className={styles.earnableTooltip}>
+                *Estimated time to earn {inventoryCost.toLocaleString()} gold
+                based on Emerald+ data. Click the Role Icon the change roles.
+              </div>
+            }
+          >
+            <div className={styles.headerLeft}>
+              {earnableTime >= 0 && (
+                <span className={styles.earnableTime}>
+                  ~{earnableTime} minutes
+                </span>
+              )}
+              <div className={styles.earnableInfo}>
+                <Icon icon="question-mark" width="16" height="16" />
+              </div>
+            </div>
+          </Tippy>
         </div>
         <div className={styles.controls}>
           <button
