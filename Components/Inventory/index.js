@@ -98,17 +98,26 @@ const Inventory = () => {
                 ))}
               </div>
             )}
-            <button
-              className={styles.roleButton}
-              onClick={() => setRoleSelectOpen((prev) => !prev)}
+            <Tippy
+              placement="top"
+              offset="0, 15"
+              duration={0}
+              content={
+                <div className={styles.earnableTooltip}>Change Role</div>
+              }
             >
-              <Icon icon={`role-${role}`} width="20" height="20" />
-              {/* <span>{cap(role)}</span> */}
-            </button>
+              <button
+                className={styles.roleButton}
+                onClick={() => setRoleSelectOpen((prev) => !prev)}
+              >
+                <Icon icon={`role-${role}`} width="20" height="20" />
+                {/* <span>{cap(role)}</span> */}
+              </button>
+            </Tippy>
           </div>
           <Tippy
             placement="top"
-            offset="0, 20"
+            offset="0, 15"
             duration={0}
             content={
               <div className={styles.earnableTooltip}>
@@ -130,21 +139,30 @@ const Inventory = () => {
           </Tippy>
         </div>
         <div className={styles.controls}>
-          <button
-            className={`${styles.share} ${copied && styles.copied}`}
-            onClick={handleCopy}
+          <Tippy
+            placement="top"
+            offset="0, 15"
+            duration={0}
+            content={
+              <div className={styles.earnableTooltip}>Copy build link</div>
+            }
           >
-            {copied ? (
-              <Icon
-                icon="check"
-                width="20"
-                height="20"
-                stlye={{ color: "var(--buff)" }}
-              />
-            ) : (
-              <Icon icon="copy" width="20" height="20" />
-            )}
-          </button>
+            <button
+              className={`${styles.share} ${copied && styles.copied}`}
+              onClick={handleCopy}
+            >
+              {copied ? (
+                <Icon
+                  icon="check"
+                  width="20"
+                  height="20"
+                  stlye={{ color: "var(--buff)" }}
+                />
+              ) : (
+                <Icon icon="copy" width="20" height="20" />
+              )}
+            </button>
+          </Tippy>
           <button className={styles.share} onClick={handleClear}>
             <Icon icon="close" width="20" height="20" />
           </button>
