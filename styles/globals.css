@@ -114,6 +114,10 @@ svg {
   box-sizing: border-box;
 }
 
+strong {
+  font-weight: 600;
+}
+
 maintext {
   color: var(--text4);
 }

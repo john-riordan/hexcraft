@@ -121,8 +121,9 @@ const Inventory = () => {
             duration={0}
             content={
               <div className={styles.earnableTooltip}>
-                *Estimated time to earn {inventoryCost.toLocaleString()} gold
-                based on Emerald+ data. Click the Role Icon the change roles.
+                Estimated time to earn {inventoryCost.toLocaleString()} gold
+                based on <strong>Emerald+ data</strong>. Click the Role Icon the
+                change roles.
               </div>
             }
           >

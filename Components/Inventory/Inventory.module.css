@@ -107,11 +107,14 @@
 .earnableTooltip {
   background: var(--surface2);
   padding: 0.75rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--text5);
-  font-weight: 500;
+  font-weight: 400;
   box-shadow: 0 0 30px 5px var(--surface2);
   border: 1px solid var(--accent2);
+}
+.earnableTooltip strong {
+  color: var(--text6);
 }
 
 .controls {
