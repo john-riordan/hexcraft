@@ -130,7 +130,7 @@ const Inventory = () => {
             <div className={styles.headerLeft}>
               {earnableTime >= 0 && (
                 <span className={styles.earnableTime}>
-                  ~{earnableTime} minutes
+                  ~{earnableTime} mins.
                 </span>
               )}
               <div className={styles.earnableInfo}>

@@ -89,6 +89,7 @@
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 0.5px;
+  font-size: 1rem;
 }
 
 .earnableInfo {
@@ -226,5 +227,16 @@
 
   .imgFrame {
     max-width: 4.5rem;
+  }
+}
+@media (max-width: 800px) {
+  .cost {
+    font-size: 1rem;
+  }
+  .earnableTime {
+    font-size: 0.875rem;
+  }
+  .earnableInfo {
+    display: none;
   }
 }
