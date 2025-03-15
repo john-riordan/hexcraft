@@ -69,6 +69,12 @@ const Inventory = () => {
     posthog.capture("build_cleared");
   }, [state]);
 
+  const handleRoleChange = useCallback((role) => {
+    setRole(role);
+    setRoleSelectOpen(false);
+    posthog.capture("role_changed", { role });
+  }, []);
+
   return (
     <div className={styles.container} data-has-items={inventory.length > 0}>
       <div className={styles.header}>
@@ -84,10 +90,7 @@ const Inventory = () => {
                   <button
                     key={rolekey}
                     className={styles.roleSelectItem}
-                    onClick={() => {
-                      setRoleSelectOpen(false);
-                      setRole(rolekey);
-                    }}
+                    onClick={() => handleRoleChange(rolekey)}
                   >
                     <Icon icon={`role-${rolekey}`} width="20" height="20" />
                     <span>{cap(rolekey)}</span>
