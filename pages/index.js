@@ -20,7 +20,8 @@ import styles from "../styles/Home.module.css";
 import Disclaimer from "../Components/Disclaimer";
 
 export default function Home(props) {
-  const { patch, pbe, updatedAt, itemsData, latestPatchChanges } = props;
+  const { patch, pbe, updatedAt, gpmBenchmark, itemsData, latestPatchChanges } =
+    props;
 
   const router = useRouter();
   const purchaseRef = useRef(null);
@@ -39,24 +40,12 @@ export default function Home(props) {
     selectedItem: null,
     search: "",
     searchOpen: false,
-    inventoryCost: 0,
     modal: null,
     soundPurchase: purchaseRef,
     soundSell: sellRef,
     soundCant: cantRef,
+    gpmBenchmark,
   });
-
-  const inventory = router.query?.i ? router.query?.i?.split(",") : [];
-
-  const items = inventory.map((item) => itemsData.items[item]);
-  const cost = items.reduce((acc, curr) => acc + curr.priceTotal, 0);
-
-  useEffect(() => {
-    setState((prev) => ({
-      ...prev,
-      inventoryCost: cost,
-    }));
-  }, [cost]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,7 +119,7 @@ export default function Home(props) {
             )}
             <ItemDetails className={styles.details} />
           </div>
-          {inventory?.length ? <Inventory /> : null}
+          <Inventory />
         </div>
         {state.modal && <Modal />}
         <audio controls src="/purchase.mp3" ref={purchaseRef} />
@@ -212,6 +201,19 @@ export async function getStaticProps() {
     return acc;
   }, {});
 
+  // 4) GPM Benchmark
+  const roles = ["top", "jungle", "mid", "adc", "support"];
+  const promises = roles.map((role) => {
+    return import(`../data/gpm-benchmark/${role}.json`);
+  });
+  const gpmBenchmark = await Promise.all(promises).then((data) => {
+    return data.reduce((acc, curr, i) => {
+      const { totalGoldByMinute } = curr;
+      acc[roles[i]] = totalGoldByMinute.map((min) => Math.round(min.mean));
+      return acc;
+    }, {});
+  });
+
   const latestPatchChanges = PATCHES[ddragonPatchesLatest];
 
   return {
@@ -221,6 +223,7 @@ export async function getStaticProps() {
       pbe: USE_PBE,
       patch: ddragonPatchesLatest,
       hasPatchChanges: !!latestPatchChanges,
+      gpmBenchmark,
       itemsData: buildItemsData({
         usePBE: USE_PBE,
         ddragonItemsMap,

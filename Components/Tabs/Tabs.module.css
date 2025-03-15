@@ -50,10 +50,11 @@
   align-items: center;
   gap: 0.25rem;
   position: relative;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
 }
 .tab span {
   line-height: 1;
+  font-weight: 600;
   padding-block-start: 0.125rem;
 }
 

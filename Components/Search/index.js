@@ -101,7 +101,7 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <div className={styles.inputFrame}>
-        <Icon icon="search" className={styles.search} />
+        <Icon icon="search" className={styles.search} width={20} height={20} />
         <input
           className={styles.input}
           type="text"
@@ -117,6 +117,8 @@ const Search = () => {
             icon="close"
             className={styles.close}
             onClick={handleCloseSearch}
+            width="16"
+            height="16"
           />
         )}
       </div>
@@ -218,7 +220,7 @@ const Search = () => {
             className={`${styles.orderBtn} ${state.desc && styles.active}`}
             onClick={handleReverseOrder}
           >
-            <Icon icon="order" />
+            <Icon icon="order" width={24} height={24} />
           </button>
         </Tippy>
       </div>

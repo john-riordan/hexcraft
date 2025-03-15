@@ -119,6 +119,8 @@ const StatFilters = ({ className }) => {
                 icon="mask"
                 className={styles.statIcon}
                 viewBox="0 0 48 48"
+                width={20}
+                height={20}
               />
             </div>
           </Tippy>
@@ -151,12 +153,21 @@ const StatFilters = ({ className }) => {
                         icon={stat.icon}
                         className={styles.statIcon}
                         viewBox="0 0 48 48"
+                        width={20}
+                        height={20}
                       />
                     </div>
                   </Tippy>
                 )}
                 <span>{stat.name}</span>
-                {isActive && <Icon icon="close" className={styles.close} />}
+                {isActive && (
+                  <Icon
+                    icon="close"
+                    className={styles.close}
+                    width="16"
+                    height="16"
+                  />
+                )}
               </button>
             );
           })}
