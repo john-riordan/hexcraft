@@ -20,8 +20,15 @@ import styles from "../styles/Home.module.css";
 import Disclaimer from "../Components/Disclaimer";
 
 export default function Home(props) {
-  const { patch, pbe, updatedAt, gpmBenchmark, itemsData, latestPatchChanges } =
-    props;
+  const {
+    patch,
+    pbe,
+    updatedAt,
+    gpmBenchmark,
+    itemsData,
+    latestPatchChanges,
+    hasPatchChanges,
+  } = props;
 
   const router = useRouter();
   const purchaseRef = useRef(null);
@@ -34,6 +41,7 @@ export default function Home(props) {
     updatedAt,
     itemsData,
     latestPatchChanges,
+    hasPatchChanges,
     tab: "all",
     stat: [],
     desc: true,

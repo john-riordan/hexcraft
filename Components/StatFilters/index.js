@@ -6,7 +6,7 @@ import { StateContext } from "../../StateContext";
 import Icon from "../Icon/";
 import styles from "./Filters.module.css";
 
-import formatPatch from "../../helpers/formatPatch";
+import { patchDisplay } from "../../helpers/formatPatch";
 import unixToTimeAgo from "../../helpers/daysAgo";
 
 const statGroups = [
@@ -95,7 +95,7 @@ const StatFilters = ({ className }) => {
         <h2 className={styles.patchTitle}>
           <span>Patch: </span>
           {/* <span>Season S25</span> */}
-          <span>{state.pbe ? "PBE" : formatPatch(state.patch)}</span>
+          <span>{state.pbe ? "PBE" : patchDisplay(state.patch, true)}</span>
         </h2>
         <span className={styles.updatedAt}>
           Updated {unixToTimeAgo(state.updatedAt)}
@@ -106,6 +106,7 @@ const StatFilters = ({ className }) => {
           className={`${styles.statItem} ${
             state.stat.includes("Patch") && styles.active
           }`}
+          data-highlight={state.hasPatchChanges}
           onClick={(e) => handleStatClick(e, "Patch")}
         >
           <Tippy
