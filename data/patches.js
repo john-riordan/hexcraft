@@ -1,53 +1,65 @@
 import { CHANGE_TYPES } from "../helpers/constants";
 
 export const PATCHES = {
-  "15.7.1": {
-    3803: {
+  "15.8.1": {
+    3137: {
       change: CHANGE_TYPES.buff,
       details: `
         <div>
-					<a href="https://www.leagueoflegends.com/" class="reference-link"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/2b8e1f1789cc6d60d7531669106723c4da8e3b68-512x512.png"></a>
-					<h3 id="patch-Catalyst-of-Eons" class="change-title"><a href="https://www.leagueoflegends.com/">Catalyst of Aeons</a></h3>
+					<h4 class="change-detail-title ability-title"><img src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/15.7.1/img/item/3137.png">Cryptbloom</h4>
 					<blockquote class="blockquote context">
-						Catalyst of Eons is a little weak for a laning epic. We'd like to preserve its distinct price point from Lost Chapter in order to retain some laning variance, but the item shouldn't be so painful to buy and we'd like its mana to keep up with its sibling.
+						Cryptbloom has fallen completely behind Void Staff for mages and we'd like this comparison to be fairer. As a result, we're delivering a light buff to Cryptbloom that should help to keep it distinct based on what you're looking for.
 					</blockquote>
+					<hr class="divider">
 					<ul>
-						<li><strong>Build Path</strong>: Ruby Crystal + Sapphire Crystal + 600 gold ⇒ <strong>Ruby Crystal + Ruby Crystal + Sapphire Crystal + 200 gold</strong></li>
-						<li><strong>Total Gold Cost</strong>: Unchanged</li>
-						<li><strong>Mana</strong>: 300 ⇒ <strong>375</strong></li>
-						<li><strong>Eternity Mana Restored from Damage Taken</strong>: 7% ⇒ <strong>10%</strong> (Rog of Ages will also receive the same change)</li>
+						<li><strong>Ability Haste</strong>: 15 ⇒ <strong>20</strong></li>
 					</ul>
 				</div>
       `,
     },
-    6657: {
-      change: CHANGE_TYPES.buff,
+    3742: {
+      change: CHANGE_TYPES.nerf,
       details: `
 				<div>
-					<a href="https://www.leagueoflegends.com/" class="reference-link"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/f2294a3ca2f9f1cb85b9ce5e9678e3b28ca7a543-512x512.png"></a>
-					<h3 id="patch-Rod-of-Ages" class="change-title"><a href="https://www.leagueoflegends.com/">Rod of Ages</a></h3>
+					<h4 class="change-detail-title ability-title"><img src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/15.7.1/img/item/3742.png">Dead Man's Plate</h4>
 					<blockquote class="blockquote context">
-						Adjusting the Eternity effect to match the Catalyst buff above.
+						The slow resistance stat on Dead Man's Plate has been too effective at covering a few champion's core weakness lately and we feel like this is a good time to reduce the potency of the slow resist on a single purchase.
 					</blockquote>
+					<hr class="divider">
 					<ul>
-						<li><strong>Eternity Mana Restored from Damage Taken</strong>: 7% ⇒ <strong>10%</strong> (Rog of Ages will also receive the same change)</li>
+						<li><strong>Slow Resist</strong>: 25% ⇒ <strong>15%</strong></li>
 					</ul>
 				</div>
 			`,
     },
-    3179: {
-      change: CHANGE_TYPES.change,
+    6701: {
+      change: CHANGE_TYPES.buff,
       details: `
 				<div>
-					<a href="https://www.leagueoflegends.com/" class="reference-link"><img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/3cc34c434e06d1395639cbf1169e28a833e5dddf-512x512.png"></a>
-					<h3 id="patch-Umbral-Glaive" class="change-title"><a href="https://www.leagueoflegends.com/">Umbral Glaive</a></h3>
+					<h4 class="change-detail-title ability-title"><img src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/15.7.1/img/item/6701.png">Opportunity</h4>
 					<blockquote class="blockquote context">
-						Umbral Glaive has been in a weak state for a while but we've been hesitant to just strictly buff it due to its extremely powerful passive. We've decided to tone down the frequency of the passive to be less oppressive against enemy vision while buffing its stats and cost. Overall we expect this to be a net buff to the item.
+						Opportunity has dropped in popularity over time and could use a buff to make it a more competitive option in the Lethality item space. Additionally we're lowering the passive Lethality gain on the ranged split so ranged users don't benefit quite as much from the base stat buffs as melee users do.
 					</blockquote>
+					<hr class="divider">
 					<ul>
-						<li><strong>Total Gold Cost</strong>: 2600 ⇒ <strong>2500</strong></li>
-						<li><strong>Attack Damage</strong>: 50 ⇒ <strong>55</strong></li>
-						<li><strong>Blackout Cooldown</strong>: 50 ⇒ <strong>90</strong></li>
+						<li><strong>Lethality</strong>: 15 ⇒ <strong>18</strong></li>
+						<li><strong>Preparation</strong>: After being out-of-combat with enemy champions for 8 seconds, gain 11 (melee) / 7 (ranged) lethality. ⇒ After being out-of-combat with enemy champions for 8 seconds, gain <strong>11 (melee) / 5 (ranged)</strong> lethality.</li>
+					</ul>
+				</div>
+			`,
+    },
+    2501: {
+      change: CHANGE_TYPES.buff,
+      details: `
+				<div>
+					<h4 class="change-detail-title ability-title"><img src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/15.7.1/img/item/2501.png">Overlord's Bloodmail</h4>
+					<blockquote class="blockquote context">
+						Overlord's has been fine, but not exceptionally powerful, for most of its lifetime. Looking to buff it into a position where it's clearly better than some other items for heavier fighters, especially in the later slots.
+					</blockquote>
+					<hr class="divider">
+					<ul>
+						<li><strong>Tyranny</strong>: Bonus AD equal to 2% of bonus health ⇒ <strong>Bonus AD equal to 2.5% of bonus health</strong></li>
+						<li><strong>Retribution</strong>: 0-10% (based on missing health) bonus AD ⇒ <strong>0-12% (based on missing health) bonus AD</strong></li>
 					</ul>
 				</div>
 			`,
