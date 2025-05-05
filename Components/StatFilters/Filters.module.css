@@ -9,7 +9,8 @@
   content: "";
   position: absolute;
   inset: 0 0 -6.5rem -2rem;
-  background: url(/season-2025-splash.webp) no-repeat center;
+  background: url(/db6b5cedf41ee7eef06240ef82821e3373a0f369-1920x1080.jpg)
+    no-repeat center;
   background-size: cover;
   -webkit-mask-image: linear-gradient(
     to bottom,
