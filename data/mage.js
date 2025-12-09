@@ -30,6 +30,9 @@ export const mage = {
     4633: "riftmaker",
     2503: "Blackfire torch",
     4010: "Bloodletter's Curse",
+    3146: "Hextech Gunblade",
+    2522: "Actualizer",
+    2510: "Dusk and Dawn",
   },
   epic: {
     3057: "Sheen",

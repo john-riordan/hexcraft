@@ -1,10 +1,10 @@
 .container {
-  position: sticky;
+  /* position: sticky; */
   margin: 0 1.5rem 0;
-  top: 0;
-  background: var(--surface1);
+  /* top: 0; */
+  /* background: var(--surface1); */
   border-bottom: 1px solid var(--accent1);
-  z-index: 3;
+  /* z-index: 3; */
 }
 
 .inputFrame {

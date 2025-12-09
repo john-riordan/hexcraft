@@ -27,6 +27,9 @@ export const support = {
     3876: "solstice sleigh",
     3870: "dream maker",
     3869: "celestial opposition",
+    2524: "bandlepipes",
+    2526: "whispering circlet",
+    2530: "diadem of songs",
   },
   epic: {
     3801: "Crystalline Bracer",

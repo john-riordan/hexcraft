@@ -4,8 +4,9 @@
   padding: 1rem 2rem;
   padding-top: var(--page-top-padding);
   color: var(--text6);
+  text-shadow: 0 3px 8px black, 0 5px 20px black;
 }
-.disclaimer::before {
+/* .disclaimer::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -14,7 +15,7 @@
   background-size: cover;
   mask-image: linear-gradient(to bottom, black, transparent);
   opacity: 0.5;
-}
+} */
 .disclaimer > * {
   position: relative;
 }
@@ -30,7 +31,18 @@
 .disclaimer span {
   display: block;
   font-size: 0.875rem;
-  color: var(--text5);
+  font-weight: 600;
+  /* color: var(--text5); */
+}
+
+.disclaimer video {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  translate: 0% -20%;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
 }
 
 @media screen and (max-width: 600px) {

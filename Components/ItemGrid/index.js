@@ -102,7 +102,7 @@ const ItemGrid = ({ className }) => {
         return (
           <div key={`${groupName}:${i}`}>
             <h2 className={styles.groupTitle}>{groupName}</h2>
-            <p className={styles.groupSubtitle}>{SUBTITLE[groupName]}</p>
+            {/* <p className={styles.groupSubtitle}>{SUBTITLE[groupName]}</p> */}
             <div className={styles.grid}>
               {groupItems
                 // .sort((a, b) => a.priceTotal - b.priceTotal || a.id - b.id)
