@@ -27,6 +27,7 @@ export const tank = {
     6665: "jaksho",
     3190: "locket",
     2501: "overlords bloodmail",
+    2525: "protoplasm harness",
   },
   epic: {
     3801: "Crystalline Bracer",

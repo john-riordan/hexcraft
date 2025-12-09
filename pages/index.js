@@ -18,6 +18,7 @@ import Modal from "../Components/Modal/";
 
 import styles from "../styles/Home.module.css";
 import Disclaimer from "../Components/Disclaimer";
+import { USE_PBE } from "../constants";
 
 export default function Home(props) {
   const {
@@ -79,22 +80,22 @@ export default function Home(props) {
               `,
               }}
             />
-            <title>League of Legends Items Season 2025 - LoL Shop</title>
+            <title>League of Legends Items Season 2026 - LoL Shop</title>
             <link rel="icon" href="/favicon.ico" />
             <link rel="preconnect" href="https://lolstatic-a.akamaihd.net" />
             <link rel="preconnect" href="https://raw.communitydragon.org" />
             <meta name="darkreader-lock" />
             <meta
               name="Description"
-              content="League of Legends Season 2025 / Season 15 Items"
+              content="League of Legends Season 2026 / Season 16 Items"
             />
             <meta
               property="og:title"
-              content="LoL Shop - League of Legends Season 15 Items"
+              content="LoL Shop - League of Legends Season 16 Items"
             />
             <meta
               property="og:description"
-              content="List of all League of Legends items including the Season 2025 changes, buff, nerfs, and patch notes."
+              content="List of all League of Legends items including the Season 2026 changes, buff, nerfs, and patch notes."
             />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://lolshop.gg" />
@@ -138,8 +139,6 @@ export default function Home(props) {
   );
 }
 
-const USE_PBE = false;
-
 // This function gets called at build time
 export async function getStaticProps() {
   // 1) Fetch latest patch(es)
@@ -168,7 +167,7 @@ export async function getStaticProps() {
   );
 
   // 3) CDragon data - Live OR PBE
-  const cdragonURL = USE_PBE
+  const cdragonURL = !USE_PBE
     ? `http://raw.communitydragon.org/${major}.${minor}/plugins/rcp-be-lol-game-data/global/default/v1/items.json`
     : `http://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/items.json`;
   const cdragonReq = await fetch(cdragonURL);
@@ -222,7 +221,7 @@ export async function getStaticProps() {
     }, {});
   });
 
-  const latestPatchChanges = PATCHES[ddragonPatchesLatest];
+  const latestPatchChanges = PATCHES[USE_PBE ? "PBE" : ddragonPatchesLatest];
 
   return {
     revalidate: 6 * 60 * 60, // 6 hours

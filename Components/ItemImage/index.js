@@ -2,7 +2,7 @@ import styles from "./Image.module.css";
 
 const ItemImage = ({
   imgName,
-  alt = "Season 2025 Item",
+  alt = "Season 2026 Item",
   size = 64,
   className,
   isMythic = false,

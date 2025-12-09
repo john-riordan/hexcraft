@@ -6,6 +6,7 @@ import ItemImage from "../ItemImage/";
 import { StateContext } from "../../StateContext";
 import isOrnnItem from "../../helpers/isOrnnItem";
 import { calculateGoldEfficiency } from "../../helpers/calculateGoldEfficiency";
+import { USE_PBE } from "../../constants";
 
 import formatPatch from "../../helpers/formatPatch";
 
@@ -53,7 +54,7 @@ const ItemTooltip = ({ item }) => {
       {itemChanged && (
         <div className="attribute">
           <p className={`${itemChanged.change.toLowerCase()}`}>
-            {itemChanged.change} in {patch}
+            {itemChanged.change} {USE_PBE ? "on PBE" : `in ${patch}`}
           </p>
         </div>
       )}
