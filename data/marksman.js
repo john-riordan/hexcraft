@@ -5,7 +5,7 @@ export const marksman = {
     3004: "Manamune",
     3033: "Mortal Reminder",
     3094: "Rapid Firecannon",
-    // 3095: 'Stormrazor',
+    3095: "Stormrazor",
     3026: "Guardian Angel",
     3046: "Phantom Dancer",
     3036: "Lord Dominik's Regards",

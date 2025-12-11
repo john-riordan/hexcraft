@@ -46,6 +46,10 @@ export const PATCHES = {
       change: CHANGE_TYPES.new,
       details: ``,
     },
+    3095: {
+      change: CHANGE_TYPES.new,
+      details: ``,
+    },
     // 3040: {
     //   change: CHANGE_TYPES.nerf,
     //   details: `
