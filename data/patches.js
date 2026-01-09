@@ -1,7 +1,7 @@
 import { CHANGE_TYPES } from "../helpers/constants";
 
 export const PATCHES = {
-  PBE: {
+  ["16.1.1"]: {
     2517: {
       change: CHANGE_TYPES.new,
       details: ``,

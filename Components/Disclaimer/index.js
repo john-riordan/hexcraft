@@ -10,7 +10,7 @@ const Disclaimer = () => {
         loop
         playsInline
       />
-      <h1>League of Legends Items - Season 2026 (PBE)</h1>
+      <h1>League of Legends Items - Season 2026</h1>
       <span>
         Season 2026 item updates for League of Legends including all 9 new items
         like Bandlepipes and more.
